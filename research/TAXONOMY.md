@@ -16,9 +16,9 @@ Visual/stylistic patterns that are individually common in both genuinely good an
 - Outline icon sets from a common library, used decoratively
 - Glassmorphism, noise/grain texture, soft shadows
 - Opacity-fade hover states with no other state change
-- Negative letter-spacing on headings ("tracking-tight")
+- Negative letter-spacing on headings ("tracking-tight") — **[LIVE, round 7]** live-measured on Stripe (-0.02em), Linear (-0.022em), Basecamp (-0.0225em), and Varda (-0.03em), all inside the range previously flagged as a tell, all on credited, definitely-human, definitely-not-generic products. This is now confirmed genuinely weak-alone rather than moderate — see `research/INTERFACE_STUDY_RECORDS.md` and the correction in `ANTI_VIBE_CODING_UI.md` §8.
 - Bento-grid layout
-- Corner-bracket / "sci-fi HUD" framing devices around diagrams — **[OWN, verified]** this project's own most recent finding: a device added *specifically to avoid genericness* was independently flagged by a blind reviewer as itself a generic AI-generation signifier
+- Corner-bracket / "sci-fi HUD" framing devices around diagrams — **[OWN, verified]** this project's own most recent finding: a device added *specifically to avoid genericness* was independently flagged by a blind reviewer as itself a generic AI-generation signifier. **[LIVE, round 7]** counter-instance: Varda Space Industries (a real orbital-manufacturing company) uses a comparable dotted-grid framing device on its real hero photograph — see `research/INTERFACE_STUDY_RECORDS.md` Record 9 for the representational-connection distinction this suggests, offered as a hypothesis rather than a settled resolution.
 
 **Why weak alone:** every item on this list is used constantly by good, human-authored, intentional design. A gradient is not a defect; an unexamined gradient is. Tier 1 signals only become meaningful evidence in combination (Tier 7) or when a reviewer can show the specific element carries no informational or functional weight relative to its visual prominence.
 

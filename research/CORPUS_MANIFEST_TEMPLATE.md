@@ -1,6 +1,12 @@
-# Round 7 Corpus Manifest — Prep Only, Not Yet Executed
+# Round 7 Corpus Manifest — Superseded by Live Execution
 
-**Status: blocked on network access as of this writing.** This session runs under **Trusted** network access (allowlisted to package registries, GitHub API via a separate proxy, and a handful of Anthropic domains) — confirmed by a direct 403 against `stripe.com` and `vercel.com`, and by `add_repo` rejecting a cross-owner repository (`shadcn-ui/ui`) with "cross-tier adds are not supported." Neither live rendering of third-party production sites nor arbitrary public-repo cloning is possible from here. Round 7's actual empirical study — rendering real interfaces, inspecting real DOM/CSS/JS, walking real app routes — requires a session running in an environment with **Full** network access (see `code.claude.com/docs/en/cloud-environments#access-levels`).
+**Status: executed.** A later session in this same round had real (Full) network access — confirmed by genuine 200 responses from `stripe.com`, `vercel.com`, and `design-system.service.gov.uk`. The blocker described below turned out to be two separable things: the session's network tier (resolved by running in a Full-access environment) and an unrelated Chromium/proxy TLS-handshake incompatibility (headless Chromium's TLS 1.3 `ClientHello` was reset by the proxy; forcing `--ssl-version-max=tls1.2` on the Chromium launch fixed it without disabling certificate verification). Both are documented in detail, so a future session hitting the same symptom doesn't have to re-diagnose it.
+
+**Real results are in `research/INTERFACE_STUDY_RECORDS.md`** — ten fully-rendered, screenshotted, DOM/CSS-inspected records (five Corpus A, three Corpus B, two Corpus C), plus a summary of what the live evidence confirmed versus corrected from the search-snippet-grade round 6 report. The candidate list and template schema below are kept as a historical record of the pre-execution plan, not as a substitute for the real findings.
+
+---
+
+*Original prep note, unedited below:*
 
 This file is preparation for that session, not a substitute for it. Nothing below has been verified by rendering or inspection yet — every candidate is a lead to check, not a finding.
 

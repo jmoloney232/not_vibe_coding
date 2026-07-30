@@ -8,6 +8,8 @@
 
 This asymmetry is itself a finding worth stating plainly: a large fraction of "I looked at real websites and concluded X" work — by this agent or any agent operating under similar constraints — is more likely to be SEARCH/RECALLED-grade than the confident tone of a typical design write-up implies. Readers (and future agents extending this document) should weight conclusions accordingly, and should re-verify [RECALLED] claims by actually opening the cited products before leaning on them hard.
 
+**Round 7 update:** a later session had real network access and did exactly that re-verification — see `research/INTERFACE_STUDY_RECORDS.md` for ten fully live-rendered, DOM/CSS-inspected records (tagged `[LIVE]`, a stronger tier than any evidence in this document). The headline result: this report's §1 negative-tracking-adjacent framing and `ANTI_VIBE_CODING_UI.md` §8's negative-letter-spacing AVOID entry did not survive live verification as stated — Stripe, Linear, Basecamp, and Varda all use tight negative tracking on their hero H1s, squarely in the range this document's framework flagged as a tell. Treat that specific claim as corrected, not merely re-confirmed; the rest of this report's [SEARCH]-grade claims were not all re-checked this round and should still be read with the caveat above until they are.
+
 ---
 
 ## 1. The central finding: pattern-avoidance and authorship are different axes

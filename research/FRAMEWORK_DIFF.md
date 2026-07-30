@@ -1,0 +1,28 @@
+# Before/After Framework Diff (Round 6)
+
+## What changed
+
+| Location | Before | After |
+|---|---|---|
+| Governing Principles | 10 principles, none addressing "is a stated rationale evidence of a good decision" | New **Governing Principle 11**: pattern-avoidance is not authorship; a signal *combination*, never an isolated pattern, is the unit of evidence. Anchored to a documented, first-party failure (the corner-bracket case), not a hypothetical. |
+| Governing Principle 4 | Named "defensive restraint" risk in general terms (homogenized minimalism) | Added a concrete mechanism: restraint has two causes (purposeful vs. defensive) that are pixel-identical and only distinguishable by asking *why* — anchored to a real, dated, financially-consequential case (2025 Cracker Barrel rebrand backlash, ~$100M market-cap loss, CEO departure) rather than only prior reasoning. |
+| §4 (pattern catalog) | Catalog entries implicitly treated as individually meaningful signals; no explicit combination model | New **Signal-Combination Model** section: every catalog entry reframed as weak/moderate evidence alone; strong evidence requires named clusters (the "AI slop" cluster, the "shadcn-default" cluster, the "hollow decoration" cluster) |
+| §18 (Visual Inspection) | Mechanical checklist only (contrast, overflow, keyboard nav, etc.) | Added **First-Impression Review** (run before technical inspection, not after) and **Blind Review Requirement** (independent reviewer with no access to prompt/rationale/self-score, required whenever Governing Principle 9's trigger applies) |
+| §19 (Self-Critique) | A single critique pass checking for pattern-catalog issues | Added three structured audits — **Composition, Authorship, Realism** — as required content, plus an **Uncertainty Requirement** banning unqualified claims ("no longer looks AI-generated") |
+| §21 (Scoring Rubric) | One 100-point rubric blending product quality and genericness perception into a single score | Split into **Part I** (existing rubric, relabeled as Evaluation B: general UI quality) and new **Part II**: a five-dimension instrument (product/workflow, visual-design, perceived-AI-signals, product-specificity/authorship, production-realism) reported separately, never averaged, with **named score caps** for eight specific evidentiary gaps |
+| §23/§24 (Definition of Done / Checklist) | Completion required the pattern-catalog checks and Swap Tests | Added: Blind Review Requirement as a hard gate; Five-Dimension Instrument reporting; an explicit instruction to **state which taxonomy tier a suspected problem belongs to before fixing it**, directly correcting a documented habit of defaulting to compositional fixes because they're easiest to self-verify |
+| §25 (Review Template) | No fields for first impression, AI-signal dimensions, or blind review | Added First Impression, Five-Dimension Instrument, and Blind Review fields |
+| Appendix G/I | — | New Appendix I logs this round's research, methodology limitations, and the corner-bracket finding in full; Appendix G gained a Round 6 summary entry |
+
+## What was NOT changed, and why that itself is a finding
+
+- **No new items were added to the §4 pattern catalog.** Per explicit user instruction not to produce a longer list of prohibited patterns — the existing catalog was judged sufficient; what was missing was a model for *weighing* it, not more entries in it.
+- **No existing MUST/AVOID rule was tightened into a stricter ban.** Tightening rules was considered and rejected: the round-5 failure (the corner-bracket motif) occurred *despite* following every existing rule correctly — the button was fixed, the tracking was fixed, the composition was genuinely improved. A stricter rule would not have caught it, because the failure was in a dimension (content/informational realism of a decorative device) no rule was checking. This is itself evidence for the report's central finding: more pattern rules address the wrong axis.
+- **The 100-point rubric (§21 Part I) was kept, not replaced.** It measures real things (accessibility, responsiveness, state completeness) that have nothing to do with AI-generation perception and would be actively harmed by folding them into a "does this look generated" score. Evaluation A and Evaluation B needed separating, not merging or discarding either.
+
+## Which prior beliefs were incorrect or incomplete
+
+1. **Incorrect (implicitly, by omission):** that fixing named patterns (button shape, tracking, then composition/asymmetry) constitutes progress toward "not vibe coded." Two rounds of real, defensible fixes left the actual complaint (the page still read as generic) unaddressed, because the complaint was never about those patterns specifically.
+2. **Incomplete:** Governing Principle 4's blandness note correctly named defensive restraint as a risk but had no mechanism for detecting it and no concrete case grounding it — it read as reasoned-from-first-principles rather than evidenced. The Cracker Barrel case fixes the second half of that gap; the Realism/Authorship Audits address the first.
+3. **Incomplete:** the independent-review machinery (Governing Principle 9, §19) existed on paper since round 2 but had never actually been exercised with a real blind image review before this round. It was correct in design and unused in practice — the gap wasn't the rule, it was that the rule had never been load-tested.
+4. **Incorrect:** an implicit assumption, visible in round 5's own text ("grounded in the Mission Control creative thesis"), that a stated creative rationale is itself evidence a design choice serves the product. Governing Principle 11 exists specifically to correct this.

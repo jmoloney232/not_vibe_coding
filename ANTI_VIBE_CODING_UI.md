@@ -18,7 +18,7 @@ Normative language used throughout:
 
 ## 0. Governing Quality Principles (read first, apply always)
 
-These take precedence over every rule below them. When a lower-level rule in this document seems to conflict with these, follow these. Each is numbered below because later sections cite it by number ("Governing Principle 7," etc.) — those citations always refer to the numbered list in this paragraph (1 through 9), never to the priority tiers immediately below, which are deliberately labeled with letters instead of numbers to avoid confusion between the two lists.
+These take precedence over every rule below them. When a lower-level rule in this document seems to conflict with these, follow these. Each is numbered below because later sections cite it by number ("Governing Principle 7," etc.) — those citations always refer to the numbered list in this paragraph (1 through 11), never to the priority tiers immediately below, which are deliberately labeled with letters instead of numbers to avoid confusion between the two lists.
 
 **1. Priority order.** Evaluate and design in these tiers, highest first. A lower tier cannot justify failing a higher one — but tiers are not a strict veto chain for every micro-tradeoff; a negligible cost at a higher tier (e.g., a few milliseconds of performance) is not automatically worth sacrificing a real gain at a lower tier (e.g., meaningfully better long-term maintainability) — the ordering matters most when tiers are genuinely in tension, not for every small tradeoff:
 
@@ -61,6 +61,8 @@ An AI self-review is heuristic evaluation, not user validation, and MUST NOT be 
 
 This document repeatedly cites Stripe, Linear, and Vercel as evidence that concentrated, consistent distinctiveness beats uniform restraint (each commits hard to one or two signatures — Stripe's editorial light-weight type and shifting gradient, Linear's owned purple, Vercel's stark black-and-white — while staying disciplined everywhere else). Treat that as *one illustration of the underlying principle*, not as the template to imitate: these three happen to share a restrained-SaaS aesthetic family, and if every product read this document and converged on "one owned accent, otherwise minimal" as the definition of distinctiveness, that would itself become a new homogenized target, just a smaller and more tasteful one. The underlying principle is broader than these three examples: a product's genuine distinctiveness can equally be loud, maximalist, playful, or built on breaking its own visual patterns on purpose (a brand whose personality *is* unpredictability) — Tier G (product-specific visual identity) does not require Tier F-style internal consistency to be legitimate, provided the inconsistency itself is the deliberate, stated choice (answerable under §2) rather than an accident of not having a system at all. What makes Stripe/Linear/Vercel useful examples is that they're well-documented and easy to point to, not that restrained-SaaS-with-one-accent is the only valid shape distinctiveness can take — see the Blandness Test (§20) and the worked branded-product simulation in Appendix D.
 
+**Restraint has two distinct causes, and only one of them is legitimate — and getting this wrong has a real, documented cost, not just a theoretical one.** Restraint chosen *for a stated, verifiable product reason* (GOV.UK's design system won the Design Museum's Design of the Year specifically for restraint built on "user need and convenience... not the needs of government" — research/CALIBRATION_CORPUS.md #1) is a different act from restraint chosen *defensively* — removing a distinctive element specifically because it might read as decoration, with no independent product reason for the removal. The two can look pixel-identical and are not distinguishable by inspecting the resulting tokens; they are only distinguishable by asking why the restraint was chosen. Defensive restraint is not a safe default: Cracker Barrel's 2025 rebrand, a real and recent case, replaced a distinctive mark with a safer, more minimal one and lost roughly $100M in market cap within 48 hours to backlash explicitly using the words "generic," "soulless," and "bland," with the CEO stepping down about a year later over the same incident (research/RESEARCH_REPORT.md §6b, sourced to CNBC, Creative Bloq, and a 24/7 Wall St. follow-up dated two days before this principle was written). Craigslist is the matched positive-and-different case: visually plain by any conventional measure, but its plainness is instrumented to a specific, real usability tradeoff for its actual users, not a defensive move — which is why it reads as authored-and-successful rather than generic, despite looking, by conventional standards, worse than either the GOV.UK or Cracker Barrel examples. Before applying any restraint-motivated cut, state the specific product reason; "this might look AI-generated/decorative" is not itself a product reason and, applied on its own, is exactly the defensive move this note warns against.
+
 **5. Required product evidence brief.** Before recommending significant visual or structural decisions, record what you actually know versus assume: confirmed user needs vs. assumed ones, available research/analytics, primary tasks and their frequency/urgency, user expertise, data/content characteristics, failure consequences, accessibility considerations, brand and technical constraints, existing product conventions, and open unknowns needing validation. §3's product-brief template is this principle in operational form — fill it out before substantial styling begins. If you identify reference interfaces for inspiration, name the exact attribute you're studying from each (density, table behavior, navigation, onboarding structure) rather than importing an entire visual style because the reference is well-regarded.
 
 **6. Observable acceptance criteria.** Every major rule in this file is written so it can be checked by one of: a direct inspection question, an automated test, a manual test, a screenshot comparison, a measurable performance condition, or a documented rationale. If you find yourself justifying a decision with "looks professional," "feels premium," "feels modern," or "has good vibes," stop and restate it as an observable condition (see §2 and §20 for the technique).
@@ -79,6 +81,15 @@ The trigger for seeking independent review MUST be an objective condition — wo
 
 - Source-code comments MUST explain non-obvious business logic, technical constraints, browser/platform workarounds, or accessibility decisions that aren't self-evident from the code — the normal bar for any production comment. They MUST NOT restate or justify a design decision against this document's rules ("this uses one accent color, per the guide's restraint principle"); that reasoning belongs in a review artifact (the §25 template, a PR description, an audit note), not in the source a maintainer has to read to understand what the code *does*.
 - If, after applying this document, the honest justification for a choice is "this demonstrates I followed the guide" rather than "this serves the product or its user," that choice has failed the Central Principle's justification test (§2) regardless of which specific rule it cites — being demonstrably compliant is not one of the seven acceptable answers to "why is this here."
+
+**11. A plausible rationale is not evidence a decision was good — pattern-avoidance is not authorship, and only a signal *combination*, not an isolated pattern, is meaningful evidence.** This principle exists because of a documented, first-party failure, not a hypothetical one: a prior round of building against this very document added a corner-bracket framing device to a technical diagram, defended at the time with an internally consistent rationale ("grounded in the product's stated creative thesis"). Two independent blind reviewers, shown only the rendered screenshot with zero access to that rationale, each independently named the exact same device as a recognizable AI-generated "sci-fi HUD" cliché — one of them predicting, correctly and unprompted, that a wider viewport would make it read as *more* generated, not less. The rationale was real, internally consistent, and wrong. Full detail: `research/SELF_AUDIT.md`.
+
+Two corollaries follow directly:
+
+- **Removing a known bad pattern and adding a new decision motivated only by "this avoids looking AI-generated" are the same failure mode, not opposites.** Both are choices made by rule-following instead of by product reasoning, and a rule-following choice can manufacture a brand-new cliché exactly as easily as it avoids an old one. Before keeping any decision whose justification traces back to this document's own rules rather than to the product, apply the Authorship Audit and Realism Audit (§19).
+- **No single visual pattern — a gradient, a rounded card, a monospace label, a corner bracket, a dark theme, restrained minimalism itself — is, by itself, meaningful evidence that a design reads as generic or as distinctive.** Evidence in this domain is close to always a *combination*: the specific cluster of "purple/blue gradient + system font + 3-4 card grid + generic stock imagery + interchangeable copy" is what independent discourse actually means by "AI slop" (`research/TAXONOMY.md`, Tier 7) — no single element of that cluster is individually damning, and conversely, using one or two elements from it is not itself evidence of anything. Treat every pattern-catalog entry in §4 and every AVOID list in §7-§15 as a *tier-1 or tier-2 signal* in the sense of `research/TAXONOMY.md`: necessary context, never sufficient conclusion on its own. State which combination of signals is present before concluding a design reads as generic, and check the combination against `research/TAXONOMY.md`'s legitimate-exception tier before concluding anything.
+
+Because a builder's own rationale cannot be trusted to catch this failure (the rationale is generated in the same reasoning pass as the decision, so it is optimized to be consistent with the decision, not to test it), this principle is enforced structurally, not just by admonition — see the Blind Review Requirement, First-Impression Review, Composition Audit, Authorship Audit, and Realism Audit in §19, and the mandatory taxonomy-tier citation in §23's Definition of Done.
 
 ---
 
@@ -211,6 +222,15 @@ A realistically scoped product brief (§3's template, especially the "operationa
 For each pattern: what it looks like, why AI agents produce it, why it harms the result, how to detect it, how to correct it, and legitimate exceptions. Frequency, combination, and lack of justification are what make a pattern a problem — not the pattern's mere existence (Governing Principle 4).
 
 Note on this catalog's own structure: every entry below deliberately uses the same six-field template regardless of how severe the underlying pattern is — this is intentional for a reference catalog meant to be scanned and searched (§0's Observable Acceptance Criteria), not an instance of §4.1's "identical section rhythm" problem, which is about a *designed page* signaling no priority decisions were made. A reference catalog is expected to be uniform; a shipped product's page is not. Severity is handled separately, per actual instance found in a real UI, by §22's framework — not by how long or short a catalog entry reads here.
+
+**The Signal-Combination Model (read this before using the catalog below).** Every entry in this catalog is a *weak-to-moderate signal on its own*, per Governing Principle 11 — none of them, individually, is meaningful evidence that an interface reads as generic or AI-produced. What research into how people actually describe generic/"AI slop" interfaces converges on is specific *combinations*, not isolated patterns (`research/TAXONOMY.md`, Tier 7):
+
+- **Weak alone:** any single catalog entry below — a gradient, a rounded card, a corner-bracket diagram frame, negative letter-spacing, an opacity-fade hover. Each has legitimate, well-documented uses (this catalog names them).
+- **Moderate:** two or three entries co-occurring with no independent product reason connecting them (e.g., a gradient hero *and* a generic three-card feature grid, with no stated reason either exists for this specific product).
+- **Strong signal cluster:** the combination independent sources actually mean by "AI slop" — a purple/blue gradient, a system-default font with no distinct display face, a 3-4 card feature grid, generic/abstract stock or AI-generated imagery, uniform padding/radius with no variation anywhere on the page, and copy that would survive a product-name swap unchanged. Similarly, "shadcn-looking" as a criticism specifically means *default shadcn shapes and spacing with only an accent-color swap and no structural composition beyond the library's demo layout* — not "uses shadcn," which the same discourse explicitly defends ("shadcn is not the problem — shadcn defaults are the problem").
+- **Contextual counterevidence overrides the cluster:** a dense multi-card metric grid that would otherwise read as a moderate/strong signal is not one, for a professional trading/ops dashboard whose users scan for anomaly-by-contrast (§4.3's existing EXCEPTION, corroborated in Appendix D simulation 4). A recognizable component-library look is not a signal at all when a team can state why staying recognizable serves their specific users (§16's EXCEPTION).
+
+Before concluding any interface "looks vibe coded," state which combination of signals is present and check it against the legitimate-exception tier in `research/TAXONOMY.md` — a single catalog match is a prompt to look further, never a verdict by itself.
 
 ### 4.1 Layout & Structure Patterns
 
@@ -1211,6 +1231,10 @@ A staged process for any non-trivial UI task.
 
 Code review alone cannot catch most of what this document is about — you MUST inspect the rendered output.
 
+**First-Impression Review MUST happen before detailed technical inspection, not after.** Once you've inspected a screenshot for contrast, overflow, and pattern-catalog compliance, you can no longer see it fresh — so capture the fresh reaction first, before it's contaminated by the checklist. Before running any of the mechanical checks below, look at the rendered screen and answer, in this order, without design vocabulary: What is this? Who is it for? What am I supposed to do here? What does it feel like? What looks familiar — like something seen many times before? What looks distinctive or specific to this exact product? What, if anything, feels fake, hollow, or generic — and can that impression be traced to something specific, or is it just a vague feeling (if the latter, keep looking until you can name the specific thing, or discount the impression)? Write these answers down before proceeding to the mechanical checklist — this is cheap insurance against the failure documented in Governing Principle 11, where a rationale-laden technical review missed something a genuinely fresh look catches immediately. Self-administering this is real but weaker evidence than an independent reviewer doing it (see the Blind Review Requirement below) — a builder reviewing their own work is never fully unprimed, no matter how deliberately the fresh-look step is sequenced first.
+
+**Blind Review Requirement.** For any UI work of real consequence — reaching production, shipping to a real user, or meeting Governing Principle 9's independent-review trigger — the First-Impression Review above MUST also be performed by a reviewer with none of the following visible: the original prompt or brief, the intended creative direction or thesis, implementation notes, any self-score, or this document's own rationale/checklist language. A fresh agent context (a new subagent invocation with no shared history) or a human are both valid; a continuation of the same conversation that built the UI is not, because it already has the rationale in context whether or not that context is explicitly re-read. Record the reviewer's unprompted reaction verbatim, including disagreement with your own assessment — a reviewer's blind first reaction is evidence in its own right, not a step to be summarized away if it's inconvenient. This requirement exists because of a documented failure, not a hypothetical one: a design decision defended with an internally consistent rationale was independently read by two blind reviewers as reinforcing the exact problem it was meant to fix (Governing Principle 11; full detail in `research/SELF_AUDIT.md` for the project this document was developed alongside). A same-author review, however careful, did not and structurally could not have caught this on its own.
+
 **Inspecting routes in isolation is not the same as verifying a workflow, and it's the more common shortcut to take.** A screenshot of every route can look complete while the path connecting them is broken — a create action that doesn't show up in the list it should land in, a form that resets state it shouldn't, an edit that doesn't reflect in a summary view elsewhere. MUST additionally walk at least one real, complete task end-to-end (e.g., create → see it reflected in a list/summary → edit → see the update propagate → delete/complete → confirm the resulting state), not just visit each screen once in isolation. This is the direct countermeasure to the aesthetic-usability effect (§0 Governing Principle 3): a set of individually attractive, individually-working screenshots is exactly the failure mode that per-screen review misses and a continuous task walkthrough catches.
 
 Depending on tools actually available in your environment, run the application and, for every route relevant to the change:
@@ -1253,9 +1277,28 @@ Repeat this cycle until further changes would be marginal or subjective, not bec
 8. **Compare before and after** — did the fix actually address the defect without introducing a new one?
 9. **Repeat** until remaining issues are genuinely marginal/subjective, and document any you consciously chose not to fix (an EXCEPTION, §23).
 
-The critique in step 3 MUST look for: generic structure, excessive decoration, weak hierarchy, inconsistent spacing, repeated card patterns, default-library appearance, unnecessary icons, unclear actions, unrealistic data, missing states, accessibility problems, responsive failures, copy that doesn't sound product-specific, areas that look fine in isolation but incoherent together, density mismatched to the task, and components attracting more attention than their importance warrants.
+The critique in step 3 MUST look for: generic structure, excessive decoration, weak hierarchy, inconsistent spacing, repeated card patterns, default-library appearance, unnecessary icons, unclear actions, unrealistic data, missing states, accessibility problems, responsive failures, copy that doesn't sound product-specific, areas that look fine in isolation but incoherent together, density mismatched to the task, and components attracting more attention than their importance warrants. Step 3 MUST also run the following three structured audits, not as extra optional detail but as the actual mechanism for catching what a pattern checklist alone misses (Governing Principle 11).
 
-"Looks clean" is not an acceptable critique output on its own. Every finding MUST name the specific problem and connect it to a concrete revision.
+**Composition Audit** — evaluates the whole arrangement, not individual components:
+- Where is the focal point, and does it match the page's actual most-important content or action?
+- Does visual/spatial contrast vary meaningfully across the page (some regions denser or louder, others quieter), or is everything evenly resolved at the same volume throughout? Evenly-resolved-everywhere is the specific signature research associates with generated interfaces — genuine visual tension comes from *uneven* contrast and spacing, not from any specific layout shape (`research/RESEARCH_REPORT.md` §6a).
+- If any asymmetry or grid-breaking is present, would a viewer be able to sense the more conventional alternative it's deviating from? Grid-breaking only reads as a choice when the rule it breaks is legible; used more than once or twice on the same surface, it stops reading as a statement and starts reading as noise.
+- Did every content group become a card/rectangle by default, or does the composition actually respond to what each piece of content is?
+- Does page structure follow this specific product's information architecture, or a template/library's available shapes?
+
+**Authorship Audit** — evaluates whether decisions are traceable to this product or to habit/library/trend:
+- Which decisions would be difficult to reproduce by swapping the product's name and copy for an unrelated product's? (This applies to composition and interaction, not just content — a compositional move reached for regardless of what the product actually is is a library move, even if no literal component library was used.)
+- Which decisions exist because they were the easiest available move (a decorative device that gestures at a theme, an asymmetric layout added because asymmetry was the last lesson learned) rather than because the product's actual content demanded them? See Governing Principle 11's corner-bracket case for what this looks like when it goes wrong.
+- Is there a coherent point of view, and does it survive past the first viewport, into secondary routes, states, and narrower widths — or is the signature confined to the hero?
+- Would this design's character be visible to someone who never read its rationale? If the design only makes sense once its creative brief is explained, the brief is doing work the design itself should be doing.
+
+**Realism Audit** — evaluates content and operational fidelity, which research found to be a stronger, more diagnostic signal cluster than any visual pattern (`research/RESEARCH_REPORT.md` §4):
+- Does every decorative or "technical-looking" element carry real information proportional to its visual prominence, or is it a placeholder wearing the visual costume of data? (If a diagram, chart, or readout is illustrative rather than real, say so honestly in its own caption — per §11's existing Operational Truth Test — but also ask whether real information could have been used instead of a stand-in.)
+- Are claims, metrics, and testimonials supported, or fabricated-but-plausible? (Fabricated social proof is a documented pattern serious enough to have drawn FTC regulatory action against consumer-facing products — `research/RESEARCH_REPORT.md` §4 — treat it as a hard line, not a style choice.)
+- Does the content model real constraints, exceptions, and awkward-but-necessary detail (pricing conditions, permission states, partial completion, legacy behavior), or only the tidy default case?
+- Does dynamic/computed state represent real, authoritative information, or a plausible-looking placeholder standing in for it?
+
+"Looks clean" is not an acceptable critique output on its own. Every finding MUST name the specific problem and connect it to a concrete revision. **Uncertainty Requirement:** do not conclude a critique with "this no longer looks AI-generated," "this feels human-designed," or "this is objectively distinctive" — none of these are claims this document's methods can actually prove (see `research/RESEARCH_REPORT.md` §5 on documented cases of confident, wrong AI-detection judgments, including on genuine human work). Instead report: which specific signals were checked, which were found, what a blind reviewer said if one was consulted, remaining disagreement if reviewers disagreed, and what's still ambiguous. A critique that ends in unqualified confidence has usually stopped looking, not finished looking.
 
 **Bad critique:** "The page could be more polished."
 
@@ -1308,7 +1351,11 @@ Most of these are genuinely runnable by the same agent that built the UI, immedi
 
 ---
 
-## 21. Scoring Rubric
+## 21. Scoring Rubric and the Five-Dimension Self-Evaluation Instrument
+
+**These are two separate evaluations, and MUST NOT be collapsed into one score (Governing Principle 11).** "Is this a good interface" (does it complete tasks, communicate accurately, hold up accessibly and responsively) and "does this read as generic/AI-produced" (perceived genericness, authorship, content realism) are different axes — an interface can be good and still read as generic; it can be distinctive and still be a poor interface. The 100-point rubric immediately below evaluates the first axis. The five-dimension instrument that follows it evaluates the second, and is the newer, more direct tool for the specific failure this document exists to catch — use both, report them separately, and do not average them into a single number.
+
+### Part I — General UI-Quality Rubric (Evaluation B: is it a good interface)
 
 A 100-point rubric to summarize a review. It supplements, and never overrides, the gate list in Governing Principle 7 / §23 — a design can score 90 and still be incomplete if a gate condition is unmet.
 
@@ -1337,6 +1384,30 @@ Interpretation bands: **0–49 Low** (do not ship), **50–69 Acceptable** (func
 
 **Recommended minimum confidence threshold before calling a UI complete:** Strong band (≥70) with zero unresolved Critical or Major findings (§22) and all §23 completion criteria met, PLUS an explicit, honest confidence statement (§0) about what remains unverified due to lack of user testing. A numeric score is a summary aid; it MUST be accompanied by written justification, not stand alone.
 
+### Part II — Five-Dimension Instrument (Evaluation A: does this read as generic/AI-produced, and is it actually authored)
+
+Qualitative findings come first — write the critique (§19's Composition/Authorship/Realism Audits, the First-Impression Review) before assigning any score in this part. A score with no qualitative evidence behind it is not usable; cite the specific finding driving each dimension's rating.
+
+| Dimension | What it evaluates | Low | Strong |
+|---|---|---|---|
+| 1. Product and workflow quality | Does the interface serve real tasks for real users of this specific product? | Generic workflow, could serve any similar product | Workflow reflects this product's actual users, priorities, and task sequence |
+| 2. Visual-design quality | Composition, hierarchy, typography, color — independent of whether it "looks AI" | Weak hierarchy, inconsistent system, poor legibility | Clear hierarchy, deliberate composition, systematic and legible |
+| 3. Perceived AI-generation signals | Presence and *combination* of signals in `research/TAXONOMY.md` (Tiers 1-2 and 7) | Strong signal cluster present (see §4's Signal-Combination Model) | No strong cluster; isolated weak signals only, each independently justifiable |
+| 4. Product specificity and authorship | Per the Authorship Audit (§19): would decisions survive a product-name swap? | Content and composition both survive a swap unchanged | Content and composition both resist a swap — this product's specific reasoning is visible in the result |
+| 5. Production realism | Per the Realism Audit (§19): does content/state reflect real operational complexity? | Idealized happy-path only; decorative elements carry no real information; fabricated-feeling claims | Real constraints/exceptions modeled; decorative elements carry real information; claims are honest about their own limits |
+
+**Do not average these five into one number.** Report each with its supporting evidence. A product can legitimately be Strong on 1/2/4/5 and still carry a residual Tier-2 signal on dimension 3 that's fully explained by a stated, checked-against-`research/TAXONOMY.md` exception — that's a fine outcome, and forcing it into a blended score would hide the actual reasoning behind a single misleading digit.
+
+**Score caps — apply regardless of the ratings above, and state which cap applies rather than silently reporting a lower number:**
+- The interface was not actually rendered and inspected (source-reading only) — cap: cannot be scored on dimensions 2, 3, or 5 at all; report as "not evaluated," not as a passing score.
+- Only one route/screen was reviewed, on a multi-route product — cap: dimension 4 cannot exceed Low, regardless of how strong that one screen is (Cross-Route Incoherence, `research/TAXONOMY.md` Tier 6).
+- Only ideal/tidy content was tested, per §11's content-variance requirement — cap: dimension 5 cannot exceed Low.
+- No independent/blind review occurred on work meeting Governing Principle 9's trigger — cap: dimension 3 cannot exceed Low, regardless of self-assessed confidence (per Governing Principle 11's documented case, self-assessment specifically missed this dimension).
+- The reviewer had the original prompt, creative rationale, or self-score visible during review — same cap as above; a same-author or rationale-primed review does not satisfy the Blind Review Requirement (§18).
+- The interface contains any fabricated claim, metric, testimonial, or logo presented as real — cap: dimension 5 cannot exceed Low, full stop, regardless of how minor the fabrication seems.
+- The design is structurally interchangeable with an unrelated product per the Product Swap Test — cap: dimension 4 cannot exceed Low.
+- The strongest distinctive idea exists only on the homepage/first viewport and doesn't recur elsewhere — cap: dimension 4 cannot exceed Moderate even if the homepage alone would score Strong.
+
 ---
 
 ## 22. Severity Framework
@@ -1364,11 +1435,15 @@ Completion requires all of:
 - Cross-page/cross-state consistency (§5's Controlled Variety).
 - At least one complete task walked end-to-end across routes, with state verified to propagate correctly (§18) — not only each route confirmed individually.
 - Screenshot-based visual review actually performed (§18), not skipped because "it should be fine."
-- Self-critique and at least one revision cycle actually run (§19).
+- Self-critique and at least one revision cycle actually run (§19), including the First-Impression Review and the Composition, Authorship, and Realism Audits (§19) — not only the pattern-catalog check.
 - Product Swap Test, Copy Swap Test, and False-Specificity Test (§20) actually run and passed — these are completion requirements here, not merely optional diagnostics; a generic structure dressed in domain-specific labels is not product-specific just because §20 exists somewhere in this document.
 - No unresolved Critical findings, and no unresolved Major findings without a documented reason (§22).
 - Written justification for every intentional exception to a MUST/SHOULD rule (§25's Intentional Exceptions field).
 - MUST NOT exceed roughly 2 EXCEPTIONs on one piece of non-trivial UI work without triggering independent review (Governing Principle 9) before completion — see exception-laundering below; this is a hard gate, not a self-critique prompt.
+- The Blind Review Requirement (§18) satisfied for any work meeting Governing Principle 9's trigger — a same-author review, however thorough, does not substitute for this (Governing Principle 11).
+- Five-Dimension Instrument (§21 Part II) reported alongside the general rubric, with any applicable score caps stated explicitly rather than omitted.
+
+**Before starting a fix, state which failure this targets, and don't default to the axis that's easiest to self-verify.** When responding to feedback that a UI "looks generic" or "looks vibe coded," state which `research/TAXONOMY.md` tier the suspected problem actually belongs to (surface/Tier 1-2, product/Tier 3, content/Tier 4, interaction/Tier 5, or realism/Tier 6) *before* making changes. This project's own self-audit found a recurring failure pattern worth naming directly: compositional fixes (Tier 1-2) are the easiest to verify (a before/after screenshot comparison is unambiguous), so there's a real pull toward making another compositional pass even when a blind reviewer's actual complaint was about Tier 3/6 (content and product realism, which have no equally quick self-check). If the suspected problem is Tier 3 or Tier 6, a Tier 1-2 fix (better composition, more considered typography, a new signature visual motif) is not a substitute, no matter how much it improves the screenshot.
 
 **This checklist can be satisfied in letter while failing in intent — watch for that in your own work.** Two specific ways it happens, both worth naming directly rather than trusting good faith alone to prevent them:
 
@@ -1407,20 +1482,23 @@ Use this without rereading the full guide.
 
 **Before final review**
 - [ ] Rendered output actually inspected (screenshots or live browsing), not just code (§18).
+- [ ] First-Impression Review recorded before any technical/checklist inspection began, not after (§18).
 - [ ] At least one complete task walked end-to-end across routes, not just each route screenshotted in isolation (§18).
 - [ ] Keyboard-only pass of the primary workflow (§13, §18).
 - [ ] Contrast checked with a real tool, not eyeballed (§9, §13).
 - [ ] Content extremes tested: long/short/empty/error/many-items (§11).
 - [ ] `prefers-reduced-motion` respected (§14).
-- [ ] Self-critique cycle run at least once, with specific findings (§19).
+- [ ] Self-critique cycle run at least once, with specific findings (§19), including the Composition, Authorship, and Realism Audits — not the pattern catalog alone.
 
 **Before declaring completion**
 - [ ] Product Swap Test, Copy Swap Test, and False-Specificity Test (§20) actually run, not left as optional — a generic workflow dressed in domain-specific nouns/icons/sample data MUST NOT pass as product-specific without this check.
 - [ ] If following §6: Required Self-Checks run, Independent Creative Review conducted (not just self-graded) whenever Governing Principle 9's triggers apply, and the Completion Standard checked — a visually ambitious direction is not exempt from any other item on this checklist.
+- [ ] Blind Review Requirement satisfied whenever Governing Principle 9's trigger applies — a reviewer with no access to the prompt, rationale, or self-score has actually looked and their unedited reaction is recorded (§18).
 - [ ] Exception count reviewed: more than ~2 EXCEPTIONs taken on this piece of work MUST trigger independent review (Governing Principle 9) before calling it done, not just a note in §19's self-critique.
 - [ ] Every Governing Principle 7 / §23 gate condition checked and cleared.
 - [ ] Severity of remaining findings assessed; no unresolved Critical, no undocumented unresolved Major (§22).
-- [ ] Confidence stated honestly, including what wasn't validated by real users (§0).
+- [ ] Five-Dimension Instrument (§21 Part II) filled in with evidence, applicable score caps stated, not just the general rubric.
+- [ ] Confidence stated honestly, including what wasn't validated by real users (§0) — and phrased as signals/evidence, not as an unqualified claim that the result "doesn't look AI-generated" (Uncertainty Requirement, §19).
 - [ ] Intentional exceptions documented, not silently taken (§25).
 
 ---
@@ -1443,9 +1521,28 @@ Use this without rereading the full guide.
 - Identity Test result (who ran it, and was it a genuinely separate party — see §6):
 - Independent Creative Review conducted: Y/N, by whom:
 
+## First Impression (recorded before technical inspection — see §18)
+- What is this, who's it for, what am I supposed to do:
+- What looks familiar:
+- What looks distinctive:
+- What feels fake/hollow/generic, and can it be traced to something specific:
+
+## Five-Dimension Instrument (§21 Part II — report separately, do not average)
+- 1. Product and workflow quality:
+- 2. Visual-design quality:
+- 3. Perceived AI-generation signals (cite `research/TAXONOMY.md` tier/cluster, not a single pattern):
+- 4. Product specificity and authorship:
+- 5. Production realism:
+- Score caps applicable, if any:
+
+## Blind Review (required whenever Governing Principle 9's trigger applies — §18)
+- Reviewer type (fresh agent context / independent human / none obtained):
+- Reviewer's unedited reaction:
+- Agreement/disagreement with self-review:
+
 ## Overall Assessment
-- Score:
-- Confidence: (heuristic self-review only, unless real user testing occurred — state which)
+- Score (general rubric, §21 Part I):
+- Confidence: (heuristic self-review only, unless real user testing occurred — state which; do not write "no longer looks AI-generated" or "objectively distinctive" — report signals and remaining ambiguity instead, per the Uncertainty Requirement in §19)
 - Highest-risk issue:
 - Most successful aspect:
 
@@ -1766,6 +1863,8 @@ A second independent review (folded into Appendix E above) found that several of
 
 **Round 5.** First real practical test of §6 (Appendix F's second entry): an ambitious landing page was built following the Creative Direction process, verified with the same rendering/contrast/keyboard/motion checks as round 3, and shipped with a real defect anyway — a default shadcn/Tailwind-style button (rounded fill + opacity-fade hover) and cliché negative-tracking headings, both occurring with no component library present and both surfaced only by direct user critique of the rendered page rather than by any check in the document itself. Fixed in the example (sharpened radius, mono/uppercase button labels tied to the page's own technical register, a real non-opacity hover state, negative tracking removed, the monospace idea elevated from captions into the primary hierarchy) and generalized into the guide: §16 now states its de-defaulting checklist applies with no library involved and names both conventions explicitly; §8 gained an AVOID entry for negative tracking on headings as a specific, common utility value rather than a neutral default. Appendix C's §6 entry updated to reflect that the section has now been build-tested once, with a real, specific gap found and fixed rather than confirmed clean.
 
+**Round 6** (a deep recalibration pass, not another cosmetic fix — full detail in Appendix I and `research/`). Triggered by direct user instruction after round 5's fix still read as "weak," specifically asking for genuine research into what makes interfaces read as generated and a recalibration of this document's own judgment, not another prohibited-pattern pass. Produced four external research documents (`research/RESEARCH_REPORT.md`, `TAXONOMY.md`, `CALIBRATION_CORPUS.md`, `SELF_AUDIT.md`/`INDEPENDENT_REVIEWS.md`), disclosed honestly as constrained by this sandbox's lack of general network access (no live inspection of third-party production sites was possible; external evidence is real but search-snippet-grade). The single most consequential finding: two blind reviewers, given zero context, independently read round 5's corner-bracket framing device — defended at the time by an internally consistent rationale — as a recognizable AI-generated cliché reinforcing the exact problem it was meant to fix. This produced new Governing Principle 11 (pattern-avoidance is not authorship; only signal *combinations*, never isolated patterns, are meaningful evidence) and a set of new structural mechanisms rather than more prose: a Signal-Combination Model reframing the entire §4 catalog (every entry is now explicitly weak/moderate evidence alone); a First-Impression Review and a Blind Review Requirement in §18; Composition, Authorship, and Realism Audits plus an Uncertainty Requirement in §19; a five-dimension self-evaluation instrument in §21 (separating "is this good" from "does this read as generated," with named score caps for common evidentiary gaps) alongside, not blended into, the existing 100-point rubric; and completion-gate updates in §23/§24/§25 requiring these mechanisms rather than the pattern catalog alone. Governing Principle 4 gained a concrete anchor for its existing blandness warning: the 2025 Cracker Barrel rebrand backlash, a real, dated, financially-consequential case of defensive restraint reading as "soulless" rather than safe. No new items were added to the §4 pattern catalog and no rule was tightened into a stricter ban — every change is a new evaluative mechanism or a reframing of how to weigh existing rules, per explicit user instruction not to just produce a longer checklist.
+
 ## Appendix H — Round 2 Adversarial Audit: Claim-by-Claim Table
 
 A second, more demanding audit pass was conducted after round 1, using fresh external research (§26's "Round 2" source subsection) specifically aimed at counter-evidence — successful uses of cards/gradients/motion/centered layouts/recognizable component libraries, and documented criticism of restraint-as-default — not just confirmation of existing content. This table covers the ~25 highest-risk or highest-load-bearing claims in the document, evaluated against the eight audit questions (evidence, scope, failure mode, detection, correction, exception, verification, exploitability). Claims not listed here were reviewed but did not surface a problem worth a table row; that is a statement about this table's selection, not a claim that every sentence in the document was individually re-litigated.
@@ -1799,3 +1898,32 @@ A second, more demanding audit pass was conducted after round 1, using fresh ext
 | 25 | §26 dashboard-metric sourcing | "5–7 metrics," "wallpaper within two weeks" | Practitioner secondary sourcing, not raw study data (already hedged in round 1) | Round 2 found a second practitioner source stating a similar range, but on review this may be the same recycled heuristic restated rather than independent corroboration — see finding 14 in Appendix E's round-2 table | **Retain, both figures still explicitly hedged as practitioner defaults, not upgraded to a stronger evidence tier** |
 
 Claims not surfaced as problems in this pass, worth naming explicitly so the absence isn't mistaken for an oversight: the WCAG contrast/target-size numeric requirements (§9, §13 — standards-backed, verified correct in round 1's fact-check and not re-litigated here); the response-strategy hierarchy in §12 (internally consistent, each step independently testable); the severity framework in §22 (a simple four-tier scheme with no internal contradiction found). Absence from this table means the claim was checked and did not warrant a row, not that it was skipped.
+
+---
+
+## Appendix I — Round 6: Deep Recalibration Research
+
+Round 6 was triggered by direct user instruction after round 5's practical fix (the button/typography corrections, then a composition/asymmetry pass) still read as "weak" — with explicit instruction to research more deeply rather than iterate cosmetically again, and to recalibrate this document's own model of what makes an interface read as generated, not just append more prohibited patterns.
+
+**This round produced three full-length research documents in `research/` rather than folding everything inline, specifically to avoid the appendix-bloat failure this document has now named and corrected twice before (round 2's finding #18; round 4's reviewer note on §6's length).** Read them for full detail; this appendix summarizes only what changed in the document body and why.
+
+- `research/RESEARCH_REPORT.md` — the research synthesis, with every claim labeled `[SEARCH]` (freshly retrieved via WebSearch, real URLs), `[RECALLED]` (training-knowledge description of a named product, not freshly observed), or `[OWN]` (this project's own rendered/screenshotted artifacts). **Methodology limitation, disclosed rather than hidden:** this sandbox has no general network egress (allowlisted to npm/pypi/anthropic/github only) and `WebFetch` returned 403 on every external URL attempted — so no live Playwright screenshot of a real third-party production site (Stripe, Linear, Vercel, etc.) was possible this round. External evidence is search-snippet-grade, not full-fetch-verified; this project's own artifacts are the only entries with genuine first-party visual verification.
+- `research/TAXONOMY.md` — an eight-tier taxonomy (surface/structural/product/content/interaction/production-realism signals, strong signal combinations, legitimate exceptions) built from the research rather than from this document's pre-existing pattern catalog, then compared against it.
+- `research/CALIBRATION_CORPUS.md` — a corpus honestly scoped to what could actually be verified: real discourse/critique with sources, plus this project's own two built examples (bike-shop, Perigee), rather than padded with invented per-example detail about sites never actually inspected this session.
+- `research/SELF_AUDIT.md` and `research/INDEPENDENT_REVIEWS.md` — a blind review of this project's own bike-shop and Perigee screenshots by two fresh subagents with zero shared context (no prompt, no rationale, no framing), recording agreement and disagreement rather than a forced consensus.
+
+**The single most consequential finding, used as the basis for the largest single change to this document this round:** round 5's Perigee fix added corner-bracket framing around a technical diagram, defended at the time as "grounded in the Mission Control creative thesis." Both blind reviewers, independently and without seeing that rationale, named the same device as a recognizable AI-generated "sci-fi HUD" cliché — one predicting, correctly, that a wider viewport would make it read as *more* generated. **A plausible, internally-consistent design rationale was directly demonstrated to be wrong** — not hypothetically, but in this project's own immediately-prior work. This produced new Governing Principle 11 (pattern-avoidance is not authorship; a signal combination, not an isolated pattern, is the actual unit of evidence) and is the reason the Blind Review Requirement, First-Impression Review, and the Composition/Authorship/Realism Audits (all new, in §18-§19) are now completion gates rather than optional appendix content.
+
+**Changes made to the document body, summarized (full text at each citation):**
+- New Governing Principle 11 (pattern-avoidance ≠ authorship; Signal-Combination Model).
+- Governing Principle 4 expanded with the purposeful-vs-defensive-restraint distinction, anchored to a real, dated, financially-consequential case (the 2025 Cracker Barrel rebrand backlash) rather than only prior reasoning.
+- §4 gained an explicit Signal-Combination Model section, reframing every catalog entry as a weak/moderate signal rather than an individual verdict.
+- §18 gained the First-Impression Review (self-administered, run before technical inspection) and the Blind Review Requirement (independent, run whenever Governing Principle 9's trigger applies).
+- §19 gained three structured audits (Composition, Authorship, Realism) as required content of the self-critique cycle, plus an explicit Uncertainty Requirement banning unqualified claims like "no longer looks AI-generated."
+- §21 split into two explicitly separate evaluations (Part I: general UI-quality rubric; Part II: a new five-dimension instrument for perceived-AI-generation/authorship/realism specifically, with named score caps for common evidentiary gaps — unrendered work, single-route review, ideal-content-only testing, no independent review, rationale visible during review, fabricated claims, structural interchangeability, homepage-only distinctiveness).
+- §23 and §24 updated to require the new audits and Blind Review Requirement as completion gates, plus an explicit instruction to state which taxonomy tier a suspected problem belongs to *before* fixing it — directly correcting a recurring habit this round's self-audit found: defaulting to compositional fixes because they're the easiest to self-verify, even when the actual complaint was about content/product realism (Tier 3/6), which has no equally quick self-check.
+- §25's review template gained First Impression, Five-Dimension Instrument, and Blind Review fields.
+
+**What this round deliberately did not do, per the user's explicit instruction not to just produce a longer prohibited-pattern list:** no new items were added to the §4 pattern catalog itself, and no existing MUST/AVOID rule was tightened into a stricter ban. Every change above is either a new evaluative mechanism (an audit, a review requirement, a scoring dimension) or a reframing of how existing rules should be weighed (the Signal-Combination Model) — the goal was better judgment, not a longer checklist, and the additions were deliberately kept to mechanisms rather than more prose warnings, for the same reason round 2 rejected purely rhetorical fixes to the exception-laundering problem.
+
+**What remains unresolved, stated plainly rather than smoothed over:** the corpus in `research/CALIBRATION_CORPUS.md` is smaller and shallower than the task's own requested minimums, for a disclosed, structural reason (no live network access to third-party sites this round) — a future session with real browsing access should redo the external corpus with genuine visual inspection rather than search-snippet evidence. The redesign exercise this round produced (Appendix F's continuation, if performed — see that appendix for whether it was completed and what a fresh blind review found) is a single data point on a single product category. And the corner-bracket finding, while a real and concrete instance, is a sample size of one product reviewed by two people — whether "technical-looking decorative framing" is *always* a hollow-decoration tell, or only was in this specific instance, is not yet established with enough evidence to state as a general rule, and `research/TAXONOMY.md` logs it as ambiguous rather than settled for exactly this reason.

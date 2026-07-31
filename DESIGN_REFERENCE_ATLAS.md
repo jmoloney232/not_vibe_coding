@@ -4,7 +4,11 @@ Human-readable companion to `design-reference-atlas.json` (the authoritative, ma
 
 **Evidence tiers** (see `PROFESSIONAL_WEB_DESIGN_RESEARCH.md` Part 1 for full definitions): `LIVE` (rendered + DOM/CSS-inspected this project), `SEARCH` (cited live web search), `CODE` (verified against public repo/design-system docs), `PROVENANCE` (verified designer/studio attribution), `RECALLED` (training knowledge, lowest tier, always flagged).
 
-**Status: 10 entries as of this version** (seeded from this project's own round-7 live-verification work). This is a running document — see `PROFESSIONAL_WEB_DESIGN_RESEARCH.md` Part 2 for the full target roster and current progress against the completion gates.
+**Status: 16 entries as of this version.** This is a running document — see `PROFESSIONAL_WEB_DESIGN_RESEARCH.md` Part 2 for the full target roster and current progress against the completion gates.
+
+## A load-bearing cross-entry finding: negative letter-spacing
+
+As of this version, H1 letter-spacing has now been directly LIVE-measured on 8 highly-credited, definitely-human-designed products: Stripe (-0.02em), Linear (-0.022em), Basecamp (-0.0225em), Varda (-0.03em), IKEA (-0.0348em), Notion (-0.048em), and Vercel (-0.06em) — all negative — against Monocle and Airbnb (both `normal`) as the only two `normal`-tracking entries in the tight-typography cluster. Vercel's -0.06em is roughly double the top of this project's own previously-flagged '-0.01em to -0.03em template tell' range. **The pattern that's emerging is not 'negative tracking is fine' vs. 'negative tracking is a tell' — it's that tight tracking on large display type is the dominant convention among design-forward tech/retail products specifically, while editorial/travel-marketplace products (Monocle, Airbnb) more often use normal tracking.** The register (tech/SaaS/retail hero type vs. editorial/magazine type) predicts the choice far better than any fixed em-value threshold does. See `TYPOGRAPHY_RESEARCH.md` (forthcoming) for the full analysis.
 
 ---
 
@@ -13,29 +17,35 @@ Human-readable companion to `design-reference-atlas.json` (the authoritative, ma
 ### By design school
 
 - **brutalist-raw**: `v0-color-palette-generator`, `craigslist-sfbay`
-- **editorial-minimalist**: `lovable-maison-storefront`
-- **information-architecture**: `govuk-design-system`, `github-primer`, `varda-space-industries`
-- **modern-tool-builder-saas**: `stripe-homepage`, `linear-homepage`
-- **warm-humanist**: `basecamp-homepage`, `lovable-continuum-habit-tracker`
+- **editorial-minimalist**: `lovable-maison-storefront`, `ikea-homepage`, `monocle-homepage`, `airbnb-homepage`
+- **information-architecture**: `govuk-design-system`, `github-primer`, `varda-space-industries`, `nytimes-homepage`
+- **modern-tool-builder-saas**: `stripe-homepage`, `linear-homepage`, `vercel-homepage`
+- **warm-humanist**: `basecamp-homepage`, `lovable-continuum-habit-tracker`, `notion-homepage`
 
 ### By industry
 
 - **aerospace**: `varda-space-industries`
 - **consumer-marketplace**: `craigslist-sfbay`
-- **developer-tools**: `github-primer`, `linear-homepage`, `v0-color-palette-generator`
+- **developer-tools**: `github-primer`, `linear-homepage`, `v0-color-palette-generator`, `vercel-homepage`
 - **ecommerce**: `lovable-maison-storefront`
+- **editorial**: `nytimes-homepage`, `monocle-homepage`
 - **fintech**: `stripe-homepage`
 - **government**: `govuk-design-system`
+- **marketplace-travel**: `airbnb-homepage`
+- **retail**: `ikea-homepage`
 - **saas**: `basecamp-homepage`
+- **saas-productivity**: `notion-homepage`
 - **saas-wellness**: `lovable-continuum-habit-tracker`
 
 ### By density
 
-- **extremely-high**: `craigslist-sfbay`
+- **extremely-high**: `craigslist-sfbay`, `nytimes-homepage`
 - **high-per-length**: `stripe-homepage`
-- **low**: `github-primer`, `lovable-maison-storefront`, `lovable-continuum-habit-tracker`
+- **low**: `github-primer`, `lovable-maison-storefront`, `lovable-continuum-habit-tracker`, `vercel-homepage`
 - **low-moderate**: `govuk-design-system`, `varda-space-industries`
-- **moderate**: `linear-homepage`, `basecamp-homepage`, `v0-color-palette-generator`
+- **moderate**: `linear-homepage`, `basecamp-homepage`, `v0-color-palette-generator`, `notion-homepage`
+- **moderate-high**: `ikea-homepage`
+- **unknown**: `monocle-homepage`, `airbnb-homepage`
 
 ---
 
@@ -318,5 +328,173 @@ Human-readable companion to `design-reference-atlas.json` (the authoritative, ma
 **Do not copy**: n/a — this is the opposite of a style to imitate cosmetically; the lesson is the underlying reasoning (density serves the actual task), not the literal visual output
 
 **Tags**: {"industry": "consumer-marketplace", "product_type": "index-listing", "design_school": "brutalist-raw", "density": "extremely-high", "tone": "utilitarian-plain", "typography_type": "system-default", "motion_level": "none", "asset_dependence": "none", "brand_maturity": "mature-legacy", "page_type": "index-listing"}
+
+---
+
+### The New York Times — NYTimes.com homepage
+
+`nytimes-homepage` · https://www.nytimes.com · Evidence: LIVE, PROVENANCE · Confidence: high · Reviewed: 2026-07-31
+
+**Category**: editorial-news
+
+**Provenance**: Verified — NYT in-house (design director Tom Bodkin commissioned Matthew Carter for the Cheltenham headline system, 2003). SEARCH-tier sourcing (Fonts In Use, It's Nice That), now LIVE-confirmed the masthead and page structure render as described
+
+**Visual approach**: Dense multi-column front page, real-time news hierarchy, blackletter masthead logotype as an image/custom mark, not live text
+
+**Typography**: display=custom NYT type system (Cheltenham/Franklin/Imperial/Georgia, role-specific), body=Georgia (digital body), H1 letter-spacing=not applicable — masthead is a custom mark, not a live H1; a found <h1> element was a small 16px byline-style element, not the masthead
+
+**Composition**: Multi-column front-page news layout: lead story with image, secondary story list, live news ticker with real timestamps ('1m ago', '6m ago')
+
+**Color**: near-monochrome (black/white/gray), red used only for 'LIVE' status label
+
+**Authorship signals**: genuinely live, dated, current content — the strongest possible 'evidence of ongoing operation' signal, impossible to fake convincingly at this density and freshness
+
+**Weaknesses / limitations**: one ad slot failed to load in the render (visible as a blank gray box) — logged as a rendering artifact, not a design defect
+
+**Transferable principle**: extremely high information density is legitimate and expected for this product type and audience — directly reinforces this project's own §3 table row for 'content-heavy site' and pushes back against any blanket 'more whitespace is more professional' heuristic
+
+**Do not copy**: NYT's proprietary type system (Cheltenham/Imperial/Franklin are commissioned, not licensable)
+
+**Tags**: {"industry": "editorial", "product_type": "news-homepage", "design_school": "information-architecture", "density": "extremely-high", "tone": "authoritative-current", "typography_type": "custom-serif-system", "motion_level": "not-observed", "asset_dependence": "high", "brand_maturity": "mature-legacy", "page_type": "index-listing"}
+
+---
+
+### IKEA — IKEA.com (US) homepage
+
+`ikea-homepage` · https://www.ikea.com/us/en/ · Evidence: LIVE, CODE, PROVENANCE · Confidence: high · Reviewed: 2026-07-31
+
+**Category**: retail-ecommerce
+
+**Provenance**: Verified — IKEA in-house (Skapa design system team). SEARCH-tier (intodesignsystems.com case study: 200+ product teams, React Storybook), now LIVE-confirmed the live site uses the described custom type stack
+
+**Visual approach**: Bold, high-contrast product-forward retail homepage
+
+**Typography**: display=Noto IKEA (custom), body=Noto IKEA / Noto Sans fallback, H1 letter-spacing=-0.0348em (-1.39286px at 40px)
+
+**Composition**: not deeply inspected beyond hero
+
+**Color**: IKEA yellow/blue brand colors
+
+**Authorship signals**: custom-named typeface (Noto IKEA, an IKEA-specific variant) confirms real typographic investment beyond a default stack
+
+**Weaknesses / limitations**: only the homepage hero was inspected this round; Skapa's actual component-level craft (the more interesting design-system evidence per the SEARCH-tier case study) was not directly verified live
+
+**Transferable principle**: ANOTHER CONFIRMATION of negative tracking (-0.0348em) on a real, massive-scale, definitely-human-designed retail brand — now six independent real-brand confirmations across this project's research (Stripe, Linear, Basecamp, Varda from round 7; IKEA and more below from this round)
+
+**Do not copy**: Noto IKEA typeface (custom/licensed)
+
+**Tags**: {"industry": "retail", "product_type": "ecommerce-homepage", "design_school": "editorial-minimalist", "density": "moderate-high", "tone": "bold-approachable", "typography_type": "custom-sans", "motion_level": "not-observed", "asset_dependence": "high", "brand_maturity": "mature", "page_type": "marketing-landing"}
+
+---
+
+### Vercel — Vercel.com homepage
+
+`vercel-homepage` · https://vercel.com · Evidence: LIVE, PROVENANCE · Confidence: high · Reviewed: 2026-07-31
+
+**Category**: developer-infrastructure-marketing
+
+**Provenance**: Verified — Vercel in-house design team (named Design Engineer Rauno Freiberg, CEO Guillermo Rauch publicly discusses product/design philosophy). SEARCH-tier sourcing, now LIVE-confirmed
+
+**Visual approach**: Extreme restraint: near-monochrome gray/black/white palette, one large 3D-shadowed triangle (the Vercel logomark) as the entire hero visual, no gradient mesh visible on this render
+
+**Typography**: display=GeistSans (Vercel's own open-source typeface), body=GeistSans, H1 letter-spacing=-0.06em (-3.84px at 64px) — the tightest tracking measured anywhere in this project's research to date
+
+**Composition**: centered hero, real named customer logo row below the fold (Blackbox.ai, Charles Schwab, DoorDash, OpenAI, Supreme, The Weather Company, Polymarket)
+
+**Color**: near-monochrome; pill-shaped black primary button, white secondary button
+
+**Authorship signals**: real, checkable, named customer logos (not fabricated); the entire hero visual is the brand's own logomark rendered large rather than a stock/generated image or abstract decoration
+
+**Weaknesses / limitations**: single-page hero inspection only
+
+**Transferable principle**: LOAD-BEARING FINDING: -0.06em tracking is nearly double the top of this project's previously-flagged 'AI tell' range (-0.01em to -0.03em) — on GeistSans, Vercel's own open-source typeface, at a company whose CEO/design team are named and public. This is the single strongest piece of evidence yet that negative tracking magnitude alone carries essentially no diagnostic signal.
+
+**Do not copy**: the Vercel triangle logomark itself (trademark); GeistSans is open-source (SIL OFL) and may be used with attribution per its license
+
+**Tags**: {"industry": "developer-tools", "product_type": "marketing-homepage", "design_school": "modern-tool-builder-saas", "density": "low", "tone": "confident-restrained", "typography_type": "open-source-custom-sans", "motion_level": "not-observed", "asset_dependence": "low", "brand_maturity": "mature", "page_type": "marketing-landing"}
+
+---
+
+### Notion — Notion.com homepage
+
+`notion-homepage` · https://www.notion.com · Evidence: LIVE, PROVENANCE · Confidence: high · Reviewed: 2026-07-31
+
+**Category**: saas-productivity-marketing
+
+**Provenance**: Verified — Notion in-house (co-founder Ivan Zhao; named illustrators Roman, Iris and others for the hand-drawn 'Faces' system). SEARCH-tier sourcing, now LIVE-confirmed the hand-drawn face illustrations are real and currently on the live homepage
+
+**Visual approach**: Huge, extremely tight bold display type, hand-drawn circular 'Faces' avatar illustrations across the top, a real embedded product screenshot mid-page
+
+**Typography**: display=NotionInter (custom Inter variant), body=NotionInter/Inter, H1 letter-spacing=-0.0479em (-4.6px at 96px) — second-tightest tracking measured in this project's research
+
+**Composition**: centered hero with hand-drawn avatar row above headline, real product screenshot ('Ramp HQ' workspace) embedded below the fold
+
+**Color**: blue accent, otherwise black/white
+
+**Authorship signals**: hand-drawn illustration used consistently and currently, not just in historical marketing materials; real named customer logos (OpenAI, Figma, Ramp, Cursor, Vercel, Nvidia, Volvo, L'Oréal, Discord)
+
+**Weaknesses / limitations**: single hero inspection only
+
+**Transferable principle**: THIRD extreme-tracking confirmation this batch (-0.048em) — negative tracking, even at values far beyond this project's original flagged range, keeps appearing on exactly the highly-credited, design-forward products this research treats as positive references
+
+**Do not copy**: the specific hand-drawn Faces illustration style (Notion's own commissioned illustration system)
+
+**Tags**: {"industry": "saas-productivity", "product_type": "marketing-homepage", "design_school": "warm-humanist", "density": "moderate", "tone": "friendly-confident", "typography_type": "custom-variable-sans", "motion_level": "not-observed", "asset_dependence": "medium", "brand_maturity": "mature", "page_type": "marketing-landing"}
+
+---
+
+### Winkreative / Monocle — Monocle.com homepage
+
+`monocle-homepage` · https://monocle.com · Evidence: LIVE, PROVENANCE · Confidence: high (typography); medium (rest of page, not deeply inspected) · Reviewed: 2026-07-31
+
+**Category**: editorial-lifestyle-magazine
+
+**Provenance**: Verified — Winkreative (Tyler Brûlé's own agency). SEARCH-tier sourcing (Wikipedia, magculture), now LIVE-confirmed Plantin renders as the live headline typeface exactly as described
+
+**Visual approach**: restrained editorial, serif headlines, normal (not tightened) tracking
+
+**Typography**: display=Plantin (a 1910s old-style serif, per SEARCH sourcing), body=not fully inspected, H1 letter-spacing=normal
+
+**Composition**: not deeply inspected beyond hero typography
+
+**Color**: not deeply inspected
+
+**Authorship signals**: direct LIVE confirmation that a SEARCH-tier claim (Plantin as the real headline typeface) was accurate — a positive methodological data point for how much to trust well-sourced SEARCH-tier claims generally
+
+**Weaknesses / limitations**: only typography was closely inspected this round; full page composition needs a follow-up pass
+
+**Transferable principle**: counter-example within this same research batch: Monocle uses NORMAL tracking, not tight — confirming that negative tracking is a common convention in one register (tech/SaaS/retail hero type) and not a universal rule even among equally credited, equally professional references; the two clusters (tight-tracked tech vs. normal-tracked editorial) are both legitimate, register-specific choices
+
+**Do not copy**: Plantin is a licensed commercial typeface, not free to use without a license
+
+**Tags**: {"industry": "editorial", "product_type": "magazine-homepage", "design_school": "editorial-minimalist", "density": "unknown", "tone": "considered-international", "typography_type": "licensed-old-style-serif", "motion_level": "not-observed", "asset_dependence": "unknown", "brand_maturity": "mature", "page_type": "marketing-landing"}
+
+---
+
+### Airbnb — Airbnb.com homepage
+
+`airbnb-homepage` · https://www.airbnb.com · Evidence: LIVE, PROVENANCE · Confidence: medium (typography only; full page not deeply inspected) · Reviewed: 2026-07-31
+
+**Category**: marketplace-travel
+
+**Provenance**: Verified — Airbnb in-house Design Language System team (codified ~2016; Karri Saarinen among named team members). SEARCH-tier sourcing (karrisaarinen.com/dls), now LIVE-confirmed the custom Airbnb Cereal VF typeface renders live
+
+**Visual approach**: photography-led, restrained UI chrome, search-first utility layout
+
+**Typography**: display=Airbnb Cereal VF (custom variable font), body=not fully inspected, H1 letter-spacing=normal
+
+**Composition**: not deeply inspected beyond hero this round
+
+**Color**: not deeply inspected
+
+**Authorship signals**: custom variable font (Airbnb Cereal VF) confirmed live, matching the well-documented DLS history
+
+**Weaknesses / limitations**: this round's inspection was typography-focused only; the DLS's actual component-level claims (ListingCard, DateRangePicker, PhotoGallery) were not independently re-verified against the live site
+
+**Transferable principle**: another real confirmation that normal tracking is equally legitimate and common among top-tier, definitely-human, definitely-not-generic products — the split is not tight-tracking=bad, it's whether the choice was actually examined for this specific product
+
+**Do not copy**: Airbnb Cereal VF (proprietary custom typeface)
+
+**Tags**: {"industry": "marketplace-travel", "product_type": "marketing-homepage", "design_school": "editorial-minimalist", "density": "unknown", "tone": "warm-trustworthy", "typography_type": "custom-variable-sans", "motion_level": "not-observed", "asset_dependence": "high", "brand_maturity": "mature", "page_type": "marketing-landing"}
 
 ---

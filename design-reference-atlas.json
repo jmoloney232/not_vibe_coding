@@ -967,6 +967,112 @@
         "brand_maturity": "none",
         "page_type": "marketing-landing"
       }
+    },
+    {
+      "id": "headspace-homepage",
+      "organization": "Headspace",
+      "product": "Headspace.com homepage",
+      "url": "https://www.headspace.com",
+      "design_category": "consumer-wellness-marketing",
+      "evidence_tiers": [
+        "LIVE"
+      ],
+      "provenance": {
+        "verified": false,
+        "designers_or_studio": "not independently identified this round",
+        "evidence": "not researched this round beyond the live render itself"
+      },
+      "primary_visual_approach": "Illustrated brand-mascot hero (the smiling orange sun character), sky-gradient background, rounded pill buttons",
+      "typography": {
+        "display": "Headspace Apercu (a customized variant of Apercu, a real commercial typeface by Colophon Foundry)",
+        "body": "Headspace Apercu",
+        "ui": "Headspace Apercu",
+        "mono": null,
+        "letter_spacing_h1": "not captured this round",
+        "source": "LIVE \u2014 getComputedStyle (bodyFont), 2026-07-31"
+      },
+      "composition": "promo banner, nav, hero with illustrated character + real current promotional offer (40% off)",
+      "grid": "not deeply inspected",
+      "density": "low",
+      "color": "sky blue gradient, sunshine orange/yellow mascot, blue CTA buttons",
+      "imagery": "a proprietary, recognizable illustrated brand character (the sun mascot), not stock photography or generic iconography",
+      "motion": "not inspected",
+      "product_specific_structures": "not deeply inspected this round",
+      "responsive_behavior": "not tested",
+      "authorship_signals": "a customized, named typeface variant (Headspace Apercu) and a proprietary illustrated mascot are both real, checkable brand-investment signals",
+      "weaknesses": "provenance (named designers/studio) not independently researched this round \u2014 logged as an evidence gap, not assumed",
+      "transferable_principles": "direct matched-comparison material against the Lovable 'Continuum' habit-tracker template (same broad consumer-wellness category): Headspace's identity rests on a single, proprietary, immediately recognizable illustrated character used consistently, not on generic photography-with-overlay",
+      "do_not_copy": "the Headspace sun mascot character (trademarked brand asset)",
+      "source_links": [
+        "https://www.headspace.com"
+      ],
+      "confidence": "medium (visual/typography only; provenance not researched)",
+      "date_reviewed": "2026-07-31",
+      "tags": {
+        "industry": "consumer-wellness",
+        "product_type": "marketing-homepage",
+        "design_school": "warm-humanist",
+        "density": "low",
+        "tone": "friendly-calm",
+        "typography_type": "custom-commercial-sans",
+        "motion_level": "not-observed",
+        "asset_dependence": "high",
+        "brand_maturity": "mature",
+        "page_type": "marketing-landing"
+      }
+    },
+    {
+      "id": "stumptown-homepage",
+      "organization": "Stumptown Coffee Roasters",
+      "product": "Stumptowncoffee.com homepage",
+      "url": "https://www.stumptowncoffee.com",
+      "design_category": "food-beverage-small-medium-business",
+      "evidence_tiers": [
+        "LIVE"
+      ],
+      "provenance": {
+        "verified": false,
+        "designers_or_studio": "not independently identified this round",
+        "evidence": "not researched this round beyond the live render itself \u2014 logged as a direct-inspection-only entry, consistent with this project's own finding that small/medium business design provenance is structurally hard to source"
+      },
+      "primary_visual_approach": "Real photography (hands holding an actual product bag against a real sky), a named specific product ('Sunrider') with a distinctive tagline, not a generic promotional banner",
+      "typography": {
+        "display": "Windsor (serif)",
+        "body": "GT Flexa (a real commercial typeface, Grilli Type foundry)",
+        "ui": "GT Flexa",
+        "mono": null,
+        "letter_spacing_h1": "-0.008em (-0.8px at 100px) \u2014 tight but much lighter than the tech-register cluster in TYPOGRAPHY_RESEARCH.md",
+        "source": "LIVE \u2014 getComputedStyle, 2026-07-31"
+      },
+      "composition": "promo ticker, nav with wordmark, full-bleed photographic hero with a named product callout",
+      "grid": "not deeply inspected",
+      "density": "low-moderate",
+      "color": "warm sky-blue photography, packaging-derived yellow/blue accents",
+      "imagery": "genuine product photography with a real product package (visible label design, real varietal/origin information: 'Costa Rica Coopatenas, Single Origin')",
+      "motion": "not inspected",
+      "product_specific_structures": "specific, real product content: 'Sunrider... our first single origin whole bean cold brew. Best enjoyed hot or cold' \u2014 a real, dated, specific product launch, not evergreen placeholder copy",
+      "responsive_behavior": "not tested",
+      "authorship_signals": "GT Flexa is a real, named, licensed commercial typeface (Grilli Type) \u2014 a genuine typography investment for a mid-size specialty-coffee business, not a system default",
+      "weaknesses": "named designer/studio provenance not independently researched this round",
+      "transferable_principles": "direct matched-comparison material against the Lovable 'Coffee Order Page' AI-generated template (same category): Stumptown's authenticity signal is specific, current, real product content (a named seasonal product, real origin/varietal data) layered on real photography \u2014 the AI-generated template's comparable strength was its positioning copy ('without third-party platforms taking your identity'), not product-specific content, since it's a template meant to be reused across many different real coffee shops",
+      "do_not_copy": "GT Flexa and Windsor are licensed commercial typefaces, not free to use without a license; Stumptown's specific packaging design is proprietary",
+      "source_links": [
+        "https://www.stumptowncoffee.com"
+      ],
+      "confidence": "medium (visual/typography only; provenance not researched)",
+      "date_reviewed": "2026-07-31",
+      "tags": {
+        "industry": "food-beverage-small-business",
+        "product_type": "ecommerce-homepage",
+        "design_school": "warm-humanist",
+        "density": "low-moderate",
+        "tone": "confident-artisanal",
+        "typography_type": "licensed-serif-plus-sans",
+        "motion_level": "not-observed",
+        "asset_dependence": "high",
+        "brand_maturity": "mature-mid-size",
+        "page_type": "marketing-landing"
+      }
     }
   ]
 }

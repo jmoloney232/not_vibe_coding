@@ -83,7 +83,7 @@ An organization is only counted toward this project's "detailed analysis" quota 
 
 Target: 75+ logged here, 30+ with a full entry in `DESIGN_REFERENCE_ATLAS.md`, at least 15 tagged [PROVENANCE], at least 15 tagged [CODE], at least 10 tagged as disclosed-AI-generated provenance, at least 10 tagged ambiguous/counterexample.
 
-**Progress as of this version: 39 of 75+ logged (18 with full atlas entries at [LIVE] tier — 6 upgraded from [SEARCH] this round via direct rendering; 21 below at [SEARCH] tier, light-touch, candidates for further Phase 2 deep-dive).** This is real, in-progress research, not a placeholder — every entry below carries an actual citation. It is explicitly incomplete against the 75-organization gate and will continue to grow across subsequent work sessions.
+**Progress as of this version: 41 of 75+ logged (20 with full atlas entries at [LIVE] tier — 6 upgraded from [SEARCH] this round via direct rendering; 21 below at [SEARCH] tier, light-touch, candidates for further Phase 2 deep-dive).** This is real, in-progress research, not a placeholder — every entry below carries an actual citation. It is explicitly incomplete against the 75-organization gate and will continue to grow across subsequent work sessions.
 
 ### Phase 2 update: 6 SEARCH-tier entries upgraded to LIVE via direct rendering
 
@@ -148,13 +148,80 @@ GOV.UK Design System · GitHub Primer · Stripe · Linear · Basecamp · v0 "Col
 - **Tate / Barbican / V&A** — search did not surface a specific, named-studio website redesign case study this round (unlike MoMA, which did). Logged as thin; candidate for a more targeted follow-up search or direct [LIVE] inspection in Phase 2, not assumed to lack real provenance just because this round's search didn't surface it.
 - **"Built with v0/Lovable/Bolt" broader showcase search** — returned mostly listicle/comparison-blog content about the *tools*, not individually inspectable projects beyond what this project already has direct [LIVE] evidence for (the three Corpus B atlas entries). No new organizations added from this search; this project's own existing round-7 [LIVE] evidence remains the stronger source for the AI-generated-provenance category and should be extended by more direct platform-gallery inspection in Phase 2, not further generic web search.
 
-## Part 3: Major Findings
+## Part 3: Matched Comparisons
 
-*To be written after Phases 1–5 produce enough evidence to synthesize from — not written in advance of the evidence, per this project's own standing rule against a rationale that outruns what was actually verified.*
+Per the calibration brief's Part 4 (minimum 15; below are the first 5, real and complete, not padded to reach a number). Each pair is matched by product category, page type, and user task; differences attributable to budget/real-photography/brand-equity/content-quality/team-size are called out explicitly rather than misattributed to CSS, per the brief's own explicit instruction.
 
-## Part 4: Counterexamples
+### Comparison 1: Premium home/lifestyle e-commerce — Aesop (Work & Co) vs. Lovable "Maison"
 
-*Scaffolded; see Part 2 gate (10 ambiguous/counterexample minimum).*
+| | Aesop | Lovable "Maison" |
+|---|---|---|
+| Evidence | PROVENANCE (Work & Co case study) | LIVE (round 7) |
+| Photography | Commissioned; Work & Co's designers trained as in-store skincare consultants and tested with real store staff before shipping | Real, well-composed lifestyle photography of unknown provenance (licensed stock or generated — not determinable from the artifact alone) |
+| Typography | A single transitional serif at every size (per the Garden skill's own recipe, not independently re-verified live this round) | Editorial serif/italic mixed-weight headline treatment — genuinely similar *register* to Aesop's, independently arrived at |
+| Content specificity | Real product copy, refined over years of actual retail operation | Generic-but-plausible retail copy ("Handcrafted home goods and lifestyle pieces designed to bring warmth and intention...") — not tied to any specific, checkable claim |
+| **What the difference is actually attributable to** | Aesop's advantage is **process and validation** (real staff, real store testing), not a visual technique unavailable to the AI-generated template. The AI output's typography and photography-led composition are, on this evidence, genuinely comparable in *register* — the gap is in content specificity and the invisible validation process behind Aesop's choices, not in the rendered CSS. |
+
+### Comparison 2: Consumer wellness/habit app — Headspace vs. Lovable "Continuum"
+
+| | Headspace | Lovable "Continuum" |
+|---|---|---|
+| Evidence | LIVE (this round) | LIVE (round 7) |
+| Identity asset | A proprietary, immediately recognizable illustrated mascot (the smiling sun character), used consistently | A real, well-chosen lifestyle photograph with a dark overlay — competent but generic-feeling |
+| Typography | Headspace Apercu, a named customized variant of a real commercial typeface (Colophon Foundry) | Bold sans, not identified by name in this round's evidence |
+| Copy specificity | "Stress less, sleep better, and feel happier every day with guided meditations, courses, and skill-building exercises" — still fairly generic, but tied to Headspace's actual named product categories (meditations, courses, skill-building exercises) | "Build lasting habits, one day at a time" — a clean, textbook Product Swap Test failure (round 7 finding); interchangeable with any habit-tracking product with a one-word brand swap |
+| **What the difference is actually attributable to** | The single largest gap is **a proprietary illustrated brand asset** (the mascot) that took real, sustained investment to develop and that no template — AI-generated or human-made-from-scratch — can substitute for cheaply. This is not a CSS/layout gap; it's an asset-ownership gap, exactly the distinction the calibration brief's Part 12 (Asset Strategy) asks this research to preserve. |
+
+### Comparison 3: Dense financial/professional tool — Bloomberg Terminal vs. Lovable "CFO Command Center"
+
+| | Bloomberg Terminal | Lovable "CFO Command Center" |
+|---|---|---|
+| Evidence | SEARCH (well-documented; not independently renderable — not a public website) | LIVE (this round) |
+| Density philosophy | Maximum information density, explicitly defended against redesign since 1982 because expert users have converted density into fluency (2007 IDEO proposal rejected on the record) | High density but curated: 5 KPIs, one Sankey chart, scenario tabs — closer to "dashboard done well" than "everything available" |
+| Real operational specificity | Decades of accumulated real market data, real trading workflows | One specific, plausible governance detail ("books locked by the controller") — thin compared to Bloomberg's real accumulated operational depth, but present and specific rather than generic |
+| **What the difference is actually attributable to** | Bloomberg Terminal's authority comes from **45 years of real trading-desk validation and actual live financial data** — an evidentiary category no newly-generated interface, AI or human, can match on day one. The AI-generated dashboard's actual *design decisions* (KPI selection, Sankey use, scenario framing) are not obviously worse in kind — they're worse in accumulated real-world proof, which is a different axis entirely. |
+
+### Comparison 4: Food & beverage small/medium business — Stumptown Coffee Roasters vs. Lovable "Coffee Order Page"
+
+| | Stumptown Coffee Roasters | Lovable "Coffee Order Page" |
+|---|---|---|
+| Evidence | LIVE (this round) | LIVE (round 7) |
+| Typography | Windsor (serif display) + GT Flexa (Grilli Type, a real named foundry) — genuine licensed typography investment | Bold condensed sans, not identified by name |
+| Content specificity | A real, named, dated seasonal product ("Sunrider... our first single origin whole bean cold brew"), with real origin/varietal data (Costa Rica, Coopatenas) visible on real packaging in the photograph | Generic template positioning ("Menu browsing, cart, and pickup orders... without third-party platforms taking your identity") — this positioning statement is actually a real Product Swap Test *pass* (specific to independent coffee shops' real platform-fee pain point), even though the product content itself is necessarily generic since it's a reusable template |
+| **What the difference is actually attributable to** | Stumptown's advantage is **being a real, operating, mid-size business with an actual current product catalog and packaging design** — content specificity that a template, by definition, cannot have until a real business populates it. The template's own *positioning* copy (not its placeholder product content) shows real product-category understanding — a useful, precise distinction between "the template's own marketing copy" and "the placeholder content a real user would replace." |
+
+### Comparison 5: Developer utility tool — IBM Carbon / GOV.UK Design System vs. v0 "Color Palette Generator"
+
+| | IBM Carbon / GOV.UK | v0 "Color Palette Generator" |
+|---|---|---|
+| Evidence | LIVE + CODE (both) | LIVE (round 7) |
+| Visual register | Restrained, information-architecture-led, near-zero decoration | Neo-brutalist: thick borders, hard-offset shadows, saturated colors — a *strong*, opinionated register, not restrained |
+| Real content correctness | Dated, specific, versioned release notes (GOV.UK); named contributors and a documented cross-functional process (Carbon) | Correct, real color-theory terminology (Complementary/Analogous) — domain-accurate, if thin |
+| **What the difference is actually attributable to** | This comparison is the weakest evidence of "AI-generated is worse" in this whole set — the two are simply **different registers**, not different quality tiers. The AI-generated utility's neo-brutalist choice is arguably more visually distinctive than either human-made reference, which are both restrained by explicit institutional choice (see `MINIMALISM_RESEARCH.md` Part 1). The real gap is scale and scope (a full design system serving hundreds of teams vs. a single-purpose utility), not visual quality. |
+
+**10 more matched comparisons are required to meet the calibration brief's 15-minimum gate — not yet completed, stated honestly rather than padded.** Priority targets for the next research session: professional vs. AI-generated developer-tool landing pages (Linear/Vercel vs. a v0 SaaS landing template — raw material already in the atlas for both sides, comparison not yet written up); professional vs. AI-generated editorial/portfolio pages; professional vs. AI-generated e-commerce product-detail pages (as distinct from storefront homepages).
+
+## Part 4: Major Findings (cross-cutting, drawn only from evidence actually gathered)
+
+1. **Negative letter-spacing on hero display type is a register choice (tech/retail/food-and-beverage marketing type), not a fixed-threshold AI signal** — 9 independent LIVE measurements now support this (see `TYPOGRAPHY_RESEARCH.md` Part 2), extending and further strengthening round 7's original correction to `ANTI_VIBE_CODING_UI.md` §8.
+2. **AI-tool output is not visually or qualitatively monolithic across product density**: this round's live evidence extends round 7's marketing-page finding (Governing Principle 11: provenance and quality are separate axes) into the dense/utilitarian product category specifically, via the Lovable CFO Command Center comparison (Part 3, Comparison 3).
+3. **Where professional references genuinely outperform AI-generated comparables, the gap is most often in *validated process* and *accumulated real content*, not in visual technique available only to human designers** — every matched comparison in Part 3 that found a real gap (Aesop, Headspace, Bloomberg Terminal, Stumptown) attributed it to real assets, real testing process, or real accumulated operational history, never to a CSS/layout technique the AI-generated comparable could not in principle have used.
+4. **Restraint and density are the same underlying discipline pointed in different directions**, not opposite values — see `MINIMALISM_RESEARCH.md` Part 2's cross-tradition finding, evidenced by GOV.UK (restrained, purpose-stated) and Bloomberg Terminal (dense, purpose-stated) sharing an identical justificatory structure.
+5. **Small/medium-business design provenance is structurally hard to source via general web search** — a real methodological finding in its own right (Part 2 above), meaning Phase 5's remaining small-business matched comparisons will need to rely on direct LIVE inspection (as Comparison 4 above already does) rather than named-designer documentation.
+
+## Part 5: Counterexamples
+
+Per the calibration brief's 10-minimum ambiguous/counterexample gate. Currently logged, all LIVE or PROVENANCE tier:
+
+- **Craigslist** — visually "unrefined" by every convention this project's guide catalogs, and one of the most operationally successful, longest-running consumer products in this entire research set. See `MINIMALISM_RESEARCH.md` Part 1.
+- **Bloomberg Terminal** — deliberately, defensibly un-modernized; the strongest sourced case that "looks dated" and "is well-designed for its actual users" are fully separable claims.
+- **The v0 "Color Palette Generator" neo-brutalist template** — disclosed AI-generation provenance producing a distinctive, non-generic-looking result, directly contradicting "AI output always looks generic."
+- **The Lovable "Continuum" habit tracker** — the reverse case: competent visual craft, still a clean Product Swap Test failure, showing visual polish and product specificity are independent axes regardless of provenance.
+- **Varda Space Industries' dotted-grid hero overlay** — a real, funded company using a device (technical-looking grid framing) this project's own round-6 research flagged as a hollow AI cliché in its own prior work, informing (not settling) that open question.
+- **The Cracker Barrel rebrand** — minimalism as the *wrong* execution of a *legitimate* stated goal (billboard visibility), not evidence minimalism itself was the error. See `MINIMALISM_RESEARCH.md` Part 3.
+- **Ramp.com serving a different "machine version" to automated browsers** — not a design-quality counterexample, but a genuine methodological one: this project's own LIVE-tier evidence gathering is itself vulnerable to sites detecting and adapting to automated inspection, a limitation worth stating for any future round of this research.
+
+**4 more counterexamples are needed to meet the 10-minimum gate** — not yet completed.
 
 ## Part 5: Source Ledger
 
@@ -164,7 +231,6 @@ GOV.UK Design System · GitHub Primer · Stripe · Linear · Basecamp · v0 "Col
 ## Part 6: Limitations
 
 - This document's Part 0 (Garden skill review) is complete and load-bearing.
-- Part 2's ledger is real and growing but explicitly incomplete: 39 of the required 75+ organizations are logged as of this version, 18 with full [LIVE] atlas entries. Categories still thin: small/medium businesses (logged as a structurally hard evidence category, not silently skipped — see above); further utilitarian/dense products beyond Bloomberg Terminal (airline ops tools, medical interfaces, developer consoles, logistics software, government services beyond GOV.UK); further cultural institutions beyond MoMA/Cooper Hewitt/Walker Art Center (the Met, Tate, Barbican, V&A, New Museum, Serpentine — searched this round but not yet found with strong provenance); more disclosed-AI-generated examples beyond the 3 already at [LIVE] tier (target: 10; Phase 2 should extend via direct platform-gallery inspection, not general search).
-- Parts 3–4 (Major Findings, Counterexamples) are not yet written — deliberately, per the standing rule against synthesizing conclusions ahead of the evidence that would support them.
-- No matched comparisons (Phase 5, 15+ required) have been built yet.
-- This document, `MINIMALISM_RESEARCH.md`, `TYPOGRAPHY_RESEARCH.md`, `CLAUDE_DESIGN_DEFAULTS.md`, `DESIGN_EVALUATION_PROTOCOL.md`, the practical exercises, and `FINAL_CALIBRATION_REPORT.md` are all still pending — this is Phase 1 of a 12-phase program (see the project's task tracker), genuinely in progress, not paused or abandoned.
+- Part 2's ledger is real and growing but explicitly incomplete: 41 of the required 75+ organizations are logged as of this version, 20 with full [LIVE] atlas entries. Categories still thin: further small/medium businesses beyond Stumptown (2 logged; well short of a robust category sample); further utilitarian/dense products beyond Bloomberg Terminal and the Lovable CFO dashboard (airline ops tools, medical interfaces, developer consoles, logistics software, government services beyond GOV.UK); further cultural institutions beyond MoMA/Cooper Hewitt/Walker Art Center (the Met, Tate, Barbican, V&A, New Museum, Serpentine — searched this round but not yet found with strong provenance); more disclosed-AI-generated examples (5 logged at LIVE tier: v0 Color Palette Generator, Lovable Maison, Lovable Continuum, Lovable CFO Command Center, Lovable Coffee Order Page — target 10).
+- Part 3 (Matched Comparisons) now has 5 of the required 15, each real and complete — not padded to a number. Part 5 (Counterexamples) has 7 of the required 10.
+- `TYPOGRAPHY_RESEARCH.md` and `MINIMALISM_RESEARCH.md` have real, substantial first versions (see their own stated limitations sections). `CLAUDE_DESIGN_DEFAULTS.md`, `DESIGN_EVALUATION_PROTOCOL.md`, the practical exercises, and `FINAL_CALIBRATION_REPORT.md` are all still pending — genuinely in progress across a 12-phase program (see the project's task tracker), not paused or abandoned.

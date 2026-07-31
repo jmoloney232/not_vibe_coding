@@ -4,15 +4,15 @@ Human-readable companion to `design-reference-atlas.json` (the authoritative, ma
 
 **Evidence tiers** (see `PROFESSIONAL_WEB_DESIGN_RESEARCH.md` Part 1 for full definitions): `LIVE` (rendered + DOM/CSS-inspected this project), `SEARCH` (cited live web search), `CODE` (verified against public repo/design-system docs), `PROVENANCE` (verified designer/studio attribution), `RECALLED` (training knowledge, lowest tier, always flagged).
 
-**Status: 18 entries as of this version.** This is a running document — see `PROFESSIONAL_WEB_DESIGN_RESEARCH.md` Part 2 for the full target roster and current progress against the completion gates.
+**Status: 20 entries as of this version.** This is a running document — see `PROFESSIONAL_WEB_DESIGN_RESEARCH.md` Part 2 for the full target roster and current progress against the completion gates.
 
 ## A load-bearing cross-entry finding: negative letter-spacing
 
-As of this version, H1 letter-spacing has now been directly LIVE-measured on 8 highly-credited, definitely-human-designed products: Stripe (-0.02em), Linear (-0.022em), Basecamp (-0.0225em), Varda (-0.03em), IKEA (-0.0348em), Notion (-0.048em), and Vercel (-0.06em) — all negative — against Monocle and Airbnb (both `normal`) as the only two `normal`-tracking entries in the tight-typography cluster. Vercel's -0.06em is roughly double the top of this project's own previously-flagged '-0.01em to -0.03em template tell' range. **The pattern that's emerging is not 'negative tracking is fine' vs. 'negative tracking is a tell' — it's that tight tracking on large display type is the dominant convention among design-forward tech/retail products specifically, while editorial/travel-marketplace products (Monocle, Airbnb) more often use normal tracking.** The register (tech/SaaS/retail hero type vs. editorial/magazine type) predicts the choice far better than any fixed em-value threshold does. See `TYPOGRAPHY_RESEARCH.md` (forthcoming) for the full analysis.
+As of this version, H1 letter-spacing has now been directly LIVE-measured on 9 highly-credited, definitely-human-designed products: Stripe (-0.02em), Linear (-0.022em), Basecamp (-0.0225em), Varda (-0.03em), IKEA (-0.0348em), Notion (-0.048em), Vercel (-0.06em), and Stumptown (-0.008em, the lightest of the tight-tracking cluster) — all negative — against Monocle and Airbnb (both `normal`) as the only two `normal`-tracking entries. Vercel's -0.06em is roughly double the top of this project's own previously-flagged '-0.01em to -0.03em template tell' range. **The pattern that's emerging is not 'negative tracking is fine' vs. 'negative tracking is a tell' — it's that tight tracking on large display type is the dominant convention among design-forward tech/retail/food-and-beverage products specifically, while editorial/travel-marketplace products (Monocle, Airbnb) more often use normal tracking.** See `TYPOGRAPHY_RESEARCH.md` for the full analysis.
 
 ## A second finding: AI-generated dense dashboards are not automatically generic
 
-The `lovable-cfo-command-center` entry is a real, live-verified counter-example to the assumption that AI-tool output defaults to decorative 'metric wall' dashboards: every visible KPI is decision-relevant, the Sankey chart carries real informational payload, and the listing includes a specific, plausible operational-governance detail ('books locked by the controller') that matches this project's own Realism Audit criteria almost exactly. Combined with round 7's finding that AI-tool marketing output is not visually monolithic, this extends the same conclusion to dense/utilitarian product types.
+The `lovable-cfo-command-center` entry is a real, live-verified counter-example to the assumption that AI-tool output defaults to decorative 'metric wall' dashboards: every visible KPI is decision-relevant, the Sankey chart carries real informational payload, and the listing includes a specific, plausible operational-governance detail ('books locked by the controller') that matches this project's own Realism Audit criteria almost exactly.
 
 ---
 
@@ -24,18 +24,19 @@ The `lovable-cfo-command-center` entry is a real, live-verified counter-example 
 - **editorial-minimalist**: `lovable-maison-storefront`, `ikea-homepage`, `monocle-homepage`, `airbnb-homepage`
 - **information-architecture**: `govuk-design-system`, `github-primer`, `varda-space-industries`, `nytimes-homepage`, `lovable-cfo-command-center`
 - **modern-tool-builder-saas**: `stripe-homepage`, `linear-homepage`, `vercel-homepage`
-- **warm-humanist**: `basecamp-homepage`, `lovable-continuum-habit-tracker`, `notion-homepage`, `lovable-coffee-order-page`
+- **warm-humanist**: `basecamp-homepage`, `lovable-continuum-habit-tracker`, `notion-homepage`, `lovable-coffee-order-page`, `headspace-homepage`, `stumptown-homepage`
 
 ### By industry
 
 - **aerospace**: `varda-space-industries`
 - **consumer-marketplace**: `craigslist-sfbay`
+- **consumer-wellness**: `headspace-homepage`
 - **developer-tools**: `github-primer`, `linear-homepage`, `v0-color-palette-generator`, `vercel-homepage`
 - **ecommerce**: `lovable-maison-storefront`
 - **editorial**: `nytimes-homepage`, `monocle-homepage`
 - **fintech**: `stripe-homepage`
 - **fintech-internal-tools**: `lovable-cfo-command-center`
-- **food-beverage-small-business**: `lovable-coffee-order-page`
+- **food-beverage-small-business**: `lovable-coffee-order-page`, `stumptown-homepage`
 - **government**: `govuk-design-system`
 - **marketplace-travel**: `airbnb-homepage`
 - **retail**: `ikea-homepage`
@@ -48,8 +49,8 @@ The `lovable-cfo-command-center` entry is a real, live-verified counter-example 
 - **extremely-high**: `craigslist-sfbay`, `nytimes-homepage`
 - **high**: `lovable-cfo-command-center`
 - **high-per-length**: `stripe-homepage`
-- **low**: `github-primer`, `lovable-maison-storefront`, `lovable-continuum-habit-tracker`, `vercel-homepage`
-- **low-moderate**: `govuk-design-system`, `varda-space-industries`, `lovable-coffee-order-page`
+- **low**: `github-primer`, `lovable-maison-storefront`, `lovable-continuum-habit-tracker`, `vercel-homepage`, `headspace-homepage`
+- **low-moderate**: `govuk-design-system`, `varda-space-industries`, `lovable-coffee-order-page`, `stumptown-homepage`
 - **moderate**: `linear-homepage`, `basecamp-homepage`, `v0-color-palette-generator`, `notion-homepage`
 - **moderate-high**: `ikea-homepage`
 - **unknown**: `monocle-homepage`, `airbnb-homepage`
@@ -559,5 +560,61 @@ The `lovable-cfo-command-center` entry is a real, live-verified counter-example 
 **Do not copy**: n/a
 
 **Tags**: {"industry": "food-beverage-small-business", "product_type": "ecommerce-order-page", "design_school": "warm-humanist", "density": "low-moderate", "tone": "warm-independent", "typography_type": "bold-condensed-sans", "motion_level": "unknown", "asset_dependence": "high", "brand_maturity": "none", "page_type": "marketing-landing"}
+
+---
+
+### Headspace — Headspace.com homepage
+
+`headspace-homepage` · https://www.headspace.com · Evidence: LIVE · Confidence: medium (visual/typography only; provenance not researched) · Reviewed: 2026-07-31
+
+**Category**: consumer-wellness-marketing
+
+**Provenance**: Not verified — not independently identified this round. not researched this round beyond the live render itself
+
+**Visual approach**: Illustrated brand-mascot hero (the smiling orange sun character), sky-gradient background, rounded pill buttons
+
+**Typography**: display=Headspace Apercu (a customized variant of Apercu, a real commercial typeface by Colophon Foundry), body=Headspace Apercu, H1 letter-spacing=not captured this round
+
+**Composition**: promo banner, nav, hero with illustrated character + real current promotional offer (40% off)
+
+**Color**: sky blue gradient, sunshine orange/yellow mascot, blue CTA buttons
+
+**Authorship signals**: a customized, named typeface variant (Headspace Apercu) and a proprietary illustrated mascot are both real, checkable brand-investment signals
+
+**Weaknesses / limitations**: provenance (named designers/studio) not independently researched this round — logged as an evidence gap, not assumed
+
+**Transferable principle**: direct matched-comparison material against the Lovable 'Continuum' habit-tracker template (same broad consumer-wellness category): Headspace's identity rests on a single, proprietary, immediately recognizable illustrated character used consistently, not on generic photography-with-overlay
+
+**Do not copy**: the Headspace sun mascot character (trademarked brand asset)
+
+**Tags**: {"industry": "consumer-wellness", "product_type": "marketing-homepage", "design_school": "warm-humanist", "density": "low", "tone": "friendly-calm", "typography_type": "custom-commercial-sans", "motion_level": "not-observed", "asset_dependence": "high", "brand_maturity": "mature", "page_type": "marketing-landing"}
+
+---
+
+### Stumptown Coffee Roasters — Stumptowncoffee.com homepage
+
+`stumptown-homepage` · https://www.stumptowncoffee.com · Evidence: LIVE · Confidence: medium (visual/typography only; provenance not researched) · Reviewed: 2026-07-31
+
+**Category**: food-beverage-small-medium-business
+
+**Provenance**: Not verified — not independently identified this round. not researched this round beyond the live render itself — logged as a direct-inspection-only entry, consistent with this project's own finding that small/medium business design provenance is structurally hard to source
+
+**Visual approach**: Real photography (hands holding an actual product bag against a real sky), a named specific product ('Sunrider') with a distinctive tagline, not a generic promotional banner
+
+**Typography**: display=Windsor (serif), body=GT Flexa (a real commercial typeface, Grilli Type foundry), H1 letter-spacing=-0.008em (-0.8px at 100px) — tight but much lighter than the tech-register cluster in TYPOGRAPHY_RESEARCH.md
+
+**Composition**: promo ticker, nav with wordmark, full-bleed photographic hero with a named product callout
+
+**Color**: warm sky-blue photography, packaging-derived yellow/blue accents
+
+**Authorship signals**: GT Flexa is a real, named, licensed commercial typeface (Grilli Type) — a genuine typography investment for a mid-size specialty-coffee business, not a system default
+
+**Weaknesses / limitations**: named designer/studio provenance not independently researched this round
+
+**Transferable principle**: direct matched-comparison material against the Lovable 'Coffee Order Page' AI-generated template (same category): Stumptown's authenticity signal is specific, current, real product content (a named seasonal product, real origin/varietal data) layered on real photography — the AI-generated template's comparable strength was its positioning copy ('without third-party platforms taking your identity'), not product-specific content, since it's a template meant to be reused across many different real coffee shops
+
+**Do not copy**: GT Flexa and Windsor are licensed commercial typefaces, not free to use without a license; Stumptown's specific packaging design is proprietary
+
+**Tags**: {"industry": "food-beverage-small-business", "product_type": "ecommerce-homepage", "design_school": "warm-humanist", "density": "low-moderate", "tone": "confident-artisanal", "typography_type": "licensed-serif-plus-sans", "motion_level": "not-observed", "asset_dependence": "high", "brand_maturity": "mature-mid-size", "page_type": "marketing-landing"}
 
 ---

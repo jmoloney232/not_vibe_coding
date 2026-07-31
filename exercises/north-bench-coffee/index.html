@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cerro Alto — North Bench Coffee Roasters</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+
+<header class="topbar">
+  <span class="mark">North Bench Coffee Roasters</span>
+  <a class="cart-link" href="#cart" id="cart-link">Cart (0)</a>
+</header>
+
+<main>
+  <div>
+    <div class="product-image">Product photography pending</div>
+  </div>
+
+  <div>
+    <div class="eyebrow">Single origin · Huila, Colombia</div>
+    <h1 class="product-name serif">Cerro Alto</h1>
+    <p class="product-sub">Washed Caturra &amp; Castillo from La Cumbre Cooperative, 1,850–1,950 masl. Roasted to order, shipped within 48 hours of roast.</p>
+
+    <div class="notes-row">
+      <span class="note-chip">Stone fruit</span>
+      <span class="note-chip">Brown sugar</span>
+      <span class="note-chip">Light florals</span>
+      <span class="note-chip">Clean finish</span>
+    </div>
+
+    <div id="price" class="price"></div>
+
+    <div class="option-group">
+      <label class="option-label">Size</label>
+      <div class="option-buttons" id="size-options"></div>
+    </div>
+
+    <div class="option-group">
+      <label class="option-label">Grind</label>
+      <div class="option-buttons" id="grind-options"></div>
+    </div>
+
+    <div class="option-group">
+      <label class="option-label">Quantity</label>
+      <div class="qty-row">
+        <button class="qty-btn" id="qty-minus" aria-label="Decrease quantity">−</button>
+        <span class="qty-value" id="qty-value">1</span>
+        <button class="qty-btn" id="qty-plus" aria-label="Increase quantity">+</button>
+      </div>
+    </div>
+
+    <button class="add-cart-btn" id="add-cart-btn">Add to cart</button>
+    <div class="cart-feedback" id="cart-feedback"></div>
+  </div>
+
+  <div class="detail-sections">
+    <div>
+      <h2>About this lot</h2>
+      <p>La Cumbre Cooperative sits on the eastern slope of Huila's central range, where a longer, cooler ripening window gives this lot its stone-fruit sweetness. Cherries are hand-picked at peak ripeness and fermented for 36 hours before a fully washed process.</p>
+      <h2>Roast &amp; brew notes</h2>
+      <p>Light-medium roast, developed for clarity over body. Works well as a pour-over or drip; at espresso grind it pulls sweet with low bitterness — pull slightly shorter than usual (1:1.8) if it tastes thin.</p>
+    </div>
+    <div>
+      <h2>Specifications</h2>
+      <dl>
+        <div class="spec-row"><dt>Origin</dt><dd>Huila, Colombia</dd></div>
+        <div class="spec-row"><dt>Producer</dt><dd>La Cumbre Cooperative</dd></div>
+        <div class="spec-row"><dt>Varietal</dt><dd>Caturra, Castillo</dd></div>
+        <div class="spec-row"><dt>Process</dt><dd>Washed</dd></div>
+        <div class="spec-row"><dt>Elevation</dt><dd>1,850–1,950 masl</dd></div>
+        <div class="spec-row"><dt>Roast level</dt><dd>Light-medium</dd></div>
+      </dl>
+    </div>
+  </div>
+</main>
+
+</body>
+</html>

@@ -20,14 +20,14 @@ function rowHtml(load) {
     : `−${Math.floor(Math.abs(mins)/60)}h${String(Math.abs(mins)%60).padStart(2,'0')}`;
   return `<tr class="row-${load.status}">
     <td class="mono">${load.id}</td>
-    <td><span class="status-dot status-${load.status}"></span>${STATUS_LABEL[load.status]}</td>
-    <td>${load.origin} → ${load.destination}</td>
-    <td>${load.shipper}</td>
-    <td>${driver ? driver.name : "—"}</td>
-    <td class="mono">${driver ? driver.truck : "—"}</td>
-    <td class="mono ${driver && driver.hosRemainingMin <= 60 ? 'hos-flag' : ''}">${driver ? Math.floor(driver.hosRemainingMin/60)+'h'+String(driver.hosRemainingMin%60).padStart(2,'0') : "—"}</td>
-    <td class="mono">${meridianFormatClock(load.apptWindowStart)}–${meridianFormatClock(load.apptWindowEnd)}</td>
-    <td class="mono ${mins < 0 && load.status !== 'delivered' ? 'hos-flag' : ''}">${timeLeft}</td>
+    <td data-label="Status"><span class="status-dot status-${load.status}"></span>${STATUS_LABEL[load.status]}</td>
+    <td data-label="Route">${load.origin} → ${load.destination}</td>
+    <td data-label="Shipper">${load.shipper}</td>
+    <td data-label="Driver">${driver ? driver.name : "—"}</td>
+    <td class="mono" data-label="Truck">${driver ? driver.truck : "—"}</td>
+    <td class="mono ${driver && driver.hosRemainingMin <= 60 ? 'hos-flag' : ''}" data-label="HOS">${driver ? Math.floor(driver.hosRemainingMin/60)+'h'+String(driver.hosRemainingMin%60).padStart(2,'0') : "—"}</td>
+    <td class="mono" data-label="Window">${meridianFormatClock(load.apptWindowStart)}–${meridianFormatClock(load.apptWindowEnd)}</td>
+    <td class="mono ${mins < 0 && load.status !== 'delivered' ? 'hos-flag' : ''}" data-label="Time left">${timeLeft}</td>
   </tr>`;
 }
 

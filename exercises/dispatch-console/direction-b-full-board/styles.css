@@ -127,6 +127,33 @@ main { padding: 0; }
 
 @media (max-width: 900px) {
   body { font-size: 12px; }
-  .board-table { display: block; overflow-x: auto; }
   .driver-strip { flex-wrap: nowrap; }
+}
+
+/* Below 640px, a horizontally-scrolling dense grid loses columns with no
+   affordance signaling it — a real usability risk flagged independently by
+   two blind reviewers (Driver/HOS/Window/Time-Left are exactly the fields
+   a dispatcher needs to avoid missing a window). Switch to a stacked
+   label:value layout instead of shrinking further, so every field stays
+   visible without horizontal scroll — the density concept survives on
+   tablet/desktop where it actually works; small phones get a different,
+   still-complete transformation rather than a degraded copy of the desktop
+   table. See exercises/dispatch-console/REVIEW.md for the blind-review finding. */
+@media (max-width: 640px) {
+  .board-table thead { display: none; }
+  .board-table, .board-table tbody, .board-table tr, .board-table td { display: block; width: 100%; }
+  .board-table tr { border-bottom: 1px solid var(--line-strong); padding: 8px 12px; }
+  .board-table td { border-bottom: none; padding: 2px 0; white-space: normal; }
+  .board-table td:empty { display: none; }
+  .board-table td::before {
+    content: attr(data-label);
+    display: inline-block;
+    min-width: 78px;
+    color: var(--ink-quiet);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .board-table td:first-child::before { content: none; }
+  .board-table td:first-child { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
 }

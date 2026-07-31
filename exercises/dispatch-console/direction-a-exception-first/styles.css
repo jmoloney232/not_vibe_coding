@@ -85,7 +85,15 @@ body {
   margin-bottom: 6px;
 }
 
-.load-id { font-weight: 600; font-variant-numeric: tabular-nums; }
+/* Round-9 typography blind test (exercises/dispatch-console/REVIEW.md) found
+   this direction's single-typeface treatment of IDs/timestamps read as the
+   clearest AI-generated-template tell of the four specimens tested — not the
+   font choice itself, but the lack of a data/prose split a dispatcher
+   actually benefits from when scanning many rows of times under pressure.
+   IBM Plex Mono added specifically for load IDs and time values (not
+   reused from Direction B without reason — the same functional need, tight
+   vertical scanning of numeric fields, exists here independently). */
+.load-id { font-weight: 600; font-variant-numeric: tabular-nums; font-family: 'IBM Plex Mono', ui-monospace, monospace; }
 
 .badge {
   font-size: 12px;
@@ -100,7 +108,7 @@ body {
 .badge-unassigned { background: var(--unassigned-bg); color: var(--unassigned); }
 
 .attn-route { font-size: 15px; margin-bottom: 4px; }
-.attn-time { font-size: 14px; color: var(--ink-quiet); font-variant-numeric: tabular-nums; margin-bottom: 4px; }
+.attn-time { font-size: 13px; color: var(--ink-quiet); font-variant-numeric: tabular-nums; font-family: 'IBM Plex Mono', ui-monospace, monospace; margin-bottom: 4px; }
 .attn-driver { font-size: 14px; color: var(--ink-quiet); margin-bottom: 6px; }
 .attn-note { font-size: 14px; padding-top: 8px; border-top: 1px solid var(--line); color: var(--ink); }
 
@@ -132,9 +140,9 @@ body {
   font-size: 13px;
   color: var(--ink-quiet);
   border-bottom: 1px solid var(--line);
-  font-variant-numeric: tabular-nums;
 }
 .quiet-row:last-child { border-bottom: none; }
+.quiet-id, .quiet-window { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-variant-numeric: tabular-nums; }
 .quiet-id { color: var(--ink-faint); }
 
 @media (max-width: 640px) {

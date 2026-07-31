@@ -11,7 +11,7 @@ This directory holds the calibration project's required practical exercises, kep
 | 3 | Editorial/cultural website | **substantially complete — `fenwick-museum/`, a fictional regional museum. Two-register typography (voice/logistics) and a real curatorial essay both confirmed working by blind review; one wording-level asset-honesty finding fixed and fed back into `ANTI_VIBE_CODING_UI.md` §3. Remaining: only one blind reviewer used, no typography-specific blind test, only 2 of the site's implied routes built.** |
 | 4 | Expressive marketing website | not started |
 | 5 | E-commerce / product-detail experience | not started |
-| 6 | Developer/technical product | not started |
+| 6 | Developer/technical product | **substantially complete — `ridgeline-flags/`, a feature-flag/rollout platform. Blind review confirmed the exercise's core test passed: a reviewer named LaunchDarkly as the structural reference but explicitly confirmed no visual copying, and independently verified no dark-mode/purple-accent/monospace-everywhere defaults leaked in. One real safety-UX finding (production changes had no real confirmation friction) fixed and verified via actual Playwright interaction. Remaining: fix not re-verified by a second blind pass, no typography blind test, Activity/Settings routes unbuilt.** |
 
 ## Why the 4-variant exercise was assigned to "dense professional application"
 

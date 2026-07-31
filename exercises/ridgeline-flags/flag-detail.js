@@ -50,6 +50,15 @@ function render() {
   const saveBtn = document.getElementById("save-btn");
   const saveState = document.getElementById("save-state");
   const originalPct = flag.percentage;
+  let awaitingConfirm = false;
+
+  function resetButton(changed) {
+    awaitingConfirm = false;
+    saveBtn.textContent = "Save change";
+    saveBtn.disabled = !changed;
+    saveBtn.style.background = changed ? "var(--accent)" : "var(--ink-faint)";
+    saveBtn.style.cursor = changed ? "pointer" : "not-allowed";
+  }
 
   function update() {
     const val = Number(slider.value);
@@ -58,9 +67,7 @@ function render() {
     bigFill.style.width = `${val}%`;
 
     const changed = val !== originalPct;
-    saveBtn.disabled = !changed;
-    saveBtn.style.background = changed ? "var(--accent)" : "var(--ink-faint)";
-    saveBtn.style.cursor = changed ? "pointer" : "not-allowed";
+    resetButton(changed);
     saveState.textContent = "";
 
     if (flag.environment === "production" && changed) {
@@ -72,13 +79,27 @@ function render() {
   }
 
   slider.addEventListener("input", update);
+
+  // Production changes require a real second confirmation step, not just an
+  // informational note — a blind reviewer flagged the original one-click
+  // save as "mostly decorative" for a 30-point production jump: informative
+  // but no actual friction. Staging/development flags save on the first
+  // click, since the risk that justifies the extra step isn't present there
+  // — this is a reasoned distinction, not blanket caution added everywhere.
   saveBtn.addEventListener("click", () => {
     if (saveBtn.disabled) return;
-    saveState.textContent = `Saved — now live at ${slider.value}%.`;
-    flag.percentage = Number(slider.value);
-    saveBtn.disabled = true;
-    saveBtn.style.background = "var(--ink-faint)";
-    saveBtn.style.cursor = "not-allowed";
+    const val = slider.value;
+
+    if (flag.environment === "production" && !awaitingConfirm) {
+      awaitingConfirm = true;
+      saveBtn.textContent = `Confirm: set to ${val}%?`;
+      saveState.textContent = "Click again to confirm this production change.";
+      return;
+    }
+
+    saveState.textContent = `Saved — now live at ${val}%.`;
+    flag.percentage = Number(val);
+    resetButton(false);
   });
 }
 

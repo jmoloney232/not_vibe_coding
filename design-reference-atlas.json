@@ -863,6 +863,110 @@
         "brand_maturity": "mature",
         "page_type": "marketing-landing"
       }
+    },
+    {
+      "id": "lovable-cfo-command-center",
+      "organization": "Lovable community",
+      "product": "CFO Command Center - Finance Reporting Dashboard (Lovable template)",
+      "url": "https://lovable.dev/templates/apps/internal-tools/cfo-command-center-finance-reporting-dashboard-template",
+      "design_category": "ai-generated-dense-dashboard",
+      "evidence_tiers": [
+        "LIVE"
+      ],
+      "provenance": {
+        "verified": true,
+        "designers_or_studio": "disclosed AI-generation (Lovable)",
+        "evidence": "hosted on Lovable's own template gallery, '113 remixes' attribution"
+      },
+      "primary_visual_approach": "Dense, dark-theme finance dashboard: animated Sankey money-flow diagram, real KPI card row, scenario-comparison tabs",
+      "typography": {
+        "display": "not identified by name",
+        "body": "not determined",
+        "ui": "not determined",
+        "mono": "used for financial figures (tabular-looking)",
+        "source": "static preview only, not DOM-inspected"
+      },
+      "composition": "KPI row (ARR/Gross Margin/Net Burn/Runway/Cash Balance) above a large labeled Sankey chart, scenario tabs (Actuals/Board plan/Efficiency case/Upside case/Model a scenario)",
+      "grid": "not inspected",
+      "density": "high \u2014 genuinely dense, decision-relevant, not spacious marketing-style chrome on an operational surface",
+      "color": "dark navy/near-black background, blue/orange/green semantic Sankey flow colors",
+      "imagery": "none \u2014 pure data visualization",
+      "motion": "described as 'animated' Sankey (not verified live \u2014 static preview only)",
+      "product_specific_structures": "REAL, SPECIFIC operational text: 'Northwind Cloud \u00b7 Financial Reporting', 'Booked results as closed by accounting. Close of July 2026. 146 employees. books locked by the controller.' \u2014 a specific, plausible operational governance detail (a books-locked-by-controller constraint), not generic dashboard filler",
+      "responsive_behavior": "not tested",
+      "authorship_signals": "genuinely strong: every KPI is decision-relevant (ARR, Gross Margin, Net Burn, Runway, Cash Balance \u2014 a real CFO's actual primary metric set), the Sankey chart has real informational payload (a genuine money-flow breakdown with real category labels), and the operational governance detail ('books locked by the controller') is a specific, non-generic realism signal",
+      "weaknesses": "static preview only \u2014 motion, interaction, and other routes/states not independently verified",
+      "transferable_principles": "MAJOR COUNTEREXAMPLE to any assumption that AI-generated dense/utilitarian interfaces default to decorative 'metric wall' dashboards. This one passes this project's own \u00a74.3 'does this number change what the user does next' test on every visible KPI, and includes a specific, plausible governance/operational detail exactly matching this project's own Realism Audit criteria. Directly relevant to this calibration project's Exercise 2 (dense professional application) as both inspiration and a real point of comparison.",
+      "do_not_copy": "n/a",
+      "source_links": [
+        "https://lovable.dev/templates/apps/internal-tools/cfo-command-center-finance-reporting-dashboard-template"
+      ],
+      "confidence": "very high provenance; medium depth (preview screenshot only)",
+      "date_reviewed": "2026-07-31",
+      "tags": {
+        "industry": "fintech-internal-tools",
+        "product_type": "dashboard",
+        "design_school": "information-architecture",
+        "density": "high",
+        "tone": "serious-operational",
+        "typography_type": "unknown",
+        "motion_level": "claimed-animated-unverified",
+        "asset_dependence": "low",
+        "brand_maturity": "none",
+        "page_type": "app-interior"
+      }
+    },
+    {
+      "id": "lovable-coffee-order-page",
+      "organization": "Lovable community",
+      "product": "Coffee Order Page 'Groundwork Coffee' (Lovable template)",
+      "url": "https://lovable.dev/templates/websites/ecommerce/coffee-shop-order-page",
+      "design_category": "ai-generated-small-business",
+      "evidence_tiers": [
+        "LIVE"
+      ],
+      "provenance": {
+        "verified": true,
+        "designers_or_studio": "disclosed AI-generation (Lovable)",
+        "evidence": "hosted on Lovable's own template gallery, '69 remixes' attribution"
+      },
+      "primary_visual_approach": "Full-bleed real latte-art photography hero, dark navy nav bar, bold repeated 'SMALL BATCH' marquee-style banner",
+      "typography": {
+        "display": "bold condensed sans (not identified by name)",
+        "body": "not determined",
+        "ui": "not determined",
+        "mono": null,
+        "source": "static preview only"
+      },
+      "composition": "Menu/Location/About nav, full-bleed photo hero, repeated marquee text band below",
+      "grid": "not inspected",
+      "density": "low-moderate",
+      "color": "dark navy/cream, warm coffee-photo tones",
+      "imagery": "a real, specific, well-composed latte-art photograph \u2014 not an obviously stock or AI-generated image",
+      "motion": "not inspected",
+      "product_specific_structures": "brand name 'Groundwork Coffee' with a specific positioning statement in the listing copy: 'Menu browsing, cart, and pickup orders \u2014 all without third-party platforms taking your identity' \u2014 a real, specific value proposition (independence from third-party ordering platforms) that only makes sense for this exact category of small business, not swappable to an arbitrary product",
+      "responsive_behavior": "not tested",
+      "authorship_signals": "the 'without third-party platforms taking your identity' positioning is a real Product Swap Test PASS \u2014 specific to the actual pain point of independent coffee shops using DoorDash/Grubhub/Square-branded ordering pages that dilute their own brand",
+      "weaknesses": "static preview only; unclear how much of the photography is licensed stock vs. AI-generated vs. genuinely commissioned",
+      "transferable_principles": "a tasteful, real counter-example for the specific small-business category this project's own Phase 5 flagged as hardest to find genuine provenance for on the human-made side \u2014 useful as a paired comparison point for this calibration project's Exercise 1",
+      "do_not_copy": "n/a",
+      "source_links": [
+        "https://lovable.dev/templates/websites/ecommerce/coffee-shop-order-page"
+      ],
+      "confidence": "very high provenance; medium depth (preview screenshot only)",
+      "date_reviewed": "2026-07-31",
+      "tags": {
+        "industry": "food-beverage-small-business",
+        "product_type": "ecommerce-order-page",
+        "design_school": "warm-humanist",
+        "density": "low-moderate",
+        "tone": "warm-independent",
+        "typography_type": "bold-condensed-sans",
+        "motion_level": "unknown",
+        "asset_dependence": "high",
+        "brand_maturity": "none",
+        "page_type": "marketing-landing"
+      }
     }
   ]
 }

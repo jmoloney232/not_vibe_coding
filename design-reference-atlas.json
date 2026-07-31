@@ -1235,6 +1235,60 @@
         "brand_maturity": "template-placeholder",
         "page_type": "homepage"
       }
+    },
+    {
+      "id": "lovable-thriftify-threads",
+      "organization": "Lovable (AI-generated template)",
+      "product": "\"Thriftify Threads\" sustainable/thrift fashion e-commerce template",
+      "url": "https://thriftify-threads.lovable.app/",
+      "design_category": "ai-generated-ecommerce-fashion-template",
+      "evidence_tiers": [
+        "LIVE"
+      ],
+      "provenance": {
+        "verified": true,
+        "designers_or_studio": "Lovable platform, disclosed AI-generated (visible 'Edit with Lovable' badge; surfaced via madewithlovable.com's own e-commerce showcase page)",
+        "evidence": "directly rendered; visible platform attribution badge"
+      },
+      "primary_visual_approach": "Two-column hero (headline+CTA left, real-feeling lifestyle photo right), a circular '70% OFF' promo badge overlapping the photo, avatar-stack social proof ('1200+ happy customers'), category tiles below the fold",
+      "typography": {
+        "display": "Georgia-family serif for the wordmark; a bolder serif for the hero headline",
+        "body": "system sans for supporting copy",
+        "ui": "system sans",
+        "mono": null,
+        "letter_spacing_h1": "not captured precisely — selector matched the wordmark h1, not the larger hero headline; a real limitation of this round's extraction script, logged honestly rather than guessed",
+        "source": "LIVE — getComputedStyle, 2026-07-31, with a stated extraction limitation"
+      },
+      "composition": "Conventional two-column e-commerce hero, category-tile grid, standard nav with search/wishlist/account/cart icons — a complete, textbook single-page storefront structure",
+      "grid": "2-column hero, 4-up category grid",
+      "density": "low-moderate",
+      "color": "sage green accent + cream background — a real, deliberate-feeling sustainability-coded palette choice (green = eco/sustainable is a common but not incorrect semantic association)",
+      "imagery": "a real-feeling photograph of a physical clothing rack/closet — plausible, not obviously stock-generic, though unverifiable as either genuine or stock",
+      "motion": "not inspected",
+      "product_specific_structures": "'1200+ happy customers' avatar-stack social proof and a '70% OFF' promo badge — both are structurally generic e-commerce trust/urgency signals reusable on nearly any resale or discount storefront, a direct, literal instance of this project's own Product Swap Test",
+      "responsive_behavior": "not verified this round",
+      "authorship_signals": "the sustainability positioning ('reducing fashion waste,' 'Our Mission') is thematically coherent but generic in its specific phrasing — compare against Patagonia's real, sourced case (Matched Comparison 8) where sustainability storytelling is carried by an actual atomic design-system component (carbon-footprint cards), not headline copy alone",
+      "weaknesses": "typography extraction incomplete (see above); no DOM inspection beyond the hero/category section",
+      "transferable_principles": "none intended for direct reuse — logged as a counterexample/comparison entry",
+      "do_not_copy": "entire template is a third-party AI-generated product; do not reuse its structure, copy, or imagery",
+      "source_links": [
+        "https://madewithlovable.com/examples/e-commerce",
+        "https://thriftify-threads.lovable.app/"
+      ],
+      "confidence": "medium",
+      "date_reviewed": "2026-07-31",
+      "tags": {
+        "industry": "ecommerce-fashion",
+        "product_type": "resale-storefront",
+        "design_school": "generated-conventional-marketing",
+        "density": "low-moderate",
+        "tone": "friendly-sustainable",
+        "typography_type": "system-default",
+        "motion_level": "not-inspected",
+        "asset_dependence": "high",
+        "brand_maturity": "template-placeholder",
+        "page_type": "homepage"
+      }
     }
   ]
 }

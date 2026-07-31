@@ -4,7 +4,7 @@ Human-readable companion to `design-reference-atlas.json` (the authoritative, ma
 
 **Evidence tiers** (see `PROFESSIONAL_WEB_DESIGN_RESEARCH.md` Part 1 for full definitions): `LIVE` (rendered + DOM/CSS-inspected this project), `SEARCH` (cited live web search), `CODE` (verified against public repo/design-system docs), `PROVENANCE` (verified designer/studio attribution), `RECALLED` (training knowledge, lowest tier, always flagged).
 
-**Status: 23 entries as of this version.** This is a running document — see `PROFESSIONAL_WEB_DESIGN_RESEARCH.md` Part 2 for the full target roster and current progress against the completion gates.
+**Status: 24 entries as of this version.** This is a running document — see `PROFESSIONAL_WEB_DESIGN_RESEARCH.md` Part 2 for the full target roster and current progress against the completion gates.
 
 ## A load-bearing cross-entry finding: negative letter-spacing
 
@@ -27,7 +27,7 @@ The `johnpawson-studio` vs. `lovable-arch-studio` pair (both architecture-studio
 - **architectural-minimalism**: `johnpawson-studio`
 - **brutalist-raw**: `v0-color-palette-generator`, `craigslist-sfbay`
 - **editorial-minimalist**: `lovable-maison-storefront`, `ikea-homepage`, `monocle-homepage`, `airbnb-homepage`
-- **generated-conventional-marketing**: `lovable-gastronomia-restaurant`
+- **generated-conventional-marketing**: `lovable-gastronomia-restaurant`, `lovable-thriftify-threads`
 - **generated-minimal-marketing**: `lovable-arch-studio`
 - **information-architecture**: `govuk-design-system`, `github-primer`, `varda-space-industries`, `nytimes-homepage`, `lovable-cfo-command-center`
 - **modern-tool-builder-saas**: `stripe-homepage`, `linear-homepage`, `vercel-homepage`
@@ -41,6 +41,7 @@ The `johnpawson-studio` vs. `lovable-arch-studio` pair (both architecture-studio
 - **consumer-wellness**: `headspace-homepage`
 - **developer-tools**: `github-primer`, `linear-homepage`, `v0-color-palette-generator`, `vercel-homepage`
 - **ecommerce**: `lovable-maison-storefront`
+- **ecommerce-fashion**: `lovable-thriftify-threads`
 - **editorial**: `nytimes-homepage`, `monocle-homepage`
 - **fintech**: `stripe-homepage`
 - **fintech-internal-tools**: `lovable-cfo-command-center`
@@ -58,7 +59,7 @@ The `johnpawson-studio` vs. `lovable-arch-studio` pair (both architecture-studio
 - **high**: `lovable-cfo-command-center`
 - **high-per-length**: `stripe-homepage`
 - **low**: `github-primer`, `lovable-maison-storefront`, `lovable-continuum-habit-tracker`, `vercel-homepage`, `headspace-homepage`, `lovable-gastronomia-restaurant`
-- **low-moderate**: `govuk-design-system`, `varda-space-industries`, `lovable-coffee-order-page`, `stumptown-homepage`, `lovable-arch-studio`
+- **low-moderate**: `govuk-design-system`, `varda-space-industries`, `lovable-coffee-order-page`, `stumptown-homepage`, `lovable-arch-studio`, `lovable-thriftify-threads`
 - **moderate**: `linear-homepage`, `basecamp-homepage`, `v0-color-palette-generator`, `notion-homepage`
 - **moderate-high**: `ikea-homepage`
 - **unknown**: `monocle-homepage`, `airbnb-homepage`
@@ -709,5 +710,33 @@ The `johnpawson-studio` vs. `lovable-arch-studio` pair (both architecture-studio
 **Do not copy**: entire template is a third-party AI-generated product; do not reuse its structure, copy, or imagery
 
 **Tags**: {"industry": "food-beverage-small-business", "product_type": "restaurant-website", "design_school": "generated-conventional-marketing", "density": "low", "tone": "generic-upscale", "typography_type": "system-default", "motion_level": "carousel", "asset_dependence": "high", "brand_maturity": "template-placeholder", "page_type": "homepage"}
+
+---
+
+### Lovable (AI-generated template) — "Thriftify Threads" sustainable/thrift fashion e-commerce template
+
+`lovable-thriftify-threads` · https://thriftify-threads.lovable.app/ · Evidence: LIVE · Confidence: medium · Reviewed: 2026-07-31
+
+**Category**: ai-generated-ecommerce-fashion-template
+
+**Provenance**: Verified — Lovable platform, disclosed AI-generated (visible 'Edit with Lovable' badge; surfaced via madewithlovable.com's own e-commerce showcase page). directly rendered; visible platform attribution badge
+
+**Visual approach**: Two-column hero (headline+CTA left, real-feeling lifestyle photo right), a circular '70% OFF' promo badge overlapping the photo, avatar-stack social proof ('1200+ happy customers'), category tiles below the fold
+
+**Typography**: display=Georgia-family serif for the wordmark; a bolder serif for the hero headline, body=system sans for supporting copy, H1 letter-spacing=not captured precisely — selector matched the wordmark h1, not the larger hero headline; a real limitation of this round's extraction script, logged honestly rather than guessed
+
+**Composition**: Conventional two-column e-commerce hero, category-tile grid, standard nav with search/wishlist/account/cart icons — a complete, textbook single-page storefront structure
+
+**Color**: sage green accent + cream background — a real, deliberate-feeling sustainability-coded palette choice (green = eco/sustainable is a common but not incorrect semantic association)
+
+**Authorship signals**: the sustainability positioning ('reducing fashion waste,' 'Our Mission') is thematically coherent but generic in its specific phrasing — compare against Patagonia's real, sourced case (Matched Comparison 8) where sustainability storytelling is carried by an actual atomic design-system component (carbon-footprint cards), not headline copy alone
+
+**Weaknesses / limitations**: typography extraction incomplete (see above); no DOM inspection beyond the hero/category section
+
+**Transferable principle**: none intended for direct reuse — logged as a counterexample/comparison entry
+
+**Do not copy**: entire template is a third-party AI-generated product; do not reuse its structure, copy, or imagery
+
+**Tags**: {"industry": "ecommerce-fashion", "product_type": "resale-storefront", "design_school": "generated-conventional-marketing", "density": "low-moderate", "tone": "friendly-sustainable", "typography_type": "system-default", "motion_level": "not-inspected", "asset_dependence": "high", "brand_maturity": "template-placeholder", "page_type": "homepage"}
 
 ---

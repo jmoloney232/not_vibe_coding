@@ -8,7 +8,7 @@ This directory holds the calibration project's required practical exercises, kep
 |---|---|---|
 | 1 | Minimal small-business website | not started (partial precedent: `examples/` bike-shop work from earlier rounds, not built under the revised process) |
 | 2 | Dense professional application | **substantially complete — `dispatch-console/`, the required 4-structural-variant exercise: all 4 built, visually blind-reviewed (2 reviewers), typography blind-reviewed (1 reviewer), 3 real defects found and fixed (a timestamp-consistency bug, a sort/display logic split, a mobile data-loss table, an under-differentiated color pair, a missing data/prose typographic split) with fixes re-verified by fresh blind passes where the finding was perceptual. See `dispatch-console/REVIEW.md`. Remaining: the last typography fix hasn't had its own re-verification pass; no real (human) dispatcher has reviewed it.** |
-| 3 | Editorial/cultural website | not started |
+| 3 | Editorial/cultural website | **substantially complete — `fenwick-museum/`, a fictional regional museum. Two-register typography (voice/logistics) and a real curatorial essay both confirmed working by blind review; one wording-level asset-honesty finding fixed and fed back into `ANTI_VIBE_CODING_UI.md` §3. Remaining: only one blind reviewer used, no typography-specific blind test, only 2 of the site's implied routes built.** |
 | 4 | Expressive marketing website | not started |
 | 5 | E-commerce / product-detail experience | not started |
 | 6 | Developer/technical product | not started |

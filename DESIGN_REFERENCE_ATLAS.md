@@ -4,15 +4,19 @@ Human-readable companion to `design-reference-atlas.json` (the authoritative, ma
 
 **Evidence tiers** (see `PROFESSIONAL_WEB_DESIGN_RESEARCH.md` Part 1 for full definitions): `LIVE` (rendered + DOM/CSS-inspected this project), `SEARCH` (cited live web search), `CODE` (verified against public repo/design-system docs), `PROVENANCE` (verified designer/studio attribution), `RECALLED` (training knowledge, lowest tier, always flagged).
 
-**Status: 20 entries as of this version.** This is a running document — see `PROFESSIONAL_WEB_DESIGN_RESEARCH.md` Part 2 for the full target roster and current progress against the completion gates.
+**Status: 22 entries as of this version.** This is a running document — see `PROFESSIONAL_WEB_DESIGN_RESEARCH.md` Part 2 for the full target roster and current progress against the completion gates.
 
 ## A load-bearing cross-entry finding: negative letter-spacing
 
-As of this version, H1 letter-spacing has now been directly LIVE-measured on 9 highly-credited, definitely-human-designed products: Stripe (-0.02em), Linear (-0.022em), Basecamp (-0.0225em), Varda (-0.03em), IKEA (-0.0348em), Notion (-0.048em), Vercel (-0.06em), and Stumptown (-0.008em, the lightest of the tight-tracking cluster) — all negative — against Monocle and Airbnb (both `normal`) as the only two `normal`-tracking entries. Vercel's -0.06em is roughly double the top of this project's own previously-flagged '-0.01em to -0.03em template tell' range. **The pattern that's emerging is not 'negative tracking is fine' vs. 'negative tracking is a tell' — it's that tight tracking on large display type is the dominant convention among design-forward tech/retail/food-and-beverage products specifically, while editorial/travel-marketplace products (Monocle, Airbnb) more often use normal tracking.** See `TYPOGRAPHY_RESEARCH.md` for the full analysis.
+As of this version, H1 letter-spacing has now been directly LIVE-measured on 10 highly-credited, definitely-human-designed products: Stripe (-0.02em), Linear (-0.022em), Basecamp (-0.0225em), Varda (-0.03em), IKEA (-0.0348em), Notion (-0.048em), Vercel (-0.06em), and Stumptown (-0.008em, the lightest of the tight-tracking cluster) — all negative — against Monocle, Airbnb, and John Pawson's own studio site (all `normal`) as the `normal`-tracking entries. Vercel's -0.06em is roughly double the top of this project's own previously-flagged '-0.01em to -0.03em template tell' range. **The pattern that's emerging is not 'negative tracking is fine' vs. 'negative tracking is a tell' — it's that tight tracking on large display type is the dominant convention among design-forward tech/retail/food-and-beverage products specifically, while editorial/travel-marketplace/established-reputation products (Monocle, Airbnb, John Pawson) more often use normal tracking.** A new data point this round complicates the picture further, not simplifies it: the Lovable "Arch Studio" AI-generated template also measures -0.02em — squarely inside the same range as Stripe and Linear — on an unmodified Tailwind system-font stack, not a licensed or custom typeface. This confirms, again, that the numeric value alone is not a provenance signal; a professional product and a disclosed AI-generated template can and do land on the identical tracking value. See `TYPOGRAPHY_RESEARCH.md` for the full analysis.
 
 ## A second finding: AI-generated dense dashboards are not automatically generic
 
 The `lovable-cfo-command-center` entry is a real, live-verified counter-example to the assumption that AI-tool output defaults to decorative 'metric wall' dashboards: every visible KPI is decision-relevant, the Sankey chart carries real informational payload, and the listing includes a specific, plausible operational-governance detail ('books locked by the controller') that matches this project's own Realism Audit criteria almost exactly.
+
+## A third finding: how much a design can leave unsaid depends on the audience's prior knowledge of the brand, not on a universal minimalism preference
+
+The `johnpawson-studio` vs. `lovable-arch-studio` pair (both architecture-studio portfolios, both LIVE-rendered this round) is matched by category and page type, and differs almost entirely in how much self-justification the page contains. John Pawson's homepage is a single full-bleed photograph, a small wordmark, and nothing else — no headline claim, no services list, no founding-year stat. The Lovable template, needing to establish credibility for a practice with no prior reputation, includes a bold headline, a services grid, a philosophy paragraph, and a founded-year/project-count stats block. Neither approach is more "minimal" as a style — the Pawson site is arguably the more extreme minimalist composition of the two — but the Pawson site can afford to omit self-justifying copy specifically because 40 years of documented, credited built work already exists off-page. This is directly relevant to this project's own guide's Asset Strategy section (§3): reputation and prior work function as an asset class in their own right, and their absence is why a template reaches for explanatory copy a real established practice does not need.
 
 ---
 
@@ -20,8 +24,10 @@ The `lovable-cfo-command-center` entry is a real, live-verified counter-example 
 
 ### By design school
 
+- **architectural-minimalism**: `johnpawson-studio`
 - **brutalist-raw**: `v0-color-palette-generator`, `craigslist-sfbay`
 - **editorial-minimalist**: `lovable-maison-storefront`, `ikea-homepage`, `monocle-homepage`, `airbnb-homepage`
+- **generated-minimal-marketing**: `lovable-arch-studio`
 - **information-architecture**: `govuk-design-system`, `github-primer`, `varda-space-industries`, `nytimes-homepage`, `lovable-cfo-command-center`
 - **modern-tool-builder-saas**: `stripe-homepage`, `linear-homepage`, `vercel-homepage`
 - **warm-humanist**: `basecamp-homepage`, `lovable-continuum-habit-tracker`, `notion-homepage`, `lovable-coffee-order-page`, `headspace-homepage`, `stumptown-homepage`
@@ -29,6 +35,7 @@ The `lovable-cfo-command-center` entry is a real, live-verified counter-example 
 ### By industry
 
 - **aerospace**: `varda-space-industries`
+- **architecture**: `johnpawson-studio`, `lovable-arch-studio`
 - **consumer-marketplace**: `craigslist-sfbay`
 - **consumer-wellness**: `headspace-homepage`
 - **developer-tools**: `github-primer`, `linear-homepage`, `v0-color-palette-generator`, `vercel-homepage`
@@ -50,10 +57,11 @@ The `lovable-cfo-command-center` entry is a real, live-verified counter-example 
 - **high**: `lovable-cfo-command-center`
 - **high-per-length**: `stripe-homepage`
 - **low**: `github-primer`, `lovable-maison-storefront`, `lovable-continuum-habit-tracker`, `vercel-homepage`, `headspace-homepage`
-- **low-moderate**: `govuk-design-system`, `varda-space-industries`, `lovable-coffee-order-page`, `stumptown-homepage`
+- **low-moderate**: `govuk-design-system`, `varda-space-industries`, `lovable-coffee-order-page`, `stumptown-homepage`, `lovable-arch-studio`
 - **moderate**: `linear-homepage`, `basecamp-homepage`, `v0-color-palette-generator`, `notion-homepage`
 - **moderate-high**: `ikea-homepage`
 - **unknown**: `monocle-homepage`, `airbnb-homepage`
+- **very-low**: `johnpawson-studio`
 
 ---
 
@@ -209,7 +217,7 @@ The `lovable-cfo-command-center` entry is a real, live-verified counter-example 
 
 **Visual approach**: Neo-brutalist: thick black borders, hard-offset non-blurred shadows, saturated primary colors, no radius softening
 
-**Typography**: display=not determined, body=not determined
+**Typography**: display=not determined, body=not determined, H1 letter-spacing=None
 
 **Composition**: two-column controls-left/output-right utility pattern
 
@@ -237,7 +245,7 @@ The `lovable-cfo-command-center` entry is a real, live-verified counter-example 
 
 **Visual approach**: Editorial serif/italic mixed-weight headline over warm desaturated lifestyle photography
 
-**Typography**: display=editorial serif (not identified by name), body=not determined
+**Typography**: display=editorial serif (not identified by name), body=not determined, H1 letter-spacing=None
 
 **Composition**: kicker + headline + subhead + CTA, standard e-commerce hero shape
 
@@ -265,7 +273,7 @@ The `lovable-cfo-command-center` entry is a real, live-verified counter-example 
 
 **Visual approach**: Bold sans headline over dark-overlay lifestyle photograph, standard centered SaaS hero
 
-**Typography**: display=bold sans (not identified), body=not determined
+**Typography**: display=bold sans (not identified), body=not determined, H1 letter-spacing=None
 
 **Composition**: centered-content-over-photo hero, low visual tension
 
@@ -289,7 +297,7 @@ The `lovable-cfo-command-center` entry is a real, live-verified counter-example 
 
 **Category**: aerospace-manufacturing-marketing
 
-**Provenance**: Not verified — not identified this round. real, funded, operating company — provenance inferred from operation, not from a named-designer case study; should be upgraded to PROVENANCE tier if a case study is found in Phase 2
+**Provenance**: Unverified — not identified this round. real, funded, operating company — provenance inferred from operation, not from a named-designer case study; should be upgraded to PROVENANCE tier if a case study is found in Phase 2
 
 **Visual approach**: Huge (107px) tight orange-on-navy H1 over full-bleed duotone satellite/terrain photograph with dotted grid overlay
 
@@ -317,7 +325,7 @@ The `lovable-cfo-command-center` entry is a real, live-verified counter-example 
 
 **Category**: consumer-marketplace-counterexample
 
-**Provenance**: Not verified — not applicable — predates AI-generation tooling entirely. SEARCH-tier round-6 sourcing (design essentially unchanged since late 1990s/2000s), now LIVE-confirmed by rendering
+**Provenance**: Unverified — not applicable — predates AI-generation tooling entirely. SEARCH-tier round-6 sourcing (design essentially unchanged since late 1990s/2000s), now LIVE-confirmed by rendering
 
 **Visual approach**: Deliberately flat, no dominant focal point, scan-based reading path, extremely high density
 
@@ -517,7 +525,7 @@ The `lovable-cfo-command-center` entry is a real, live-verified counter-example 
 
 **Visual approach**: Dense, dark-theme finance dashboard: animated Sankey money-flow diagram, real KPI card row, scenario-comparison tabs
 
-**Typography**: display=not identified by name, body=not determined
+**Typography**: display=not identified by name, body=not determined, H1 letter-spacing=None
 
 **Composition**: KPI row (ARR/Gross Margin/Net Burn/Runway/Cash Balance) above a large labeled Sankey chart, scenario tabs (Actuals/Board plan/Efficiency case/Upside case/Model a scenario)
 
@@ -545,7 +553,7 @@ The `lovable-cfo-command-center` entry is a real, live-verified counter-example 
 
 **Visual approach**: Full-bleed real latte-art photography hero, dark navy nav bar, bold repeated 'SMALL BATCH' marquee-style banner
 
-**Typography**: display=bold condensed sans (not identified by name), body=not determined
+**Typography**: display=bold condensed sans (not identified by name), body=not determined, H1 letter-spacing=None
 
 **Composition**: Menu/Location/About nav, full-bleed photo hero, repeated marquee text band below
 
@@ -569,7 +577,7 @@ The `lovable-cfo-command-center` entry is a real, live-verified counter-example 
 
 **Category**: consumer-wellness-marketing
 
-**Provenance**: Not verified — not independently identified this round. not researched this round beyond the live render itself
+**Provenance**: Unverified — not independently identified this round. not researched this round beyond the live render itself
 
 **Visual approach**: Illustrated brand-mascot hero (the smiling orange sun character), sky-gradient background, rounded pill buttons
 
@@ -597,7 +605,7 @@ The `lovable-cfo-command-center` entry is a real, live-verified counter-example 
 
 **Category**: food-beverage-small-medium-business
 
-**Provenance**: Not verified — not independently identified this round. not researched this round beyond the live render itself — logged as a direct-inspection-only entry, consistent with this project's own finding that small/medium business design provenance is structurally hard to source
+**Provenance**: Unverified — not independently identified this round. not researched this round beyond the live render itself — logged as a direct-inspection-only entry, consistent with this project's own finding that small/medium business design provenance is structurally hard to source
 
 **Visual approach**: Real photography (hands holding an actual product bag against a real sky), a named specific product ('Sunrider') with a distinctive tagline, not a generic promotional banner
 
@@ -616,5 +624,61 @@ The `lovable-cfo-command-center` entry is a real, live-verified counter-example 
 **Do not copy**: GT Flexa and Windsor are licensed commercial typefaces, not free to use without a license; Stumptown's specific packaging design is proprietary
 
 **Tags**: {"industry": "food-beverage-small-business", "product_type": "ecommerce-homepage", "design_school": "warm-humanist", "density": "low-moderate", "tone": "confident-artisanal", "typography_type": "licensed-serif-plus-sans", "motion_level": "not-observed", "asset_dependence": "high", "brand_maturity": "mature-mid-size", "page_type": "marketing-landing"}
+
+---
+
+### John Pawson Ltd — Studio portfolio site (johnpawson.com)
+
+`johnpawson-studio` · https://www.johnpawson.com/ · Evidence: LIVE, PROVENANCE · Confidence: high · Reviewed: 2026-07-31
+
+**Category**: architecture-studio-portfolio
+
+**Provenance**: Verified — John Pawson (named architect, credited built work: Design Museum London, Neuendorf House, Sackler Crossing at Kew, Novy Dvur monastery). site is the practice's own named studio domain; practice's built work independently documented (Dezeen, RTF, Wikipedia) — see MINIMALISM_RESEARCH.md architectural-minimalism entry
+
+**Visual approach**: Full-bleed atmospheric photography as the entire argument; near-zero on-page copy; no visible primary navigation or CTA in the hero — the composition assumes the visitor already knows who Pawson is and why they came
+
+**Typography**: display=UniversNextPro-Light, body=UniversNextPro-Light, Helvetica, Arial (fallback stack), H1 letter-spacing=normal
+
+**Composition**: Single full-viewport photograph, small wordmark top-left, no headline copy, no subhead, no button — composition communicates entirely through the photograph and the absence of anything else
+
+**Color**: true black/white text on the photograph's own natural tones; no applied brand accent color visible in the hero
+
+**Authorship signals**: restraint that assumes pre-existing reputation rather than building a case for credibility on the page itself — the single clearest live example in this project's roster of minimalism as omission-by-earned-confidence rather than omission-as-safe-default
+
+**Weaknesses / limitations**: single screen inspected only (hero); full site information architecture (project index, contact, press) not inspected this round
+
+**Transferable principle**: an established practice with real, citable prior work can and arguably should say less on its own homepage than a new practice needs to — the amount of self-explanation a design justifiably contains is a function of the audience's prior knowledge of the brand, not a universal minimalism-vs-maximalism style choice
+
+**Do not copy**: the specific photograph and wordmark (Pawson's actual brand assets)
+
+**Tags**: {"industry": "architecture", "product_type": "studio-portfolio", "design_school": "architectural-minimalism", "density": "very-low", "tone": "quiet-confident", "typography_type": "licensed-sans", "motion_level": "not-inspected", "asset_dependence": "very-high", "brand_maturity": "mature", "page_type": "homepage"}
+
+---
+
+### Lovable (AI-generated template) — "Arch Studio" architecture-portfolio template (stark-architect-showcase)
+
+`lovable-arch-studio` · https://stark-architect-showcase.lovable.app/ · Evidence: LIVE · Confidence: high · Reviewed: 2026-07-31
+
+**Category**: ai-generated-architecture-portfolio-template
+
+**Provenance**: Verified — Lovable platform, disclosed AI-generated ("Edit with Lovable" badge visible on the live render; listed on lovable.dev/templates as a remixable starter). directly rendered; visible platform attribution badge; template marketing page confirms AI-generated/remixable provenance
+
+**Visual approach**: Large bold sans headline ("MINIMAL ARCHITECTURE") over a full-bleed photograph, followed by a services grid, a philosophy paragraph, and a stats row (founded year, project count) — the page actively builds a credibility case rather than assuming one
+
+**Typography**: display=ui-sans-serif/system-ui stack (Tailwind default, no custom or licensed typeface), body=ui-sans-serif/system-ui stack, H1 letter-spacing=-0.02em
+
+**Composition**: Hero photograph + huge headline + subhead, then a 2x2 services grid, a two-column philosophy/approach block, a 3-image project grid with captions, a closing CTA block with contact details — a complete, conventional single-page marketing-site structure
+
+**Color**: monochrome (black/white/gray) with real architectural photography providing the only color variation
+
+**Authorship signals**: the page must build its own credibility case in real time (headline + philosophy + stats) because it has no pre-existing reputation to lean on — direct contrast to the John Pawson entry above, matched on category and page type
+
+**Weaknesses / limitations**: single template instance; template's real photography quality means it is a genuinely strong showcase example, not the weakest available AI-generated case — read this comparison as testing structure/typography/copy, not as evidence AI-generated sites always use worse imagery
+
+**Transferable principle**: none intended for direct reuse — logged as a counterexample/comparison entry, not a positive reference
+
+**Do not copy**: entire template is a third-party AI-generated product; do not reuse its structure, copy, or imagery
+
+**Tags**: {"industry": "architecture", "product_type": "studio-portfolio", "design_school": "generated-minimal-marketing", "density": "low-moderate", "tone": "confident-but-unearned", "typography_type": "system-default", "motion_level": "not-inspected", "asset_dependence": "high", "brand_maturity": "template-placeholder", "page_type": "homepage"}
 
 ---

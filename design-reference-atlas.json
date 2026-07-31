@@ -1,5 +1,5 @@
 {
-  "$schema_note": "Design Reference Atlas \u2014 machine-readable. Evidence tiers: LIVE (rendered+inspected this project), SEARCH (cited live web search), CODE (verified against public repo/design-system docs), PROVENANCE (verified designer/studio attribution), RECALLED (training knowledge, lowest tier, always flagged). See PROFESSIONAL_WEB_DESIGN_RESEARCH.md Part 1 for full method.",
+  "$schema_note": "Design Reference Atlas — machine-readable. Evidence tiers: LIVE (rendered+inspected this project), SEARCH (cited live web search), CODE (verified against public repo/design-system docs), PROVENANCE (verified designer/studio attribution), RECALLED (training knowledge, lowest tier, always flagged). See PROFESSIONAL_WEB_DESIGN_RESEARCH.md Part 1 for full method.",
   "schema_version": "0.1.0",
   "last_updated": "2026-07-31",
   "entries": [
@@ -26,18 +26,18 @@
         "ui": "GDS Transport",
         "mono": null,
         "letter_spacing_h1": "normal",
-        "source": "LIVE \u2014 getComputedStyle, 2026-07-31"
+        "source": "LIVE — getComputedStyle, 2026-07-31"
       },
-      "composition": "Single-column, linear, heading+paragraph+link blocks repeated ~10x \u2014 genre-appropriate for a documentation portal",
+      "composition": "Single-column, linear, heading+paragraph+link blocks repeated ~10x — genre-appropriate for a documentation portal",
       "grid": "not deeply inspected",
       "density": "low-to-moderate",
       "color": "one blue, one green, high-contrast black-on-white, crest mark",
-      "imagery": "minimal \u2014 crest/coat-of-arms mark only",
+      "imagery": "minimal — crest/coat-of-arms mark only",
       "motion": "not inspected",
-      "product_specific_structures": "flat 0-radius button with hard 2px offset shadow (not soft box-shadow) \u2014 a real, consistent brand signature",
+      "product_specific_structures": "flat 0-radius button with hard 2px offset shadow (not soft box-shadow) — a real, consistent brand signature",
       "responsive_behavior": "verified clean reflow at 3 widths, LIVE",
       "authorship_signals": "dated, specific release notes (v6.4.0, named component changes); restrained content (no padding)",
-      "weaknesses": "genre is intrinsically plain (documentation portal) \u2014 some plainness may not transfer as evidence to marketing-page contexts",
+      "weaknesses": "genre is intrinsically plain (documentation portal) — some plainness may not transfer as evidence to marketing-page contexts",
       "transferable_principles": "restraint instrumented to a stated, verifiable purpose reads as authored; a hard-offset non-blurred shadow is a legitimate, distinctive alternative to the generic soft-shadow default",
       "do_not_copy": "the specific crest mark and GDS Transport typeface (protected government identity)",
       "source_links": [
@@ -82,7 +82,7 @@
         "ui": "Mona Sans VF",
         "mono": null,
         "letter_spacing_h1": "normal",
-        "source": "LIVE \u2014 getComputedStyle, 2026-07-31"
+        "source": "LIVE — getComputedStyle, 2026-07-31"
       },
       "composition": "3 large hero cards, then 3-up and 2-up rows",
       "grid": "not deeply inspected",
@@ -92,8 +92,8 @@
       "motion": "not inspected",
       "product_specific_structures": "component demos are literal (a real toast, a real spacing-measurement diagram), not decorative",
       "responsive_behavior": "verified clean reflow at 3 widths, LIVE",
-      "authorship_signals": "organized around Primer's actual 2 real audiences (product engineers, brand designers); real production overflow bug found live ('Display' clipped to 'Displo' at 1440px) \u2014 logged as evidence bugs occur on both AI and human work, not a provenance signal",
-      "weaknesses": "one lorem-ipsum placeholder string inside a simulated UI mockup (inside a component demo, not real site copy \u2014 different case from shipped placeholder content)",
+      "authorship_signals": "organized around Primer's actual 2 real audiences (product engineers, brand designers); real production overflow bug found live ('Display' clipped to 'Displo' at 1440px) — logged as evidence bugs occur on both AI and human work, not a provenance signal",
+      "weaknesses": "one lorem-ipsum placeholder string inside a simulated UI mockup (inside a component demo, not real site copy — different case from shipped placeholder content)",
       "transferable_principles": "restraint (short page relative to how much the system actually documents); literal, specific component demonstrations beat decorative illustration",
       "do_not_copy": "Octocat mascot (GitHub trademark)",
       "source_links": [
@@ -137,9 +137,9 @@
         "ui": "sohne-var",
         "mono": null,
         "letter_spacing_h1": "-0.02em (-0.96px at 48px)",
-        "source": "LIVE \u2014 getComputedStyle, 2026-07-31"
+        "source": "LIVE — getComputedStyle, 2026-07-31"
       },
-      "composition": "varied section types (card grids, stat rows, testimonial, dark CTA bands) \u2014 not one block repeated",
+      "composition": "varied section types (card grids, stat rows, testimonial, dark CTA bands) — not one block repeated",
       "grid": "not deeply inspected",
       "density": "high relative to length; low-moderate per section",
       "color": "lime-green/near-black hero accent pairing, gradient mesh bounded to hero/CTA bands only",
@@ -149,8 +149,8 @@
       "responsive_behavior": "not fully re-verified at all breakpoints this round",
       "authorship_signals": "named customers ('1Password unified $2B...'), dated current terminology ('agentic commerce', 'stablecoins and crypto')",
       "weaknesses": "marketing budget/headcount far exceeds a typical product this research is meant to generalize to",
-      "transferable_principles": "IMPORTANT COUNTEREVIDENCE: H1 letter-spacing -0.02em, squarely in the range previously (incorrectly) flagged by this project's own guide as an AI tell \u2014 negative tracking alone is not diagnostic",
-      "do_not_copy": "licensed S\u00f6hne-derived typeface without a license",
+      "transferable_principles": "IMPORTANT COUNTEREVIDENCE: H1 letter-spacing -0.02em, squarely in the range previously (incorrectly) flagged by this project's own guide as an AI tell — negative tracking alone is not diagnostic",
+      "do_not_copy": "licensed Söhne-derived typeface without a license",
       "source_links": [
         "https://stripe.com"
       ],
@@ -191,9 +191,9 @@
         "ui": "Inter Variable",
         "mono": null,
         "letter_spacing_h1": "-0.022em (-1.408px at 64px), line-height 100% of font-size",
-        "source": "LIVE \u2014 getComputedStyle, 2026-07-31"
+        "source": "LIVE — getComputedStyle, 2026-07-31"
       },
-      "composition": "each section uses a different layout (screenshot, stat row, feature callout, testimonial carousel) \u2014 low repetition",
+      "composition": "each section uses a different layout (screenshot, stat row, feature callout, testimonial carousel) — low repetition",
       "grid": "not deeply inspected",
       "density": "moderate",
       "color": "near-black rgb(8,9,10) background, off-white text, single accent inside product screenshot only",
@@ -245,9 +245,9 @@
         "ui": "Graphik",
         "mono": null,
         "letter_spacing_h1": "-0.0225em (-0.942872px at 41.9054px)",
-        "source": "LIVE \u2014 getComputedStyle, 2026-07-31"
+        "source": "LIVE — getComputedStyle, 2026-07-31"
       },
-      "composition": "mixed section types, notably short \u2014 six link labels plus one closing statement in the hero",
+      "composition": "mixed section types, notably short — six link labels plus one closing statement in the hero",
       "grid": "not deeply inspected",
       "density": "moderate",
       "color": "muted sage-green/off-white oklch() palette, one blue accent reserved for primary buttons",
@@ -255,9 +255,9 @@
       "motion": "not inspected",
       "product_specific_structures": "product mockup shows a real-feeling 'Website Redesign Project' with Message Board/Docs/Tasks/Chat/Schedule/Workflow panels",
       "responsive_behavior": "not fully re-verified at all breakpoints this round",
-      "authorship_signals": "distinctive informal voice ('Tell me if this sounds about right') consistent with 37signals' documented public writing elsewhere \u2014 real cross-context corroboration",
+      "authorship_signals": "distinctive informal voice ('Tell me if this sounds about right') consistent with 37signals' documented public writing elsewhere — real cross-context corroboration",
       "weaknesses": "none identified",
-      "transferable_principles": "STRONGEST counterevidence in the corpus: H1 letter-spacing -0.0225em on a company famous for public, opinionated, hand-crafted decisions specifically \u2014 the least plausible candidate anywhere for 'used a default without checking it'; real plausible file sizes/names in mockups are a strong, cheap realism signal",
+      "transferable_principles": "STRONGEST counterevidence in the corpus: H1 letter-spacing -0.0225em on a company famous for public, opinionated, hand-crafted decisions specifically — the least plausible candidate anywhere for 'used a default without checking it'; real plausible file sizes/names in mockups are a strong, cheap realism signal",
       "do_not_copy": "n/a",
       "source_links": [
         "https://basecamp.com"
@@ -288,7 +288,7 @@
       ],
       "provenance": {
         "verified": true,
-        "designers_or_studio": "disclosed AI-generation (v0 by Vercel) \u2014 definitional, not inferred",
+        "designers_or_studio": "disclosed AI-generation (v0 by Vercel) — definitional, not inferred",
         "evidence": "hosted on v0.app's own template gallery with explicit 'Open in v0' provenance"
       },
       "primary_visual_approach": "Neo-brutalist: thick black borders, hard-offset non-blurred shadows, saturated primary colors, no radius softening",
@@ -297,20 +297,20 @@
         "body": "not determined",
         "ui": "not determined",
         "mono": null,
-        "source": "not inspected \u2014 cross-origin iframe"
+        "source": "not inspected — cross-origin iframe"
       },
       "composition": "two-column controls-left/output-right utility pattern",
       "grid": "not inspected",
       "density": "moderate",
       "color": "saturated blue/yellow-gold/pink on warm off-white",
-      "imagery": "none \u2014 pure UI",
+      "imagery": "none — pure UI",
       "motion": "not inspected",
       "product_specific_structures": "correct color-theory terminology (Complementary/Analogous), honest empty state before generation",
       "responsive_behavior": "not tested",
-      "authorship_signals": "internally consistent, distinctive visual system \u2014 NOT the purple-gradient stereotype",
-      "weaknesses": "neo-brutalist thick-border convention is itself becoming a recognizable AI-tool-generation signature across galleries \u2014 a new cluster, not evidence of genericness in this specific instance",
+      "authorship_signals": "internally consistent, distinctive visual system — NOT the purple-gradient stereotype",
+      "weaknesses": "neo-brutalist thick-border convention is itself becoming a recognizable AI-tool-generation signature across galleries — a new cluster, not evidence of genericness in this specific instance",
       "transferable_principles": "AI-tool output is not visually monolithic; disclosed-AI provenance does not predict genericness on its own",
-      "do_not_copy": "n/a \u2014 already a generated template, not a proprietary brand",
+      "do_not_copy": "n/a — already a generated template, not a proprietary brand",
       "source_links": [
         "https://v0.app/templates/color-palette-generator-350IE4ojQXK"
       ],
@@ -359,9 +359,9 @@
       "motion": "not inspected",
       "product_specific_structures": "n/a beyond hero",
       "responsive_behavior": "not tested",
-      "authorship_signals": "genuinely tasteful, non-generic \u2014 the typography, photography-led hero, and palette-derived accent are choices this project's own guide would score positively if provenance were unknown",
+      "authorship_signals": "genuinely tasteful, non-generic — the typography, photography-led hero, and palette-derived accent are choices this project's own guide would score positively if provenance were unknown",
       "weaknesses": "showcase-gallery selection bias (platform's own best examples, not representative of typical output); static preview only, no DOM/CSS/other routes inspected",
-      "transferable_principles": "DIRECT COUNTEREXAMPLE to 'AI-generated always looks generic' \u2014 provenance and quality are separate axes (Governing Principle 11)",
+      "transferable_principles": "DIRECT COUNTEREXAMPLE to 'AI-generated always looks generic' — provenance and quality are separate axes (Governing Principle 11)",
       "do_not_copy": "n/a",
       "source_links": [
         "https://lovable.dev/templates/websites/ecommerce/maison-artisan-home-lifestyle-store-template"
@@ -409,11 +409,11 @@
       "color": "single orange CTA on otherwise neutral palette",
       "imagery": "real, well-chosen (not obviously stock/AI) lifestyle photograph",
       "motion": "not inspected",
-      "product_specific_structures": "none \u2014 hero copy generic to the habit-tracker category, not this specific product",
+      "product_specific_structures": "none — hero copy generic to the habit-tracker category, not this specific product",
       "responsive_behavior": "not tested",
-      "authorship_signals": "weak \u2014 nothing hero-level specific to habit-tracking beyond the word 'habit'",
+      "authorship_signals": "weak — nothing hero-level specific to habit-tracking beyond the word 'habit'",
       "weaknesses": "CLEAN PRODUCT SWAP TEST FAILURE: hero copy ('Build lasting habits, one day at a time') is interchangeable with any habit app with a one-word brand swap; the closest live match in this entire corpus to the stereotyped generic-AI-SaaS-marketing pattern",
-      "transferable_principles": "the diagnostic signal is content interchangeability, not visual polish \u2014 this record has good visual craft and still fails on product specificity",
+      "transferable_principles": "the diagnostic signal is content interchangeability, not visual polish — this record has good visual craft and still fails on product specificity",
       "do_not_copy": "n/a",
       "source_links": [
         "https://lovable.dev/templates/apps/saas/continuum-daily-habit-tracker-template"
@@ -445,7 +445,7 @@
       "provenance": {
         "verified": false,
         "designers_or_studio": "not identified this round",
-        "evidence": "real, funded, operating company \u2014 provenance inferred from operation, not from a named-designer case study; should be upgraded to PROVENANCE tier if a case study is found in Phase 2"
+        "evidence": "real, funded, operating company — provenance inferred from operation, not from a named-designer case study; should be upgraded to PROVENANCE tier if a case study is found in Phase 2"
       },
       "primary_visual_approach": "Huge (107px) tight orange-on-navy H1 over full-bleed duotone satellite/terrain photograph with dotted grid overlay",
       "typography": {
@@ -453,8 +453,8 @@
         "body": "MT Everyday Sans",
         "ui": "MT Everyday Sans",
         "mono": null,
-        "letter_spacing_h1": "-0.03em (-3.22358px at 107.453px) \u2014 edge of the previously-flagged AI-tell range",
-        "source": "LIVE \u2014 getComputedStyle, 2026-07-31"
+        "letter_spacing_h1": "-0.03em (-3.22358px at 107.453px) — edge of the previously-flagged AI-tell range",
+        "source": "LIVE — getComputedStyle, 2026-07-31"
       },
       "composition": "mark/nav, headline+subhead, three vertical links (Government/Biopharma/Microgravity Research), dated announcement bar",
       "grid": "not deeply inspected",
@@ -464,9 +464,9 @@
       "motion": "not inspected",
       "product_specific_structures": "three nav verticals match Varda's actual 3 real business lines, not generic Solutions/Products/Company",
       "responsive_behavior": "not fully re-verified at all breakpoints this round",
-      "authorship_signals": "tagline 'Space born, Earth bound' fails the Product Swap Test in the POSITIVE direction \u2014 only makes sense for Varda's actual round-trip microgravity-manufacturing model",
+      "authorship_signals": "tagline 'Space born, Earth bound' fails the Product Swap Test in the POSITIVE direction — only makes sense for Varda's actual round-trip microgravity-manufacturing model",
       "weaknesses": "internal pages not inspected; cross-route coherence untested",
-      "transferable_principles": "MOST IMPORTANT: dotted grid overlay on a REAL satellite photograph is direct counter-instance evidence that 'technical framing decoration' is not automatically a hollow AI tell \u2014 it reads as motivated because it sits on literal geospatial imagery, unlike this project's own earlier Perigee example where a similar device framed a non-photographic illustrative diagram with no representational justification. Also a 4th independent confirmation that negative tracking (-0.03em here) is not diagnostic.",
+      "transferable_principles": "MOST IMPORTANT: dotted grid overlay on a REAL satellite photograph is direct counter-instance evidence that 'technical framing decoration' is not automatically a hollow AI tell — it reads as motivated because it sits on literal geospatial imagery, unlike this project's own earlier Perigee example where a similar device framed a non-photographic illustrative diagram with no representational justification. Also a 4th independent confirmation that negative tracking (-0.03em here) is not diagnostic.",
       "do_not_copy": "MT Everyday Sans (licensed typeface)",
       "source_links": [
         "https://varda.com"
@@ -497,7 +497,7 @@
       ],
       "provenance": {
         "verified": false,
-        "designers_or_studio": "not applicable \u2014 predates AI-generation tooling entirely",
+        "designers_or_studio": "not applicable — predates AI-generation tooling entirely",
         "evidence": "SEARCH-tier round-6 sourcing (design essentially unchanged since late 1990s/2000s), now LIVE-confirmed by rendering"
       },
       "primary_visual_approach": "Deliberately flat, no dominant focal point, scan-based reading path, extremely high density",
@@ -506,21 +506,21 @@
         "body": "Open Sans",
         "ui": "system default",
         "mono": null,
-        "letter_spacing_h1": "n/a \u2014 no H1",
-        "source": "LIVE \u2014 getComputedStyle, 2026-07-31"
+        "letter_spacing_h1": "n/a — no H1",
+        "source": "LIVE — getComputedStyle, 2026-07-31"
       },
       "composition": "~15 category blocks, uniform link-list styling, no card treatment anywhere",
       "grid": "no visible modern layout system",
-      "density": "extremely high \u2014 dozens of links without scrolling at 1440px",
-      "color": "none \u2014 plain default black/white/blue-link",
+      "density": "extremely high — dozens of links without scrolling at 1440px",
+      "color": "none — plain default black/white/blue-link",
       "imagery": "a single peace-sign logo mark; embedded event calendar widget",
       "motion": "none",
       "product_specific_structures": "the page structure IS the product's actual category taxonomy, exposed directly with no abstraction layer",
-      "responsive_behavior": "not meaningfully tested \u2014 fundamentally desktop-density-first",
+      "responsive_behavior": "not meaningfully tested — fundamentally desktop-density-first",
       "authorship_signals": "restraint has an explicit business rationale (high-frequency trust-through-familiarity marketplace) confirmed directly by round-6 SEARCH sourcing, not just inferred",
-      "weaknesses": "n/a for this record's purpose \u2014 logged specifically as the clearest available counterexample",
-      "transferable_principles": "THE canonical case that 'looks good' and 'works well' are separable axes; near-zero properties in common with any AI-generation convention this project catalogs \u2014 not merely 'not generic,' close to orthogonal to the entire evaluative frame",
-      "do_not_copy": "n/a \u2014 this is the opposite of a style to imitate cosmetically; the lesson is the underlying reasoning (density serves the actual task), not the literal visual output",
+      "weaknesses": "n/a for this record's purpose — logged specifically as the clearest available counterexample",
+      "transferable_principles": "THE canonical case that 'looks good' and 'works well' are separable axes; near-zero properties in common with any AI-generation convention this project catalogs — not merely 'not generic,' close to orthogonal to the entire evaluative frame",
+      "do_not_copy": "n/a — this is the opposite of a style to imitate cosmetically; the lesson is the underlying reasoning (density serves the actual task), not the literal visual output",
       "source_links": [
         "https://sfbay.craigslist.org"
       ],
@@ -560,8 +560,8 @@
         "body": "Georgia (digital body)",
         "ui": "NYT Franklin (captions/nav)",
         "mono": null,
-        "letter_spacing_h1": "not applicable \u2014 masthead is a custom mark, not a live H1; a found <h1> element was a small 16px byline-style element, not the masthead",
-        "source": "LIVE \u2014 getComputedStyle, 2026-07-31; note the real masthead typography claim remains SEARCH-tier since it renders as a custom mark, not inspectable live text"
+        "letter_spacing_h1": "not applicable — masthead is a custom mark, not a live H1; a found <h1> element was a small 16px byline-style element, not the masthead",
+        "source": "LIVE — getComputedStyle, 2026-07-31; note the real masthead typography claim remains SEARCH-tier since it renders as a custom mark, not inspectable live text"
       },
       "composition": "Multi-column front-page news layout: lead story with image, secondary story list, live news ticker with real timestamps ('1m ago', '6m ago')",
       "grid": "not deeply inspected",
@@ -571,9 +571,9 @@
       "motion": "not inspected",
       "product_specific_structures": "a real, dated stock ticker (Nasdaq +0.79%), real current headlines matching the actual news cycle at render time",
       "responsive_behavior": "not fully re-verified at all breakpoints this round",
-      "authorship_signals": "genuinely live, dated, current content \u2014 the strongest possible 'evidence of ongoing operation' signal, impossible to fake convincingly at this density and freshness",
-      "weaknesses": "one ad slot failed to load in the render (visible as a blank gray box) \u2014 logged as a rendering artifact, not a design defect",
-      "transferable_principles": "extremely high information density is legitimate and expected for this product type and audience \u2014 directly reinforces this project's own \u00a73 table row for 'content-heavy site' and pushes back against any blanket 'more whitespace is more professional' heuristic",
+      "authorship_signals": "genuinely live, dated, current content — the strongest possible 'evidence of ongoing operation' signal, impossible to fake convincingly at this density and freshness",
+      "weaknesses": "one ad slot failed to load in the render (visible as a blank gray box) — logged as a rendering artifact, not a design defect",
+      "transferable_principles": "extremely high information density is legitimate and expected for this product type and audience — directly reinforces this project's own §3 table row for 'content-heavy site' and pushes back against any blanket 'more whitespace is more professional' heuristic",
       "do_not_copy": "NYT's proprietary type system (Cheltenham/Imperial/Franklin are commissioned, not licensable)",
       "source_links": [
         "https://www.nytimes.com"
@@ -616,7 +616,7 @@
         "ui": "Noto IKEA",
         "mono": null,
         "letter_spacing_h1": "-0.0348em (-1.39286px at 40px)",
-        "source": "LIVE \u2014 getComputedStyle, 2026-07-31"
+        "source": "LIVE — getComputedStyle, 2026-07-31"
       },
       "composition": "not deeply inspected beyond hero",
       "grid": "not deeply inspected",
@@ -628,7 +628,7 @@
       "responsive_behavior": "not fully re-verified",
       "authorship_signals": "custom-named typeface (Noto IKEA, an IKEA-specific variant) confirms real typographic investment beyond a default stack",
       "weaknesses": "only the homepage hero was inspected this round; Skapa's actual component-level craft (the more interesting design-system evidence per the SEARCH-tier case study) was not directly verified live",
-      "transferable_principles": "ANOTHER CONFIRMATION of negative tracking (-0.0348em) on a real, massive-scale, definitely-human-designed retail brand \u2014 now six independent real-brand confirmations across this project's research (Stripe, Linear, Basecamp, Varda from round 7; IKEA and more below from this round)",
+      "transferable_principles": "ANOTHER CONFIRMATION of negative tracking (-0.0348em) on a real, massive-scale, definitely-human-designed retail brand — now six independent real-brand confirmations across this project's research (Stripe, Linear, Basecamp, Varda from round 7; IKEA and more below from this round)",
       "do_not_copy": "Noto IKEA typeface (custom/licensed)",
       "source_links": [
         "https://www.ikea.com/us/en/"
@@ -669,8 +669,8 @@
         "body": "GeistSans",
         "ui": "GeistSans",
         "mono": null,
-        "letter_spacing_h1": "-0.06em (-3.84px at 64px) \u2014 the tightest tracking measured anywhere in this project's research to date",
-        "source": "LIVE \u2014 getComputedStyle, 2026-07-31"
+        "letter_spacing_h1": "-0.06em (-3.84px at 64px) — the tightest tracking measured anywhere in this project's research to date",
+        "source": "LIVE — getComputedStyle, 2026-07-31"
       },
       "composition": "centered hero, real named customer logo row below the fold (Blackbox.ai, Charles Schwab, DoorDash, OpenAI, Supreme, The Weather Company, Polymarket)",
       "grid": "not deeply inspected",
@@ -678,11 +678,11 @@
       "color": "near-monochrome; pill-shaped black primary button, white secondary button",
       "imagery": "one large geometric shape (the brand's own logomark), no photography, no illustration",
       "motion": "not inspected",
-      "product_specific_structures": "copy reflects Vercel's actual current positioning ('Agentic Infrastructure... For coding agents, To ship apps and agents, Automated by agents') \u2014 dated, current, product-specific, not evergreen-vague",
+      "product_specific_structures": "copy reflects Vercel's actual current positioning ('Agentic Infrastructure... For coding agents, To ship apps and agents, Automated by agents') — dated, current, product-specific, not evergreen-vague",
       "responsive_behavior": "not fully re-verified",
       "authorship_signals": "real, checkable, named customer logos (not fabricated); the entire hero visual is the brand's own logomark rendered large rather than a stock/generated image or abstract decoration",
       "weaknesses": "single-page hero inspection only",
-      "transferable_principles": "LOAD-BEARING FINDING: -0.06em tracking is nearly double the top of this project's previously-flagged 'AI tell' range (-0.01em to -0.03em) \u2014 on GeistSans, Vercel's own open-source typeface, at a company whose CEO/design team are named and public. This is the single strongest piece of evidence yet that negative tracking magnitude alone carries essentially no diagnostic signal.",
+      "transferable_principles": "LOAD-BEARING FINDING: -0.06em tracking is nearly double the top of this project's previously-flagged 'AI tell' range (-0.01em to -0.03em) — on GeistSans, Vercel's own open-source typeface, at a company whose CEO/design team are named and public. This is the single strongest piece of evidence yet that negative tracking magnitude alone carries essentially no diagnostic signal.",
       "do_not_copy": "the Vercel triangle logomark itself (trademark); GeistSans is open-source (SIL OFL) and may be used with attribution per its license",
       "source_links": [
         "https://vercel.com"
@@ -723,8 +723,8 @@
         "body": "NotionInter/Inter",
         "ui": "NotionInter/Inter",
         "mono": null,
-        "letter_spacing_h1": "-0.0479em (-4.6px at 96px) \u2014 second-tightest tracking measured in this project's research",
-        "source": "LIVE \u2014 getComputedStyle, 2026-07-31"
+        "letter_spacing_h1": "-0.0479em (-4.6px at 96px) — second-tightest tracking measured in this project's research",
+        "source": "LIVE — getComputedStyle, 2026-07-31"
       },
       "composition": "centered hero with hand-drawn avatar row above headline, real product screenshot ('Ramp HQ' workspace) embedded below the fold",
       "grid": "not deeply inspected",
@@ -732,11 +732,11 @@
       "color": "blue accent, otherwise black/white",
       "imagery": "hand-drawn illustrated avatars (the 'Faces' system, confirmed live and current, not just historically described)",
       "motion": "not inspected",
-      "product_specific_structures": "the embedded product screenshot uses a REAL, named, verifiable customer (Ramp, itself logged elsewhere in this atlas) as example content \u2014 cross-corroborating evidence between two independently-researched atlas entries",
+      "product_specific_structures": "the embedded product screenshot uses a REAL, named, verifiable customer (Ramp, itself logged elsewhere in this atlas) as example content — cross-corroborating evidence between two independently-researched atlas entries",
       "responsive_behavior": "not fully re-verified",
-      "authorship_signals": "hand-drawn illustration used consistently and currently, not just in historical marketing materials; real named customer logos (OpenAI, Figma, Ramp, Cursor, Vercel, Nvidia, Volvo, L'Or\u00e9al, Discord)",
+      "authorship_signals": "hand-drawn illustration used consistently and currently, not just in historical marketing materials; real named customer logos (OpenAI, Figma, Ramp, Cursor, Vercel, Nvidia, Volvo, L'Oréal, Discord)",
       "weaknesses": "single hero inspection only",
-      "transferable_principles": "THIRD extreme-tracking confirmation this batch (-0.048em) \u2014 negative tracking, even at values far beyond this project's original flagged range, keeps appearing on exactly the highly-credited, design-forward products this research treats as positive references",
+      "transferable_principles": "THIRD extreme-tracking confirmation this batch (-0.048em) — negative tracking, even at values far beyond this project's original flagged range, keeps appearing on exactly the highly-credited, design-forward products this research treats as positive references",
       "do_not_copy": "the specific hand-drawn Faces illustration style (Notion's own commissioned illustration system)",
       "source_links": [
         "https://www.notion.com"
@@ -768,7 +768,7 @@
       ],
       "provenance": {
         "verified": true,
-        "designers_or_studio": "Winkreative (Tyler Br\u00fbl\u00e9's own agency)",
+        "designers_or_studio": "Winkreative (Tyler Brûlé's own agency)",
         "evidence": "SEARCH-tier sourcing (Wikipedia, magculture), now LIVE-confirmed Plantin renders as the live headline typeface exactly as described"
       },
       "primary_visual_approach": "restrained editorial, serif headlines, normal (not tightened) tracking",
@@ -778,7 +778,7 @@
         "ui": "not fully inspected",
         "mono": null,
         "letter_spacing_h1": "normal",
-        "source": "LIVE \u2014 getComputedStyle, 2026-07-31, directly confirms the SEARCH-tier claim"
+        "source": "LIVE — getComputedStyle, 2026-07-31, directly confirms the SEARCH-tier claim"
       },
       "composition": "not deeply inspected beyond hero typography",
       "grid": "not deeply inspected",
@@ -788,9 +788,9 @@
       "motion": "not inspected",
       "product_specific_structures": "not deeply inspected this round",
       "responsive_behavior": "not fully re-verified",
-      "authorship_signals": "direct LIVE confirmation that a SEARCH-tier claim (Plantin as the real headline typeface) was accurate \u2014 a positive methodological data point for how much to trust well-sourced SEARCH-tier claims generally",
+      "authorship_signals": "direct LIVE confirmation that a SEARCH-tier claim (Plantin as the real headline typeface) was accurate — a positive methodological data point for how much to trust well-sourced SEARCH-tier claims generally",
       "weaknesses": "only typography was closely inspected this round; full page composition needs a follow-up pass",
-      "transferable_principles": "counter-example within this same research batch: Monocle uses NORMAL tracking, not tight \u2014 confirming that negative tracking is a common convention in one register (tech/SaaS/retail hero type) and not a universal rule even among equally credited, equally professional references; the two clusters (tight-tracked tech vs. normal-tracked editorial) are both legitimate, register-specific choices",
+      "transferable_principles": "counter-example within this same research batch: Monocle uses NORMAL tracking, not tight — confirming that negative tracking is a common convention in one register (tech/SaaS/retail hero type) and not a universal rule even among equally credited, equally professional references; the two clusters (tight-tracked tech vs. normal-tracked editorial) are both legitimate, register-specific choices",
       "do_not_copy": "Plantin is a licensed commercial typeface, not free to use without a license",
       "source_links": [
         "https://monocle.com"
@@ -832,19 +832,19 @@
         "ui": "Airbnb Cereal VF",
         "mono": null,
         "letter_spacing_h1": "normal",
-        "source": "LIVE \u2014 getComputedStyle, 2026-07-31"
+        "source": "LIVE — getComputedStyle, 2026-07-31"
       },
       "composition": "not deeply inspected beyond hero this round",
       "grid": "not deeply inspected",
       "density": "not deeply inspected",
       "color": "not deeply inspected",
-      "imagery": "not deeply inspected this round (though the DLS's own stated philosophy \u2014 'photography is the hero' \u2014 was not directly re-verified visually this round, only the typography claim was)",
+      "imagery": "not deeply inspected this round (though the DLS's own stated philosophy — 'photography is the hero' — was not directly re-verified visually this round, only the typography claim was)",
       "motion": "not inspected",
       "product_specific_structures": "not deeply inspected this round",
       "responsive_behavior": "not fully re-verified",
       "authorship_signals": "custom variable font (Airbnb Cereal VF) confirmed live, matching the well-documented DLS history",
       "weaknesses": "this round's inspection was typography-focused only; the DLS's actual component-level claims (ListingCard, DateRangePicker, PhotoGallery) were not independently re-verified against the live site",
-      "transferable_principles": "another real confirmation that normal tracking is equally legitimate and common among top-tier, definitely-human, definitely-not-generic products \u2014 the split is not tight-tracking=bad, it's whether the choice was actually examined for this specific product",
+      "transferable_principles": "another real confirmation that normal tracking is equally legitimate and common among top-tier, definitely-human, definitely-not-generic products — the split is not tight-tracking=bad, it's whether the choice was actually examined for this specific product",
       "do_not_copy": "Airbnb Cereal VF (proprietary custom typeface)",
       "source_links": [
         "https://www.airbnb.com"
@@ -888,15 +888,15 @@
       },
       "composition": "KPI row (ARR/Gross Margin/Net Burn/Runway/Cash Balance) above a large labeled Sankey chart, scenario tabs (Actuals/Board plan/Efficiency case/Upside case/Model a scenario)",
       "grid": "not inspected",
-      "density": "high \u2014 genuinely dense, decision-relevant, not spacious marketing-style chrome on an operational surface",
+      "density": "high — genuinely dense, decision-relevant, not spacious marketing-style chrome on an operational surface",
       "color": "dark navy/near-black background, blue/orange/green semantic Sankey flow colors",
-      "imagery": "none \u2014 pure data visualization",
-      "motion": "described as 'animated' Sankey (not verified live \u2014 static preview only)",
-      "product_specific_structures": "REAL, SPECIFIC operational text: 'Northwind Cloud \u00b7 Financial Reporting', 'Booked results as closed by accounting. Close of July 2026. 146 employees. books locked by the controller.' \u2014 a specific, plausible operational governance detail (a books-locked-by-controller constraint), not generic dashboard filler",
+      "imagery": "none — pure data visualization",
+      "motion": "described as 'animated' Sankey (not verified live — static preview only)",
+      "product_specific_structures": "REAL, SPECIFIC operational text: 'Northwind Cloud · Financial Reporting', 'Booked results as closed by accounting. Close of July 2026. 146 employees. books locked by the controller.' — a specific, plausible operational governance detail (a books-locked-by-controller constraint), not generic dashboard filler",
       "responsive_behavior": "not tested",
-      "authorship_signals": "genuinely strong: every KPI is decision-relevant (ARR, Gross Margin, Net Burn, Runway, Cash Balance \u2014 a real CFO's actual primary metric set), the Sankey chart has real informational payload (a genuine money-flow breakdown with real category labels), and the operational governance detail ('books locked by the controller') is a specific, non-generic realism signal",
-      "weaknesses": "static preview only \u2014 motion, interaction, and other routes/states not independently verified",
-      "transferable_principles": "MAJOR COUNTEREXAMPLE to any assumption that AI-generated dense/utilitarian interfaces default to decorative 'metric wall' dashboards. This one passes this project's own \u00a74.3 'does this number change what the user does next' test on every visible KPI, and includes a specific, plausible governance/operational detail exactly matching this project's own Realism Audit criteria. Directly relevant to this calibration project's Exercise 2 (dense professional application) as both inspiration and a real point of comparison.",
+      "authorship_signals": "genuinely strong: every KPI is decision-relevant (ARR, Gross Margin, Net Burn, Runway, Cash Balance — a real CFO's actual primary metric set), the Sankey chart has real informational payload (a genuine money-flow breakdown with real category labels), and the operational governance detail ('books locked by the controller') is a specific, non-generic realism signal",
+      "weaknesses": "static preview only — motion, interaction, and other routes/states not independently verified",
+      "transferable_principles": "MAJOR COUNTEREXAMPLE to any assumption that AI-generated dense/utilitarian interfaces default to decorative 'metric wall' dashboards. This one passes this project's own §4.3 'does this number change what the user does next' test on every visible KPI, and includes a specific, plausible governance/operational detail exactly matching this project's own Realism Audit criteria. Directly relevant to this calibration project's Exercise 2 (dense professional application) as both inspiration and a real point of comparison.",
       "do_not_copy": "n/a",
       "source_links": [
         "https://lovable.dev/templates/apps/internal-tools/cfo-command-center-finance-reporting-dashboard-template"
@@ -942,13 +942,13 @@
       "grid": "not inspected",
       "density": "low-moderate",
       "color": "dark navy/cream, warm coffee-photo tones",
-      "imagery": "a real, specific, well-composed latte-art photograph \u2014 not an obviously stock or AI-generated image",
+      "imagery": "a real, specific, well-composed latte-art photograph — not an obviously stock or AI-generated image",
       "motion": "not inspected",
-      "product_specific_structures": "brand name 'Groundwork Coffee' with a specific positioning statement in the listing copy: 'Menu browsing, cart, and pickup orders \u2014 all without third-party platforms taking your identity' \u2014 a real, specific value proposition (independence from third-party ordering platforms) that only makes sense for this exact category of small business, not swappable to an arbitrary product",
+      "product_specific_structures": "brand name 'Groundwork Coffee' with a specific positioning statement in the listing copy: 'Menu browsing, cart, and pickup orders — all without third-party platforms taking your identity' — a real, specific value proposition (independence from third-party ordering platforms) that only makes sense for this exact category of small business, not swappable to an arbitrary product",
       "responsive_behavior": "not tested",
-      "authorship_signals": "the 'without third-party platforms taking your identity' positioning is a real Product Swap Test PASS \u2014 specific to the actual pain point of independent coffee shops using DoorDash/Grubhub/Square-branded ordering pages that dilute their own brand",
+      "authorship_signals": "the 'without third-party platforms taking your identity' positioning is a real Product Swap Test PASS — specific to the actual pain point of independent coffee shops using DoorDash/Grubhub/Square-branded ordering pages that dilute their own brand",
       "weaknesses": "static preview only; unclear how much of the photography is licensed stock vs. AI-generated vs. genuinely commissioned",
-      "transferable_principles": "a tasteful, real counter-example for the specific small-business category this project's own Phase 5 flagged as hardest to find genuine provenance for on the human-made side \u2014 useful as a paired comparison point for this calibration project's Exercise 1",
+      "transferable_principles": "a tasteful, real counter-example for the specific small-business category this project's own Phase 5 flagged as hardest to find genuine provenance for on the human-made side — useful as a paired comparison point for this calibration project's Exercise 1",
       "do_not_copy": "n/a",
       "source_links": [
         "https://lovable.dev/templates/websites/ecommerce/coffee-shop-order-page"
@@ -989,7 +989,7 @@
         "ui": "Headspace Apercu",
         "mono": null,
         "letter_spacing_h1": "not captured this round",
-        "source": "LIVE \u2014 getComputedStyle (bodyFont), 2026-07-31"
+        "source": "LIVE — getComputedStyle (bodyFont), 2026-07-31"
       },
       "composition": "promo banner, nav, hero with illustrated character + real current promotional offer (40% off)",
       "grid": "not deeply inspected",
@@ -1000,7 +1000,7 @@
       "product_specific_structures": "not deeply inspected this round",
       "responsive_behavior": "not tested",
       "authorship_signals": "a customized, named typeface variant (Headspace Apercu) and a proprietary illustrated mascot are both real, checkable brand-investment signals",
-      "weaknesses": "provenance (named designers/studio) not independently researched this round \u2014 logged as an evidence gap, not assumed",
+      "weaknesses": "provenance (named designers/studio) not independently researched this round — logged as an evidence gap, not assumed",
       "transferable_principles": "direct matched-comparison material against the Lovable 'Continuum' habit-tracker template (same broad consumer-wellness category): Headspace's identity rests on a single, proprietary, immediately recognizable illustrated character used consistently, not on generic photography-with-overlay",
       "do_not_copy": "the Headspace sun mascot character (trademarked brand asset)",
       "source_links": [
@@ -1033,7 +1033,7 @@
       "provenance": {
         "verified": false,
         "designers_or_studio": "not independently identified this round",
-        "evidence": "not researched this round beyond the live render itself \u2014 logged as a direct-inspection-only entry, consistent with this project's own finding that small/medium business design provenance is structurally hard to source"
+        "evidence": "not researched this round beyond the live render itself — logged as a direct-inspection-only entry, consistent with this project's own finding that small/medium business design provenance is structurally hard to source"
       },
       "primary_visual_approach": "Real photography (hands holding an actual product bag against a real sky), a named specific product ('Sunrider') with a distinctive tagline, not a generic promotional banner",
       "typography": {
@@ -1041,8 +1041,8 @@
         "body": "GT Flexa (a real commercial typeface, Grilli Type foundry)",
         "ui": "GT Flexa",
         "mono": null,
-        "letter_spacing_h1": "-0.008em (-0.8px at 100px) \u2014 tight but much lighter than the tech-register cluster in TYPOGRAPHY_RESEARCH.md",
-        "source": "LIVE \u2014 getComputedStyle, 2026-07-31"
+        "letter_spacing_h1": "-0.008em (-0.8px at 100px) — tight but much lighter than the tech-register cluster in TYPOGRAPHY_RESEARCH.md",
+        "source": "LIVE — getComputedStyle, 2026-07-31"
       },
       "composition": "promo ticker, nav with wordmark, full-bleed photographic hero with a named product callout",
       "grid": "not deeply inspected",
@@ -1050,11 +1050,11 @@
       "color": "warm sky-blue photography, packaging-derived yellow/blue accents",
       "imagery": "genuine product photography with a real product package (visible label design, real varietal/origin information: 'Costa Rica Coopatenas, Single Origin')",
       "motion": "not inspected",
-      "product_specific_structures": "specific, real product content: 'Sunrider... our first single origin whole bean cold brew. Best enjoyed hot or cold' \u2014 a real, dated, specific product launch, not evergreen placeholder copy",
+      "product_specific_structures": "specific, real product content: 'Sunrider... our first single origin whole bean cold brew. Best enjoyed hot or cold' — a real, dated, specific product launch, not evergreen placeholder copy",
       "responsive_behavior": "not tested",
-      "authorship_signals": "GT Flexa is a real, named, licensed commercial typeface (Grilli Type) \u2014 a genuine typography investment for a mid-size specialty-coffee business, not a system default",
+      "authorship_signals": "GT Flexa is a real, named, licensed commercial typeface (Grilli Type) — a genuine typography investment for a mid-size specialty-coffee business, not a system default",
       "weaknesses": "named designer/studio provenance not independently researched this round",
-      "transferable_principles": "direct matched-comparison material against the Lovable 'Coffee Order Page' AI-generated template (same category): Stumptown's authenticity signal is specific, current, real product content (a named seasonal product, real origin/varietal data) layered on real photography \u2014 the AI-generated template's comparable strength was its positioning copy ('without third-party platforms taking your identity'), not product-specific content, since it's a template meant to be reused across many different real coffee shops",
+      "transferable_principles": "direct matched-comparison material against the Lovable 'Coffee Order Page' AI-generated template (same category): Stumptown's authenticity signal is specific, current, real product content (a named seasonal product, real origin/varietal data) layered on real photography — the AI-generated template's comparable strength was its positioning copy ('without third-party platforms taking your identity'), not product-specific content, since it's a template meant to be reused across many different real coffee shops",
       "do_not_copy": "GT Flexa and Windsor are licensed commercial typefaces, not free to use without a license; Stumptown's specific packaging design is proprietary",
       "source_links": [
         "https://www.stumptowncoffee.com"
@@ -1072,6 +1072,114 @@
         "asset_dependence": "high",
         "brand_maturity": "mature-mid-size",
         "page_type": "marketing-landing"
+      }
+    },
+    {
+      "id": "johnpawson-studio",
+      "organization": "John Pawson Ltd",
+      "product": "Studio portfolio site (johnpawson.com)",
+      "url": "https://www.johnpawson.com/",
+      "design_category": "architecture-studio-portfolio",
+      "evidence_tiers": [
+        "LIVE",
+        "PROVENANCE"
+      ],
+      "provenance": {
+        "verified": true,
+        "designers_or_studio": "John Pawson (named architect, credited built work: Design Museum London, Neuendorf House, Sackler Crossing at Kew, Novy Dvur monastery)",
+        "evidence": "site is the practice's own named studio domain; practice's built work independently documented (Dezeen, RTF, Wikipedia) — see MINIMALISM_RESEARCH.md architectural-minimalism entry"
+      },
+      "primary_visual_approach": "Full-bleed atmospheric photography as the entire argument; near-zero on-page copy; no visible primary navigation or CTA in the hero — the composition assumes the visitor already knows who Pawson is and why they came",
+      "typography": {
+        "display": "UniversNextPro-Light",
+        "body": "UniversNextPro-Light, Helvetica, Arial (fallback stack)",
+        "ui": "UniversNextPro-Light",
+        "mono": null,
+        "letter_spacing_h1": "normal",
+        "source": "LIVE — getComputedStyle, 2026-07-31; H1 27px/400weight/normal-tracking wordmark only, not a headline statement"
+      },
+      "composition": "Single full-viewport photograph, small wordmark top-left, no headline copy, no subhead, no button — composition communicates entirely through the photograph and the absence of anything else",
+      "grid": "not deeply inspected beyond hero",
+      "density": "extremely low",
+      "color": "true black/white text on the photograph's own natural tones; no applied brand accent color visible in the hero",
+      "imagery": "single real, professionally shot architectural photograph (dusk exterior of a built residential project) — the entire hero is the photograph",
+      "motion": "not inspected",
+      "product_specific_structures": "no services list, no philosophy statement, no founding-year/project-count stats block in the hero — the practice's real 40-year built body of work substitutes for all of the self-justifying copy a newer/unproven practice would need",
+      "responsive_behavior": "rendered clean at mobile width, LIVE",
+      "authorship_signals": "restraint that assumes pre-existing reputation rather than building a case for credibility on the page itself — the single clearest live example in this project's roster of minimalism as omission-by-earned-confidence rather than omission-as-safe-default",
+      "weaknesses": "single screen inspected only (hero); full site information architecture (project index, contact, press) not inspected this round",
+      "transferable_principles": "an established practice with real, citable prior work can and arguably should say less on its own homepage than a new practice needs to — the amount of self-explanation a design justifiably contains is a function of the audience's prior knowledge of the brand, not a universal minimalism-vs-maximalism style choice",
+      "do_not_copy": "the specific photograph and wordmark (Pawson's actual brand assets)",
+      "source_links": [
+        "https://www.johnpawson.com/"
+      ],
+      "confidence": "high",
+      "date_reviewed": "2026-07-31",
+      "tags": {
+        "industry": "architecture",
+        "product_type": "studio-portfolio",
+        "design_school": "architectural-minimalism",
+        "density": "very-low",
+        "tone": "quiet-confident",
+        "typography_type": "licensed-sans",
+        "motion_level": "not-inspected",
+        "asset_dependence": "very-high",
+        "brand_maturity": "mature",
+        "page_type": "homepage"
+      }
+    },
+    {
+      "id": "lovable-arch-studio",
+      "organization": "Lovable (AI-generated template)",
+      "product": "\"Arch Studio\" architecture-portfolio template (stark-architect-showcase)",
+      "url": "https://stark-architect-showcase.lovable.app/",
+      "design_category": "ai-generated-architecture-portfolio-template",
+      "evidence_tiers": [
+        "LIVE"
+      ],
+      "provenance": {
+        "verified": true,
+        "designers_or_studio": "Lovable platform, disclosed AI-generated (\"Edit with Lovable\" badge visible on the live render; listed on lovable.dev/templates as a remixable starter)",
+        "evidence": "directly rendered; visible platform attribution badge; template marketing page confirms AI-generated/remixable provenance"
+      },
+      "primary_visual_approach": "Large bold sans headline (\"MINIMAL ARCHITECTURE\") over a full-bleed photograph, followed by a services grid, a philosophy paragraph, and a stats row (founded year, project count) — the page actively builds a credibility case rather than assuming one",
+      "typography": {
+        "display": "ui-sans-serif/system-ui stack (Tailwind default, no custom or licensed typeface)",
+        "body": "ui-sans-serif/system-ui stack",
+        "ui": "ui-sans-serif/system-ui stack",
+        "mono": null,
+        "letter_spacing_h1": "-0.02em",
+        "source": "LIVE — getComputedStyle, 2026-07-31; H1 128px/300weight/-2.56px tracking (=-0.02em) — falls squarely inside this project's own previously-flagged -0.01em-to-0.03em tracking range, on an unmodified system-font stack rather than a licensed or custom typeface"
+      },
+      "composition": "Hero photograph + huge headline + subhead, then a 2x2 services grid, a two-column philosophy/approach block, a 3-image project grid with captions, a closing CTA block with contact details — a complete, conventional single-page marketing-site structure",
+      "grid": "2-column and 3-image grids, standard container widths",
+      "density": "low-moderate",
+      "color": "monochrome (black/white/gray) with real architectural photography providing the only color variation",
+      "imagery": "genuinely good-quality real architectural stock/licensed photography (not AI-generated imagery, not gradient placeholders) — worth noting explicitly since this project's asset-strategy guidance names photography as the highest-recognition-value asset a template can either get right or fake",
+      "motion": "not inspected",
+      "product_specific_structures": "a founded-year/project-count stats block (\"Founded in 2015... 200+ projects\") and three named, dated, located sample projects (\"Minimal Residence, New York 2024\"; \"Corporate Headquarters, London 2023\"; \"Cultural Center, Tokyo 2023\") — plausible-sounding but unverifiable placeholder provenance, a real instance of the Realism Audit's \"plausible-but-fabricated claim\" pattern, not a fabricated testimonial but adjacent to one",
+      "responsive_behavior": "rendered clean at mobile width, LIVE",
+      "authorship_signals": "the page must build its own credibility case in real time (headline + philosophy + stats) because it has no pre-existing reputation to lean on — direct contrast to the John Pawson entry above, matched on category and page type",
+      "weaknesses": "single template instance; template's real photography quality means it is a genuinely strong showcase example, not the weakest available AI-generated case — read this comparison as testing structure/typography/copy, not as evidence AI-generated sites always use worse imagery",
+      "transferable_principles": "none intended for direct reuse — logged as a counterexample/comparison entry, not a positive reference",
+      "do_not_copy": "entire template is a third-party AI-generated product; do not reuse its structure, copy, or imagery",
+      "source_links": [
+        "https://lovable.dev/templates/websites/portfolio/architect-portfolio-1",
+        "https://stark-architect-showcase.lovable.app/"
+      ],
+      "confidence": "high",
+      "date_reviewed": "2026-07-31",
+      "tags": {
+        "industry": "architecture",
+        "product_type": "studio-portfolio",
+        "design_school": "generated-minimal-marketing",
+        "density": "low-moderate",
+        "tone": "confident-but-unearned",
+        "typography_type": "system-default",
+        "motion_level": "not-inspected",
+        "asset_dependence": "high",
+        "brand_maturity": "template-placeholder",
+        "page_type": "homepage"
       }
     }
   ]

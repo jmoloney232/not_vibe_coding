@@ -83,7 +83,7 @@ An organization is only counted toward this project's "detailed analysis" quota 
 
 Target: 75+ logged here, 30+ with a full entry in `DESIGN_REFERENCE_ATLAS.md`, at least 15 tagged [PROVENANCE], at least 15 tagged [CODE], at least 10 tagged as disclosed-AI-generated provenance, at least 10 tagged ambiguous/counterexample.
 
-**Progress as of this version: 48 of 75+ logged (20 with full atlas entries at [LIVE] tier; 28 below at [SEARCH]/[PROVENANCE] tier, light-touch, candidates for further Phase 2 deep-dive).** This is real, in-progress research, not a placeholder — every entry below carries an actual citation. It is explicitly incomplete against the 75-organization gate and will continue to grow across subsequent work sessions.
+**Progress as of this version: 50 of 75+ logged (22 with full atlas entries at [LIVE] tier — John Pawson's studio site and the Lovable "Arch Studio" template added this round as a matched pair; 28 below at [SEARCH]/[PROVENANCE] tier, light-touch, candidates for further Phase 2 deep-dive).** This is real, in-progress research, not a placeholder — every entry below carries an actual citation. It is explicitly incomplete against the 75-organization gate and will continue to grow across subsequent work sessions. **Matched comparisons: 6 of 15 complete** (see Part 3). **Disclosed-AI-generated-provenance organizations: 4 of 10** (v0 Color Palette Generator, Lovable Maison, Lovable Continuum, Lovable Arch Studio).
 
 ### Phase 1 batch 2: cultural institutions, utilitarian/dense products, and small/medium businesses (the three most-lagging categories)
 
@@ -106,7 +106,7 @@ Three targets were attempted and genuinely blocked this round — logged honestl
 
 ### Full atlas entries ([LIVE] tier — see `DESIGN_REFERENCE_ATLAS.md` / `design-reference-atlas.json` for complete records)
 
-GOV.UK Design System · GitHub Primer · Stripe · Linear · Basecamp · v0 "Color Palette Generator" · Lovable "Maison" storefront · Lovable "Continuum" habit tracker · Varda Space Industries · Craigslist.
+GOV.UK Design System · GitHub Primer · Stripe · Linear · Basecamp · v0 "Color Palette Generator" · Lovable "Maison" storefront · Lovable "Continuum" habit tracker · Varda Space Industries · Craigslist · NYT · IKEA · Vercel · Notion · Monocle · Airbnb · Headspace · Stumptown · Lovable "CFO Command Center" · Lovable "Coffee Order Page" · **John Pawson studio site · Lovable "Arch Studio" (new this round — a directly matched pair, see Comparison 6, Part 3)**.
 
 ### Light-touch entries ([SEARCH] tier — real, cited, not yet deep-dived)
 
@@ -217,6 +217,19 @@ Per the calibration brief's Part 4 (minimum 15; below are the first 5, real and 
 | Visual register | Restrained, information-architecture-led, near-zero decoration | Neo-brutalist: thick borders, hard-offset shadows, saturated colors — a *strong*, opinionated register, not restrained |
 | Real content correctness | Dated, specific, versioned release notes (GOV.UK); named contributors and a documented cross-functional process (Carbon) | Correct, real color-theory terminology (Complementary/Analogous) — domain-accurate, if thin |
 | **What the difference is actually attributable to** | This comparison is the weakest evidence of "AI-generated is worse" in this whole set — the two are simply **different registers**, not different quality tiers. The AI-generated utility's neo-brutalist choice is arguably more visually distinctive than either human-made reference, which are both restrained by explicit institutional choice (see `MINIMALISM_RESEARCH.md` Part 1). The real gap is scale and scope (a full design system serving hundreds of teams vs. a single-purpose utility), not visual quality. |
+
+### Comparison 6: Architecture studio portfolio — John Pawson vs. Lovable "Arch Studio"
+
+Both rendered LIVE this round; full field detail in `design-reference-atlas.json` (`johnpawson-studio`, `lovable-arch-studio`).
+
+| | John Pawson | Lovable "Arch Studio" |
+|---|---|---|
+| Evidence | LIVE + PROVENANCE (named architect, 40 years of credited built work — Design Museum London, Neuendorf House, Sackler Crossing at Kew) | LIVE, disclosed AI-generated (visible "Edit with Lovable" badge) |
+| Typography | UniversNextPro-Light (licensed), `normal` tracking, small 27px wordmark-only H1 — not a headline statement | Tailwind's default `ui-sans-serif`/`system-ui` stack, 128px H1 at -0.02em tracking — landing in the exact same numeric range as Stripe's and Linear's H1s (§8 of `ANTI_VIBE_CODING_UI.md`, Appendix J), on an unmodified system font rather than a licensed or custom one |
+| Composition | Single full-bleed photograph, no headline copy, no services list, no CTA visible in the hero at all | Hero photograph + huge bold headline + subhead, then a services grid, a philosophy paragraph, and a founded-year/project-count stats block |
+| Content specificity | None needed — the practice's real, independently documented body of work substitutes for on-page self-justification entirely | A plausible-but-unverifiable founding year and three named/dated/located sample projects ("Minimal Residence, New York 2024") — not a fabricated testimonial, but adjacent to the Realism Audit's "plausible-but-fabricated claim" pattern |
+| Imagery | One real, professionally shot architectural photograph of an actual built project | Genuinely good-quality real architectural photography — explicitly *not* the weakest available AI-generated case; this pairing tests structure/typography/copy specifically, not asset quality |
+| **What the difference is actually attributable to** | This is the clearest evidence in this project's roster yet that "how much a page says about itself" is a function of **the audience's prior knowledge of the brand**, not a fixed minimalism-vs-maximalism style preference. Pawson's homepage can omit a services list and a credibility-building philosophy section because 40 years of citable, credited built work already exists off-page; the template must include exactly those things because it represents a practice with no prior reputation. Neither approach is more "minimal" as a style — the Pawson page is arguably the more extreme composition of the two — the real variable is earned reputation as its own asset class, directly relevant to `ANTI_VIBE_CODING_UI.md` §3's Asset Strategy addition. The identical -0.02em tracking value on both a real practice's licensed type and an AI template's default system font is a second, independent confirmation of Appendix J's finding: the numeric value is not a provenance signal by itself. |
 
 **10 more matched comparisons are required to meet the calibration brief's 15-minimum gate — not yet completed, stated honestly rather than padded.** Priority targets for the next research session: professional vs. AI-generated developer-tool landing pages (Linear/Vercel vs. a v0 SaaS landing template — raw material already in the atlas for both sides, comparison not yet written up); professional vs. AI-generated editorial/portfolio pages; professional vs. AI-generated e-commerce product-detail pages (as distinct from storefront homepages).
 

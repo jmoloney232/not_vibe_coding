@@ -1181,6 +1181,60 @@
         "brand_maturity": "template-placeholder",
         "page_type": "homepage"
       }
+    },
+    {
+      "id": "lovable-gastronomia-restaurant",
+      "organization": "Lovable (AI-generated template)",
+      "product": "\"Gastronomia\" fine-dining restaurant template (gastronomic-gateway-web)",
+      "url": "https://gastronomic-gateway-web.lovable.app/",
+      "design_category": "ai-generated-restaurant-website-template",
+      "evidence_tiers": [
+        "LIVE"
+      ],
+      "provenance": {
+        "verified": true,
+        "designers_or_studio": "Lovable platform, disclosed AI-generated (visible 'Edit with Lovable' badge; surfaced via madewithlovable.com's own restaurant-website showcase page)",
+        "evidence": "directly rendered; visible platform attribution badge"
+      },
+      "primary_visual_approach": "Full-bleed restaurant-interior photograph with a dark overlay, centered wordmark + tagline, two-button CTA row (primary filled + secondary outline), a hero carousel (visible dot indicators)",
+      "typography": {
+        "display": "Rubik",
+        "body": "Rubik",
+        "ui": "Rubik",
+        "mono": null,
+        "letter_spacing_h1": "normal",
+        "source": "LIVE — getComputedStyle, 2026-07-31; H1 60px/700weight/normal tracking — a useful negative case against over-reading the tracking finding: this AI-generated hero uses normal tracking, not the tight tracking seen on the Lovable Arch Studio and Bellanova-remix templates, confirming tracking choice varies template-to-template even within one platform, not a fixed AI-generated signature"
+      },
+      "composition": "Full-viewport hero photo + centered text block + button row + carousel, standard restaurant-website structure (Home/Menu/Order Online/Reservations/My History/Cart nav)",
+      "grid": "not deeply inspected beyond hero",
+      "density": "low",
+      "color": "dark overlay on real photography, navy-filled primary button, white-outline secondary button",
+      "imagery": "real, good-quality restaurant-interior stock/licensed photography",
+      "motion": "hero carousel (auto-rotating, dot indicators) — not further inspected",
+      "product_specific_structures": "an 'Order Online' and 'My History' nav item implies a working ordering/account system was scaffolded, not just a static marketing page — a real functional claim worth checking before assuming the template is marketing-only",
+      "responsive_behavior": "rendered clean at mobile width, LIVE",
+      "authorship_signals": "the hero copy ('Indulge in a culinary journey with our masterfully crafted dishes prepared with the finest ingredients') is a textbook, directly quotable real-world instance of this project's own guide's Product/Copy Swap Test failure — this exact sentence could be relabeled onto almost any fine-dining restaurant with zero changes",
+      "weaknesses": "single template instance; generic placeholder name ('Gastronomia') rather than a distinct brand identity",
+      "transferable_principles": "none intended for direct reuse — logged as a counterexample/comparison entry",
+      "do_not_copy": "entire template is a third-party AI-generated product; do not reuse its structure, copy, or imagery",
+      "source_links": [
+        "https://madewithlovable.com/examples/restaurant-website",
+        "https://gastronomic-gateway-web.lovable.app/"
+      ],
+      "confidence": "high",
+      "date_reviewed": "2026-07-31",
+      "tags": {
+        "industry": "food-beverage-small-business",
+        "product_type": "restaurant-website",
+        "design_school": "generated-conventional-marketing",
+        "density": "low",
+        "tone": "generic-upscale",
+        "typography_type": "system-default",
+        "motion_level": "carousel",
+        "asset_dependence": "high",
+        "brand_maturity": "template-placeholder",
+        "page_type": "homepage"
+      }
     }
   ]
 }

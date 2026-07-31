@@ -4,7 +4,7 @@ Human-readable companion to `design-reference-atlas.json` (the authoritative, ma
 
 **Evidence tiers** (see `PROFESSIONAL_WEB_DESIGN_RESEARCH.md` Part 1 for full definitions): `LIVE` (rendered + DOM/CSS-inspected this project), `SEARCH` (cited live web search), `CODE` (verified against public repo/design-system docs), `PROVENANCE` (verified designer/studio attribution), `RECALLED` (training knowledge, lowest tier, always flagged).
 
-**Status: 22 entries as of this version.** This is a running document — see `PROFESSIONAL_WEB_DESIGN_RESEARCH.md` Part 2 for the full target roster and current progress against the completion gates.
+**Status: 23 entries as of this version.** This is a running document — see `PROFESSIONAL_WEB_DESIGN_RESEARCH.md` Part 2 for the full target roster and current progress against the completion gates.
 
 ## A load-bearing cross-entry finding: negative letter-spacing
 
@@ -27,6 +27,7 @@ The `johnpawson-studio` vs. `lovable-arch-studio` pair (both architecture-studio
 - **architectural-minimalism**: `johnpawson-studio`
 - **brutalist-raw**: `v0-color-palette-generator`, `craigslist-sfbay`
 - **editorial-minimalist**: `lovable-maison-storefront`, `ikea-homepage`, `monocle-homepage`, `airbnb-homepage`
+- **generated-conventional-marketing**: `lovable-gastronomia-restaurant`
 - **generated-minimal-marketing**: `lovable-arch-studio`
 - **information-architecture**: `govuk-design-system`, `github-primer`, `varda-space-industries`, `nytimes-homepage`, `lovable-cfo-command-center`
 - **modern-tool-builder-saas**: `stripe-homepage`, `linear-homepage`, `vercel-homepage`
@@ -43,7 +44,7 @@ The `johnpawson-studio` vs. `lovable-arch-studio` pair (both architecture-studio
 - **editorial**: `nytimes-homepage`, `monocle-homepage`
 - **fintech**: `stripe-homepage`
 - **fintech-internal-tools**: `lovable-cfo-command-center`
-- **food-beverage-small-business**: `lovable-coffee-order-page`, `stumptown-homepage`
+- **food-beverage-small-business**: `lovable-coffee-order-page`, `stumptown-homepage`, `lovable-gastronomia-restaurant`
 - **government**: `govuk-design-system`
 - **marketplace-travel**: `airbnb-homepage`
 - **retail**: `ikea-homepage`
@@ -56,7 +57,7 @@ The `johnpawson-studio` vs. `lovable-arch-studio` pair (both architecture-studio
 - **extremely-high**: `craigslist-sfbay`, `nytimes-homepage`
 - **high**: `lovable-cfo-command-center`
 - **high-per-length**: `stripe-homepage`
-- **low**: `github-primer`, `lovable-maison-storefront`, `lovable-continuum-habit-tracker`, `vercel-homepage`, `headspace-homepage`
+- **low**: `github-primer`, `lovable-maison-storefront`, `lovable-continuum-habit-tracker`, `vercel-homepage`, `headspace-homepage`, `lovable-gastronomia-restaurant`
 - **low-moderate**: `govuk-design-system`, `varda-space-industries`, `lovable-coffee-order-page`, `stumptown-homepage`, `lovable-arch-studio`
 - **moderate**: `linear-homepage`, `basecamp-homepage`, `v0-color-palette-generator`, `notion-homepage`
 - **moderate-high**: `ikea-homepage`
@@ -680,5 +681,33 @@ The `johnpawson-studio` vs. `lovable-arch-studio` pair (both architecture-studio
 **Do not copy**: entire template is a third-party AI-generated product; do not reuse its structure, copy, or imagery
 
 **Tags**: {"industry": "architecture", "product_type": "studio-portfolio", "design_school": "generated-minimal-marketing", "density": "low-moderate", "tone": "confident-but-unearned", "typography_type": "system-default", "motion_level": "not-inspected", "asset_dependence": "high", "brand_maturity": "template-placeholder", "page_type": "homepage"}
+
+---
+
+### Lovable (AI-generated template) — "Gastronomia" fine-dining restaurant template (gastronomic-gateway-web)
+
+`lovable-gastronomia-restaurant` · https://gastronomic-gateway-web.lovable.app/ · Evidence: LIVE · Confidence: high · Reviewed: 2026-07-31
+
+**Category**: ai-generated-restaurant-website-template
+
+**Provenance**: Verified — Lovable platform, disclosed AI-generated (visible 'Edit with Lovable' badge; surfaced via madewithlovable.com's own restaurant-website showcase page). directly rendered; visible platform attribution badge
+
+**Visual approach**: Full-bleed restaurant-interior photograph with a dark overlay, centered wordmark + tagline, two-button CTA row (primary filled + secondary outline), a hero carousel (visible dot indicators)
+
+**Typography**: display=Rubik, body=Rubik, H1 letter-spacing=normal
+
+**Composition**: Full-viewport hero photo + centered text block + button row + carousel, standard restaurant-website structure (Home/Menu/Order Online/Reservations/My History/Cart nav)
+
+**Color**: dark overlay on real photography, navy-filled primary button, white-outline secondary button
+
+**Authorship signals**: the hero copy ('Indulge in a culinary journey with our masterfully crafted dishes prepared with the finest ingredients') is a textbook, directly quotable real-world instance of this project's own guide's Product/Copy Swap Test failure — this exact sentence could be relabeled onto almost any fine-dining restaurant with zero changes
+
+**Weaknesses / limitations**: single template instance; generic placeholder name ('Gastronomia') rather than a distinct brand identity
+
+**Transferable principle**: none intended for direct reuse — logged as a counterexample/comparison entry
+
+**Do not copy**: entire template is a third-party AI-generated product; do not reuse its structure, copy, or imagery
+
+**Tags**: {"industry": "food-beverage-small-business", "product_type": "restaurant-website", "design_school": "generated-conventional-marketing", "density": "low", "tone": "generic-upscale", "typography_type": "system-default", "motion_level": "carousel", "asset_dependence": "high", "brand_maturity": "template-placeholder", "page_type": "homepage"}
 
 ---

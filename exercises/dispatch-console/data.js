@@ -11,7 +11,7 @@ const MERIDIAN_DRIVERS = [
   { id: "D-119", name: "M. Chen", truck: "T-127", hosRemainingMin: 190, status: "driving" },
   { id: "D-121", name: "J. Delgado", truck: "T-109", hosRemainingMin: 0, status: "off_duty" }, // out of hours, done for the day
   { id: "D-130", name: "S. Faalele", truck: "T-133", hosRemainingMin: 310, status: "driving" },
-  { id: "D-138", name: "T. Girard", truck: "T-115", hosRemainingMin: 92, status: "on_break" },
+  { id: "D-138", name: "T. Girard", truck: "T-115", hosRemainingMin: 92, status: "mechanical_issue" }, // truck T-115 reported a brake-warning issue at 14:18 (see load ML-4478's note) — status reflects that, not an ordinary break
   { id: "D-142", name: "A. Huynh", truck: "T-121", hosRemainingMin: 156, status: "driving" },
   { id: "D-150", name: "L. Ibarra", truck: "T-140", hosRemainingMin: 275, status: "driving" },
 ];

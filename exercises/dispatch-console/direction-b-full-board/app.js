@@ -3,7 +3,7 @@ const STATUS_LABEL = { on_time: "On time", at_risk: "At risk", late: "Late", exc
 
 function driverStripItemHtml(d) {
   const hosLow = d.hosRemainingMin <= 60 && d.status !== "off_duty";
-  const statusLabel = { driving: "Driving", on_break: "On break", off_duty: "Off duty" }[d.status];
+  const statusLabel = { driving: "Driving", on_break: "On break", off_duty: "Off duty", mechanical_issue: "Out of service" }[d.status];
   return `<div class="driver-chip ${hosLow ? 'hos-low' : ''}">
     <span class="dc-name">${d.name}</span>
     <span class="dc-truck">${d.truck}</span>

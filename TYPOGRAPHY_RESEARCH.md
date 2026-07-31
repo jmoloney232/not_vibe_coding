@@ -1,0 +1,102 @@
+# Typography Research
+
+**Status: substantial first version, explicitly incomplete against the 30-system completion gate.** This document synthesizes real typographic data gathered during Phases 1–2 of the design-calibration project (see `PROFESSIONAL_WEB_DESIGN_RESEARCH.md` and `design-reference-atlas.json` for full sourcing). It contains one load-bearing, evidence-backed correction; a real, live-verified critique of the reference skill's own font recommendations; and a working decision framework. What it does not yet contain — rendered three-direction specimen comparisons and a blind perception test — requires the practical-exercise phase (Part 13 of the calibration brief) and is stated as a gap below, not silently skipped.
+
+---
+
+## Part 1: What was actually measured, and how
+
+Every typographic claim below is tagged with its evidence tier (see `PROFESSIONAL_WEB_DESIGN_RESEARCH.md` Part 1). `[LIVE]` means the value was read directly from `getComputedStyle` on a real, currently-rendered page this project actually loaded via Playwright/Chromium — not estimated, not recalled, not taken from a secondary source's description. Every em-value below is computed as `letter-spacing (px) / font-size (px)`, not eyeballed.
+
+## Part 2: The central finding — negative tracking is a register choice, not an AI tell
+
+This is the single most load-bearing typography finding across this entire project (rounds 7 and 8 combined), and it is now supported by **eight independent [LIVE] measurements**:
+
+| Product | H1 font-size | H1 letter-spacing | Computed em-value | Typeface |
+|---|---|---|---|---|
+| Stripe | 48px | -0.96px | **-0.02em** | sohne-var (licensed) |
+| Linear | 64px | -1.408px | **-0.022em** | Inter Variable |
+| Basecamp | 41.9px | -0.943px | **-0.0225em** | Graphik (licensed) |
+| Varda Space Industries | 107.5px | -3.224px | **-0.03em** | MT Everyday Sans (licensed/commissioned) |
+| IKEA | 40px | -1.393px | **-0.0348em** | Noto IKEA (custom) |
+| Notion | 96px | -4.6px | **-0.048em** | NotionInter (custom Inter variant) |
+| Vercel | 64px | -3.84px | **-0.06em** | GeistSans (Vercel's own open-source typeface) |
+| GOV.UK Design System | 48px | normal | **0em** | GDS Transport (custom) |
+| GitHub Primer | 56px | normal | **0em** | Mona Sans (custom variable) |
+| Monocle | 32px | normal | **0em** | Plantin (licensed, 1910s old-style serif) |
+| Airbnb | 28px | normal | **0em** | Airbnb Cereal VF (custom variable) |
+
+**What this table actually shows, read carefully:** this project's own guide (`ANTI_VIBE_CODING_UI.md` §8, before its round-7 correction) claimed the range "-0.01em to -0.03em... has become common enough on hero headings to read as a template tell in its own right." Vercel's -0.06em is **double** the top of that range. Notion's -0.048em and IKEA's -0.0348em both exceed it too. All three are on custom or open-source typefaces at companies with named, public design teams — about as far as it is possible to get from "used an AI-tool default without checking it."
+
+**The real pattern, stated precisely:** every product in the tight-tracking cluster is a technology, retail, or aerospace brand using large sans-serif display type in a marketing-hero context. Every product using `normal` tracking is either a government/developer-tool design-system documentation page (GOV.UK, Primer — arguably closer to "document" register than "marketing hero" register) or an editorial/magazine brand using a serif typeface (Monocle) or a travel marketplace with a humanist sans (Airbnb). **Register and typeface category predict the tracking choice far better than any fixed em-value threshold does.** A future agent should ask "is this a large sans-serif marketing headline in a tech/retail/consumer-product register?" (tight tracking is a defensible, common, unexamined-by-itself-neutral default) rather than "is the tracking value inside some flagged range?" (not a meaningful question on its own).
+
+**What this does NOT mean:** it does not mean negative tracking is always fine, or that this project's original concern was baseless. The original finding (round 5) was a *real* defect — a hand-built page used `-0.01em` to `-0.015em` specifically because it was "a common convention elsewhere," not because it was checked against the product's own type metrics and visual thesis. The value itself was never the problem; **applying it unexamined was.** That distinction — mechanism, not magnitude — is what the round-7 correction to §8 already states, and this table is the accumulated evidence for it.
+
+## Part 3: Real, sourced typographic systems (partial roster toward the 30-system gate)
+
+Full field-level detail for each of these lives in `design-reference-atlas.json`; this section pulls out only the typography-specific facts, cross-referenced against the Garden skill's own recipe claims where one exists.
+
+### The New York Times — a role-specific, four-typeface, non-licensable system
+**[PROVENANCE, SEARCH]** Four proprietary, commissioned typefaces, each locked to one role: **NYT Cheltenham** (headlines — unified in 2003 when design director **Tom Bodkin** commissioned type designer **Matthew Carter**), **NYT Imperial** (print body), **Georgia** (digital body — a deliberate *substitution*, not a downgrade: Georgia was chosen specifically because it renders better than Imperial at screen resolutions, an early and unusually well-documented case of a publication choosing a *different* typeface for a *different medium* rather than forcing print type onto screen), and **NYT Franklin** (captions/metadata/navigation — a custom Franklin Gothic variant). None are publicly licensable. **This is the clearest real-world model available for "typography as a role system, not a single font choice"** — directly informs Part 4's decision framework below.
+
+### Monocle / Winkreative — old-style serif for authority, neutral sans as counterpoint
+**[LIVE confirms SEARCH]** Plantin (a 1910s old-style serif, chosen per Winkreative's own stated reasoning for "literary authority") for headlines/body, Helvetica Neue for captions/data as "a clean, neutral, efficient counterpoint" (SEARCH-tier reasoning, not independently re-verified this round). LIVE rendering confirmed Plantin is genuinely the live H1 typeface — a positive data point for how much to trust a well-sourced SEARCH claim generally, and a template for the "two-register" pairing pattern (one identity-bearing typeface for voice, one neutral typeface for data/utility) that recurs across several entries in this roster (see also NYT's Franklin-for-utility role, and Monocle's own Garden-skill recipe entry, which independently describes the identical pairing).
+
+### Ramp (design by Bakken & Bæck) — a single-weight display face reserved for one semantic role
+**[PROVENANCE, SEARCH — not LIVE this round, see Part 6 limitations]** Lausanne, a single-weight neo-grotesque, used at large display sizes with tight leading; **positive-tracking** small-caps for labels (the opposite direction from the Part 2 finding — worth noting precisely because it demonstrates tracking direction itself is register-dependent, not fixed even within one product's own system: large display type tight, small-caps labels loose). A single chartreuse/highlighter-yellow accent color reserved strictly for money-movement states (CTAs, live counters). This is a real, sourced, specific example of restraint applied *by role*, not applied uniformly.
+
+### Vercel — an open-source typeface at the most extreme tracking value measured
+**[LIVE]** GeistSans, Vercel's own open-source (SIL OFL) typeface, at -0.06em on the hero H1 — see Part 2. Notable because this is the one entry in this roster where the typeface itself is freely usable by other projects (with attribution), unlike every licensed/proprietary entry above.
+
+### Aesop — a single transitional serif at every size (not independently re-verified this round)
+**[SEARCH, Garden-skill-sourced, NOT LIVE]** The Garden skill's own `aesop.md` recipe names Suisse Works, Lyon Text, or GT Sectra as real candidates, paired with a sans (Söhne or Helvetica Now) for UI labels — but this project's own attempt to LIVE-verify Aesop.com this round was blocked by a Cloudflare bot-verification challenge (logged honestly in `PROFESSIONAL_WEB_DESIGN_RESEARCH.md`). This entry is flagged explicitly as unverified-this-round rather than silently treated as confirmed.
+
+### GOV.UK, Primer, IKEA, Notion, Airbnb — custom-named typefaces as a recurring signal
+Five separate `[LIVE]`-confirmed cases of a **custom-named typeface family** (GDS Transport, Mona Sans, Noto IKEA, NotionInter, Airbnb Cereal VF) rather than a generic system stack or an unmodified popular webfont. This is a real, checkable, recurring authorship signal: a product investing in even a *lightly customized* variant of an existing typeface (Notion's "NotionInter" is Inter with modifications; IKEA's "Noto IKEA" is a Noto variant) is a cheap, common, and apparently standard move among design-forward products — worth naming as its own signal distinct from "uses a fully bespoke commissioned typeface" (NYT, Stripe's Söhne license, Varda's MT Everyday Sans), which is a much higher bar.
+
+## Part 4: Font anatomy — operational guidance, tied to the roster above where evidence supports it
+
+This section answers the calibration brief's Part 6 anatomy questions with reference to what was actually observed, not a generic type-design tutorial:
+
+- **x-height and density**: NYT's choice of Georgia over Imperial for on-screen body text is a real, sourced example of x-height/screen-rendering considerations overriding brand-consistency-for-its-own-sake — the "same" typographic voice (serif, editorial, authoritative) was preserved while the specific face changed for the specific medium. **Operational rule**: a typeface choice justified by "matches the brand's other typeface" is incomplete without also checking it renders legibly at the actual density/size the product needs; NYT's own history shows even a newspaper with total ownership over its type system did not treat brand-matching as sufficient justification on its own.
+- **Optical sizing / display vs. text cuts**: this project's roster did not independently verify optical-size axis usage this round (a real gap — flagged, not glossed over). Variable fonts confirmed live in this roster (GeistSans, NotionInter, Mona Sans, Airbnb Cereal VF) are strong candidates for a follow-up check specifically for optical-size or weight-axis usage at different type-scale steps, since several are confirmed as variable-font families capable of it.
+- **Tabular figures / numeral alignment**: not independently verified this round on any entry in this roster — a concrete follow-up target, especially for the utilitarian/dense-dashboard category (Bloomberg Terminal, the Lovable CFO Command Center) where numeral alignment across a KPI row is directly visible and directly checkable.
+- **Language/symbol coverage**: not tested this round on any entry.
+- **Weight range as a signal**: Ramp's single-weight (Lausanne at 400 only) approach and Vignelli's "six typefaces is enough for a lifetime" restraint principle (Garden skill, `design-directions.md`) point the same direction as this project's own guide's existing "≤3 weights in play" rule — corroborating, not novel, evidence.
+
+## Part 5: AI-associated font defaults — studied contextually, per the calibration brief's explicit instruction not to produce a ban list
+
+**This project's central, evidence-backed critique here is aimed at the reference skill it was asked to study, not at any specific font.** The Garden skill's `advanced-patterns.md` states a hard rule — "avoid Inter/Roboto/Arial/Fraunces/system-ui — fonts overused by AI-generated content" — and then, one section later, recommends as the "non-default" alternative: Plus Jakarta Sans, Outfit, Space Grotesk, Sora, and Newsreader. **Every one of these five names independently appears on this calibration project's own brief (Part 6) as a font specifically flagged for current overrepresentation in AI-generated output.** This is not a matter of taste — it is a directly checkable case of an escape hatch from one default cluster mechanically producing a second, different default cluster, and it is the single clearest illustration available anywhere in this research of the calibration brief's own warning: *"which recipes could become another form of vibe coding if applied mechanically."*
+
+**The correct framing, consistent with this project's own live evidence:**
+- Inter appears live on this project's own roster at Linear (`-0.022em` tracking, a highly credited, design-forward product) — Inter itself is not disqualifying; Linear's specific, checked, thesis-driven use of it is different from applying it because no other choice was considered.
+- A "safe alternative" list is a trap in the same shape as the "safe alternative" it replaces, not a fix — the fix is the same one this project's guide already states for every other pattern-catalog entry: was the choice checked against *this* product's actual thesis, or was it reached for because it was available/recommended/trending? A list cannot answer that question; only the product brief can.
+- **This project will NOT publish its own replacement "safe list."** Doing so would repeat exactly the error just identified in the Garden skill. Part 6's decision framework below is deliberately built as a set of questions, not a table of approved names.
+
+## Part 6: Typography Decision Framework
+
+Every font decision for an important greenfield design must answer all 15 questions below before implementation, per the calibration brief's Part 7. This framework does not replace product judgment; it forces the judgment to be recorded rather than skipped.
+
+1. **What role does this font play?** (Display/identity-bearing, body/reading, UI/functional, monospace/technical — per NYT's four-role model in Part 3, a product does not need one answer for all four roles.)
+2. **Is it identity-bearing or intentionally neutral?** (Vercel's GeistSans is identity-bearing for a developer-tools brand; a government service's use of a neutral, highly-legible system-adjacent face can be the *correct* choice specifically because neutrality serves the product — see GOV.UK's GDS Transport, chosen for accessibility/plainness, not personality.)
+3. **What product trait does it express?** State this in one sentence tied to the actual product brief (§3 of `ANTI_VIBE_CODING_UI.md`), not a mood word.
+4. **Does its width support the content density this product actually needs?** (A condensed or narrow-width face may be necessary for a dense dashboard's numeral columns; a wide, spacious face may actively work against a data-heavy product — see Bloomberg Terminal/Tufte-density registers vs. Aesop/Monocle-editorial-space registers.)
+5. **Does its x-height support the intended reading size?** (See Part 4's NYT Georgia-over-Imperial case.)
+6. **Does it support required languages and symbols?** Not independently verified on this project's own roster yet — treat as an open checklist item, not assumed-fine.
+7. **Are the needed weights and styles actually available?** (Ramp's single-weight system, Part 3, shows this can be a deliberate constraint, not just a limitation to work around.)
+8. **Does it render well on target devices?** Requires an actual rendered check, not an assumption — this project's own round-7/8 work already established that visual defects (a clipped word on Primer's own live site) occur regardless of typeface quality and are only caught by looking at the real render.
+9. **Is the license appropriate?** Every entry in Part 3 was checked for license status; several (NYT's four faces, Stripe's Söhne, Varda's MT Everyday Sans, Airbnb Cereal VF) are explicitly non-redistributable — **never add a downloaded proprietary font file to a project's repository without confirmed permission**, per this calibration project's own repository-safety rules.
+10. **Is the loading cost justified?** Not independently benchmarked this round — a concrete Phase 3 follow-up (font-loading waterfall inspection was planned in the calibration brief's Part 6 and has not yet been executed).
+11. **Does the fallback preserve layout?** Not independently verified this round on any live entry — flagged as a gap, not assumed fine because several entries use variable fonts with plausible system fallback stacks (Notion's stack alone lists seven fallback fonts, which is at least evidence the question was considered by that team).
+12. **Is this selection based on context or familiarity?** The question the whole Part 5 critique exists to force — "I've seen it recommended" is not context.
+13. **Does the pairing create meaningful contrast?** (Monocle's serif-for-voice/sans-for-data pairing, Part 3, is the clearest real model available in this roster.)
+14. **Does the typography remain effective without decorative styling?** Not yet tested via this project's own required 3-direction specimen prototyping (Part 7 of the calibration brief) — this is the single largest remaining gap in this document, stated plainly in Part 7 below.
+15. **Does it resemble an overused generated-site pairing?** Cross-check against Part 5's finding: the danger is not any single font, it's an *unexamined* pairing reached for because it's recommended somewhere, including inside this project's own future guidance if it is ever applied as a checklist rather than a set of questions.
+
+## Part 7: What this document does not yet contain — stated honestly
+
+- **Rendered three-direction typography specimens** (the calibration brief's explicit "Required Typography Prototypes" — three materially different typographic directions rendered against the same real content, compared before selection) have not been produced. This requires an actual greenfield build and belongs to Phase 10 (the practical exercises), not to this research-synthesis phase. Marking this open rather than fabricating specimen renders to make this document look more complete.
+- **A blind typography perception test** (Part 17 of the calibration brief — presenting specimens without revealing font names, asking reviewers about tone/professionalism/AI-association before reveal) has not been run. It requires the specimens above to exist first and belongs to Phase 11.
+- **Font-loading and fallback-stack behavior** were not independently benchmarked on any live entry this round.
+- **Tabular-figure/numeral-alignment and optical-size-axis usage** were not independently verified on any live entry this round, despite being directly relevant to this roster's own dense-dashboard entries (Bloomberg Terminal, the Lovable CFO Command Center).
+- **The 30-system completion gate is not yet met.** This document currently draws on real typographic detail (font names, real measured tracking values, or both) for roughly a dozen organizations in the atlas, not 30. The remaining organizations will be added as Phase 2's live-rendering pass continues and as more of the atlas's SEARCH-tier entries are upgraded, consistent with the same evidence-tiering discipline used throughout this project.

@@ -1,0 +1,97 @@
+:root {
+  --bg: #121113;
+  --ink: #f5f3f0;
+  --ink-quiet: #9a958f;
+  --line: #2e2c2e;
+  --accent: #e8395f;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Archivo', ui-sans-serif, system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 32px;
+}
+.mark { font-family: 'Archivo Black', 'Archivo', sans-serif; font-size: 16px; letter-spacing: 0.02em; }
+.tix-link {
+  color: var(--bg);
+  background: var(--ink);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 9px 16px;
+  border-radius: 3px;
+}
+
+.hero { padding: 40px 32px 24px; }
+.hero h1 {
+  font-family: 'Archivo Black', 'Archivo', sans-serif;
+  font-size: clamp(48px, 10vw, 120px);
+  line-height: 0.92;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.hero .sub {
+  font-size: 16px;
+  color: var(--ink-quiet);
+  margin-top: 16px;
+}
+.hero .sub strong { color: var(--ink); }
+
+.day-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 0 32px;
+  margin-top: 32px;
+  border-bottom: 1px solid var(--line);
+}
+.day-tab {
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  background: none;
+  border: none;
+  color: var(--ink-quiet);
+  padding: 14px 18px 12px;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+}
+.day-tab.active { color: var(--ink); border-bottom-color: var(--accent); }
+.day-tab .date { display: block; font-size: 11px; font-weight: 500; color: var(--ink-quiet); margin-top: 2px; }
+
+.bill { padding: 28px 32px 48px; }
+.bill-act { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--line); gap: 16px; }
+.bill-act:last-child { border-bottom: none; }
+.bill-act .name { font-family: 'Archivo Black', 'Archivo', sans-serif; }
+.bill-act.headliner .name { font-size: clamp(32px, 6vw, 56px); color: var(--accent); }
+.bill-act.support .name { font-size: 22px; }
+.bill-act .time { font-size: 13px; color: var(--ink-quiet); white-space: nowrap; }
+
+.section { padding: 40px 32px; border-top: 1px solid var(--line); }
+.section h2 { font-family: 'Archivo Black', 'Archivo', sans-serif; font-size: 20px; margin: 0 0 20px; }
+
+.tix-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.tix-card { border: 1px solid var(--line); padding: 18px; border-radius: 4px; }
+.tix-card .price { font-family: 'Archivo Black', 'Archivo', sans-serif; font-size: 30px; color: var(--accent); }
+.tix-card .name { font-weight: 700; margin: 4px 0 6px; }
+.tix-card .note { font-size: 13px; color: var(--ink-quiet); }
+
+.venue-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; font-size: 14px; color: var(--ink-quiet); }
+.venue-grid dt { color: var(--ink); font-weight: 700; margin-bottom: 4px; }
+.venue-grid dd { margin: 0 0 16px; }
+
+@media (max-width: 640px) {
+  .topbar, .hero, .day-tabs, .bill, .section { padding-left: 18px; padding-right: 18px; }
+  .tix-grid { grid-template-columns: 1fr; }
+  .venue-grid { grid-template-columns: 1fr; }
+  .day-tabs { overflow-x: auto; }
+}

@@ -1,0 +1,144 @@
+:root {
+  --bg: #0f1113;
+  --surface: #17191c;
+  --line: #2a2d31;
+  --ink: #eceeef;
+  --ink-quiet: #9a9fa6;
+  --accent: #ff5a36; /* reserved strictly for "closing soon" urgency, per Ramp's single-accent-for-one-role pattern */
+  --at-risk: #e0a339;
+  --late: #ff5a36;
+  --exception: #ff5a36;
+  --unassigned: #6b7480;
+  --on-time: #3fae74;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 13px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 18px 28px;
+  border-bottom: 1px solid var(--line);
+}
+.mark {
+  font-family: 'Big Shoulders Text', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.02em;
+}
+.mark-sub { color: var(--accent); font-size: 13px; margin-left: 6px; }
+.clock { color: var(--ink-quiet); }
+
+.timeline-wrap { padding: 24px 28px 8px; }
+
+.timeline { position: relative; }
+
+.now-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--accent);
+  z-index: 3;
+}
+.now-label {
+  position: absolute;
+  top: -18px;
+  left: 4px;
+  font-size: 10px;
+  color: var(--accent);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.ruler {
+  position: relative;
+  height: 20px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 6px;
+}
+.ruler-mark {
+  position: absolute;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: var(--ink-quiet);
+  top: 0;
+}
+
+.tracks { position: relative; }
+
+.track-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  align-items: center;
+  gap: 12px;
+  height: 26px;
+}
+
+.track-label {
+  font-size: 11px;
+  color: var(--ink-quiet);
+  display: flex;
+  gap: 8px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.track-driver { color: #6b7480; }
+
+.track-lane { position: relative; height: 10px; background: var(--surface); border-radius: 2px; }
+
+.bar {
+  position: absolute;
+  top: 0; height: 100%;
+  border-radius: 2px;
+  min-width: 3px;
+}
+.bar-on_time { background: var(--on-time); }
+.bar-at_risk { background: var(--at-risk); }
+.bar-late, .bar-exception { background: var(--accent); }
+.bar-unassigned { background: var(--unassigned); }
+
+.list-view {
+  max-width: 760px;
+  margin: 20px auto 0;
+  padding: 24px 28px 80px;
+  border-top: 1px solid var(--line);
+}
+
+.list-view h1 {
+  font-family: 'Big Shoulders Text', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0 0 16px;
+  color: var(--ink-quiet);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.list-row {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.lr-main { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.lr-id { font-weight: 600; }
+.lr-status { font-size: 11px; text-transform: uppercase; letter-spacing: 0.03em; color: var(--ink-quiet); }
+.status-late .lr-status, .status-exception .lr-status { color: var(--accent); }
+.status-at_risk .lr-status { color: var(--at-risk); }
+.lr-route { color: var(--ink-quiet); font-family: 'Big Shoulders Text', sans-serif; font-size: 14px; }
+.lr-sub { font-size: 11px; color: var(--ink-quiet); margin-top: 3px; }
+.lr-note { font-size: 12px; margin-top: 6px; color: var(--ink); font-family: ui-sans-serif, system-ui, sans-serif; }
+
+@media (max-width: 700px) {
+  .timeline-wrap { display: none; } /* the spatial timeline doesn't survive narrow widths legibly — see Responsive Creative Direction note in the review doc; the accessible list below is the real mobile experience, not a degraded fallback */
+  .list-view { border-top: none; margin-top: 0; padding: 20px 16px 60px; }
+}

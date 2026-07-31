@@ -1,0 +1,165 @@
+:root {
+  --ink: #1c1a17;
+  --ink-quiet: #706a5f;
+  --ink-faint: #a39c8e;
+  --bg: #ffffff;
+  --surface: #fbf9f5;
+  --line: #e6e1d6;
+  --accent: #b5750f;
+  --accent-bg: #fdf0da;
+  --track: #efe9db;
+  --env-prod: #7a3b1f;
+  --env-prod-bg: #f6e6dc;
+  --env-staging: #3d5a3d;
+  --env-staging-bg: #e5ede2;
+  --env-dev: #3d4a5c;
+  --env-dev-bg: #e5e9ee;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 14px 28px;
+  border-bottom: 1px solid var(--line);
+}
+.mark { font-weight: 700; font-size: 15px; }
+.nav { display: flex; gap: 20px; font-size: 14px; }
+.nav a { color: var(--ink-quiet); text-decoration: none; }
+.nav a[aria-current="page"] { color: var(--ink); font-weight: 600; }
+
+main { max-width: 900px; margin: 0 auto; padding: 32px 28px 80px; }
+
+.page-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 20px; }
+.page-head h1 { font-size: 20px; font-weight: 700; margin: 0; }
+.page-head .sub { font-size: 13px; color: var(--ink-quiet); }
+
+.flag-row {
+  display: grid;
+  grid-template-columns: 96px 1fr auto;
+  gap: 20px;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  color: inherit;
+}
+.flag-row:hover { background: var(--surface); }
+
+.pct-block { text-align: center; }
+.pct-number { font-size: 26px; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1; color: var(--accent); }
+.pct-number.pct-zero { color: var(--ink-faint); }
+.pct-number.pct-full { color: #3d5a3d; }
+.pct-track { height: 5px; background: var(--track); border-radius: 3px; margin-top: 6px; overflow: hidden; }
+.pct-fill { height: 100%; background: var(--accent); }
+.pct-fill.pct-full { background: #3d5a3d; }
+.pct-fill.pct-zero { background: transparent; }
+
+.flag-key { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
+.flag-desc { font-size: 13px; color: var(--ink-quiet); }
+.flag-desc.empty { font-style: italic; color: var(--ink-faint); }
+.flag-meta { display: flex; gap: 10px; align-items: center; margin-top: 6px; }
+
+.env-badge { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 10px; text-transform: uppercase; letter-spacing: 0.03em; }
+.env-production { background: var(--env-prod-bg); color: var(--env-prod); }
+.env-staging { background: var(--env-staging-bg); color: var(--env-staging); }
+.env-development { background: var(--env-dev-bg); color: var(--env-dev); }
+
+.flag-side { text-align: right; font-size: 12px; color: var(--ink-quiet); white-space: nowrap; }
+.flag-side .segments { margin-bottom: 3px; }
+
+@media (max-width: 640px) {
+  main { padding: 20px 16px 60px; }
+  .flag-row { grid-template-columns: 72px 1fr; }
+  .flag-side { grid-column: 1 / -1; text-align: left; margin-top: 4px; }
+  .pct-number { font-size: 21px; }
+}
+
+/* Flag detail page */
+.detail-head { margin-bottom: 28px; }
+.detail-head .flag-key { font-size: 22px; }
+.detail-head .flag-desc { font-size: 15px; margin-top: 4px; }
+
+.detail-panel {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 28px;
+  margin-bottom: 24px;
+}
+
+.big-pct { font-size: 56px; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--accent); line-height: 1; margin-bottom: 4px; }
+.big-pct.pct-zero { color: var(--ink-faint); }
+.big-pct.pct-full { color: #3d5a3d; }
+.big-pct-label { font-size: 13px; color: var(--ink-quiet); margin-bottom: 18px; }
+
+.big-track { height: 10px; background: var(--track); border-radius: 5px; overflow: hidden; margin-bottom: 8px; }
+.big-fill { height: 100%; background: var(--accent); }
+
+.detail-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 13px; }
+.detail-field dt { color: var(--ink-quiet); margin-bottom: 3px; }
+.detail-field dd { margin: 0; font-weight: 500; }
+
+.change-note {
+  background: var(--accent-bg);
+  border: 1px solid #edd8ab;
+  border-radius: 4px;
+  padding: 14px 16px;
+  font-size: 13px;
+  color: var(--env-prod);
+}
+
+@media (max-width: 640px) {
+  .detail-fields { grid-template-columns: 1fr; }
+  .big-pct { font-size: 42px; }
+}
+
+/* Native <input type=range> renders in the browser's default blue with no
+   styling applied — a real, only-visible-when-rendered clash against this
+   page's deliberate amber accent system (caught by actually screenshotting
+   the detail page, not by reading the markup). Restyled to match. */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--track);
+  outline-offset: 4px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px var(--accent);
+  cursor: pointer;
+  margin-top: -6px;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px var(--accent);
+  cursor: pointer;
+}
+input[type="range"]::-moz-range-track {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--track);
+}

@@ -264,7 +264,7 @@ Per the calibration brief's 10-minimum ambiguous/counterexample gate. Currently 
 - **The Cracker Barrel rebrand** — minimalism as the *wrong* execution of a *legitimate* stated goal (billboard visibility), not evidence minimalism itself was the error. See `MINIMALISM_RESEARCH.md` Part 3.
 - **Ramp.com serving a different "machine version" to automated browsers** — not a design-quality counterexample, but a genuine methodological one: this project's own LIVE-tier evidence gathering is itself vulnerable to sites detecting and adapting to automated inspection, a limitation worth stating for any future round of this research.
 
-**4 more counterexamples are needed to meet the 10-minimum gate** — not yet completed.
+**7 of 10 logged; 3 more counterexamples are needed to meet the minimum gate** — not yet completed.
 
 ## Part 5: Source Ledger
 

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capsule Detail — Perigee Mission Ops</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="app-shell">
+  <nav class="sidebar" aria-label="Primary">
+    <div class="sidebar-mark">
+      <span class="mark-name">Perigee</span>
+      <span class="mark-sub">Mission Ops</span>
+    </div>
+    <div class="nav-routes">
+      <a href="fleet.html">Fleet Overview</a>
+      <a href="manifest.html">Manifest &amp; Schedule</a>
+    </div>
+    <div class="sidebar-status">
+      <div><span class="shift-name">Flight Director:</span> R. Okonkwo</div>
+      <div class="zulu-clock" data-zulu-clock aria-live="off">00:00:00Z</div>
+    </div>
+  </nav>
+
+  <main class="main" id="main">
+    <div id="capsule-content">
+      <!-- rendered by inline script from data.js, including a real not-found state -->
+    </div>
+  </main>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+  (function renderCapsule() {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+    const capsule = PERIGEE_FLEET.find((c) => c.id === id);
+    const root = document.getElementById("capsule-content");
+
+    if (!capsule) {
+      // A real "not found" state (§11) — not a blank page, not an invented capsule.
+      root.innerHTML = `
+        <div class="page-header">
+          <div>
+            <h1>Capsule not found</h1>
+            <div class="page-sub">${id ? `No capsule matches ID "${escapeHtml(id)}"` : "No capsule ID was provided"}</div>
+          </div>
+        </div>
+        <div class="empty-state">
+          <div class="empty-title">Nothing to show</div>
+          <div>Check the capsule ID, or return to the fleet list.</div>
+          <div class="empty-action"><a class="btn btn-primary" href="fleet.html">Back to Fleet Overview</a></div>
+        </div>
+      `;
+      return;
+    }
+
+    document.title = `${capsule.id} — Perigee Mission Ops`;
+
+    let html = `
+      <div class="page-header">
+        <div>
+          <h1>${capsule.id}</h1>
+          <div class="page-sub">${capsule.phase} · ${statusPillHtml(capsule.status)}</div>
+        </div>
+        <a class="btn" href="fleet.html">&larr; Fleet Overview</a>
+      </div>
+    `;
+
+    if (capsule.anomaly) {
+      html += `
+        <div class="anomaly-banner" role="alert">
+          <svg class="anomaly-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M10 2 L18.5 17H1.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M10 8v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="10" cy="14.5" r="0.9" fill="currentColor"/>
+          </svg>
+          <div style="flex: 1;">
+            <div class="anomaly-title">${capsule.anomaly.title}</div>
+            <div class="anomaly-body">${capsule.anomaly.body}</div>
+            ${capsule.anomaly.thermalHistoryC ? thermalSparklineHtml(capsule.anomaly.thermalHistoryC, capsule.telemetry.thermalC.nominalMax) : ""}
+            <div class="anomaly-meta">Opened ~${capsule.anomaly.openedAgoMin} min ago · Owner: ${capsule.anomaly.owner}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    if (capsule.telemetryGapNote) {
+      html += `
+        <div class="anomaly-banner" role="status" style="background: color-mix(in srgb, var(--warning) 10%, var(--surface)); border-color: color-mix(in srgb, var(--warning) 40%, var(--border));">
+          <svg class="anomaly-icon" style="color: var(--warning);" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M10 6v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="10" cy="14" r="0.9" fill="currentColor"/>
+          </svg>
+          <div>
+            <div class="anomaly-title" style="color: var(--warning);">Telemetry gap — not a vehicle fault</div>
+            <div class="anomaly-body">${capsule.telemetryGapNote}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    html += `<div class="panel-grid">`;
+
+    if (capsule.status === "recovered") {
+      html += `
+        <div class="panel">
+          <h2 class="section-heading" style="margin-top:0;">Recovery</h2>
+          <div class="readout-grid">
+            <div class="readout">
+              <span class="readout-label">Landed</span>
+              <span class="readout-value">${telemetryAgeHtml(capsule.recovered.landedAt, { alert: false })}</span>
+            </div>
+            <div class="readout">
+              <span class="readout-label">Recovery zone</span>
+              <span class="readout-value" style="font-size: var(--fs-base); font-family: var(--font-ui);">${capsule.recovered.recoveryZone}</span>
+            </div>
+          </div>
+          <p style="color: var(--text-secondary); margin-top: var(--sp-4); margin-bottom: 0;">${capsule.recovered.handoffNote}</p>
+        </div>
+      `;
+    } else {
+      const t = capsule.telemetry;
+      html += `
+        <div class="panel">
+          <h2 class="section-heading" style="margin-top:0;">Telemetry</h2>
+          <div class="readout-grid">
+            ${telemetryReadoutHtml("Thermal", t.thermalC)}
+            ${telemetryReadoutHtml("Attitude error", t.attitudeErrorDeg)}
+            ${t.commsLatencyMs.state === "unavailable"
+              ? `<div class="readout"><span class="readout-label">Comms latency</span><span class="readout-value" style="color: var(--text-muted); font-size: var(--fs-base);">Unavailable</span></div>`
+              : telemetryReadoutHtml("Comms latency", t.commsLatencyMs)}
+            ${telemetryReadoutHtml("Battery", t.batterySoc)}
+          </div>
+          <div style="margin-top: var(--sp-4); padding-top: var(--sp-3); border-top: 1px solid var(--border);">
+            <span class="readout-label">Last telemetry received</span><br>
+            ${telemetryAgeHtml(capsule.telemetryTimestamp)}
+          </div>
+        </div>
+      `;
+    }
+
+    html += `
+      <div class="panel">
+        <h2 class="section-heading" style="margin-top:0;">Manifest</h2>
+        <div class="readout">
+          <span class="readout-label">Payload</span>
+          <span class="readout-value" style="font-size: var(--fs-base); font-family: var(--font-ui);">${capsule.payload}</span>
+        </div>
+        <div class="readout" style="margin-top: var(--sp-3);">
+          <span class="readout-label">Customer</span>
+          <span class="readout-value" style="font-size: var(--fs-base); font-family: var(--font-ui);">${capsule.customer}</span>
+        </div>
+        <p style="color: var(--text-secondary); margin-top: var(--sp-4); margin-bottom: 0; font-size: var(--fs-sm);">${capsule.manifestNote}</p>
+      </div>
+    `;
+
+    html += `</div>`;
+    root.innerHTML = html;
+    initTelemetryAgeWidgets(root);
+  })();
+
+  /**
+   * A real trend chart, not a decorative one (§10: charts must support an actual
+   * decision). Answers the one question the instantaneous readout can't: is the
+   * reading rising, flat, or oscillating. Plain inline SVG — no charting library
+   * for a single ten-point line — with the nominal-band ceiling drawn in for
+   * reference, and the exact current/nominal-max values in the accessible caption
+   * rather than only implied by the shape of the line.
+   */
+  function thermalSparklineHtml(history, nominalMax) {
+    const w = 280, h = 56, pad = 4;
+    const min = Math.min(...history, nominalMax) - 0.3;
+    const max = Math.max(...history) + 0.3;
+    const x = (i) => pad + (i / (history.length - 1)) * (w - pad * 2);
+    const y = (v) => h - pad - ((v - min) / (max - min)) * (h - pad * 2);
+    const points = history.map((v, i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
+    const nominalY = y(nominalMax).toFixed(1);
+    return `
+      <div style="margin-top: var(--sp-3);">
+        <svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="Thermal sensor B3 trend over the last 45 minutes, rising from ${history[0]}°C to ${history[history.length - 1]}°C against a nominal ceiling of ${nominalMax}°C">
+          <line x1="${pad}" y1="${nominalY}" x2="${w - pad}" y2="${nominalY}" stroke="var(--text-muted)" stroke-width="1" stroke-dasharray="2,3"/>
+          <polyline points="${points}" fill="none" stroke="var(--error)" stroke-width="1.75" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="${x(history.length - 1)}" cy="${y(history[history.length - 1])}" r="2.5" fill="var(--error)"/>
+        </svg>
+        <div style="font-size: var(--fs-xs); color: var(--text-muted); font-family: var(--font-mono); margin-top: 2px;">
+          45 min ago: ${history[0]}&deg;C &rarr; now: ${history[history.length - 1]}&deg;C &middot; nominal ceiling ${nominalMax}&deg;C (dashed)
+        </div>
+      </div>
+    `;
+  }
+
+  function telemetryReadoutHtml(label, reading) {
+    const valueClass = reading.state === "error" ? "value-error" : reading.state === "warning" ? "value-warning" : "";
+    return `
+      <div class="readout">
+        <span class="readout-label">${label}</span>
+        <span class="readout-value ${valueClass}">${reading.value}<span class="readout-unit"> ${reading.unit}</span></span>
+      </div>
+    `;
+  }
+
+  function escapeHtml(s) {
+    const div = document.createElement("div");
+    div.textContent = s;
+    return div.innerHTML;
+  }
+</script>
+</body>
+</html>

@@ -102,4 +102,9 @@ main {
 @media (max-width: 720px) {
   main { grid-template-columns: 1fr; padding: 28px 18px 70px; }
   .detail-sections { grid-template-columns: 1fr; gap: 24px; }
+  /* A blind reviewer flagged the placeholder proportionally dominating the
+     first mobile screen, pushing the product name/price further down for
+     no visual gain — shrunk further specifically at narrow widths, on top
+     of the general de-emphasis already applied for the barbershop finding. */
+  .product-image { height: 100px; }
 }

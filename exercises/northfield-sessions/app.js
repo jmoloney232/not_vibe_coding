@@ -1,5 +1,6 @@
 function billActHtml(act) {
-  return `<div class="bill-act ${act.size}">
+  const stageClass = act.time.includes("Main Stage") ? "stage-main" : "stage-barn";
+  return `<div class="bill-act ${act.size} ${stageClass}">
     <span class="name">${act.name}</span>
     <span class="time">${act.time}</span>
   </div>`;
@@ -19,9 +20,11 @@ function tabHtml(day) {
 
 function tixCardHtml(t) {
   return `<div class="tix-card">
+    <div class="name-block">
+      <div class="name">${t.name}</div>
+      <div class="note">${t.note}</div>
+    </div>
     <div class="price">$${t.price}</div>
-    <div class="name">${t.name}</div>
-    <div class="note">${t.note}</div>
   </div>`;
 }
 

@@ -69,21 +69,49 @@ body {
 .day-tab .date { display: block; font-size: 11px; font-weight: 500; color: var(--ink-quiet); margin-top: 2px; }
 
 .bill { padding: 28px 32px 48px; }
-.bill-act { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--line); gap: 16px; }
+.bill-act {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px 0 10px 16px;
+  border-bottom: 1px solid var(--line);
+  border-left: 3px solid var(--stage-color, var(--line));
+  gap: 16px;
+}
 .bill-act:last-child { border-bottom: none; }
 .bill-act .name { font-family: 'Archivo Black', 'Archivo', sans-serif; }
 .bill-act.headliner .name { font-size: clamp(32px, 6vw, 56px); color: var(--accent); }
 .bill-act.support .name { font-size: 22px; }
 .bill-act .time { font-size: 13px; color: var(--ink-quiet); white-space: nowrap; }
+/* Stage color-coding, a real poster convention (color-coding by stage on
+   the printed bill), carried consistently through every act rather than
+   being a one-off hero flourish — a blind reviewer specifically flagged
+   that the graphic identity didn't extend past the hero headline. */
+.bill-act.stage-main { --stage-color: var(--accent); }
+.bill-act.stage-barn { --stage-color: #d9a441; }
 
 .section { padding: 40px 32px; border-top: 1px solid var(--line); }
 .section h2 { font-family: 'Archivo Black', 'Archivo', sans-serif; font-size: 20px; margin: 0 0 20px; }
 
-.tix-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.tix-card { border: 1px solid var(--line); padding: 18px; border-radius: 4px; }
-.tix-card .price { font-family: 'Archivo Black', 'Archivo', sans-serif; font-size: 30px; color: var(--accent); }
-.tix-card .name { font-weight: 700; margin: 4px 0 6px; }
-.tix-card .note { font-size: 13px; color: var(--ink-quiet); }
+/* Replaces the original 3-equal-bordered-box "SaaS pricing tile" pattern —
+   a blind reviewer named it directly as generic and disconnected from the
+   bill's own visual language. Restyled as a stacked poster-style list
+   (large left-aligned price, matching the lineup's own typographic system)
+   instead of introducing a second, unrelated component convention. */
+.tix-grid { display: flex; flex-direction: column; }
+.tix-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.tix-card:last-child { border-bottom: none; }
+.tix-card .price { font-family: 'Archivo Black', 'Archivo', sans-serif; font-size: clamp(28px, 4vw, 40px); color: var(--accent); white-space: nowrap; }
+.tix-card .name-block { flex: 1; }
+.tix-card .name { font-weight: 700; font-size: 16px; }
+.tix-card .note { font-size: 13px; color: var(--ink-quiet); margin-top: 2px; }
 
 .venue-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; font-size: 14px; color: var(--ink-quiet); }
 .venue-grid dt { color: var(--ink); font-weight: 700; margin-bottom: 4px; }

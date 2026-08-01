@@ -40,6 +40,13 @@ function loadDraft(id) {
   }
   el('blurb').textContent = d.blurb;
   el('shaft-count').textContent = `· ${SHAFTS} shafts`;
+  syncChooser();
+}
+
+function syncChooser() {
+  el('draft-chooser').querySelectorAll('button').forEach(b => {
+    b.setAttribute('aria-checked', String(b.dataset.draft === state.draftId));
+  });
 }
 
 /* --------------------------------------------------------- interlacement */
@@ -108,7 +115,14 @@ function drawThreading() {
 
 function drawTieup() {
   const c = sizeGrid(el('tieup'), TREADLES, SHAFTS);
+  el('tieup').setAttribute('viewBox', `0 0 ${TREADLES * c + 22} ${SHAFTS * c}`);
+  el('tieup').setAttribute('width', TREADLES * c + 22);
   gridLines(el('tieup'), TREADLES, SHAFTS, c);
+  for (let sh = 0; sh < SHAFTS; sh++) {
+    el('tieup').appendChild(Object.assign(
+      node('text', { x: TREADLES * c + 6, y: sh * c + c * 0.5 + 3.5, class: 'gridnum' }),
+      { textContent: String(sh + 1) }));
+  }
   state.tieup.forEach((shafts, treadle) => {
     shafts.forEach(shaft => {
       el('tieup').appendChild(node('rect', {
@@ -121,7 +135,14 @@ function drawTieup() {
 
 function drawTreadling() {
   const c = sizeGrid(el('treadling'), TREADLES, PICKS);
+  el('treadling').setAttribute('viewBox', `0 0 ${TREADLES * c} ${PICKS * c + 15}`);
+  el('treadling').setAttribute('height', PICKS * c + 15);
   gridLines(el('treadling'), TREADLES, PICKS, c);
+  for (let tr = 0; tr < TREADLES; tr++) {
+    el('treadling').appendChild(Object.assign(
+      node('text', { x: tr * c + c * 0.5, y: PICKS * c + 11, 'text-anchor': 'middle', class: 'gridnum' }),
+      { textContent: String(tr + 1) }));
+  }
   state.treadling.forEach((treadle, pick) => {
     el('treadling').appendChild(node('rect', {
       x: treadle * c + 1, y: pick * c + 1, width: c - 2, height: c - 2,
@@ -158,7 +179,7 @@ function drawCloth() {
       svgEl.appendChild(node('rect', {
         x: end * c + c * 0.28, y: state.revealed * c,
         width: c * 0.44, height: (PICKS - state.revealed) * c,
-        fill: state.warpOrder[end] === 0 ? warpHex : warpAlt, opacity: 0.5,
+        fill: state.warpOrder[end] === 0 ? warpHex : warpAlt, opacity: 0.85,
       }));
     }
     svgEl.appendChild(node('line', {
@@ -269,6 +290,21 @@ for (const [id, dims] of Object.entries(GRIDS)) {
     applyEdit(id, c.col, c.row);
   });
 
+  // A hover outline is the only thing that separates a grid you can change from
+  // the cloth, which is styled the same way and is not editable.
+  svgEl.addEventListener('pointermove', e => {
+    svgEl.querySelectorAll('.hover-cell').forEach(n => n.remove());
+    const c = cellFromEvent(e, svgEl, dims.cols(), dims.rows());
+    if (!c) return;
+    const size = cellSize();
+    svgEl.appendChild(node('rect', {
+      class: 'hover-cell', x: c.col * size, y: c.row * size, width: size, height: size,
+    }));
+  });
+  svgEl.addEventListener('pointerleave', () => {
+    svgEl.querySelectorAll('.hover-cell').forEach(n => n.remove());
+  });
+
   svgEl.addEventListener('focus', () => { focusedGrid = id; drawCursor(id); say(id); });
   svgEl.addEventListener('blur', () => { focusedGrid = null; drawCursor(id); el('grid-say').textContent = ''; });
 
@@ -313,11 +349,11 @@ function buildChooser() {
     const b = document.createElement('button');
     b.type = 'button';
     b.setAttribute('role', 'radio');
+    b.dataset.draft = d.id;
     b.setAttribute('aria-checked', String(d.id === state.draftId));
     b.textContent = d.name;
     b.addEventListener('click', () => {
       loadDraft(d.id);
-      box.querySelectorAll('button').forEach(x => x.setAttribute('aria-checked', String(x === b)));
       drawAll();
       updateDyeHint();
     });
@@ -370,7 +406,7 @@ function updateDyeHint() {
     ? 'One yarn each way, so every square you see is structure. Log cabin is the draft where colour does the work instead.'
     : flat
       ? 'Both yarns in that direction are now the same dye, and its half of the pattern has gone — the structure underneath never changed.'
-      : 'This draft alternates two yarns in each direction. Set a direction\u2019s two swatches to the same dye to watch that half of the pattern vanish.';
+      : 'This draft alternates two yarns in each direction; the second swatch in each row is the alternate.';
 }
 
 /* ----------------------------------------------------------- weaving it */
@@ -384,13 +420,13 @@ el('weave').addEventListener('click', () => {
 
   state.revealed = 0;
   el('weave').disabled = true;
-  el('weave').textContent = 'Weaving…';
   drawAll();
 
   weaveTimer = setInterval(() => {
     state.revealed++;
     drawTreadling();
     drawCloth();
+    el('weave').textContent = `Pick ${state.revealed} of ${PICKS}`;
     if (state.revealed >= PICKS) {
       clearInterval(weaveTimer);
       weaveTimer = null;

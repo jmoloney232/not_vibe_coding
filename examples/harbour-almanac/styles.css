@@ -25,6 +25,7 @@
   --water: #b9cfd2;
   --water-deep: #8fb3b7;
   --moonlit: #efe8d2;
+  --moondark: #3c4a50;
   --night: rgba(23, 36, 42, 0.115);
   --twilight: rgba(23, 36, 42, 0.05);
 
@@ -240,7 +241,7 @@ main, .masthead, .colophon {
 
 .columns {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, 1.15fr);
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1.25fr);
   gap: var(--s5);
   margin-top: var(--s5);
 }
@@ -454,7 +455,9 @@ main, .masthead, .colophon {
 
 .colophon p {
   margin: 0;
-  max-width: 88ch;
+  columns: 2;
+  column-gap: var(--s5);
+  column-rule: 1px solid var(--hair-soft);
   font-family: var(--cond);
   font-size: 13px;
   line-height: 1.5;
@@ -483,7 +486,7 @@ main, .masthead, .colophon {
   .day { padding-right: 2px; }
   .day-wd { font-size: 9.5px; letter-spacing: 0.04em; }
   .day-n { font-size: 15px; }
-  .day-range-t { display: none; }
+  .day-range-t { font-size: 9.5px; }
   .masthead h1 .and { display: block; margin: var(--s1) 0; vertical-align: baseline; }
 }
 

@@ -18,7 +18,7 @@
   <h1>Cape Ansell<span class="and">and the</span><em>Hollis Reach</em></h1>
   <p class="standing">
     Heights in metres above chart datum, which is Lowest Astronomical Tide.
-    Times are zone <span class="nw">−4</span>, kept through the year.
+    Times are zone <span class="nw">−4</span> (UTC−4), kept through the year with no summer adjustment.
   </p>
 </header>
 
@@ -46,8 +46,8 @@
         <svg id="tide-svg" aria-hidden="true"></svg>
       </div>
       <figcaption id="plate-desc" class="plate-caption">
-        The shaded band is night; the two lighter margins are civil twilight. Move the pointer across
-        the curve, or focus it and use the arrow keys, to read the predicted height at any minute.
+        The shaded band is night; the two lighter margins are civil twilight. Drag across the curve —
+        or focus it and use the arrow keys — to read the predicted height at any minute.
       </figcaption>
     </figure>
   </section>
@@ -90,9 +90,10 @@
     <div class="section-head">
       <h2 id="lights-h">Lights of the approach</h2>
       <p class="section-note">
-        Each bar is one full period of the light, drawn to scale in seconds. The lamp at the left keeps
-        the light&#8217;s own rhythm, so two characteristics can be told apart by watching rather than by
-        counting.
+        All five bars share one twelve-second axis, so their rhythms can be compared directly: a light
+        that repeats every second is drawn twelve times over, and one that repeats every twelve is drawn
+        once. The dotted rules mark where each period restarts. The magenta line is a playhead running in
+        real time, and the lamp at the left holds whatever state the light is in as it passes.
       </p>
       <button type="button" class="motion-toggle" id="motion-toggle" aria-pressed="true">Pause the lights</button>
     </div>
@@ -132,8 +133,10 @@
     (M2, S2, N2, K1, O1, M4) at the standard constituent speeds. Sun times use the NOAA solar-position
     algorithm and are correct for the position given. The moon uses a mean synodic month, so its age
     can be out by up to about half a day, and no lunar rise or set is offered because that calculation
-    is not attempted here. The spring-neap cycle is derived from the moon rather than modelled
-    separately, so the page cannot print a neap range beside a full moon.
+    is not attempted here. The spring-neap cycle is the M2/S2 beat, as it is in any such synthesis; what
+    is derived rather than chosen is S2&#8217;s phase, which is set from the epoch new moon so the beat
+    stays pinned to the moon this page draws instead of drifting away from it. N2 is also present, so the
+    largest ranges fall a day or two either side of new and full rather than exactly on them.
   </p>
 </footer>
 

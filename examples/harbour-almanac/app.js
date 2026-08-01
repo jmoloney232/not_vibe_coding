@@ -113,7 +113,9 @@ function drawPlate() {
     // Two lines of label, kept inside the plot at both ends of the day and at
     // both ends of the range.
     const anchor = px < padL + 46 ? 'start' : px > w - padR - 46 ? 'end' : 'middle';
-    const ty = Math.max(padT + 14, Math.min(h - padB - 18, up ? py - 20 : py + 26));
+    const wanted = up ? py - 20 : py + 26;
+    const ty = Math.max(padT + 14, Math.min(h - padB - 18, wanted));
+    if (ty !== wanted) plot.lastElementChild.previousElementSibling.remove();
     plot.appendChild(svg('text', { x: px, y: ty, 'text-anchor': anchor, class: 'ext-t' }, hhmm(e.minute)));
     plot.appendChild(svg('text', { x: px, y: ty + 14, 'text-anchor': anchor, class: 'ext-h' }, `${two(e.height)} m`));
   }
@@ -158,8 +160,10 @@ function minuteFromClientX(clientX) {
   return Math.max(0, Math.min(1440, Math.round(rel * 1440)));
 }
 
-frame.addEventListener('pointermove', e => { cursorMinute = minuteFromClientX(e.clientX); drawCursor(); });
-frame.addEventListener('pointerleave', clearCursor);
+const readAt = e => { cursorMinute = minuteFromClientX(e.clientX); drawCursor(); };
+frame.addEventListener('pointerdown', e => { readAt(e); frame.setPointerCapture(e.pointerId); });
+frame.addEventListener('pointermove', e => { if (e.pointerType === 'mouse' || e.buttons) readAt(e); });
+frame.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') clearCursor(); });
 
 frame.addEventListener('keydown', e => {
   const step = e.shiftKey ? 60 : 10;
@@ -195,8 +199,7 @@ function drawTideTable() {
   const moon = moonState(mid + 12 * 3600000);
   el('tide-meta').innerHTML = `
     <dt>Range of the day</dt><dd>${two(range)} m</dd>
-    <dt>Mean level</dt><dd>${two(STATION.z0)} m</dd>
-    <dt>Turns of tide</dt><dd>${ex.length}</dd>
+    <dt>Harbour mean level</dt><dd>${two(STATION.z0)} m</dd>
   `;
   return { ex, range, moon };
 }
@@ -230,7 +233,7 @@ function drawMoon(moon) {
   const R = 46;
 
   // The whole disc is the unlit moon; the lit limb is painted over it.
-  disc.appendChild(svg('circle', { cx: 0, cy: 0, r: R, fill: 'var(--ink)' }));
+  disc.appendChild(svg('circle', { cx: 0, cy: 0, r: R, fill: 'var(--moondark)' }));
 
   const theta = Math.acos(1 - 2 * moon.illuminated);
   const rx = Math.abs(R * Math.cos(theta));
@@ -269,17 +272,24 @@ function springsNote(range, moon) {
               : t < 0.22 ? 'at neaps' : 'taking off toward neaps';
 
   el('springs-note').innerHTML =
-    `The moon is in this column because it is why the column beside it moves. Sun and moon pull together at
-     new and full and the range opens; they pull across each other at the quarters and it closes. Cape Ansell
-     runs about ${(STATION.ageOfTide / 24).toFixed(1)} days behind the moon, so today&#8217;s
-     ${two(range)}&nbsp;m sits <b>${where}</b> — against ${two(lo)}&nbsp;m and ${two(hi)}&nbsp;m at the two
-     ends of this fortnight.`;
+    `The moon is here because it is what moves the column beside it. Sun and moon pull together at new and
+     full and the range opens; they pull across each other at the quarters and it closes. Today&#8217;s
+     ${two(range)}&nbsp;m sits <b>${where}</b>, in a fortnight running from ${two(lo)}&nbsp;m at neaps to
+     ${two(hi)}&nbsp;m at springs. The turn does not fall exactly on the moon: the lunar distance term pulls
+     the largest ranges a day or two either side of new and full, which is why the week strip above peaks
+     when it does rather than on the phase itself.`;
 }
 
 /* ----------------------------------------------------------------- lights */
 
 let lightsRunning = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 let rafId = null;
+
+// Every bar is drawn on the same twelve-second axis, and each light's pattern
+// repeats across it. Normalising each bar to its own period would make a
+// one-second quick flash and a twelve-second group occupy the same width, which
+// is the one comparison the reader is here to make.
+const AXIS_SECONDS = 12;
 
 function buildLights() {
   const list = el('light-list');
@@ -304,9 +314,11 @@ function buildLights() {
       <div class="light-char">
         <div class="char-line">
           <span class="char-code">${L.char}</span>
-          <span class="char-spec">period ${L.period}s &nbsp;·&nbsp; ${L.elevation} m elevation &nbsp;·&nbsp; ${L.range} M range</span>
+          <span class="char-spec">repeats every ${L.period}s &nbsp;·&nbsp;
+            light ${L.elevation}&nbsp;m above high water &nbsp;·&nbsp;
+            visible ${L.range} nautical miles</span>
         </div>
-        <svg class="timing" viewBox="0 0 600 34" preserveAspectRatio="none" aria-hidden="true"
+        <svg class="timing" viewBox="0 0 600 30" preserveAspectRatio="none" aria-hidden="true"
              data-timing="${L.ref}"></svg>
       </div>
       <p class="light-note">${L.note}</p>
@@ -315,28 +327,40 @@ function buildLights() {
 
     const timing = li.querySelector('.timing');
     const W = 600, baseY = 20;
-    timing.setAttribute('viewBox', `0 0 ${W} 30`);
+    const px = sec => (sec / AXIS_SECONDS) * W;
+
     timing.appendChild(svg('line', { x1: 0, x2: W, y1: baseY, y2: baseY, stroke: 'var(--hair)', 'stroke-width': 1 }));
 
-    // One tick per second across the light's period.
-    for (let s = 0; s <= L.period; s++) {
-      const px = (s / L.period) * W;
+    for (let sec = 0; sec <= AXIS_SECONDS; sec++) {
       timing.appendChild(svg('line', {
-        x1: px, x2: px, y1: baseY, y2: baseY + (s % 5 === 0 ? 7 : 4),
+        x1: px(sec), x2: px(sec), y1: baseY, y2: baseY + (sec % 5 === 0 ? 8 : 4),
         stroke: 'var(--hair)', 'stroke-width': 1,
       }));
     }
-    for (const [start, dur] of L.seq) {
-      timing.appendChild(svg('rect', {
-        x: (start / L.period) * W, y: 4,
-        width: (dur / L.period) * W, height: 16,
-        fill: colour, stroke: 'var(--ink)', 'stroke-width': L.colour === 'W' ? 1 : 0,
-      }));
+
+    // Repeat the pattern across the shared axis, and mark where each period ends.
+    for (let cycle = 0; cycle * L.period < AXIS_SECONDS; cycle++) {
+      const offset = cycle * L.period;
+      for (const [startS, dur] of L.seq) {
+        const a = offset + startS;
+        if (a >= AXIS_SECONDS) continue;
+        const b = Math.min(a + dur, AXIS_SECONDS);
+        timing.appendChild(svg('rect', {
+          x: px(a), y: 4, width: Math.max(1, px(b) - px(a)), height: 16,
+          fill: colour, stroke: 'var(--ink)', 'stroke-width': L.colour === 'W' ? 1 : 0,
+        }));
+      }
+      if (offset > 0) {
+        timing.appendChild(svg('line', {
+          x1: px(offset), x2: px(offset), y1: 0, y2: baseY,
+          stroke: 'var(--hair)', 'stroke-width': 1, 'stroke-dasharray': '2 3',
+        }));
+      }
     }
+
     timing.appendChild(svg('rect', {
       class: 'playhead', x: 0, y: 2, width: 2, height: 20, fill: 'var(--magenta)',
     }));
-
   }
 }
 
@@ -352,7 +376,7 @@ function tickLights(now) {
     const head = document.querySelector(`[data-timing="${CSS.escape(L.ref)}"] .playhead`);
     const on = litNow(L, t);
     lamp.setAttribute('fill', on ? `var(--lamp-${L.colour})` : 'var(--paper-sunk)');
-    head.setAttribute('x', ((t % L.period) / L.period) * 600);
+    head.setAttribute('x', ((t % AXIS_SECONDS) / AXIS_SECONDS) * 600);
   }
   rafId = requestAnimationFrame(tickLights);
 }

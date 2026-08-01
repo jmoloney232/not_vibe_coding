@@ -55,6 +55,20 @@ main, .masthead, .colophon {
   padding: 0 var(--u2);
 }
 
+/* The page imitates a filed instrument closely enough that the disclosure has
+   to lead, not sit in the colophon. */
+.fiction-strip {
+  margin: 0;
+  padding: var(--u-h) var(--u2);
+  border-bottom: 2px solid var(--stamp);
+  background: var(--paper-sunk);
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--ink-quiet);
+}
+
+.fiction-strip b { color: var(--stamp); }
+
 /* ---------------------------------------------------------------- masthead */
 
 .masthead { padding-top: var(--u2); }
@@ -131,6 +145,12 @@ main, .masthead, .colophon {
 
 .lede-text strong { font-weight: 600; }
 
+.lede-figures {
+  display: grid;
+  gap: var(--u2);
+  align-content: start;
+}
+
 .lede-figure {
   display: grid;
   grid-template-columns: max-content minmax(0, 1fr);
@@ -139,6 +159,10 @@ main, .masthead, .colophon {
   border-top: 3px solid var(--stamp);
   padding-top: var(--u-h);
 }
+
+/* The unknowns are excluded from the headline count, so they get their own. */
+.lede-figure-unknown { border-top-color: var(--ink); }
+.lede-figure-unknown .figure-value { color: var(--ink); font-size: clamp(40px, 5vw, 64px); }
 
 .figure-value {
   margin: 0;
@@ -466,6 +490,7 @@ main, .masthead, .colophon {
 
 .ledger tbody tr:hover { background: var(--paper-sunk); }
 
+.ledger .c-order { color: var(--ink-quiet); width: 4ch; }
 .ledger .c-block { font-weight: 700; white-space: nowrap; }
 .ledger .c-era { color: var(--ink-quiet); }
 .ledger .lead-n { color: var(--stamp); font-weight: 700; }
@@ -693,15 +718,41 @@ main, .masthead, .colophon {
   .lookup-layout { grid-template-columns: minmax(0, 1fr); gap: var(--u2); }
   .lookup-aside { padding-top: var(--u); }
   .readout {
-    position: static;
+    position: sticky;
+    top: 0;
+    z-index: 2;
     order: -1;
     border-top-width: 3px;
+    background: var(--paper);
+    padding-bottom: var(--u-h);
+    box-shadow: 0 var(--u-h) 0 var(--paper);
   }
   .method-cols { grid-template-columns: minmax(0, 1fr); }
 }
 
+/* At phone width the ledger stops being a table and becomes one block per
+   record. The Window column was previously scrolled off the right edge, and it
+   is the most actionable field on the page. */
+@media (max-width: 760px) {
+  .ledger { min-width: 0; }
+  .ledger thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .ledger tr { display: block; padding: var(--u) 0; border-bottom: 1px solid var(--ink); }
+  .ledger td { display: grid; grid-template-columns: 13ch minmax(0, 1fr); gap: var(--u);
+               padding: 2px 0; border: 0; white-space: normal; text-align: left; }
+  .ledger td.num { text-align: left; padding-right: 0; }
+  .ledger td::before { content: attr(data-label); color: var(--ink-quiet); font-size: 11px;
+                       letter-spacing: 0.06em; text-transform: uppercase; padding-top: 3px; }
+  .ledger td.c-order { display: none; }
+  .ledger td.c-block { font-size: 17px; padding-bottom: var(--u-h); }
+  .ledger td.c-block::before { content: none; }
+  .ledger td.c-block { grid-template-columns: minmax(0, 1fr); }
+  .ledger .c-bar { width: auto; }
+  .ledger tfoot td.c-block { padding-top: var(--u); }
+}
+
 @media (max-width: 720px) {
   main, .masthead, .colophon { padding: 0 var(--u); }
+  .fiction-strip { padding: var(--u-h) var(--u); }
   .masthead { padding-top: var(--u); }
   .lede { grid-template-columns: minmax(0, 1fr); gap: var(--u2); }
   .lede-figure { padding-top: var(--u-h); gap: var(--u); }

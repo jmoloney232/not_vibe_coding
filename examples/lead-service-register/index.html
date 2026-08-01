@@ -10,6 +10,11 @@
 </head>
 <body>
 
+<p class="fiction-strip">
+  <b>Demonstration document.</b> Rensdale Municipal Water does not exist, and every address, count,
+  and date below is generated. This page is not a filing and no household is described by it.
+</p>
+
 <header class="masthead">
   <div class="masthead-bar">
     <span class="authority">Rensdale Municipal Water</span>
@@ -29,12 +34,18 @@
     <p class="lede-text">
       Every service connection in Ward Seven appears on this page as one mark. There are
       <strong id="fig-total">—</strong> of them. The mark tells you what the pipe between the water main and
-      the building is made of — not the plumbing inside the building, which the utility does not own
-      and has not surveyed.
+      the building is made of, or records that nobody has established it yet. It does not describe the
+      plumbing inside the building, which the utility does not own and has not surveyed.
     </p>
-    <div class="lede-figure">
-      <p class="figure-value" id="fig-affected">—</p>
-      <p class="figure-label">connections still carrying lead or galvanized pipe scheduled for replacement</p>
+    <div class="lede-figures">
+      <div class="lede-figure">
+        <p class="figure-value" id="fig-affected">—</p>
+        <p class="figure-label">confirmed lead or galvanized. These have a replacement window.</p>
+      </div>
+      <div class="lede-figure lede-figure-unknown">
+        <p class="figure-value" id="fig-unknown">—</p>
+        <p class="figure-label">material not yet established. Treat these as lead until a crew has looked.</p>
+      </div>
     </div>
   </section>
 
@@ -44,8 +55,10 @@
     <div class="section-head">
       <h2 id="plate-h">Plate I &nbsp;— &nbsp;The ward, by connection</h2>
       <p class="section-note">
-        Blocks are drawn in survey order, north to south. Within a block, marks run in address order.
-        Point at or focus any mark for its record. Arrow keys move within a block; Tab moves between blocks.
+        Blocks are drawn in survey order, north to south; within a block, marks run in address order.
+        Tap or point at any mark for its record, or use Tab to reach a block and the arrow keys to move
+        inside it. This plate is for the shape of the ward — to find one address, use the search below.
+        A percentage is set in red where lead and galvanized together reach 40% of the block.
       </p>
     </div>
 
@@ -54,13 +67,13 @@
         <span class="mark m-lead" aria-hidden="true"></span><span class="legend-t"><b>Lead</b> confirmed lead service line</span>
       </button>
       <button type="button" class="legend-item" data-material="GRR" aria-pressed="false">
-        <span class="mark m-grr" aria-hidden="true"></span><span class="legend-t"><b>Galvanized</b> downstream of lead; replaced with it</span>
+        <span class="mark m-grr" aria-hidden="true"></span><span class="legend-t"><b>Galvanized</b> galvanized pipe that once sat downstream of lead, so it comes out in the same trench</span>
       </button>
       <button type="button" class="legend-item" data-material="UNKNOWN" aria-pressed="false">
-        <span class="mark m-unknown" aria-hidden="true"></span><span class="legend-t"><b>Unknown</b> material not yet established</span>
+        <span class="mark m-unknown" aria-hidden="true"></span><span class="legend-t"><b>Unknown</b> no surviving record, and not yet dug</span>
       </button>
       <button type="button" class="legend-item" data-material="NONLEAD" aria-pressed="false">
-        <span class="mark m-nonlead" aria-hidden="true"></span><span class="legend-t"><b>Non-lead</b> copper or plastic, verified</span>
+        <span class="mark m-nonlead" aria-hidden="true"></span><span class="legend-t"><b>Non-lead</b> verified copper or plastic</span>
       </button>
     </div>
 
@@ -78,10 +91,14 @@
 
   <section class="ledger-section" aria-labelledby="ledger-h">
     <div class="section-head">
-      <h2 id="ledger-h">Table I &nbsp;— &nbsp;Block ledger and replacement sequence</h2>
+      <h2 id="ledger-h">Table I &nbsp;— &nbsp;Block ledger</h2>
       <p class="section-note">
         The utility opens a trench once per block, so a household&#8217;s replacement window is its block&#8217;s
-        window. Blocks with the largest share of affected connections are trenched first.
+        window, and the block with the largest share of affected connections is trenched first — the
+        <b>Order</b> column gives that sequence, since the table itself is in survey order to match the plate.
+        <b>Share affected</b> means confirmed lead and galvanized as a proportion of the block. It excludes
+        the unknowns, which have no established material to count; a block with a low share can still hold
+        many unverified lines, so read the two columns together.
       </p>
     </div>
 
@@ -90,6 +107,7 @@
         <caption class="sr-only">Service connections by block, with material counts and scheduled replacement window</caption>
         <thead>
           <tr>
+            <th scope="col" class="c-order">Order</th>
             <th scope="col" class="c-block">Block</th>
             <th scope="col" class="c-era">Built</th>
             <th scope="col" class="num">Conn.</th>
@@ -124,18 +142,17 @@
           <button type="submit">Search</button>
         </div>
         <p class="status" id="lookup-status" role="status"></p>
+        <div id="lookup-results" class="lookup-results"></div>
       </form>
 
       <p class="lookup-aside">
         If your address is not here, your connection is in another ward and appears in that ward&#8217;s
         inventory. If it is here and you believe the material is recorded wrongly — you have seen the
         pipe, or you hold a plumbing permit for a replacement — the Division will send a crew to verify
-        and will correct the record. A resident&#8217;s report has revised 61&nbsp;classifications in this
+        and will correct the record. Reports from residents have corrected 61&nbsp;classifications in this
         ward since the first revision was filed.
       </p>
     </div>
-
-    <div id="lookup-results" class="lookup-results"></div>
   </section>
 
   <hr class="rule-heavy">
@@ -209,9 +226,10 @@
         <p>
           Statistical prediction was not used. Where the Division could not establish a material from a
           record or an excavation, the connection is carried as unknown and is scheduled for field
-          verification. This is slower than modelling and produces a larger unknown count than
-          neighbouring systems report; the Division takes the position that a household is owed a fact
-          about its own pipe rather than a probability.
+          verification. The Division&#8217;s position is that a household should be told a fact about its
+          own pipe rather than a probability, and the cost of that position is visible in this
+          inventory: the unknown count here is larger than neighbouring systems report, and it will
+          stay larger until the crews have worked through it.
         </p>
       </div>
     </div>

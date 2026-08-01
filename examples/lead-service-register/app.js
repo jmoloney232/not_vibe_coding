@@ -164,25 +164,31 @@ function buildLedger() {
   const body = document.getElementById('ledger-body');
   const foot = document.getElementById('ledger-foot');
 
+  const order = new Map(
+    INVENTORY.filter(b => b.affected > 0)
+      .slice().sort((a, b2) => b2.share - a.share)
+      .map((b, i) => [b.name, i + 1]));
+
   INVENTORY.forEach(b => {
     const c = counts(b.lines);
     const pct = Math.round(b.share * 100);
     const tr = document.createElement('tr');
     tr.innerHTML = `
-      <td class="c-block">${b.name}</td>
-      <td class="c-era">${b.era}</td>
-      <td class="num">${b.count}</td>
-      <td class="num ${c.LEAD ? 'lead-n' : 'zero'}">${c.LEAD}</td>
-      <td class="num ${c.GRR ? '' : 'zero'}">${c.GRR}</td>
-      <td class="num ${c.UNKNOWN ? '' : 'zero'}">${c.UNKNOWN}</td>
-      <td class="num ${c.NONLEAD ? '' : 'zero'}">${c.NONLEAD}</td>
-      <td class="c-bar">
+      <td class="c-order">${order.get(b.name) || '—'}</td>
+      <td class="c-block" data-label="Block">${b.name}</td>
+      <td class="c-era" data-label="Built">${b.era}</td>
+      <td class="num" data-label="Connections">${b.count}</td>
+      <td class="num ${c.LEAD ? 'lead-n' : 'zero'}" data-label="Lead">${c.LEAD}</td>
+      <td class="num ${c.GRR ? '' : 'zero'}" data-label="Galvanized">${c.GRR}</td>
+      <td class="num ${c.UNKNOWN ? '' : 'zero'}" data-label="Unknown">${c.UNKNOWN}</td>
+      <td class="num ${c.NONLEAD ? '' : 'zero'}" data-label="Non-lead">${c.NONLEAD}</td>
+      <td class="c-bar" data-label="Share affected">
         <span class="bar-wrap">
           <span class="bar"><span class="bar-fill" style="width:${pct}%"></span></span>
           <span class="bar-num">${pct}%</span>
         </span>
       </td>
-      <td class="c-win">${b.window || '<span class="no-win">not required</span>'}</td>
+      <td class="c-win" data-label="Window">${b.window || '<span class="no-win">not required</span>'}</td>
     `;
     body.appendChild(tr);
   });
@@ -192,6 +198,7 @@ function buildLedger() {
   const pct = Math.round(((t.LEAD + t.GRR) / total) * 100);
   foot.innerHTML = `
     <tr>
+      <td class="c-order"></td>
       <td class="c-block">Ward Seven</td>
       <td class="c-era"></td>
       <td class="num">${fmt(total)}</td>
@@ -289,3 +296,4 @@ renderEmpty();
 const t = counts(ALL_LINES);
 document.getElementById('fig-affected').textContent = fmt(t.LEAD + t.GRR);
 document.getElementById('fig-total').textContent = fmt(ALL_LINES.length);
+document.getElementById('fig-unknown').textContent = fmt(t.UNKNOWN);

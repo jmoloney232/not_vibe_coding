@@ -49,6 +49,7 @@ function buildPlate() {
 }
 
 const lineById = new Map(ALL_LINES.map(l => [l.id, l]));
+const WARD = ALL_LINES.reduce((a, l) => { a[l.material]++; return a; }, { LEAD: 0, GRR: 0, UNKNOWN: 0, NONLEAD: 0 });
 
 function lineFromEvent(e) {
   const cell = e.target.closest('.cell');
@@ -148,8 +149,19 @@ function renderRecord(line) {
       <dt>Verified</dt><dd>${line.verified || '—'}</dd>
     </dl>
     <p class="rec-window">${windowSentence(line, affected)}</p>
+    <p class="rec-context">Ward Seven: ${fmt(WARD.LEAD)} lead · ${fmt(WARD.GRR)} galvanized · ${fmt(WARD.UNKNOWN)} unknown · ${fmt(WARD.NONLEAD)} non-lead</p>
     ${pinned === line.id ? '<p class="rec-window" style="border:0;padding-top:0;margin-top:6px;color:var(--ink-quiet)">Pinned. Click the mark again to release.</p>' : ''}
   `;
+}
+
+// What the household should do this week, said at the point they find out.
+function nowSentence(material) {
+  if (material === 'NONLEAD')
+    return 'Nothing to do. The line was verified as copper or plastic.';
+  return 'Until the line is replaced, filter every tap you drink or cook from with a filter '
+       + 'certified to NSF/ANSI 53 for lead, never draw cooking or formula water from the hot tap, '
+       + 'and run a tap cold for 30 seconds to two minutes if it has stood unused more than six hours. '
+       + 'Testing and replacement are free — call 555 0142.';
 }
 
 function windowSentence(line, affected) {
@@ -257,11 +269,16 @@ function runLookup(q) {
 
   shown.forEach(l => {
     const el = document.createElement('article');
-    el.className = 'result' + (l.material === 'LEAD' ? ' is-lead' : '');
+    el.className = 'result' + (l.material === 'LEAD' ? ' is-lead' : l.material === 'NONLEAD' ? ' is-nonlead' : '');
+    const affected = l.material === 'LEAD' || l.material === 'GRR';
     el.innerHTML = `
       <h3 class="result-addr">${l.addr}</h3>
       <p class="result-mat"><span class="mark ${MARK_CLASS[l.material]}"></span>${MATERIAL_LABEL[l.material]}</p>
-      <p class="result-meta">${l.method}${l.verified ? ` · ${l.verified}` : ''}<br>${windowSentence(l, l.material === 'LEAD' || l.material === 'GRR').replace(/<\/?b>/g, '')}</p>
+      <p class="result-do">${nowSentence(l.material)}</p>
+      <p class="result-meta">
+        <b>${affected ? `Trench due ${l.window}` : l.material === 'UNKNOWN' ? 'Field verification not yet scheduled' : 'No replacement required'}</b><br>
+        ${l.method}${l.verified ? ` · verified ${l.verified}` : ''}
+      </p>
     `;
     resultsEl.appendChild(el);
   });

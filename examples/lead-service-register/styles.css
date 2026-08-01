@@ -766,3 +766,22 @@ main, .masthead, .colophon {
   .readout, .lookup-section { display: none; }
   body { font-size: 10pt; }
 }
+
+.result-do {
+  margin: 0 0 var(--u-h);
+  font-family: var(--serif);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.result.is-nonlead .result-do { color: var(--ink-quiet); }
+
+.rec-context {
+  margin: var(--u-h) 0 0;
+  padding-top: var(--u-h);
+  border-top: 1px solid var(--hair);
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--ink-quiet);
+  font-variant-numeric: tabular-nums;
+}

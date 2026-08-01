@@ -169,6 +169,25 @@ changes the other. The reviewer measured it precisely ("you press a button at y�
 that changes lives at y≈600–1147"). An accessibility fix broke the layout, and only the blind pass
 caught it.
 
+## Second pass on reviewer A's structural finding
+
+The register's reviewer named one change ahead of everything else: *"Move 'Look up an address' to the
+top… that is what almost every visitor came for, and it is currently below a 1,142-mark graphic and a
+15-row table."* That was not acted on in the first round of fixes, and it should have been — the
+guide's own priority order puts task completion and information architecture (Tiers A and C) above
+product-specific visual identity (Tier G), and the plate being the page's best idea is not a reason to
+put it in front of the reader's own pipe.
+
+Done now. The section order is `lede → find your own connection → plate → ledger → guidance → method`,
+asserted. Two related fixes went with it:
+
+- **A result is no longer just a status.** It gave material, method, and a window, and left the reader
+  to go and assemble "so what do I do" from a section further down. It now says what to do this week —
+  filter certification, hot-tap rule, flush time, free testing — at the point the reader finds out.
+- **The record panel no longer replaces the ward totals with the single connection.** The reviewer's
+  point was exact: "You cannot see a connection and its ward context at the same time, which is
+  precisely the comparison a resident wants." Both are now shown together.
+
 ## Not fixed, on purpose
 
 - The register's uppercase-label count still exceeds this project's own threshold, still logged.

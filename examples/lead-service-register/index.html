@@ -51,13 +51,43 @@
 
   <hr class="rule-heavy">
 
+  <section class="lookup-section" aria-labelledby="lookup-h">
+    <div class="section-head">
+      <h2 id="lookup-h">Find your own connection</h2>
+      <p class="section-note">Type a house number or a street name. Ward Seven only. Everything below this is the ward as a whole.</p>
+    </div>
+
+    <div class="lookup-layout">
+      <form class="lookup" id="lookup-form" role="search">
+        <label for="lookup-input">Address in Ward Seven</label>
+        <div class="lookup-row">
+          <input type="search" id="lookup-input" name="q" autocomplete="off" spellcheck="false"
+                 placeholder="e.g. 812 Kesler Ave" aria-describedby="lookup-status">
+          <button type="submit">Search</button>
+        </div>
+        <p class="status" id="lookup-status" role="status"></p>
+        <div id="lookup-results" class="lookup-results"></div>
+      </form>
+
+      <p class="lookup-aside">
+        If your address is not here, your connection is in another ward and appears in that ward&#8217;s
+        inventory. If it is here and you believe the material is recorded wrongly — you have seen the
+        pipe, or you hold a plumbing permit for a replacement — the Division will send a crew to verify
+        and will correct the record. Reports from residents have corrected 61&nbsp;classifications in this
+        ward since the first revision was filed.
+      </p>
+    </div>
+  </section>
+
+  <hr class="rule-heavy">
+
   <section class="plate-section" aria-labelledby="plate-h">
     <div class="section-head">
       <h2 id="plate-h">Plate I &nbsp;— &nbsp;The ward, by connection</h2>
       <p class="section-note">
         Blocks are drawn in survey order, north to south; within a block, marks run in address order.
         Tap or point at any mark for its record, or use Tab to reach a block and the arrow keys to move
-        inside it. This plate is for the shape of the ward — to find one address, use the search below.
+        inside it. This plate is for the shape of the ward; the search above is for one address.
         A percentage is set in red where lead and galvanized together reach 40% of the block.
       </p>
     </div>
@@ -122,36 +152,6 @@
         <tbody id="ledger-body"></tbody>
         <tfoot id="ledger-foot"></tfoot>
       </table>
-    </div>
-  </section>
-
-  <hr class="rule-heavy">
-
-  <section class="lookup-section" aria-labelledby="lookup-h">
-    <div class="section-head">
-      <h2 id="lookup-h">Look up an address</h2>
-      <p class="section-note">Type a house number or street. Ward Seven only.</p>
-    </div>
-
-    <div class="lookup-layout">
-      <form class="lookup" id="lookup-form" role="search">
-        <label for="lookup-input">Address in Ward Seven</label>
-        <div class="lookup-row">
-          <input type="search" id="lookup-input" name="q" autocomplete="off" spellcheck="false"
-                 placeholder="e.g. 812 Kesler Ave" aria-describedby="lookup-status">
-          <button type="submit">Search</button>
-        </div>
-        <p class="status" id="lookup-status" role="status"></p>
-        <div id="lookup-results" class="lookup-results"></div>
-      </form>
-
-      <p class="lookup-aside">
-        If your address is not here, your connection is in another ward and appears in that ward&#8217;s
-        inventory. If it is here and you believe the material is recorded wrongly — you have seen the
-        pipe, or you hold a plumbing permit for a replacement — the Division will send a crew to verify
-        and will correct the record. Reports from residents have corrected 61&nbsp;classifications in this
-        ward since the first revision was filed.
-      </p>
     </div>
   </section>
 

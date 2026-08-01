@@ -1,0 +1,123 @@
+:root {
+  --ink: #1f1c18;
+  --ink-quiet: #6b6459;
+  --bg: #faf8f4;
+  --line: #ddd6c9;
+  --line-strong: #b7ad99;
+  --accent: #7a4a2b;
+  --placeholder-bg: #ece6d8;
+  --placeholder-line: #cabfa8;
+  --radius: 2px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.voice, .exh-title, .curatorial p, .section-heading {
+  font-family: 'Lora', Georgia, serif;
+}
+
+/* Persistent Visit utility strip — solves Direction B's named risk
+   structurally: visit info (hours/admission/location) is always present,
+   never buried under however long the curatorial text runs. */
+.visit-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 24px;
+  font-size: 12px;
+  background: var(--ink);
+  color: #f2ede2;
+  padding: 8px 24px;
+  letter-spacing: 0.02em;
+}
+.visit-strip strong { font-weight: 600; color: #fff; }
+
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.wordmark {
+  font-family: 'Lora', serif;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.nav { display: flex; gap: 20px; font-size: 14px; }
+.nav a { color: var(--ink); text-decoration: none; }
+.nav a:hover { text-decoration: underline; }
+.nav a[aria-current="page"] { font-weight: 600; border-bottom: 2px solid var(--accent); }
+
+main { max-width: 880px; margin: 0 auto; padding: 40px 24px 100px; }
+
+/* Object placeholder — an honest, explicitly labeled stand-in, not a
+   gradient/blob pretending to be photography (ANTI_VIBE_CODING_UI.md §3
+   asset-strategy rules). Quiet and consistent, not a broken-image look. */
+.object-figure {
+  background: var(--placeholder-bg);
+  border: 1px solid #cabfa8;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-quiet);
+  font-size: 12px;
+  text-align: center;
+  padding: 16px;
+}
+
+.hero {
+  padding: 8px 0 36px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 36px;
+}
+.eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); font-weight: 600; margin-bottom: 10px; }
+.hero .exh-title { font-size: 40px; font-weight: 600; line-height: 1.08; margin: 0 0 10px; }
+.hero .exh-dates { font-size: 14px; color: var(--ink-quiet); margin-bottom: 16px; }
+.hero .hook { font-size: 17px; max-width: 60ch; }
+
+.section-heading { font-size: 22px; font-weight: 600; margin: 0 0 18px; }
+
+.exh-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 44px;
+}
+
+.exh-card { border: 1px solid var(--line); }
+.exh-card .object-figure { aspect-ratio: 16/9; }
+.exh-card-body { padding: 16px 18px; }
+.exh-card .eyebrow { font-size: 11px; margin-bottom: 6px; }
+.exh-card h3 { font-family: 'Lora', serif; font-size: 19px; margin: 0 0 6px; }
+.exh-card .exh-dates { font-size: 13px; }
+
+.curatorial { max-width: 66ch; margin-bottom: 40px; }
+.curatorial p { font-size: 17px; line-height: 1.65; margin: 0 0 20px; }
+
+.checklist-heading { font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-quiet); font-weight: 600; border-top: 1px solid var(--line-strong); padding-top: 10px; margin: 40px 0 20px; }
+
+.checklist { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+.object-entry .object-figure { margin-bottom: 10px; }
+.object-label { font-size: 13px; line-height: 1.45; }
+.object-label .maker { font-weight: 600; }
+.object-label .cat-no { color: var(--ink-quiet); font-family: ui-monospace, monospace; font-size: 11px; }
+
+@media (max-width: 720px) {
+  .exh-grid, .checklist { grid-template-columns: 1fr; }
+  .hero .exh-title { font-size: 30px; }
+  main { padding: 28px 18px 80px; }
+}

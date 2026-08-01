@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fleet Overview — Perigee Mission Ops</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="app-shell">
+  <nav class="sidebar" aria-label="Primary">
+    <div class="sidebar-mark">
+      <span class="mark-name">Perigee</span>
+      <span class="mark-sub">Mission Ops</span>
+    </div>
+    <div class="nav-routes">
+      <a href="fleet.html" aria-current="page">Fleet Overview</a>
+      <a href="manifest.html">Manifest &amp; Schedule</a>
+    </div>
+    <div class="sidebar-status">
+      <div><span class="shift-name">Flight Director:</span> R. Okonkwo</div>
+      <div class="zulu-clock" data-zulu-clock aria-live="off">00:00:00Z</div>
+    </div>
+  </nav>
+
+  <main class="main" id="main">
+    <div class="page-header">
+      <div>
+        <h1>Fleet Overview</h1>
+        <div class="page-sub">5 in flight, 1 recovered · ages and countdowns update automatically</div>
+      </div>
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-tile">
+        <div class="tile-label">In Flight</div>
+        <div class="tile-value">5</div>
+        <div class="tile-detail">of 6 total, 1 recovered</div>
+      </div>
+      <div class="summary-tile">
+        <div class="tile-label">Needs Attention</div>
+        <div class="tile-value status-error">2</div>
+        <div class="tile-detail">1 anomaly, 1 telemetry gap</div>
+      </div>
+      <div class="summary-tile">
+        <div class="tile-label">Next Reentry Window</div>
+        <div class="tile-value status-warning">On hold</div>
+        <div class="tile-detail">PGE-007 — recovery-zone sea state</div>
+      </div>
+    </div>
+
+    <h2 class="section-heading">Fleet</h2>
+    <table class="fleet-table" id="fleet-table">
+      <thead>
+        <tr>
+          <th scope="col">Capsule</th>
+          <th scope="col">Status</th>
+          <th scope="col">Phase</th>
+          <th scope="col">Payload</th>
+          <th scope="col">Last telemetry</th>
+        </tr>
+      </thead>
+      <tbody id="fleet-tbody">
+        <!-- rendered by app.js from data.js -->
+      </tbody>
+    </table>
+  </main>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+  (function renderFleetTable() {
+    const tbody = document.getElementById("fleet-tbody");
+    const order = { anomaly: 0, caution: 1, nominal: 2, recovered: 3 };
+    const rows = [...PERIGEE_FLEET].sort((a, b) => order[a.status] - order[b.status]);
+    const heldCapsuleIds = new Set(
+      PERIGEE_SCHEDULE.filter((s) => s.status === "hold").map((s) => s.capsuleId)
+    );
+
+    tbody.innerHTML = rows
+      .map((c) => {
+        const rowClass = c.status === "anomaly" ? "row-anomaly" : c.status === "caution" ? "row-caution" : "";
+        const holdFlag = heldCapsuleIds.has(c.id)
+          ? `<span class="hold-flag" title="A scheduled window for this capsule is on hold — see Manifest &amp; Schedule">&#9208; hold</span>`
+          : "";
+        const telemetryCell = c.status === "recovered"
+          ? `Landed ${telemetryAgeHtml(c.recovered.landedAt, { alert: false })}`
+          : telemetryAgeHtml(c.telemetryTimestamp);
+        return `
+          <tr class="${rowClass}">
+            <td><a class="capsule-id-link" href="capsule.html?id=${encodeURIComponent(c.id)}">${c.id}</a></td>
+            <td>${statusPillHtml(c.status)}</td>
+            <td>${c.phase}${holdFlag}</td>
+            <td>${c.payload}<span style="display:block; color: var(--text-muted); font-size: var(--fs-xs);">${c.customer}</span></td>
+            <td>${telemetryCell}</td>
+          </tr>
+        `;
+      })
+      .join("");
+
+    initTelemetryAgeWidgets(tbody);
+  })();
+</script>
+</body>
+</html>

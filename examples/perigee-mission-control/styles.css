@@ -1,0 +1,719 @@
+/*
+  Perigee Mission Operations Console — design tokens and shared styles.
+
+  Dark-native by deliberate choice (§4/§9's "unnecessary dark mode" entry): this is an
+  internal tool for engineers monitoring live telemetry across extended shifts, the
+  exact case §5's Feature Prioritization section names as a real justification, not an
+  assumed baseline. There is no light theme to toggle to — building one "for free"
+  with no user who needs it would itself be the kind of unjustified feature §5 warns
+  against.
+
+  Every color below was verified against its actual background with a WCAG contrast
+  calculation (not eyeballed) before being kept — see the round-7 build notes.
+*/
+
+:root {
+  /* Surface roles (§9) — near-black, not pure black (§4's "pure black + neon" failure) */
+  --bg: #0a0c10;
+  --surface: #12151b;
+  --surface-secondary: #0d0f14;
+  --surface-elevated: #1b1f27;
+
+  /* Text roles */
+  --text-primary: #e8eaf0;
+  --text-secondary: #a3aab8;
+  --text-muted: #7d8496; /* 4.89:1 on --surface, 5.23:1 on --bg — still passes AA, not decorative-only gray */
+
+  /* Borders — two tiers: quiet dividers vs. borders that carry meaning (WCAG 1.4.11, 3:1) */
+  --border: #242832;
+  --border-strong: #5b6680; /* 3.18:1 on --surface — used only where a border identifies a component/state */
+
+  /* Accent — a single, disciplined accent (§9), not a purple/blue gradient default */
+  --accent: #5fb3c4;
+  --accent-hover: #78c6d6;
+  --accent-active: #4a95a5;
+
+  /* Focus — distinct from accent, always visible (§13) */
+  --focus: #8fd6e6;
+
+  /* Semantic status colors — MUST pair with icon/text, never color alone (§9, §10) */
+  --success: #5fbd83;
+  --warning: #e0a339;
+  --error: #ea6b6e;
+  --info: #7d9bd6;
+
+  /* Spacing scale (§5) */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+
+  /* Type scale — dense application register, not a marketing display scale (§8) */
+  --fs-xs: 11px;
+  --fs-sm: 12px;
+  --fs-base: 13px;
+  --fs-md: 15px;
+  --fs-lg: 17px;
+  --fs-xl: 20px;
+  --fs-2xl: 25px;
+
+  /* Two font families, each with a real job — no third "to look technical" (§4.4) */
+  --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Consolas, monospace;
+
+  /* Radius scale — small, tied to a dense-technical-tool role, not a uniform pill everywhere (§4) */
+  --radius-sm: 3px;
+  --radius-md: 5px;
+
+  /* Control heights (§5) */
+  --control-h-compact: 26px;
+  --control-h-default: 32px;
+
+  /* Motion — fast/default only; this is a monitoring tool, not a marketing page (§14) */
+  --motion-fast: 100ms;
+  --motion-default: 160ms;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: var(--fs-base);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+a {
+  color: var(--accent);
+}
+
+/* ---------- App shell: sidebar + content, not a centered marketing column (§7) ---------- */
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: var(--surface-secondary);
+  border-right: 1px solid var(--border);
+  padding: var(--sp-4) var(--sp-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+}
+
+.sidebar-mark {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+  padding: 0 var(--sp-2);
+}
+
+.sidebar-mark .mark-name {
+  font-size: var(--fs-md);
+  font-weight: 600;
+  letter-spacing: normal; /* application register: no decorative tracking, §8 */
+}
+
+.sidebar-mark .mark-sub {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.04em; /* small-label tracking, not a heading cliché — functional, tied to the mono/caps register used consistently for IDs throughout */
+}
+
+.nav-routes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+.nav-routes a {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: var(--fs-base);
+  border-left: 2px solid transparent;
+  transition: background var(--motion-fast) var(--ease), color var(--motion-fast) var(--ease);
+}
+
+.nav-routes a:hover {
+  background: var(--surface);
+  color: var(--text-primary);
+}
+
+.nav-routes a:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: -2px;
+}
+
+/* Current route indicated by border + color + weight, not color alone (§10) */
+.nav-routes a[aria-current="page"] {
+  background: var(--surface);
+  color: var(--text-primary);
+  font-weight: 600;
+  border-left-color: var(--accent);
+}
+
+.sidebar-status {
+  margin-top: auto;
+  padding: var(--sp-3);
+  border-top: 1px solid var(--border);
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+.sidebar-status .shift-name {
+  color: var(--text-secondary);
+}
+
+.zulu-clock {
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.main {
+  padding: var(--sp-5) var(--sp-6);
+  max-width: 1400px;
+}
+
+.page-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--sp-5);
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+.page-header h1 {
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: normal;
+}
+
+.page-header .page-sub {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+
+/* ---------- Summary tiles: only decision-relevant numbers, §4.3's ceiling respected ---------- */
+
+.summary-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-6);
+}
+
+.summary-tile {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--sp-4);
+}
+
+.summary-tile .tile-label {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: var(--sp-2);
+}
+
+.summary-tile .tile-value {
+  font-size: var(--fs-2xl);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  font-family: var(--font-mono);
+  line-height: 1.2;
+}
+
+.summary-tile .tile-value.status-warning { color: var(--warning); }
+.summary-tile .tile-value.status-error { color: var(--error); }
+
+.summary-tile .tile-detail {
+  font-size: var(--fs-xs);
+  color: var(--text-secondary);
+  margin-top: var(--sp-1);
+}
+
+/* ---------- Section headings ---------- */
+
+.section-heading {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  margin: var(--sp-6) 0 var(--sp-3);
+}
+
+.section-heading:first-child {
+  margin-top: 0;
+}
+
+/* ---------- Fleet table ---------- */
+
+.fleet-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-base);
+}
+
+.fleet-table th {
+  text-align: left;
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  font-weight: 500;
+  padding: var(--sp-2) var(--sp-3);
+  border-bottom: 1px solid var(--border-strong);
+}
+
+.fleet-table td {
+  padding: var(--sp-3);
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+.fleet-table tbody tr {
+  transition: background var(--motion-fast) var(--ease);
+}
+
+.fleet-table tbody tr:hover {
+  background: var(--surface);
+}
+
+.fleet-table tbody tr.row-anomaly {
+  background: color-mix(in srgb, var(--error) 7%, transparent);
+}
+.fleet-table tbody tr.row-anomaly:hover {
+  background: color-mix(in srgb, var(--error) 12%, transparent);
+}
+
+.fleet-table tbody tr.row-caution {
+  background: color-mix(in srgb, var(--warning) 6%, transparent);
+}
+.fleet-table tbody tr.row-caution:hover {
+  background: color-mix(in srgb, var(--warning) 11%, transparent);
+}
+
+.capsule-id-link {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-strong);
+  white-space: nowrap;
+}
+
+/* A schedule hold surfaced at the row level, not only on a separate page (§ cross-route coherence) */
+.hold-flag {
+  display: inline-block;
+  margin-left: var(--sp-2);
+  font-size: var(--fs-xs);
+  color: var(--warning);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+}
+
+.capsule-id-link:hover,
+.capsule-id-link:focus-visible {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.capsule-id-link:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-secondary);
+}
+
+/* ---------- Status pill: color + icon + text, never color alone (§9, §10) ---------- */
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  padding: 3px var(--sp-2);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.status::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-nominal {
+  color: var(--success);
+  background: color-mix(in srgb, var(--success) 12%, transparent);
+}
+.status-nominal::before { background: var(--success); }
+
+.status-caution {
+  color: var(--warning);
+  background: color-mix(in srgb, var(--warning) 12%, transparent);
+}
+.status-caution::before { background: var(--warning); }
+
+.status-anomaly {
+  color: var(--error);
+  background: color-mix(in srgb, var(--error) 14%, transparent);
+}
+.status-anomaly::before { background: var(--error); }
+
+.status-recovered {
+  color: var(--text-muted);
+  background: color-mix(in srgb, var(--text-muted) 12%, transparent);
+}
+.status-recovered::before { background: var(--text-muted); }
+
+/* ---------- Telemetry age: a real, correct dynamic value, not decoration (§11) ---------- */
+
+.telemetry-age {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+}
+
+.telemetry-age .age-relative {
+  color: var(--text-secondary);
+}
+
+.telemetry-age.age-stale .age-relative {
+  color: var(--warning);
+}
+
+.telemetry-age.age-lost .age-relative {
+  color: var(--error);
+}
+
+.telemetry-age .age-absolute {
+  color: var(--text-muted);
+  display: block;
+  font-size: 10px;
+}
+
+/* ---------- Panels ---------- */
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--sp-4);
+}
+
+.panel + .panel {
+  margin-top: var(--sp-3);
+}
+
+.panel-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: var(--sp-3);
+  align-items: start;
+}
+
+/* ---------- Telemetry readout grid ---------- */
+
+.readout-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--sp-4);
+}
+
+.readout {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.readout .readout-label {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.readout .readout-value {
+  font-family: var(--font-mono);
+  font-size: var(--fs-lg);
+  font-variant-numeric: tabular-nums;
+}
+
+.readout .readout-value.value-warning { color: var(--warning); }
+.readout .readout-value.value-error { color: var(--error); }
+
+.readout .readout-unit {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* ---------- Anomaly banner: real, non-color-only alert (§9, §10 Alerts) ---------- */
+
+.anomaly-banner {
+  display: flex;
+  gap: var(--sp-3);
+  align-items: flex-start;
+  background: color-mix(in srgb, var(--error) 10%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--error) 40%, var(--border));
+  border-radius: var(--radius-md);
+  padding: var(--sp-4);
+  margin-bottom: var(--sp-4);
+}
+
+.anomaly-banner .anomaly-icon {
+  color: var(--error);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.anomaly-banner .anomaly-title {
+  font-weight: 600;
+  color: var(--error);
+  margin-bottom: 2px;
+}
+
+.anomaly-banner .anomaly-body {
+  color: var(--text-secondary);
+  font-size: var(--fs-base);
+}
+
+.anomaly-banner .anomaly-meta {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  margin-top: var(--sp-2);
+  font-family: var(--font-mono);
+}
+
+/* ---------- Empty state (§10, §11) — a real state, not a blank region ---------- */
+
+.empty-state {
+  padding: var(--sp-6) var(--sp-4);
+  text-align: center;
+  color: var(--text-muted);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+}
+
+.empty-state .empty-title {
+  color: var(--text-secondary);
+  font-size: var(--fs-md);
+  margin-bottom: var(--sp-1);
+}
+
+.empty-state .empty-action {
+  margin-top: var(--sp-3);
+}
+
+/* ---------- Buttons: real state changes, not opacity-fade (§4, §10) ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  height: var(--control-h-default);
+  padding: 0 var(--sp-4);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-base);
+  font-weight: 500;
+  font-family: var(--font-ui);
+  border: 1px solid var(--border-strong);
+  background: var(--surface-elevated);
+  color: var(--text-primary);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--motion-fast) var(--ease), border-color var(--motion-fast) var(--ease);
+}
+
+.btn:hover {
+  background: color-mix(in srgb, var(--text-primary) 6%, var(--surface-elevated));
+  border-color: var(--text-secondary);
+}
+
+.btn:active {
+  background: color-mix(in srgb, var(--text-primary) 2%, var(--surface-elevated));
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #06171b;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.btn-primary:active {
+  background: var(--accent-active);
+  border-color: var(--accent-active);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ---------- Schedule list (manifest route) ---------- */
+
+.schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.schedule-item {
+  display: grid;
+  grid-template-columns: 140px 1fr auto;
+  gap: var(--sp-3);
+  align-items: center;
+  padding: var(--sp-3);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.schedule-item.item-hold {
+  border-color: color-mix(in srgb, var(--warning) 40%, var(--border));
+}
+
+.schedule-item .schedule-window {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+}
+
+.schedule-item .schedule-payload {
+  font-size: var(--fs-base);
+}
+
+.schedule-item .schedule-payload .payload-customer {
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+  display: block;
+  margin-top: 2px;
+}
+
+/* ---------- Skip link (§13) ---------- */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--accent);
+  color: #06171b;
+  padding: var(--sp-2) var(--sp-4);
+  z-index: 10;
+  border-radius: 0 0 var(--radius-sm) 0;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+.skip-link:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* ---------- Responsive: sidebar collapses to a top bar under the layout failure point (§12) ---------- */
+
+@media (max-width: 860px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    flex-direction: row;
+    align-items: center;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: var(--sp-3);
+    gap: var(--sp-4);
+  }
+
+  .sidebar-status {
+    display: none;
+  }
+
+  .nav-routes {
+    flex-direction: row;
+  }
+
+  .main {
+    padding: var(--sp-4);
+  }
+
+  .summary-row {
+    grid-template-columns: 1fr;
+  }
+
+  .panel-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fleet-table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .schedule-item {
+    grid-template-columns: 1fr;
+    gap: var(--sp-1);
+  }
+}

@@ -34,6 +34,7 @@
     <div class="loom-layout">
 
       <div class="draft-column">
+        <p class="grid-say" id="grid-say" role="status" aria-live="polite">Click or tab into any of the three grids to change the draft.</p>
       <div class="draft-scroll">
       <div class="draft" id="draft">
         <div class="quad quad-warp">
@@ -59,6 +60,7 @@
         </div>
 
         <div class="quad quad-cloth">
+          <span class="quad-label quad-label-out">The cloth &nbsp;— computed, not editable</span>
           <svg id="drawdown" class="grid" role="img" aria-describedby="cloth-desc"
                aria-label="The cloth these three grids produce"></svg>
         </div>
@@ -70,7 +72,7 @@
         </div>
       </div>
       </div>
-      <p class="grid-say" id="grid-say" role="status" aria-live="polite">Click or tab into any of the three grids to change the draft.</p>
+
       </div>
 
       <div class="panel">
@@ -87,7 +89,7 @@
             <div class="dyes" id="warp-dyes" role="radiogroup" aria-labelledby="warp-dye-label"></div>
           </div>
           <div class="dye-row second-yarn" id="warp-row-b" hidden>
-            <span class="dye-label" id="warpb-dye-label">alt.</span>
+            <span class="dye-label" id="warpb-dye-label">Warp alt</span>
             <div class="dyes" id="warpb-dyes" role="radiogroup" aria-labelledby="warpb-dye-label"></div>
           </div>
           <div class="dye-row">
@@ -95,7 +97,7 @@
             <div class="dyes" id="weft-dyes" role="radiogroup" aria-labelledby="weft-dye-label"></div>
           </div>
           <div class="dye-row second-yarn" id="weft-row-b" hidden>
-            <span class="dye-label" id="weftb-dye-label">alt.</span>
+            <span class="dye-label" id="weftb-dye-label">Weft alt</span>
             <div class="dyes" id="weftb-dyes" role="radiogroup" aria-labelledby="weftb-dye-label"></div>
           </div>
           <p class="hint" id="dye-hint"></p>

@@ -39,7 +39,7 @@ function loadDraft(id) {
     syncDyeButtons();
   }
   el('blurb').textContent = d.blurb;
-  el('shaft-count').textContent = `· ${SHAFTS} shafts`;
+  el('shaft-count').textContent = `· ${d.shafts} of ${SHAFTS} shafts in use`;
   syncChooser();
 }
 
@@ -95,6 +95,14 @@ function drawColourStrip(svgEl, order, dyeIdx, dyeIdxB, horizontal) {
       fill: dyeOf(slot === 0 ? dyeIdx : dyeIdxB),
     }));
   });
+  const n = horizontal ? ENDS : PICKS;
+  for (let i = 1; i < n; i++) {
+    svgEl.appendChild(node('line', {
+      x1: horizontal ? i * c : 0, x2: horizontal ? i * c : c,
+      y1: horizontal ? 0 : i * c, y2: horizontal ? c : i * c,
+      stroke: 'var(--ground)', 'stroke-width': i % 4 === 0 ? 1 : 0.5, opacity: 0.55,
+    }));
+  }
   svgEl.appendChild(node('rect', {
     x: 0.5, y: 0.5,
     width: (horizontal ? ENDS : 1) * c - 1, height: (horizontal ? 1 : PICKS) * c - 1,
@@ -193,22 +201,30 @@ function drawCloth() {
     fill: 'none', stroke: 'var(--ink)', 'stroke-width': 1,
   }));
 
-  const floats = longestFloat();
+  const f = longestFloats();
   el('cloth-desc').textContent =
-    `${ENDS} ends by ${PICKS} picks. The longest warp float in this cloth is ${floats} ${floats === 1 ? 'end' : 'ends'}` +
-    (floats > 3 ? ' — long floats snag, which is why a weaver checks them before cutting the warp.' : '.');
+    `${ENDS} ends by ${PICKS} picks. Longest warp float ${f.warp} ${f.warp === 1 ? 'pick' : 'picks'}, ` +
+    `longest weft float ${f.weft} ${f.weft === 1 ? 'end' : 'ends'}` +
+    (Math.max(f.warp, f.weft) > 3 ? ' — long floats snag, which is why a weaver checks them before cutting the warp.' : '.');
 }
 
-function longestFloat() {
-  let best = 1;
+function longestFloats() {
+  let warp = 1, weft = 1;
+  for (let end = 0; end < ENDS; end++) {
+    let run = 0;
+    for (let pick = 0; pick < PICKS; pick++) {
+      run = warpUp(pick, end) ? run + 1 : 0;
+      if (run > warp) warp = run;
+    }
+  }
   for (let pick = 0; pick < PICKS; pick++) {
     let run = 0;
     for (let end = 0; end < ENDS; end++) {
-      run = warpUp(pick, end) ? run + 1 : 0;
-      if (run > best) best = run;
+      run = warpUp(pick, end) ? 0 : run + 1;
+      if (run > weft) weft = run;
     }
   }
-  return best;
+  return { warp, weft };
 }
 
 function drawAll() {
@@ -293,16 +309,20 @@ for (const [id, dims] of Object.entries(GRIDS)) {
   // A hover outline is the only thing that separates a grid you can change from
   // the cloth, which is styled the same way and is not editable.
   svgEl.addEventListener('pointermove', e => {
-    svgEl.querySelectorAll('.hover-cell').forEach(n => n.remove());
     const c = cellFromEvent(e, svgEl, dims.cols(), dims.rows());
-    if (!c) return;
+    if (!c) return clearHover();
+    clearHover();
     const size = cellSize();
     svgEl.appendChild(node('rect', {
       class: 'hover-cell', x: c.col * size, y: c.row * size, width: size, height: size,
     }));
+    if (id === 'threading') traceCloth({ end: c.col });
+    else if (id === 'treadling') traceCloth({ pick: c.row });
+    el('grid-say').textContent = describe(id, c.col, c.row);
   });
   svgEl.addEventListener('pointerleave', () => {
-    svgEl.querySelectorAll('.hover-cell').forEach(n => n.remove());
+    clearHover();
+    if (!focusedGrid) el('grid-say').textContent = GRID_HINT;
   });
 
   svgEl.addEventListener('focus', () => { focusedGrid = id; drawCursor(id); say(id); });
@@ -326,6 +346,33 @@ for (const [id, dims] of Object.entries(GRIDS)) {
     drawCursor(id);
     say(id);
   });
+}
+
+const GRID_HINT = 'Click or tab into the threading, tie-up or treadling grid to change the draft. The cloth is computed and cannot be edited.';
+
+function clearHover() {
+  document.querySelectorAll('.hover-cell, .trace').forEach(n => n.remove());
+}
+
+// Show which column or row of cloth the hovered cell is responsible for.
+function traceCloth({ end, pick }) {
+  const c = cellSize();
+  const cloth = el('drawdown');
+  if (end !== undefined) {
+    cloth.appendChild(node('rect', {
+      class: 'trace', x: end * c, y: 0, width: c, height: PICKS * c,
+    }));
+    el('warp-colour').appendChild(node('rect', {
+      class: 'trace', x: end * c, y: 0, width: c, height: c,
+    }));
+  } else {
+    cloth.appendChild(node('rect', {
+      class: 'trace', x: 0, y: pick * c, width: ENDS * c, height: c,
+    }));
+    el('weft-colour').appendChild(node('rect', {
+      class: 'trace', x: 0, y: pick * c, width: c, height: c,
+    }));
+  }
 }
 
 function say(id) {
@@ -406,7 +453,7 @@ function updateDyeHint() {
     ? 'One yarn each way, so every square you see is structure. Log cabin is the draft where colour does the work instead.'
     : flat
       ? 'Both yarns in that direction are now the same dye, and its half of the pattern has gone — the structure underneath never changed.'
-      : 'This draft alternates two yarns in each direction; the second swatch in each row is the alternate.';
+      : 'This draft alternates two yarns in each direction. The Warp alt and Weft alt rows set the second yarn of each pair.';
 }
 
 /* ----------------------------------------------------------- weaving it */
@@ -444,6 +491,7 @@ window.addEventListener('resize', () => {
   resizeTimer = setTimeout(drawAll, 150);
 });
 
+el('grid-say').textContent = GRID_HINT;
 buildChooser();
 for (const [boxId, key] of DYE_BOXES) buildDyes(boxId, key);
 loadDraft(state.draftId);

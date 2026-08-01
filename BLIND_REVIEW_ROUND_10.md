@@ -200,13 +200,58 @@ asserted. Two related fixes went with it:
   about. The lookup does that job and the note now says so, but the plate does not label its own
   address ranges.
 
+## Re-verification pass on the drawdown
+
+A fresh reviewer, given only the post-fix screenshots captured by driving the real controls, was asked
+narrowly about the things the fixes claimed to change.
+
+**Closed.** The treadling/cloth alignment was verified two independent ways — geometrically ("same
+origin, same terminus, same 25.9 px pitch across all 40 rows… sub-pixel") and by recomputing the cloth
+from the draft and checking it against what was drawn. Column alignment and tie-up row alignment were
+checked too. The chooser/content agreement was confirmed ("Yes, fully"), which also confirms the
+earlier reported desync was the capture artefact and not the page.
+
+**Not closed.** The affordance fix did not land. A hover ring around the cell was necessary and
+nowhere near sufficient: *"the ring is the only thing the page does… hovering the end-10 threading
+cell does not light up end 10 in the WARP COLOUR bar, does not light up column 10 of the cloth, and
+produces no readout. Every other pixel is byte-identical… At rest the cell is indistinguishable from
+the non-interactive cloth beside it."* The reviewer also noted that the cloth is drawn on the same cell
+pitch and the same x-range as the editable grids, so it reads as a fourth grid of the same kind.
+
+Acted on: hovering a threading cell now traces the cloth column it governs and the warp-colour cell
+above it; hovering a treadling cell traces the cloth row and its weft-colour cell; both announce the
+cell. The cloth carries an explicit label — "The cloth — computed, not editable" — and the instruction
+moved from below the whole draft to above it. The colour strips gained cell divisions, because a solid
+warp previously rendered as a featureless rectangle you could not count ends on.
+
+**A real domain error, mine, that four earlier passes missed.** The cloth readout said "the longest
+warp float in this cloth is 2 ends". A warp float runs along the warp and is measured in *picks*; the
+figure being computed was a run along a row, which is the *weft* float. Wrong quantity and wrong unit,
+stated with the confidence of a computed value. Both floats are now computed and reported separately,
+and goose eye correctly reports an 11-end weft float with the snagging warning that implies.
+
+**Three defects I introduced in the previous round of fixes.** Renaming the second-yarn rows produced
+two rows both labelled "alt." with nothing to say which direction each belonged to; the caption I wrote
+to explain them ("the second swatch in each row is the alternate") described a layout that does not
+exist, since each row holds six colour choices and the alternates are separate rows; and lengthening
+the weft label made it overlap the strip it labels, obscuring the first several picks.
+
+**And one regression caused by this very pass.** Adding the "computed, not editable" label to the cloth
+put a label back into the bottom row's flow and knocked the cloth 20px out of alignment with the
+treadling — re-breaking, in the act of fixing something else, the exact defect this pass had just
+confirmed closed. Caught by re-measuring rather than by looking. Both bottom-row labels are now out of
+flow, and alignment is asserted at 1440, 834 and 390.
+
 ## Re-verification status (Protocol Step 6)
 
 Factual and mechanical fixes are re-verified by measurement and are closed: row alignment, panel
 placement, mobile ledger visibility, chooser sync, figure arithmetic, no overflow at any width.
 
-**Perceptual fixes are not closed by the same evidence.** Whether the hover outline actually makes
-the grids read as editable, and whether the register's two-figure lede resolves the contradiction for
-a reader rather than only in the markup, are claims about perception and need a fresh pass. One
-re-verification review was run on the drawdown's affordance and alignment fixes specifically; the
-register and almanac fixes have **not** been re-reviewed and should be treated as fixed-but-unconfirmed.
+**Perceptual fixes are closed only where a second pass actually confirmed them.** For the drawdown:
+alignment and chooser-sync are confirmed closed; the affordance work was rejected on its first attempt
+and has been rebuilt, and that rebuild is **itself unconfirmed** — it needs a third pass.
+
+The register and almanac fixes have **not** been re-reviewed at all. Two re-verification agents for
+them were launched and terminated on an account spend limit before producing anything. Those fixes are
+fixed-but-unconfirmed, including the register's reordering, which is a structural change to the page's
+information architecture made on one reviewer's recommendation and never checked against a reader.

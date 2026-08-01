@@ -97,7 +97,7 @@ main, .masthead, .colophon {
 }
 
 .grid-say {
-  margin: var(--c1) 0 0;
+  margin: 0 0 var(--c1);
   min-height: 1.4em;
   font-size: 13px;
   font-weight: 300;
@@ -108,9 +108,10 @@ main, .masthead, .colophon {
    top, tie-up in the corner it shares with the treadling, cloth below. */
 .draft {
   display: grid;
-  grid-template-columns: var(--c2) max-content max-content;
+  grid-template-columns: var(--c3) max-content max-content;
   grid-template-rows: max-content max-content max-content;
-  gap: var(--c2);
+  column-gap: var(--c2);
+  row-gap: var(--c2);
   align-items: start;
   justify-items: start;
 }
@@ -140,22 +141,29 @@ main, .masthead, .colophon {
   position: absolute;
   top: 0; left: 0;
   transform-origin: left top;
-  transform: rotate(90deg) translate(0, -100%);
+  transform: rotate(90deg);
   margin: 0;
 }
 
+.quad-weft { padding-left: 18px; }
+
+/* The cloth is the one grid that is not an input, so it says so. */
+.quad-label-out { color: var(--ink-quiet); }
+
 /* The treadling reads across into the cloth row by row, so its grid must start
    on exactly the same line. Its label is lifted out of the flow to allow that. */
-.quad-treadling .quad-label {
+.quad-treadling .quad-label,
+.quad-cloth .quad-label {
   position: absolute;
   bottom: 100%;
   left: 0;
-  margin: 0 0 4px;
+  margin: 0 0 5px;
 }
 
 .grid { display: block; }
 .grid-live { cursor: pointer; }
 .grid-live .hover-cell { fill: none; stroke: var(--ink); stroke-width: 1.5; opacity: 0.55; }
+.trace { fill: none; stroke: var(--ink); stroke-width: 1.5; }
 #drawdown { cursor: default; }
 
 /* ------------------------------------------------------------------ panel */
@@ -187,12 +195,13 @@ main, .masthead, .colophon {
   font: inherit;
   font-size: 16px;
   font-weight: 400;
-  padding: 4px var(--c2) 4px 0;
+  padding: 4px 0;
+  margin-right: var(--c2);
   cursor: pointer;
 }
 
 .chooser button:hover { color: var(--ink); }
-.chooser button[aria-checked="true"] { color: var(--ink); border-bottom-color: var(--ink); font-weight: 500; }
+.chooser button[aria-checked="true"] { color: var(--ink); border-bottom-color: var(--ink); }
 
 .blurb {
   margin: var(--c2) 0 0;
@@ -325,10 +334,13 @@ main, .masthead, .colophon {
 @media (max-width: 720px) {
   main, .masthead, .colophon { padding: 0 var(--c1); }
   :root { --cell: 6px; }
-  .draft { gap: var(--c1); grid-template-columns: 15px max-content max-content; width: max-content; }
-  .quad-label { font-size: 9px; letter-spacing: 0.06em; white-space: normal; }
-  .quad-treadling .quad-label { position: static; margin: 0 0 4px; }
-  .quad-cloth { padding-top: 17px; }
+  .draft {
+    column-gap: var(--c1);
+    row-gap: 22px;
+    grid-template-columns: 26px max-content max-content;
+    width: max-content;
+  }
+  .quad-label { font-size: 9px; letter-spacing: 0.06em; }
   .masthead { padding-top: var(--c2); }
   .loom-section { margin-top: var(--c4); }
   .reading { margin-top: var(--c6); }

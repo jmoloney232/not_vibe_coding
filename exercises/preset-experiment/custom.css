@@ -1,0 +1,89 @@
+/* CUSTOM DIRECTION — derived from real research, not a preset.
+   Grounded in: (1) USWDS + Stanford IT's own accessibility-typography
+   guidance for institutional register — plain, legible, not "premium."
+   (2) Real student-portal UX research (MyCUinfo and others) finding
+   schedule-at-a-glance and "what's due soon" are the actual load-bearing
+   tasks, not a card grid of courses-as-products. PT Serif (course titles —
+   content register, since a course name reads like a piece of content, not
+   a product) + PT Sans (all UI/data — a single-foundry Paratype pairing,
+   genuinely different character from Inter, not on any AI-overused list).
+   No hairline-border-plus-soft-shadow card system; no spring-easing hover
+   polish applied to everything; a single muted academic-navy accent used
+   only for structural/brand elements, with urgency communicated by a
+   separate, unrelated amber, not by the brand color. */
+:root {
+  --bg: #FAFAF9;
+  --surface: #FFFFFF;
+  --line: #D8D5CC;
+  --ink: #24211C;
+  --ink-quiet: #6B6559;
+  --navy: #2C4A6E;
+  --urgent: #A34E1E;
+  --urgent-bg: #FBEEE2;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'PT Sans', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.5; }
+h1, h2, .course-title { font-family: 'PT Serif', Georgia, serif; }
+
+.topbar { display: flex; justify-content: space-between; align-items: baseline; padding: 18px 32px; border-bottom: 2px solid var(--navy); }
+.mark { font-weight: 700; font-size: 17px; color: var(--navy); }
+.term, .back-link { font-size: 14px; color: var(--ink-quiet); text-decoration: none; }
+.back-link:hover { text-decoration: underline; }
+
+main { max-width: 880px; margin: 0 auto; padding: 32px 32px 80px; }
+.page-title { font-size: 26px; font-weight: 700; margin: 0 0 8px; }
+
+/* Structural difference from every preset: "due soon" leads, sorted by
+   urgency across all courses — not a grid of course cards each showing
+   their own isolated due date. */
+.due-soon-heading { font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-quiet); font-weight: 700; margin: 28px 0 10px; }
+.due-soon-list { border-top: 1px solid var(--line); }
+.due-soon-row { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.due-soon-row .assn-course { color: var(--ink-quiet); font-size: 12px; text-transform: uppercase; letter-spacing: 0.03em; margin-right: 8px; }
+.due-soon-row .assn-title { font-weight: 600; }
+.due-soon-row .assn-when { font-variant-numeric: tabular-nums; }
+.due-soon-row.urgent .assn-when { color: var(--urgent); font-weight: 700; }
+
+.course-grid { display: block; margin-top: 24px; }
+.course-card {
+  display: block;
+  text-decoration: none; color: inherit;
+  padding: 16px 0; border-bottom: 1px solid var(--line);
+}
+.course-card:hover .course-title { color: var(--navy); }
+.course-card-top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.course-code { font-size: 13px; font-weight: 700; color: var(--ink-quiet); font-variant-numeric: tabular-nums; align-self: center; }
+.course-title { font-size: 18px; font-weight: 700; margin: 4px 0 6px; }
+.course-meta { font-size: 13px; color: var(--ink-quiet); display: block; }
+.course-grade { font-size: 15px; font-weight: 700; color: var(--navy); }
+.course-due { display: none; } /* superseded by the due-soon list above — not repeated per-card */
+
+.detail-head { margin-bottom: 28px; border-bottom: 2px solid var(--navy); padding-bottom: 16px; }
+.course-code-badge { font-size: 13px; font-weight: 700; color: var(--ink-quiet); font-variant-numeric: tabular-nums; }
+.course-detail-meta { color: var(--ink-quiet); font-size: 14px; margin-top: 6px; }
+.section-heading { font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-quiet); font-weight: 700; margin: 0 0 12px; }
+
+.assignment-row { border-top: 1px solid var(--line); padding: 14px 0; }
+.assignment-row:last-child { border-bottom: 1px solid var(--line); }
+.assignment-main { display: flex; justify-content: space-between; align-items: baseline; }
+.assignment-title { font-weight: 700; font-size: 15px; }
+.assignment-status { font-size: 12px; color: var(--ink-quiet); font-variant-numeric: tabular-nums; }
+.status-open .assignment-status { color: var(--urgent); font-weight: 700; }
+.assignment-meta { font-size: 13px; color: var(--ink-quiet); margin-top: 2px; }
+.assignment-body { margin-top: 14px; padding: 14px 16px; background: var(--urgent-bg); border-left: 3px solid var(--urgent); font-size: 14px; }
+.assignment-body p { margin: 0 0 14px; color: var(--ink); line-height: 1.6; }
+
+.submit-block { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.file-label { font-size: 13px; font-weight: 700; }
+input[type="file"] { font-family: inherit; font-size: 13px; }
+.file-chosen { font-size: 13px; color: var(--ink-quiet); }
+.submit-btn { font-family: inherit; font-size: 14px; font-weight: 700; background: var(--navy); color: #fff; border: none; border-radius: 3px; padding: 9px 18px; cursor: pointer; }
+.submit-btn:hover:not(:disabled) { background: #23385578; }
+.submit-btn:disabled { background: #B8C2CC; cursor: not-allowed; }
+.submit-feedback { font-size: 13px; color: var(--navy); font-weight: 700; }
+
+@media (max-width: 640px) {
+  main { padding: 24px 18px 60px; }
+  .course-card { grid-template-columns: 1fr auto; }
+  .course-code { grid-column: 1; }
+}

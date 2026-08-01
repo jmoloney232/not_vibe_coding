@@ -1,0 +1,82 @@
+/* PRESET C — Focus Flow
+   Implemented exactly per spec: Space Grotesk headings / Inter body,
+   BG #050816, Primary #4F46E5, Secondary #0B1020, Accent #22D3EE,
+   "glassy panels with deep indigo gradients," hairline borders, smooth
+   shadows, spring-curve transitions, subtle hover transitions on every
+   interactive element. */
+:root {
+  --bg: #050816;
+  --primary: #4F46E5;
+  --surface: #0B1020;
+  --accent: #22D3EE;
+  --border: rgba(255,255,255,0.08);
+  --ink: #E5E7EB;
+  --ink-quiet: #9CA3AF;
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; font-family: 'Inter', sans-serif; color: var(--ink);
+  background: var(--bg);
+  background-image: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(79,70,229,0.35), transparent), radial-gradient(ellipse 60% 40% at 90% 10%, rgba(34,211,238,0.08), transparent);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+h1, h2, .mark, .course-title { font-family: 'Space Grotesk', sans-serif; }
+
+.topbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 32px; background: rgba(11,16,32,0.6); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.mark { font-weight: 700; font-size: 17px; }
+.term, .back-link { font-size: 14px; color: var(--ink-quiet); text-decoration: none; transition: color 200ms var(--spring); }
+.back-link:hover { color: var(--accent); }
+
+main { max-width: 960px; margin: 0 auto; padding: 40px 32px 80px; }
+.page-title { font-size: 28px; font-weight: 700; margin: 0 0 24px; }
+
+.course-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.course-card {
+  display: block; text-decoration: none; color: inherit;
+  background: rgba(255,255,255,0.03); backdrop-filter: blur(10px);
+  border: 1px solid var(--border); border-radius: 14px; padding: 22px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+  transition: transform 220ms var(--spring), border-color 220ms var(--spring), box-shadow 220ms var(--spring);
+}
+.course-card:hover { transform: translateY(-3px); border-color: rgba(79,70,229,0.5); box-shadow: 0 8px 32px rgba(79,70,229,0.2); }
+.course-card-top { display: flex; justify-content: space-between; margin-bottom: 10px; }
+.course-code { font-size: 12px; font-weight: 700; color: var(--accent); letter-spacing: 0.03em; }
+.course-grade { font-size: 12px; font-weight: 700; color: #A5B4FC; }
+.course-title { font-size: 19px; font-weight: 700; margin: 0 0 8px; }
+.course-meta { font-size: 13px; color: var(--ink-quiet); margin-bottom: 3px; }
+.course-due { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 13px; }
+.due-label { color: var(--ink-quiet); display: block; margin-bottom: 2px; }
+.due-value { font-weight: 600; }
+
+.detail-head { margin-bottom: 32px; }
+.course-code-badge { display: inline-block; font-size: 12px; font-weight: 700; color: var(--accent); background: rgba(34,211,238,0.1); padding: 4px 10px; border-radius: 20px; margin-bottom: 10px; }
+.course-detail-meta { color: var(--ink-quiet); font-size: 14px; margin-top: 4px; }
+.section-heading { font-size: 18px; font-weight: 700; margin: 0 0 16px; }
+
+.assignment-row { background: rgba(255,255,255,0.03); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; margin-bottom: 12px; transition: border-color 220ms var(--spring); }
+.assignment-row:hover { border-color: rgba(79,70,229,0.4); }
+.assignment-main { display: flex; justify-content: space-between; align-items: center; }
+.assignment-title { font-weight: 700; font-size: 15px; }
+.assignment-status { font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.03em; }
+.status-graded .assignment-status { background: rgba(165,180,252,0.15); color: #A5B4FC; }
+.status-open .assignment-status { background: rgba(34,211,238,0.15); color: var(--accent); }
+.status-upcoming .assignment-status { background: rgba(156,163,175,0.15); color: var(--ink-quiet); }
+.assignment-meta { font-size: 13px; color: var(--ink-quiet); margin-top: 4px; }
+.assignment-body { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 14px; }
+.assignment-body p { margin: 0 0 16px; color: var(--ink); line-height: 1.6; }
+
+.submit-block { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+.file-label { font-size: 13px; font-weight: 600; }
+input[type="file"] { font-family: inherit; font-size: 13px; color: var(--ink); }
+.file-chosen { font-size: 13px; color: var(--ink-quiet); }
+.submit-btn { font-family: inherit; font-size: 14px; font-weight: 700; background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 10px 20px; cursor: pointer; transition: transform 200ms var(--spring), background 200ms var(--spring), box-shadow 200ms var(--spring); }
+.submit-btn:hover:not(:disabled) { transform: translateY(-1px); background: #6459ea; box-shadow: 0 0 20px rgba(79,70,229,0.4); }
+.submit-btn:disabled { background: #302C54; color: #6B7280; cursor: not-allowed; }
+.submit-feedback { font-size: 13px; color: var(--accent); font-weight: 600; }
+
+@media (max-width: 640px) {
+  .course-grid { grid-template-columns: 1fr; }
+  main { padding: 24px 18px 60px; }
+}

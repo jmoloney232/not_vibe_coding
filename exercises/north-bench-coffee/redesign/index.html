@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cerro Alto — North Bench Coffee Roasters (redesign)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <span class="mark">North Bench Coffee Roasters</span>
+  <span class="cart">Cart (0)</span>
+</header>
+
+<main>
+  <!-- STRUCTURAL DIFFERENCE FROM THE ORIGINAL: no hero product-photo slot at
+       all, so there is nothing to leave as a "photography pending"
+       placeholder. Leads instead with the thing a specialty-coffee buyer
+       actually uses to evaluate a lot before purchase — the same
+       traceability and cupping data real specialty roasters (Sey Coffee,
+       Prodigal, Onyx-class lot reports) publish per-lot, presented as a
+       technical readout, not a lifestyle narrative. -->
+  <section class="lot-head">
+    <p class="lot-kicker">SINGLE ORIGIN · LOT #HU-2026-014</p>
+    <h1 class="lot-name">Cerro Alto</h1>
+    <p class="lot-sub">La Cumbre Cooperative · Huila, Colombia</p>
+    <div class="cup-score">
+      <span class="cup-num">86.5</span>
+      <span class="cup-label">cupping score<br>in-house, Q-grader panel, 07/22/2026</span>
+    </div>
+  </section>
+
+  <section class="ledger">
+    <h2 class="section-head">Chain of custody</h2>
+    <div class="ledger-row"><span class="ledger-date">Mar 2026</span><span class="ledger-what">Hand-picked at peak ripeness, La Cumbre Cooperative, 1,850–1,950 masl</span></div>
+    <div class="ledger-row"><span class="ledger-date">Mar 2026</span><span class="ledger-what">36-hour fermentation, fully washed process</span></div>
+    <div class="ledger-row"><span class="ledger-date">May 2026</span><span class="ledger-what">Exported via Huila regional co-op, container HU-2291</span></div>
+    <div class="ledger-row"><span class="ledger-date">Jul 22, 2026</span><span class="ledger-what">Cupped and scored, North Bench in-house lab</span></div>
+    <div class="ledger-row"><span class="ledger-date">Roasted to order</span><span class="ledger-what">Shipped within 48 hours of roast date</span></div>
+  </section>
+
+  <section class="roast-data">
+    <h2 class="section-head">Roast profile</h2>
+    <div class="roast-grid">
+      <div class="roast-field"><dt>Charge temp</dt><dd>392°F</dd></div>
+      <div class="roast-field"><dt>First crack</dt><dd>9:20</dd></div>
+      <div class="roast-field"><dt>Drop temp</dt><dd>408°F</dd></div>
+      <div class="roast-field"><dt>Total time</dt><dd>11:40</dd></div>
+      <div class="roast-field"><dt>Roast level</dt><dd>Light-medium</dd></div>
+      <div class="roast-field"><dt>Development ratio</dt><dd>19.4%</dd></div>
+    </div>
+    <p class="roast-note">Developed for clarity over body. At espresso grind it pulls sweet with low bitterness — pull slightly shorter than usual (1:1.8) if it tastes thin.</p>
+  </section>
+
+  <section class="buy-panel" id="buy">
+    <div class="buy-price"><span class="price-num">$19</span><span class="price-note">1 × 12 oz, whole bean</span></div>
+    <div class="buy-field">
+      <span class="buy-label">Size</span>
+      <div class="buy-options">
+        <button class="opt active">12 oz — $19</button>
+        <button class="opt">2 lb — $34</button>
+        <button class="opt">5 lb — $78</button>
+      </div>
+    </div>
+    <div class="buy-field">
+      <span class="buy-label">Grind</span>
+      <div class="buy-options">
+        <button class="opt active">Whole bean</button>
+        <button class="opt">Drip</button>
+        <button class="opt">Espresso</button>
+        <button class="opt">Pour over</button>
+        <button class="opt">French press</button>
+      </div>
+    </div>
+    <button class="add-to-cart">Add to cart</button>
+  </section>
+</main>
+</body>
+</html>

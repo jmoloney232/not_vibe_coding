@@ -1,0 +1,75 @@
+/* REDESIGN — North Bench Coffee
+   The original's real defect was structural, not cosmetic: an e-commerce
+   product page with no product photography is close to non-functional for
+   a shopper who cannot see what they're buying. Rather than fake a photo
+   (ruled out by this project's own asset rules) or leave the placeholder,
+   this redesign removes the dependency on photography entirely by leading
+   with the thing a specialty-coffee buyer actually evaluates a lot on —
+   real per-lot traceability and cupping data, the way real specialty
+   roasters' own lot reports work. That is a structural fix, not a skin
+   change: the page no longer needs an image slot to feel complete.
+   Typography moved off Fraunces + Inter (this project's own flagged
+   "artisan premium" pairing) to Zilla Slab (a workmanlike slab serif,
+   technical/spec-sheet register rather than boutique-warm) + IBM Plex
+   Mono for all data, which also replaces the tasting-note pill row with
+   an actual technical roast-profile readout. Background moved off cream
+   to a cool stone/sage neutral, deliberately not another warm "artisan"
+   tone. */
+:root {
+  --bg: #EEF1EA;
+  --surface: #FFFFFF;
+  --ink: #1B2018;
+  --ink-quiet: #5B6154;
+  --line: #D6DACB;
+  --accent: #52633F;
+  --accent-bg: #E4E9DA;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Zilla Slab', Georgia, serif; }
+.mono { font-family: 'IBM Plex Mono', monospace; }
+
+.topbar { display: flex; justify-content: space-between; align-items: center; padding: 18px 32px; border-bottom: 1px solid var(--line); font-family: 'IBM Plex Mono', monospace; font-size: 13px; }
+.mark { font-weight: 600; }
+.cart { color: var(--ink-quiet); }
+
+main { max-width: 640px; margin: 0 auto; padding: 40px 24px 80px; }
+
+.lot-head { margin-bottom: 36px; }
+.lot-kicker { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--accent); letter-spacing: 0.03em; margin: 0 0 8px; }
+.lot-name { font-size: 42px; font-weight: 700; margin: 0 0 6px; }
+.lot-sub { font-size: 16px; color: var(--ink-quiet); margin: 0 0 20px; }
+.cup-score { display: flex; align-items: baseline; gap: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 16px 18px; }
+.cup-num { font-family: 'IBM Plex Mono', monospace; font-size: 34px; font-weight: 600; color: var(--accent); }
+.cup-label { font-size: 12px; color: var(--ink-quiet); line-height: 1.4; }
+
+.section-head { font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-quiet); border-top: 1px solid var(--line); padding-top: 10px; margin: 0 0 16px; }
+
+.ledger { margin-bottom: 36px; }
+.ledger-row { display: flex; gap: 16px; padding: 9px 0; font-size: 14px; border-bottom: 1px solid var(--line); }
+.ledger-date { width: 110px; flex-shrink: 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ink-quiet); }
+
+.roast-data { margin-bottom: 36px; }
+.roast-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 16px; }
+.roast-field { background: var(--surface); border: 1px solid var(--line); border-radius: 5px; padding: 10px 12px; }
+.roast-field dt { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; color: var(--ink-quiet); margin: 0 0 4px; }
+.roast-field dd { margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 16px; font-weight: 600; }
+.roast-note { font-size: 14px; color: var(--ink-quiet); line-height: 1.6; margin: 0; }
+
+.buy-panel { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 24px; }
+.buy-price { display: flex; align-items: baseline; gap: 10px; margin-bottom: 18px; }
+.price-num { font-size: 26px; font-weight: 700; }
+.price-note { font-size: 13px; color: var(--ink-quiet); }
+.buy-field { margin-bottom: 16px; }
+.buy-label { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; color: var(--ink-quiet); margin-bottom: 8px; }
+.buy-options { display: flex; flex-wrap: wrap; gap: 8px; }
+.opt { font-family: 'IBM Plex Mono', monospace; font-size: 13px; padding: 7px 12px; border-radius: 4px; border: 1px solid var(--line); background: var(--bg); cursor: pointer; }
+.opt.active { border-color: var(--accent); background: var(--accent-bg); color: var(--accent); font-weight: 600; }
+.add-to-cart { width: 100%; font-family: 'Zilla Slab', serif; font-size: 16px; font-weight: 700; padding: 13px; border: none; border-radius: 5px; background: var(--accent); color: #fff; cursor: pointer; }
+
+@media (max-width: 560px) {
+  main { padding: 28px 16px 60px; }
+  .lot-name { font-size: 32px; }
+  .roast-grid { grid-template-columns: repeat(2, 1fr); }
+  .ledger-row { flex-direction: column; gap: 2px; }
+  .ledger-date { width: auto; }
+}

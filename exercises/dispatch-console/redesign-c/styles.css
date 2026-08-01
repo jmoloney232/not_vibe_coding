@@ -1,0 +1,80 @@
+/* REDESIGN — Dispatch C: Shift Handoff
+   The original scored 1/4: beige background, serif operator names, rounded
+   warm alert cards, and an excessively vertical single column for a task
+   that is explicitly time-pressured (a shift handoff, read under pressure,
+   not browsed at leisure). Per EXISTING_EXERCISE_REVIEW.md, the underlying
+   data and grouping logic (app.js, unchanged here) were always sound — the
+   fix is entirely in the visual system, but that fix has to be structural
+   (density, column count) as well as cosmetic (color, type), because
+   "excessively vertical" is a layout defect, not a color one.
+
+   Reuses the same semantic status-color system as Direction A (amber/red/
+   slate) rather than inventing a fourth palette for the same console family
+   — deliberate consistency across Meridian's own directions, the way a
+   real internal tool keeps one status-color vocabulary across screens. */
+:root {
+  --ink: #17212b;
+  --ink-quiet: #56626c;
+  --ink-faint: #8b96a0;
+  --bg: #f4f6f8;
+  --bg-card: #ffffff;
+  --line: #d7dde2;
+  --at-risk: #8a5a00;
+  --at-risk-bg: #fbf1de;
+  --late: #8a1f11;
+  --late-bg: #fbe9e5;
+  --exception: #6b1414;
+  --exception-bg: #f7e2df;
+  --unassigned: #3d4a5c;
+  --unassigned-bg: #e8ecf0;
+  --radius: 3px;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Public Sans', ui-sans-serif, system-ui, sans-serif; background: var(--bg); color: var(--ink); font-size: 14px; line-height: 1.45; }
+
+.topbar { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 24px; background: var(--bg-card); border-bottom: 1px solid var(--line); }
+.mark { font-weight: 700; font-size: 15px; }
+.topbar-sub { font-size: 13px; color: var(--ink-quiet); }
+
+.board { padding: 20px 24px 60px; max-width: 1400px; margin: 0 auto; }
+
+.unassigned-heading { font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--unassigned); font-weight: 700; margin: 0 0 8px; }
+.unassigned-loads { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 8px; margin-bottom: 20px; }
+
+/* the structural fix: driver sections wrap into a multi-column grid instead
+   of stacking in one long vertical column — this alone cuts scroll depth
+   roughly in half at desktop width, which is what "excessively vertical"
+   actually requires fixing, not a color change. */
+.driver-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 10px; align-items: start; }
+
+.driver-section { background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 14px; }
+.driver-section.flagged { border-color: var(--at-risk); }
+.ds-head { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 6px; margin-bottom: 6px; border-bottom: 1px solid var(--line); }
+.ds-head h2 { font-size: 14px; font-weight: 700; margin: 0; display: flex; align-items: center; gap: 6px; }
+.flag-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--at-risk); display: inline-block; }
+.ds-meta { font-size: 12px; color: var(--ink-quiet); }
+.hos-low { color: var(--late); font-weight: 600; }
+.ds-empty { font-size: 12px; color: var(--ink-faint); font-style: normal; margin: 6px 0; }
+
+.load-row { padding: 6px 8px; border-radius: var(--radius); margin-bottom: 4px; border-left: 3px solid var(--line); }
+.load-row.status-on_time { border-left-color: transparent; }
+.load-row.status-at_risk { background: var(--at-risk-bg); border-left-color: var(--at-risk); }
+.load-row.status-late { background: var(--late-bg); border-left-color: var(--late); }
+.load-row.status-exception { background: var(--exception-bg); border-left-color: var(--exception); }
+.load-row.status-unassigned { background: var(--unassigned-bg); border-left-color: var(--unassigned); }
+.lr-top { display: flex; justify-content: space-between; font-size: 12px; }
+.lr-id { font-weight: 700; }
+.lr-badge { color: var(--ink-quiet); font-size: 11px; text-transform: uppercase; letter-spacing: 0.02em; }
+.status-at_risk .lr-badge { color: var(--at-risk); }
+.status-late .lr-badge { color: var(--late); }
+.status-exception .lr-badge { color: var(--exception); }
+.lr-route { font-size: 12px; margin-top: 2px; }
+.lr-shipper { color: var(--ink-quiet); }
+.lr-time { font-size: 11px; color: var(--ink-quiet); margin-top: 2px; font-variant-numeric: tabular-nums; }
+.lr-note { font-size: 11px; margin-top: 4px; color: var(--ink); }
+
+@media (max-width: 640px) {
+  .board { padding: 16px 14px 40px; }
+  .driver-grid { grid-template-columns: 1fr; }
+  .unassigned-loads { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,85 @@
+/* REDESIGN — Ridgeline Flags detail page
+   The original's real defect was structural: a single control block
+   followed by several hundred pixels of empty white space. Fixed by
+   adding the content a real flag detail screen needs (targeting rules,
+   rollout history, related flags) and using the reclaimed width as a
+   two-column layout instead of one centered block.
+   Typography changed from Inter + JetBrains Mono (this project's own
+   most-repeated developer-tool default, confirmed by the round-2
+   convergence audit) to Hanken Grotesk + Space Mono — a genuinely
+   different UI/mono pairing, chosen for being legible and unglamorous
+   rather than for being a "safer" version of the same two families. */
+:root {
+  --ink: #14161A;
+  --ink-quiet: #61666E;
+  --ink-faint: #9BA0A7;
+  --bg: #FFFFFF;
+  --bg-quiet: #F6F7F8;
+  --line: #E2E4E7;
+  --accent: #2B5D3F;
+  --accent-bg: #E7F0EA;
+  --warn: #8A4B00;
+  --warn-bg: #FBF0DE;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Hanken Grotesk', sans-serif; background: var(--bg); color: var(--ink); font-size: 15px; line-height: 1.5; }
+.mono { font-family: 'Space Mono', monospace; }
+
+.topbar { display: flex; align-items: center; gap: 28px; padding: 14px 28px; border-bottom: 1px solid var(--line); }
+.mark { font-weight: 700; font-size: 15px; }
+.nav { display: flex; gap: 18px; }
+.nav a { color: var(--ink-quiet); text-decoration: none; font-size: 14px; }
+.nav a[aria-current] { color: var(--ink); font-weight: 600; }
+
+main { max-width: 1040px; margin: 0 auto; padding: 32px 28px 80px; }
+
+.detail-head { margin-bottom: 24px; }
+.flag-key { font-size: 20px; font-weight: 700; }
+.flag-desc { color: var(--ink-quiet); margin-top: 4px; font-size: 15px; }
+.flag-desc.empty { font-style: italic; color: var(--ink-faint); }
+.env-badge { display: inline-block; margin-top: 10px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; padding: 3px 9px; border-radius: 3px; background: var(--bg-quiet); color: var(--ink-quiet); }
+.env-production { background: var(--accent-bg); color: var(--accent); }
+
+.detail-body { display: grid; grid-template-columns: 1fr 300px; gap: 20px; align-items: start; }
+.panel { border: 1px solid var(--line); border-radius: 6px; padding: 20px; margin-bottom: 20px; }
+.panel-head { font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-quiet); margin: 0 0 14px; font-weight: 700; }
+.panel-empty { font-size: 13px; color: var(--ink-faint); margin: 0; }
+
+.big-pct { font-size: 40px; font-weight: 700; font-family: 'Space Mono', monospace; }
+.big-pct.pct-zero { color: var(--ink-faint); }
+.big-pct.pct-full { color: var(--accent); }
+.big-pct-label { font-size: 13px; color: var(--ink-quiet); margin-top: 2px; }
+.big-track { height: 6px; background: var(--bg-quiet); border-radius: 3px; margin: 14px 0 18px; overflow: hidden; }
+.big-fill { height: 100%; background: var(--accent); }
+.slider-label { display: block; font-size: 12px; color: var(--ink-quiet); margin-bottom: 6px; }
+input[type="range"] { width: 100%; }
+.change-note { margin-top: 14px; font-size: 13px; background: var(--warn-bg); color: var(--warn); padding: 10px 12px; border-radius: 4px; }
+.save-row { display: flex; align-items: center; gap: 12px; margin-top: 18px; }
+#save-btn { font-family: inherit; font-size: 14px; font-weight: 600; padding: 9px 18px; border-radius: 5px; border: 1px solid var(--line); background: var(--bg-quiet); color: var(--ink-faint); cursor: not-allowed; }
+#save-btn.is-active { background: var(--accent); border-color: var(--accent); color: #fff; cursor: pointer; }
+#save-state { font-size: 13px; color: var(--ink-quiet); }
+
+.rule-list { list-style: none; margin: 0; padding: 0; }
+.rule-list li { font-size: 13px; background: var(--bg-quiet); padding: 8px 10px; border-radius: 4px; margin-bottom: 6px; }
+
+.history-list { display: flex; flex-direction: column; gap: 14px; }
+.history-row { padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.history-row:last-child { border-bottom: none; padding-bottom: 0; }
+.history-when { font-size: 11px; color: var(--ink-faint); font-family: 'Space Mono', monospace; margin-bottom: 2px; }
+.history-what { font-size: 14px; }
+.history-note { font-size: 13px; color: var(--ink-quiet); margin-top: 3px; }
+
+.detail-field { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+.detail-field:last-child { border-bottom: none; }
+.detail-field dt { color: var(--ink-quiet); margin: 0; }
+.detail-field dd { margin: 0; font-weight: 600; }
+.cap { text-transform: capitalize; }
+
+.related-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.related-key { display: block; font-size: 12px; }
+.related-relation { display: block; font-size: 12px; color: var(--ink-quiet); margin-top: 2px; }
+
+@media (max-width: 780px) {
+  .detail-body { grid-template-columns: 1fr; }
+  main { padding: 24px 18px 60px; }
+}

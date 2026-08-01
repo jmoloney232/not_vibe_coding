@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drawdown — a four-shaft draft, worked out</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="masthead">
+  <p class="eyebrow">Handweaving · draft notation</p>
+  <h1>Drawdown</h1>
+  <p class="deck">
+    A weaver does not draw cloth. They write down three things — which shaft each warp thread is
+    heddled on, which shafts each treadle lifts, and the order the treadles are pressed — and the cloth
+    is whatever those three produce. Change any square below and the cloth changes with it.
+  </p>
+</header>
+
+<main>
+
+  <section class="loom-section" aria-labelledby="loom-h">
+    <h2 id="loom-h" class="sr-only">The draft</h2>
+
+    <div class="loom-layout">
+
+      <div class="draft-scroll">
+      <div class="draft" id="draft">
+        <div class="quad quad-warp">
+          <span class="quad-label">Warp colour</span>
+          <svg id="warp-colour" class="grid" role="img" aria-label="Warp colour order"></svg>
+        </div>
+
+        <div class="quad quad-threading">
+          <span class="quad-label">Threading <b id="shaft-count"></b></span>
+          <svg id="threading" class="grid grid-live" role="grid" tabindex="0"
+               aria-label="Threading: which shaft each warp end is heddled on. Arrow keys move; Enter sets."></svg>
+        </div>
+
+        <div class="quad quad-tieup">
+          <span class="quad-label">Tie-up</span>
+          <svg id="tieup" class="grid grid-live" role="grid" tabindex="0"
+               aria-label="Tie-up: which shafts each treadle lifts. Arrow keys move; Enter sets."></svg>
+        </div>
+
+        <div class="quad quad-weft">
+          <span class="quad-label quad-label-v">Weft</span>
+          <svg id="weft-colour" class="grid" role="img" aria-label="Weft colour order"></svg>
+        </div>
+
+        <div class="quad quad-cloth">
+          <svg id="drawdown" class="grid" role="img" aria-describedby="cloth-desc"
+               aria-label="The cloth these three grids produce"></svg>
+        </div>
+
+        <div class="quad quad-treadling">
+          <span class="quad-label">Treadling</span>
+          <svg id="treadling" class="grid grid-live" role="grid" tabindex="0"
+               aria-label="Treadling: the order the treadles are pressed. Arrow keys move; Enter sets."></svg>
+        </div>
+      </div>
+      </div>
+      <p class="grid-say" id="grid-say" role="status" aria-live="polite"></p>
+
+      <div class="panel">
+        <section class="panel-block" aria-labelledby="draft-h">
+          <h3 id="draft-h">Draft</h3>
+          <div class="chooser" id="draft-chooser" role="radiogroup" aria-labelledby="draft-h"></div>
+          <p class="blurb" id="blurb"></p>
+        </section>
+
+        <section class="panel-block" aria-labelledby="dye-h">
+          <h3 id="dye-h">Yarn</h3>
+          <div class="dye-row">
+            <span class="dye-label" id="warp-dye-label">Warp</span>
+            <div class="dyes" id="warp-dyes" role="radiogroup" aria-labelledby="warp-dye-label"></div>
+          </div>
+          <div class="dye-row second-yarn" id="warp-row-b" hidden>
+            <span class="dye-label" id="warpb-dye-label">Warp&nbsp;2</span>
+            <div class="dyes" id="warpb-dyes" role="radiogroup" aria-labelledby="warpb-dye-label"></div>
+          </div>
+          <div class="dye-row">
+            <span class="dye-label" id="weft-dye-label">Weft</span>
+            <div class="dyes" id="weft-dyes" role="radiogroup" aria-labelledby="weft-dye-label"></div>
+          </div>
+          <div class="dye-row second-yarn" id="weft-row-b" hidden>
+            <span class="dye-label" id="weftb-dye-label">Weft&nbsp;2</span>
+            <div class="dyes" id="weftb-dyes" role="radiogroup" aria-labelledby="weftb-dye-label"></div>
+          </div>
+          <p class="hint" id="dye-hint"></p>
+        </section>
+
+        <section class="panel-block" aria-labelledby="weave-h">
+          <h3 id="weave-h">At the loom</h3>
+          <button type="button" class="weave" id="weave">Weave it, pick by pick</button>
+          <p class="hint" id="cloth-desc"></p>
+        </section>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="reading" aria-labelledby="reading-h">
+    <h2 id="reading-h">Reading the four grids</h2>
+    <div class="reading-cols">
+      <div>
+        <h3>Threading, along the top</h3>
+        <p>
+          One column for every warp end on the loom, running left to right as the threads run through
+          the heddles. The filled square in a column is the shaft that end is threaded on. Shaft one is
+          the row nearest the cloth; shaft eight is furthest back.
+        </p>
+      </div>
+      <div>
+        <h3>Tie-up, at the corner</h3>
+        <p>
+          One column for every treadle, one row for every shaft. A filled square means that treadle is
+          corded to that shaft, so pressing it lifts that shaft and every warp end threaded on it. This
+          is the part a weaver changes least often: retying a loom takes an afternoon underneath it.
+        </p>
+      </div>
+      <div>
+        <h3>Treadling, down the side</h3>
+        <p>
+          One row for every pick of weft, read downward in the order they are woven. The filled square
+          says which treadle is pressed. A walking treadling — one, two, three, four, and back to one —
+          is what turns a twill tie-up into a diagonal.
+        </p>
+      </div>
+      <div>
+        <h3>The drawdown itself</h3>
+        <p>
+          Nothing is entered here. A square shows warp where the pick&#8217;s treadle lifted the shaft
+          that end is threaded on, and weft where it did not. Every float, every diagonal, and every
+          diamond in the cloth is a consequence of the other three grids, which is the whole reason
+          the notation is worth learning.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="colophon">
+  <p>
+    <b>Demonstration document.</b> The interlacement is computed, not drawn: each square of the cloth is
+    the result of testing the pick&#8217;s treadle against the end&#8217;s shaft, so the drawdown cannot
+    disagree with the draft above it. Plain weave, 2/2 twill, herringbone, goose eye, and log cabin are
+    standard structures from the handweaving repertoire rather than invented patterns. The dye names are
+    the historical sources — indigo, madder, weld, walnut, iron — and the colours are approximations of
+    them, not measured samples.
+  </p>
+</footer>
+
+<script src="drafts.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+/* Everything on this page is measured from the cell — one warp end by one pick.
+   The type sits on multiples of it so the prose and the cloth share a grid. */
+:root {
+  --cell: 13px;
+  --c1: 13px;
+  --c2: 26px;
+  --c3: 39px;
+  --c4: 52px;
+  --c6: 78px;
+  --c8: 104px;
+
+  --ground: #eae4d8;
+  --ground-sunk: #ded7c7;
+  --ink: #221f1b;
+  --ink-quiet: #57514a;
+  --hair: rgba(34, 31, 27, 0.24);
+  --hair-soft: rgba(34, 31, 27, 0.13);
+
+  --sans: 'Jost', 'Century Gothic', 'Avenir Next', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+main, .masthead, .colophon {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 var(--c2);
+}
+
+/* ---------------------------------------------------------------- masthead */
+
+.masthead { padding: var(--c4) 0 0; }
+
+.eyebrow {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-quiet);
+}
+
+.masthead h1 {
+  margin: var(--c1) 0 0;
+  font-size: clamp(52px, 9vw, 116px);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.026em;
+}
+
+.deck {
+  margin: var(--c2) 0 0;
+  max-width: 62ch;
+  font-size: clamp(17px, 1.5vw, 20px);
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* ------------------------------------------------------------------- loom */
+
+.loom-section { margin-top: var(--c6); }
+
+.loom-layout {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: var(--c6);
+  align-items: start;
+}
+
+/* A draft is a wide technical drawing. On a narrow screen it scrolls inside its
+   own frame rather than shrinking to illegibility or pushing the page sideways. */
+.draft-scroll {
+  overflow-x: auto;
+  min-width: 0;
+  padding-bottom: var(--c1);
+}
+
+/* The four quadrants sit where they sit on a paper draft: threading across the
+   top, tie-up in the corner it shares with the treadling, cloth below. */
+.draft {
+  display: grid;
+  grid-template-columns: var(--c2) max-content max-content;
+  grid-template-rows: max-content max-content max-content;
+  gap: var(--c2);
+  align-items: start;
+  justify-items: start;
+}
+
+.quad { position: relative; min-width: 0; }
+.quad-warp { grid-column: 2; grid-row: 1; }
+.quad-threading { grid-column: 2; grid-row: 2; }
+.quad-tieup { grid-column: 3; grid-row: 2; }
+.quad-weft { grid-column: 1; grid-row: 3; }
+.quad-cloth { grid-column: 2; grid-row: 3; }
+.quad-treadling { grid-column: 3; grid-row: 3; }
+
+.quad-label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-quiet);
+  white-space: nowrap;
+}
+
+.quad-label b { font-weight: 500; color: var(--ink); letter-spacing: 0.1em; }
+
+.quad-label-v {
+  position: absolute;
+  top: 0; left: 0;
+  transform-origin: left top;
+  transform: rotate(90deg) translate(0, -100%);
+  margin: 0;
+}
+
+.grid { display: block; }
+.grid-live { cursor: pointer; }
+
+.grid-say {
+  margin: var(--c1) 0 0;
+  min-height: 1.4em;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ink-quiet);
+}
+
+/* ------------------------------------------------------------------ panel */
+
+.panel { max-width: 46ch; }
+
+.panel-block { margin-bottom: var(--c4); }
+.panel-block:last-child { margin-bottom: 0; }
+
+.panel h3 {
+  margin: 0 0 var(--c1);
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--ink);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.chooser { display: flex; flex-wrap: wrap; gap: 0; }
+
+.chooser button {
+  appearance: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  background: none;
+  color: var(--ink-quiet);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 4px var(--c2) 4px 0;
+  cursor: pointer;
+}
+
+.chooser button:hover { color: var(--ink); }
+.chooser button[aria-checked="true"] { color: var(--ink); border-bottom-color: var(--ink); font-weight: 500; }
+
+.blurb {
+  margin: var(--c2) 0 0;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--ink-quiet);
+}
+
+.dye-row {
+  display: grid;
+  grid-template-columns: 5.5ch minmax(0, 1fr);
+  align-items: center;
+  gap: var(--c1);
+  padding: 6px 0;
+  border-bottom: 1px solid var(--hair-soft);
+}
+
+.dye-label {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-quiet);
+}
+
+.dyes { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.dye {
+  appearance: none;
+  border: 1px solid var(--hair);
+  border-radius: 0;
+  width: var(--c2);
+  height: var(--c2);
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.dye[aria-checked="true"] {
+  box-shadow: 0 0 0 2px var(--ground), 0 0 0 4px var(--ink);
+}
+
+.hint {
+  margin: var(--c1) 0 0;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.45;
+  color: var(--ink-quiet);
+}
+
+.weave {
+  appearance: none;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  padding: 7px var(--c2);
+  cursor: pointer;
+}
+
+.weave:hover { background: var(--ink); color: var(--ground); }
+.weave[disabled] { opacity: 0.45; cursor: default; }
+.weave[disabled]:hover { background: none; color: var(--ink); }
+
+/* ---------------------------------------------------------------- reading */
+
+.reading {
+  margin-top: var(--c8);
+  padding-top: var(--c2);
+  border-top: 1px solid var(--ink);
+}
+
+.reading h2 {
+  margin: 0 0 var(--c4);
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 300;
+  letter-spacing: -0.018em;
+}
+
+.reading-cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--c4);
+}
+
+.reading-cols h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.reading-cols p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--ink-quiet);
+}
+
+/* --------------------------------------------------------------- colophon */
+
+.colophon {
+  margin-top: var(--c8);
+  padding-top: var(--c1);
+  padding-bottom: var(--c8);
+  border-top: 1px solid var(--hair);
+}
+
+.colophon p {
+  margin: 0;
+  max-width: 90ch;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--ink-quiet);
+}
+
+.colophon b { font-weight: 500; color: var(--ink); }
+
+/* ------------------------------------------------------------- responsive */
+
+@media (max-width: 1100px) {
+  .loom-layout { grid-template-columns: minmax(0, 1fr); gap: var(--c4); }
+  .panel { max-width: 62ch; }
+}
+
+@media (max-width: 720px) {
+  main, .masthead, .colophon { padding: 0 var(--c1); }
+  :root { --cell: 7px; }
+  .draft { gap: var(--c1); grid-template-columns: 16px max-content max-content; width: max-content; }
+  .masthead { padding-top: var(--c2); }
+  .loom-section { margin-top: var(--c4); }
+  .reading { margin-top: var(--c6); }
+  .colophon { margin-top: var(--c6); padding-bottom: var(--c4); }
+}
+.second-yarn[hidden] { display: none; }

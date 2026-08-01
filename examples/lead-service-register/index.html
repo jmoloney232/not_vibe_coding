@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lead Service Line Inventory — Ward Seven — Rensdale Municipal Water</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-bar">
+    <span class="authority">Rensdale Municipal Water</span>
+    <span class="filing">PWSID OH&#8209;4417002 &nbsp;·&nbsp; Revision 6 &nbsp;·&nbsp; Filed 16 April 2026</span>
+  </div>
+  <h1>
+    <span class="t1">Lead Service<br>Line Inventory</span>
+    <span class="t2">Ward Seven</span>
+  </h1>
+  <p class="statute">Published under 40 CFR 141.84. Superseded revisions remain on file at the Water Division office and are available on request.</p>
+</header>
+
+<main>
+
+  <section class="lede" aria-labelledby="lede-h">
+    <h2 id="lede-h" class="sr-only">What this document is</h2>
+    <p class="lede-text">
+      Every service connection in Ward Seven appears on this page as one mark. There are
+      <strong id="fig-total">—</strong> of them. The mark tells you what the pipe between the water main and
+      the building is made of — not the plumbing inside the building, which the utility does not own
+      and has not surveyed.
+    </p>
+    <div class="lede-figure">
+      <p class="figure-value" id="fig-affected">—</p>
+      <p class="figure-label">connections still carrying lead or galvanized pipe scheduled for replacement</p>
+    </div>
+  </section>
+
+  <hr class="rule-heavy">
+
+  <section class="plate-section" aria-labelledby="plate-h">
+    <div class="section-head">
+      <h2 id="plate-h">Plate I &nbsp;— &nbsp;The ward, by connection</h2>
+      <p class="section-note">
+        Blocks are drawn in survey order, north to south. Within a block, marks run in address order.
+        Point at or focus any mark for its record. Arrow keys move within a block; Tab moves between blocks.
+      </p>
+    </div>
+
+    <div class="legend" id="legend" role="group" aria-label="Filter the plate by material">
+      <button type="button" class="legend-item" data-material="LEAD" aria-pressed="false">
+        <span class="mark m-lead" aria-hidden="true"></span><span class="legend-t"><b>Lead</b> confirmed lead service line</span>
+      </button>
+      <button type="button" class="legend-item" data-material="GRR" aria-pressed="false">
+        <span class="mark m-grr" aria-hidden="true"></span><span class="legend-t"><b>Galvanized</b> downstream of lead; replaced with it</span>
+      </button>
+      <button type="button" class="legend-item" data-material="UNKNOWN" aria-pressed="false">
+        <span class="mark m-unknown" aria-hidden="true"></span><span class="legend-t"><b>Unknown</b> material not yet established</span>
+      </button>
+      <button type="button" class="legend-item" data-material="NONLEAD" aria-pressed="false">
+        <span class="mark m-nonlead" aria-hidden="true"></span><span class="legend-t"><b>Non-lead</b> copper or plastic, verified</span>
+      </button>
+    </div>
+
+    <div class="plate-layout">
+      <div class="plate" id="plate"></div>
+
+      <aside class="readout" aria-labelledby="readout-h">
+        <h3 id="readout-h">Record</h3>
+        <div id="readout-body" class="readout-body" aria-live="polite"></div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="rule-heavy">
+
+  <section class="ledger-section" aria-labelledby="ledger-h">
+    <div class="section-head">
+      <h2 id="ledger-h">Table I &nbsp;— &nbsp;Block ledger and replacement sequence</h2>
+      <p class="section-note">
+        The utility opens a trench once per block, so a household&#8217;s replacement window is its block&#8217;s
+        window. Blocks with the largest share of affected connections are trenched first.
+      </p>
+    </div>
+
+    <div class="table-scroll">
+      <table class="ledger">
+        <caption class="sr-only">Service connections by block, with material counts and scheduled replacement window</caption>
+        <thead>
+          <tr>
+            <th scope="col" class="c-block">Block</th>
+            <th scope="col" class="c-era">Built</th>
+            <th scope="col" class="num">Conn.</th>
+            <th scope="col" class="num">Lead</th>
+            <th scope="col" class="num">Galv.</th>
+            <th scope="col" class="num">Unk.</th>
+            <th scope="col" class="num">Non&#8209;lead</th>
+            <th scope="col" class="c-bar">Share affected</th>
+            <th scope="col" class="c-win">Window</th>
+          </tr>
+        </thead>
+        <tbody id="ledger-body"></tbody>
+        <tfoot id="ledger-foot"></tfoot>
+      </table>
+    </div>
+  </section>
+
+  <hr class="rule-heavy">
+
+  <section class="lookup-section" aria-labelledby="lookup-h">
+    <div class="section-head">
+      <h2 id="lookup-h">Look up an address</h2>
+      <p class="section-note">Type a house number or street. Ward Seven only.</p>
+    </div>
+
+    <div class="lookup-layout">
+      <form class="lookup" id="lookup-form" role="search">
+        <label for="lookup-input">Address in Ward Seven</label>
+        <div class="lookup-row">
+          <input type="search" id="lookup-input" name="q" autocomplete="off" spellcheck="false"
+                 placeholder="e.g. 812 Kesler Ave" aria-describedby="lookup-status">
+          <button type="submit">Search</button>
+        </div>
+        <p class="status" id="lookup-status" role="status"></p>
+      </form>
+
+      <p class="lookup-aside">
+        If your address is not here, your connection is in another ward and appears in that ward&#8217;s
+        inventory. If it is here and you believe the material is recorded wrongly — you have seen the
+        pipe, or you hold a plumbing permit for a replacement — the Division will send a crew to verify
+        and will correct the record. A resident&#8217;s report has revised 61&nbsp;classifications in this
+        ward since the first revision was filed.
+      </p>
+    </div>
+
+    <div id="lookup-results" class="lookup-results"></div>
+  </section>
+
+  <hr class="rule-heavy">
+
+  <section class="guidance" aria-labelledby="guidance-h">
+    <div class="section-head">
+      <h2 id="guidance-h">If your line is lead, galvanized, or unknown</h2>
+    </div>
+    <div class="guidance-cols">
+      <div class="guidance-col">
+        <h3>Before your block is trenched</h3>
+        <p>
+          Treat an unknown line as if it were lead until it is verified. Use a filter certified to
+          NSF/ANSI&nbsp;53 for lead reduction on every tap used for drinking, cooking, and infant formula,
+          and change the cartridge on the schedule the manufacturer prints — an expired cartridge can
+          release what it has captured.
+        </p>
+        <p>
+          Never draw cooking or formula water from the hot tap. Hot water pulls more lead out of pipe and
+          solder than cold does, and boiling concentrates it rather than removing it.
+        </p>
+      </div>
+      <div class="guidance-col">
+        <h3>After the water has sat</h3>
+        <p>
+          Lead enters water while it stands still in the pipe. If a tap has gone unused for more than six
+          hours, run it cold for 30&nbsp;seconds to two minutes before drawing water to drink — long enough
+          for the water that sat in your service line to clear.
+        </p>
+        <p>
+          After any work on the main in your street, run the cold taps for five minutes and then clean
+          the screen at the end of each faucet. Work on a main shakes loose scale that has been sitting
+          inside the pipe for decades, and the screens catch it.
+        </p>
+      </div>
+      <div class="guidance-col">
+        <h3>Testing and cost</h3>
+        <p>
+          The Water Division tests tap water for lead at no charge for any address in this inventory.
+          Request a kit at the Ward Seven field office or by telephone at 555&nbsp;0142.
+        </p>
+        <p>
+          Replacement of the utility-owned portion of the line carries no charge to the property owner.
+          There is no charge for the private-side portion either; the Division replaces the full line
+          in one trench, because a partial replacement can raise lead levels for months afterward.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule-heavy">
+
+  <section class="method" aria-labelledby="method-h">
+    <div class="section-head">
+      <h2 id="method-h">How each line was classified</h2>
+    </div>
+    <div class="method-cols">
+      <dl class="method-list">
+        <dt>Field verification — excavation</dt>
+        <dd>The line was exposed at the curb box or main and identified visually.</dd>
+        <dt>Field verification — interior meter</dt>
+        <dd>The line was identified where it enters the building, by scratch test and magnet.</dd>
+        <dt>Records review — tap card</dt>
+        <dd>Classified from the original tap card filed when the connection was made.</dd>
+        <dt>Records review — plumbing permit</dt>
+        <dd>Classified from a permit recording a full replacement of the line after 1986.</dd>
+        <dt>Not yet verified</dt>
+        <dd>No record survives and the line has not been exposed. Carried as unknown, not as non-lead.</dd>
+      </dl>
+      <div class="method-note">
+        <p>
+          Statistical prediction was not used. Where the Division could not establish a material from a
+          record or an excavation, the connection is carried as unknown and is scheduled for field
+          verification. This is slower than modelling and produces a larger unknown count than
+          neighbouring systems report; the Division takes the position that a household is owed a fact
+          about its own pipe rather than a probability.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="colophon">
+  <p class="colophon-note">
+    <b>Demonstration document.</b> Rensdale Municipal Water does not exist. The addresses, counts,
+    verification dates, and replacement windows on this page are generated, and describe no real
+    household or water system. The classification vocabulary, verification methods, and the
+    full-line replacement policy follow the federal Lead and Copper Rule so that the document behaves
+    like the instrument it imitates.
+  </p>
+  <p class="colophon-meta">Water Division · 400 Ferrand Street · Inventory prepared by the Distribution Records Office</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

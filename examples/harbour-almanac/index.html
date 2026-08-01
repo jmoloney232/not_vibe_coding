@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cape Ansell — Tide and Light Almanac</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-rule">
+    <span class="series">Tide &amp; Light Almanac</span>
+    <span class="position">44°&#8202;31′&#8202;·&#8202;1&nbsp;N &nbsp; 066°&#8202;08′&#8202;·&#8202;4&nbsp;W</span>
+  </div>
+  <h1>Cape Ansell<span class="and">and the</span><em>Hollis Reach</em></h1>
+  <p class="standing">
+    Heights in metres above chart datum, which is Lowest Astronomical Tide.
+    Times are zone <span class="nw">−4</span>, kept through the year.
+  </p>
+</header>
+
+<main>
+
+  <nav class="daybar" aria-label="Choose a day">
+    <button type="button" class="daystep" id="prev-day" aria-label="Previous day">‹</button>
+    <div class="week" id="week" role="group" aria-label="Week"></div>
+    <button type="button" class="daystep" id="next-day" aria-label="Next day">›</button>
+  </nav>
+
+  <section class="plate-section" aria-labelledby="plate-h">
+    <div class="plate-head">
+      <h2 id="plate-h"><span class="daydate" id="daydate">—</span></h2>
+      <p class="plate-readout" id="plate-readout" aria-live="polite"></p>
+    </div>
+
+    <figure class="plate">
+      <div class="plate-frame"
+           id="plate-frame"
+           tabindex="0"
+           role="img"
+           aria-describedby="plate-desc"
+           aria-label="Tide curve for the day">
+        <svg id="tide-svg" aria-hidden="true"></svg>
+      </div>
+      <figcaption id="plate-desc" class="plate-caption">
+        The shaded band is night; the two lighter margins are civil twilight. Move the pointer across
+        the curve, or focus it and use the arrow keys, to read the predicted height at any minute.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="columns">
+
+    <section class="col col-tide" aria-labelledby="tide-h">
+      <h3 id="tide-h">Tidal predictions</h3>
+      <table class="tide-table">
+        <caption class="sr-only">High and low waters for the day</caption>
+        <thead>
+          <tr><th scope="col">&nbsp;</th><th scope="col">Time</th><th scope="col" class="num">Height</th></tr>
+        </thead>
+        <tbody id="tide-rows"></tbody>
+      </table>
+      <dl class="microdl" id="tide-meta"></dl>
+    </section>
+
+    <section class="col col-sun" aria-labelledby="sun-h">
+      <h3 id="sun-h">Sun</h3>
+      <dl class="microdl" id="sun-list"></dl>
+      <p class="col-note">
+        Civil twilight is the interval when the sun lies between the horizon and 6° below it: bright
+        enough to work on deck, too bright for the lights to be at their full range.
+      </p>
+    </section>
+
+    <section class="col col-moon" aria-labelledby="moon-h">
+      <h3 id="moon-h">Moon</h3>
+      <div class="moon-block">
+        <svg class="moon-disc" id="moon-disc" viewBox="-52 -52 104 104" aria-hidden="true"></svg>
+        <dl class="microdl" id="moon-list"></dl>
+      </div>
+      <p class="col-note" id="springs-note"></p>
+    </section>
+
+  </section>
+
+  <section class="lights" aria-labelledby="lights-h">
+    <div class="section-head">
+      <h2 id="lights-h">Lights of the approach</h2>
+      <p class="section-note">
+        Each bar is one full period of the light, drawn to scale in seconds. The lamp at the left keeps
+        the light&#8217;s own rhythm, so two characteristics can be told apart by watching rather than by
+        counting.
+      </p>
+      <button type="button" class="motion-toggle" id="motion-toggle" aria-pressed="true">Pause the lights</button>
+    </div>
+    <ul class="light-list" id="light-list"></ul>
+  </section>
+
+  <section class="datum" aria-labelledby="datum-h">
+    <div class="section-head">
+      <h2 id="datum-h">Reading a sounding</h2>
+    </div>
+    <div class="datum-layout">
+      <svg class="datum-fig" id="datum-fig" viewBox="0 0 520 300" role="img"
+           aria-label="Section showing charted depth measured down from chart datum, with the tide height added on top"></svg>
+      <div class="datum-text">
+        <p>
+          A charted sounding is the depth below chart datum, not the depth you will find. Chart datum
+          here is Lowest Astronomical Tide — the lowest the water is predicted to fall under any
+          combination of sun and moon — so the sounding is close to the worst case and the tide is
+          almost always adding to it.
+        </p>
+        <p class="datum-sum" id="datum-sum"></p>
+        <p>
+          The saving is real but it is not yours to keep. Barometric pressure, a long fetch of onshore
+          wind, and river discharge after rain all move the surface away from prediction, and a strong
+          high over the coast can hold the water down by a third of a metre for days.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="colophon">
+  <p>
+    <b>Demonstration document.</b> Cape Ansell and the Hollis Reach are invented, and no vessel should be
+    navigated by this page. The methods are real. Tides are a six-constituent harmonic synthesis
+    (M2, S2, N2, K1, O1, M4) at the standard constituent speeds. Sun times use the NOAA solar-position
+    algorithm and are correct for the position given. The moon uses a mean synodic month, so its age
+    can be out by up to about half a day, and no lunar rise or set is offered because that calculation
+    is not attempted here. The spring-neap cycle is derived from the moon rather than modelled
+    separately, so the page cannot print a neap range beside a full moon.
+  </p>
+</footer>
+
+<script src="almanac.js"></script>
+<script src="lights.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

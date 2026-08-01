@@ -1,0 +1,67 @@
+/* REDESIGN 3 — Schedule grid as primary utility
+   The most radical structural departure of the three: this is not a
+   marketing page with a schedule section, it's a schedule application
+   with marketing content pushed to a secondary strip. Visual identity
+   comes entirely from the grid mechanics (time-positioned blocks, a
+   two-stage-column timetable) rather than from typography-as-hero or
+   editorial voice — a genuinely different answer to "what carries this
+   product's identity" than either of the other two directions. */
+:root {
+  --bg: #FFFFFF;
+  --ink: #14120F;
+  --ink-quiet: #75705F;
+  --line: #E7E2D5;
+  --main-stage: #C6491F;
+  --main-stage-bg: #FBE9DF;
+  --barn-stage: #7A6A1E;
+  --barn-stage-bg: #F5EFD6;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Archivo', sans-serif; }
+
+.topbar { display: flex; align-items: center; gap: 24px; padding: 16px 28px; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: var(--bg); z-index: 5; }
+.mark { font-weight: 800; font-size: 14px; letter-spacing: 0.02em; }
+.day-tabs { display: flex; gap: 4px; flex: 1; }
+.day-tab { font-family: inherit; font-size: 13px; font-weight: 600; padding: 7px 14px; border: 1px solid var(--line); background: none; border-radius: 20px; cursor: pointer; color: var(--ink-quiet); }
+.day-tab.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+.tickets-link { margin-left: auto; font-weight: 700; font-size: 13px; text-decoration: none; color: var(--ink); border: 1px solid var(--ink); padding: 7px 14px; border-radius: 20px; }
+
+main { max-width: 760px; margin: 0 auto; padding: 28px 28px 80px; }
+
+.grid-wrap { display: flex; gap: 0; position: relative; }
+.grid-times { width: 50px; padding-top: 38px; position: relative; height: 450px; flex-shrink: 0; }
+.grid-time { position: absolute; font-size: 11px; color: var(--ink-quiet); font-variant-numeric: tabular-nums; }
+.grid-stages { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex: 1; }
+.stage-col-head { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; padding-bottom: 8px; border-bottom: 2px solid; margin-bottom: 30px; }
+.stage-col-head.stage-main { color: var(--main-stage); border-color: var(--main-stage); }
+.stage-col-head.stage-barn { color: var(--barn-stage); border-color: var(--barn-stage); }
+.stage-track { position: relative; height: 450px; background-image: repeating-linear-gradient(to bottom, var(--line) 0, var(--line) 1px, transparent 1px, transparent 75px); }
+.set-block { position: absolute; left: 0; right: 0; border-radius: 4px; padding: 8px 10px; display: flex; flex-direction: column; gap: 2px; }
+.set-block.stage-main { background: var(--main-stage-bg); border-left: 3px solid var(--main-stage); }
+.set-block.stage-barn { background: var(--barn-stage-bg); border-left: 3px solid var(--barn-stage); }
+.set-name { font-weight: 700; font-size: 13px; }
+.set-block.headliner .set-name { font-size: 15px; }
+.set-time { font-size: 11px; color: var(--ink-quiet); font-variant-numeric: tabular-nums; }
+
+.day-list { display: none; }
+
+.utility-strip { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.us-block h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-quiet); margin: 0 0 12px; }
+.us-row { display: flex; justify-content: space-between; font-size: 14px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.us-row span:last-child { font-weight: 700; }
+.us-block p { font-size: 13px; line-height: 1.6; color: var(--ink-quiet); margin: 0; }
+
+@media (max-width: 640px) {
+  main { padding: 20px 16px 60px; }
+  .grid-times { display: none; }
+  .grid-wrap { display: none; }
+  .day-list { display: block; }
+  .dl-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+  .dl-time { width: 70px; color: var(--ink-quiet); font-variant-numeric: tabular-nums; flex-shrink: 0; }
+  .dl-stage { font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 3px 7px; border-radius: 10px; flex-shrink: 0; }
+  .dl-stage.stage-main { color: var(--main-stage); background: var(--main-stage-bg); }
+  .dl-stage.stage-barn { color: var(--barn-stage); background: var(--barn-stage-bg); }
+  .dl-act { font-weight: 600; }
+  .dl-headliner .dl-act { font-weight: 800; }
+  .utility-strip { grid-template-columns: 1fr; gap: 24px; }
+}

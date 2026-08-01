@@ -1,0 +1,58 @@
+/* REDESIGN 2 — Editorial / regional direction
+   Structurally different from the original, not just recolored: no hero
+   typography-as-poster at all. This treats the festival the way a real
+   regional music publication would cover it — a masthead, a lede that
+   argues for why THIS town produced THIS festival, and the schedule as a
+   dense editorial listings table (the actual format alt-weeklies and
+   festival programs use), not a display-type bill.
+   Grounded in real, checkable facts about Northfield, MN (Carleton and
+   St. Olaf both sit inside city limits; the Cannon River runs through a
+   historic mill town; the 1876 Northfield Bank Raid — the defeat of the
+   Jesse James gang — is the town's most famous historical event) rather
+   than invented atmosphere — this is the "believable cultural identity"
+   the round-2 review found missing, built from real place rather than
+   generic "festival mood." Paper/ink palette (not black) and a single
+   spot color used the way small-press riso/letterpress printing uses a
+   second ink: sparingly, on a few structural elements only. */
+:root {
+  --paper: #F7F3EA;
+  --ink: #1D1B16;
+  --ink-quiet: #6E6858;
+  --rule: #D9D2BE;
+  --spot: #A8321E;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'Source Serif 4', Georgia, serif; }
+
+.masthead-bar { max-width: 760px; margin: 0 auto; padding: 40px 24px 28px; border-bottom: 3px solid var(--ink); }
+.masthead-top { display: flex; justify-content: space-between; font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-quiet); margin-bottom: 18px; }
+.nameplate { font-size: clamp(34px, 6vw, 56px); font-weight: 700; margin: 0 0 12px; letter-spacing: -0.01em; }
+.dek { font-style: italic; font-size: 17px; color: #423E33; max-width: 58ch; margin: 0; line-height: 1.5; }
+
+main { max-width: 760px; margin: 0 auto; padding: 36px 24px 80px; }
+.lede { font-size: 17px; line-height: 1.7; }
+.drop:first-letter { font-family: 'Source Serif 4', serif; font-size: 62px; font-weight: 700; float: left; line-height: 0.8; padding: 6px 8px 0 0; color: var(--spot); }
+
+.section-head { font-family: 'IBM Plex Mono', monospace; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-quiet); border-top: 1px solid var(--ink); padding-top: 10px; margin: 48px 0 20px; }
+
+.program-day + .program-day { margin-top: 30px; }
+.program-day-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+.pd-name { font-weight: 700; font-size: 19px; }
+.pd-note { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ink-quiet); }
+.listing { width: 100%; border-collapse: collapse; font-family: 'IBM Plex Mono', monospace; font-size: 14px; }
+.listing td { padding: 7px 8px; border-bottom: 1px solid var(--rule); }
+.l-time { width: 90px; color: var(--ink-quiet); }
+.l-stage { width: 70px; color: var(--ink-quiet); }
+.l-act { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 16px; }
+.l-headliner .l-act { color: var(--spot); font-weight: 700; }
+.l-headliner td { border-bottom-color: var(--ink); }
+
+.sidebar { margin-top: 56px; padding-top: 24px; border-top: 3px solid var(--ink); display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.sidebar-block h3 { font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-quiet); margin: 0 0 12px; }
+.pass-row { display: flex; justify-content: space-between; font-family: 'IBM Plex Mono', monospace; font-size: 14px; padding: 8px 0; border-bottom: 1px solid var(--rule); }
+.sidebar-block p { font-size: 14px; line-height: 1.6; color: #423E33; margin: 0; }
+
+@media (max-width: 640px) {
+  .sidebar { grid-template-columns: 1fr; gap: 28px; }
+  .masthead-top { flex-direction: column; gap: 4px; }
+}

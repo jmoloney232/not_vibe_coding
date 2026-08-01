@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Northfield Sessions — Redesign 3: Schedule Grid</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <span class="mark">NORTHFIELD SESSIONS</span>
+  <nav class="day-tabs">
+    <button class="day-tab active" data-day="fri">Fri 11</button>
+    <button class="day-tab" data-day="sat">Sat 12</button>
+    <button class="day-tab" data-day="sun">Sun 13</button>
+  </nav>
+  <a class="tickets-link" href="#tickets">Tickets</a>
+</header>
+
+<main>
+  <!-- STRUCTURAL DIFFERENCE FROM BOTH OTHER DIRECTIONS: the schedule grid
+       is the entire hero — the primary artifact a returning ticket-holder
+       actually needs (what's on, on which stage, right now / next) is the
+       first thing rendered, not a persuasive headline. This optimizes for
+       the brief's OTHER named user task ("ticket-holders checking set
+       times/logistics closer to the date") rather than only the
+       first-time-visitor persuasion task the original and Redesign 1 and 2
+       both lead with. -->
+  <section class="grid-wrap" aria-label="Friday schedule">
+    <div class="grid-times">
+      <div class="grid-time" style="top:0">6:00</div>
+      <div class="grid-time" style="top:75px">7:00</div>
+      <div class="grid-time" style="top:150px">8:00</div>
+      <div class="grid-time" style="top:225px">9:00</div>
+      <div class="grid-time" style="top:300px">10:00</div>
+      <div class="grid-time" style="top:375px">11:00</div>
+    </div>
+    <div class="grid-stages">
+      <div class="stage-col">
+        <div class="stage-col-head stage-main">Main Stage</div>
+        <div class="stage-track">
+          <div class="set-block stage-main" style="top:135px; height:75px;"><span class="set-name">The Low Vowels</span><span class="set-time">8:45–10:00 PM</span></div>
+          <div class="set-block stage-main headliner" style="top:225px; height:90px;"><span class="set-name">Cinder Valley</span><span class="set-time">10:15–11:45 PM</span></div>
+        </div>
+      </div>
+      <div class="stage-col">
+        <div class="stage-col-head stage-barn">Barn Stage</div>
+        <div class="stage-track">
+          <div class="set-block stage-barn" style="top:0px; height:60px;"><span class="set-name">Ashgrove</span><span class="set-time">6:00–7:00 PM</span></div>
+          <div class="set-block stage-barn" style="top:75px; height:50px;"><span class="set-name">Marigold Static</span><span class="set-time">7:15–8:05 PM</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="day-list">
+    <div class="dl-row"><span class="dl-time">6:00 PM</span><span class="dl-stage stage-barn">Barn</span><span class="dl-act">Ashgrove</span></div>
+    <div class="dl-row"><span class="dl-time">7:15 PM</span><span class="dl-stage stage-barn">Barn</span><span class="dl-act">Marigold Static</span></div>
+    <div class="dl-row"><span class="dl-time">8:45 PM</span><span class="dl-stage stage-main">Main</span><span class="dl-act">The Low Vowels</span></div>
+    <div class="dl-row dl-headliner"><span class="dl-time">10:15 PM</span><span class="dl-stage stage-main">Main</span><span class="dl-act">Cinder Valley</span></div>
+  </section>
+
+  <section class="utility-strip" id="tickets">
+    <div class="us-block">
+      <h3>Tickets</h3>
+      <div class="us-row"><span>Single day</span><span>$85</span></div>
+      <div class="us-row"><span>3-day pass</span><span>$210</span></div>
+      <div class="us-row"><span>3-day VIP</span><span>$350</span></div>
+    </div>
+    <div class="us-block">
+      <h3>Venue</h3>
+      <p>Northfield Fairgrounds, 4400 County Rd 1, Northfield, MN. Gates 4:00 PM Friday, 12:00 PM Sat/Sun. Camping included with any 3-day pass.</p>
+    </div>
+  </section>
+</main>
+</body>
+</html>

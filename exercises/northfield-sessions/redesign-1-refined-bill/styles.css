@@ -1,0 +1,83 @@
+/* REDESIGN 1 — Refined Bill-as-Poster
+   Keeps the original's core idea (the lineup IS the hero typography, no
+   photography) but answers the round-2 review's specific complaint: that
+   the original's identity survives only because of one flat accent color
+   on black. Two changes carry real structural weight here, not cosmetic
+   ones:
+   1. A genuine two-color stage system (Main Stage / Barn Stage) used
+      consistently as a wayfinding device through the whole bill, not one
+      accent reserved for "selected day" — this means the color carries
+      real information (which stage) everywhere it appears, the way a real
+      printed festival bill uses ink color to mark stages, not to
+      decorate.
+   2. A simulated screen-print registration offset on the masthead names —
+      DIY gig-poster silkscreen printing is a real, specific print culture
+      (small local print shops, hand-pulled runs, imperfect registration
+      between color layers) this kind of independent three-day festival
+      would plausibly actually use for its real posters. This is a citation
+      of a specific print tradition, not decoration — the intentional
+      "off" duplicate is what makes it read as printed rather than
+      digital-default. */
+:root {
+  --ink: #000000;
+  --bg: #0E0D0C;
+  --paper: #F3EFE6;
+  --paper-ink: #1A1712;
+  --main-stage: #E4572E;
+  --barn-stage: #E8B92E;
+  --white: #F6F4EF;
+  --gray: #8A867E;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--white); font-family: 'Archivo', sans-serif; }
+
+.topbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; }
+.mark { font-family: 'Archivo Black', sans-serif; font-size: 15px; letter-spacing: 0.04em; }
+.tickets-link { color: var(--bg); background: var(--white); text-decoration: none; font-weight: 700; font-size: 13px; padding: 9px 16px; border-radius: 2px; }
+
+.masthead { padding: 20px 40px 60px; }
+.masthead-kicker { font-size: 13px; color: var(--gray); letter-spacing: 0.02em; margin: 0 0 18px; }
+.masthead-line { margin: 0 0 16px; font-family: 'Archivo Black', sans-serif; font-size: clamp(48px, 9vw, 128px); line-height: 1.05; text-transform: uppercase; }
+.masthead-line span { display: block; }
+/* the registration-offset effect: a second, slightly-shifted, dimmer copy
+   of the same glyphs via text-shadow — reads as an imperfectly aligned
+   second ink pass on a hand-pulled screen print. text-shadow never affects
+   layout/box size (unlike an absolutely-positioned duplicate element),
+   so it can't bleed into surrounding content at any viewport width, which
+   an earlier ::before-based version of this effect did on mobile. */
+.masthead-line .stage-main { color: var(--main-stage); text-shadow: 3px 3px 0 #3A241C; }
+.masthead-line .stage-barn { color: var(--barn-stage); text-shadow: 3px 3px 0 #3A2F0C; }
+.masthead-note { max-width: 46ch; color: var(--gray); font-size: 15px; margin: 22px 0 0; line-height: 1.6; }
+
+.bill { padding: 20px 40px 70px; border-top: 1px solid #2A2723; }
+.stage-key { display: flex; gap: 24px; padding: 28px 0 20px; font-size: 13px; color: var(--gray); }
+.key-item { display: flex; align-items: center; gap: 8px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.dot-main { background: var(--main-stage); }
+.dot-barn { background: var(--barn-stage); }
+
+.day-block + .day-block { margin-top: 36px; }
+.day-head { font-family: 'Archivo Black', sans-serif; font-size: 20px; text-transform: uppercase; margin-bottom: 10px; }
+.day-head span { color: var(--gray); font-family: 'Archivo', sans-serif; font-weight: 400; font-size: 15px; text-transform: none; margin-left: 10px; }
+.acts { list-style: none; margin: 0; padding: 0; border-top: 1px solid #2A2723; }
+.act { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 0 12px 16px; border-bottom: 1px solid #2A2723; border-left: 4px solid transparent; }
+.act.stage-main { border-left-color: var(--main-stage); }
+.act.stage-barn { border-left-color: var(--barn-stage); }
+.act-name { font-weight: 700; font-size: 17px; }
+.act.act-headliner .act-name { font-family: 'Archivo Black', sans-serif; font-size: 26px; text-transform: uppercase; }
+.act-time { font-size: 13px; color: var(--gray); font-variant-numeric: tabular-nums; }
+
+/* the quiet region — a real register change, not just a color change,
+   answering the "no quiet regions" gap: paper tone, small type, dense
+   two-column facts, no display type at all here */
+.quiet { background: var(--paper); color: var(--paper-ink); display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 56px 40px; }
+.quiet h2 { font-family: 'Archivo', sans-serif; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: #6B6658; margin: 0 0 16px; }
+.quiet p { font-size: 14px; line-height: 1.6; margin: 0 0 14px; }
+.ticket-row { display: flex; justify-content: space-between; font-size: 15px; padding: 10px 0; border-bottom: 1px solid #DDD7C8; }
+.ticket-row span:last-child { font-weight: 700; }
+
+@media (max-width: 640px) {
+  .topbar, .masthead, .bill { padding-left: 20px; padding-right: 20px; }
+  .quiet { grid-template-columns: 1fr; padding: 40px 20px; }
+  .masthead-line { font-size: clamp(38px, 13vw, 64px); }
+}

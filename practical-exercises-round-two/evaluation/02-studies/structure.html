@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>02 Bellman's Mill — structural directions</title>
+<link rel="stylesheet" href="../../02-mill-guesthouse/fonts/study.css">
+<style>
+:root { --ink: #1d1811; --soft: #6f6a5e; --water: #47592f; --line: #cdcbc0; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #e6e8e0; color: var(--ink);
+       font-family: 'Schibsted Grotesk', sans-serif; }
+img { display: block; max-width: 100%; }
+.hd { max-width: 1080px; margin: 0 auto; padding: 40px 32px 0; }
+.hd h1 { font: 700 22px/1.25 'Schibsted Grotesk', sans-serif; letter-spacing: -.02em; margin: 0 0 8px; }
+.hd p { font: 400 14px/1.5 'Schibsted Grotesk', sans-serif; color: var(--soft); max-width: 66ch; margin: 0; }
+.band { border-top: 2px solid var(--ink); margin-top: 56px; }
+.band > .cap { max-width: 1080px; margin: 0 auto; padding: 14px 32px 26px; }
+.band .tag { font: 700 12px/1 'Schibsted Grotesk', sans-serif; letter-spacing: .12em;
+             text-transform: uppercase; color: var(--water); margin: 0 0 6px; }
+.band .txt { font: 400 14px/1.5 'Schibsted Grotesk', sans-serif; color: var(--soft);
+             max-width: 66ch; margin: 0; }
+.frame { border: 1px solid var(--line); margin: 0 32px 40px; overflow: hidden; }
+@media (max-width: 700px) { .frame { margin: 0 12px 32px; } }
+
+/* ================================ S1 — full-bleed sequence */
+.s1 { background: #e6e8e0; }
+.s1 .bleed { position: relative; }
+.s1 .bleed img { width: 100%; height: 62vh; min-height: 300px; object-fit: cover; }
+.s1 .over { position: absolute; left: 0; bottom: 0; padding: 28px 34px;
+            background: linear-gradient(to top, rgba(18,16,12,.72), rgba(18,16,12,0)); width: 100%; }
+.s1 .over h2 { font: 700 clamp(30px,4.6vw,58px)/1 'Schibsted Grotesk', sans-serif;
+               letter-spacing: -.035em; color: #f2f1e9; margin: 0 0 6px; }
+.s1 .over p { font: 400 15px/1.4 'Schibsted Grotesk', sans-serif; color: #d8d6c9; margin: 0; }
+.s1 .say { max-width: 46ch; margin: 0 auto; padding: 54px 24px; text-align: center; }
+.s1 .say p { font: 400 19px/1.55 'Schibsted Grotesk', sans-serif; margin: 0; }
+.s1 .bar { position: sticky; bottom: 0; background: #1d1811; color: #edece2;
+           display: flex; gap: 18px; align-items: center; padding: 12px 20px; flex-wrap: wrap;
+           font: 400 14px/1 'Schibsted Grotesk', sans-serif; }
+.s1 .bar b { font-weight: 700; }
+.s1 .bar span.f { flex: 1; }
+.s1 .bar button { font: 700 13px/1 'Schibsted Grotesk', sans-serif; letter-spacing: .04em;
+                  background: #d8d6c9; color: #1d1811; border: 0; padding: 11px 18px; cursor: pointer; }
+
+/* ================================ S2 — held image, moving text */
+.s2 { display: grid; grid-template-columns: 54% 46%; min-height: 520px; }
+.s2 .held { background: #1d1811; }
+.s2 .held img { width: 100%; height: 100%; min-height: 520px; object-fit: cover; }
+.s2 .scroll { padding: 42px 40px; overflow-y: auto; max-height: 620px; }
+.s2 h2 { font: 700 40px/1.02 'Schibsted Grotesk', sans-serif; letter-spacing: -.035em; margin: 0 0 14px; }
+.s2 p { font: 400 16px/1.6 'Schibsted Grotesk', sans-serif; max-width: 46ch; margin: 0 0 1em; }
+.s2 .mark { font: 700 11px/1 'Schibsted Grotesk', sans-serif; letter-spacing: .12em;
+            text-transform: uppercase; color: var(--water); margin: 34px 0 10px; }
+@media (max-width: 760px) { .s2 { grid-template-columns: 1fr; }
+  .s2 .held img { min-height: 260px; height: 260px; } .s2 .scroll { max-height: none; padding: 28px 20px; } }
+
+/* ================================ S3 — survey field */
+.s3 { padding: 30px; }
+.s3 .grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
+.s3 figure { margin: 0; grid-column: span 2; }
+.s3 figure.w3 { grid-column: span 3; }
+.s3 figure.w4 { grid-column: span 4; }
+.s3 figure img { width: 100%; aspect-ratio: 3/2; object-fit: cover; }
+.s3 figure.tall img { aspect-ratio: 3/4; }
+.s3 figcaption { font: 400 12px/1.35 'Schibsted Grotesk', sans-serif; color: var(--soft);
+                 padding-top: 6px; }
+.s3 figcaption b { color: var(--ink); font-weight: 500; }
+.s3 .say { margin: 34px 0 0; max-width: 60ch; }
+.s3 .say h2 { font: 700 34px/1.05 'Schibsted Grotesk', sans-serif; letter-spacing: -.03em; margin: 0 0 12px; }
+.s3 .say p { font: 400 16px/1.6 'Schibsted Grotesk', sans-serif; margin: 0 0 1em; }
+@media (max-width: 760px) { .s3 { padding: 16px; } .s3 .grid { grid-template-columns: repeat(2, 1fr); }
+  .s3 figure, .s3 figure.w3, .s3 figure.w4 { grid-column: span 1; }
+  .s3 figure.w4 { grid-column: span 2; } }
+</style>
+</head>
+<body>
+
+<div class="hd">
+  <h1>Bellman's Mill — three structural directions</h1>
+  <p>Same photographs, same voice, same typeface (Schibsted Grotesk, the winner of the specimen test).
+  What differs is the architecture of the landing route and, with it, what the photography is asked to
+  do. Ground colour differs too, because each direction implies one; that confound is resolved
+  separately once a structure is chosen.</p>
+</div>
+
+<!-- ============================================================ S1 -->
+<section class="band">
+  <div class="cap">
+    <p class="tag">S1 — full-bleed sequence with a persistent date bar</p>
+    <p class="txt">The category-conventional architecture: edge-to-edge photographs alternating with
+    short centred passages, and a sticky bar carrying the booking task down the page. Maximum impact
+    per photograph; the text is reduced to captions between pictures.</p>
+  </div>
+  <div class="frame s1">
+    <div class="bleed">
+      <img src="../../02-mill-guesthouse/img/mill.jpg" alt="The whitewashed mill from the road.">
+      <div class="over">
+        <h2>Bellman's Mill</h2>
+        <p>Four rooms in a working meal mill · New Abbey, Dumfries and Galloway</p>
+      </div>
+    </div>
+    <div class="say"><p>The lade still runs under the road and the wheel still turns. You will be
+      staying inside the machine, not beside it.</p></div>
+    <div class="bleed">
+      <img src="../../02-mill-guesthouse/img/wheel.jpg" alt="The overshot wheel.">
+      <div class="over"><p>The wheel, from the tailrace</p></div>
+    </div>
+    <div class="say"><p>We mill on Thursdays from November, when there is water in the lade.</p></div>
+    <div class="bar">
+      <b>Check dates</b><span>2 guests</span><span class="f"></span>
+      <span>from £96</span><button type="button">See rooms</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ S2 -->
+<section class="band">
+  <div class="cap">
+    <p class="tag">S2 — held photograph, moving text</p>
+    <p class="txt">A photograph occupies a fixed pane while the prose scrolls beside it, the image
+    changing at section boundaries. Common at the top of the hospitality market. Gives one image at a
+    time a long dwell and keeps a full reading measure.</p>
+  </div>
+  <div class="frame s2">
+    <div class="held">
+      <img src="../../02-mill-guesthouse/img/lade.jpg" alt="The wheel and the tail of the lade.">
+    </div>
+    <div class="scroll">
+      <h2>A mill that still mills</h2>
+      <p>Bellman's is an eighteenth-century meal mill on the lade below Loch Kindar, half a mile from
+      Sweetheart Abbey and a mile and a half from the Solway shore. There are four rooms.</p>
+      <p>The wheel is overshot and eleven feet across. When the sluice is up it drives two pairs of
+      stones through the pit wheel and the great spur, and the whole building moves slightly. It is not
+      a museum: we mill oats and we sell the meal at the door.</p>
+      <p class="mark">What that means for you</p>
+      <p>It is loud on milling days, and it is loud in the specific way that a building full of gearing
+      is loud — a low working noise you feel through the soles of your feet. Some people book because of
+      it. If you are not one of them, come on a Tuesday.</p>
+      <p>The stairs are mill stairs. The two upper rooms are up open treads with a turn, and there is
+      nowhere in a listed mill to put a lift.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ S3 -->
+<section class="band">
+  <div class="cap">
+    <p class="tag">S3 — survey field</p>
+    <p class="txt">No hero. Every photograph is laid out at once at differing sizes, each captioned
+    with what it actually is, and the prose sits beneath. Treats the property as a record to be
+    inspected rather than a pitch to be received.</p>
+  </div>
+  <div class="frame s3">
+    <div class="grid">
+      <figure class="w4"><img src="../../02-mill-guesthouse/img/mill.jpg" alt="The mill from the road.">
+        <figcaption><b>The mill from the road.</b> Three floors and the kiln, harled and limewashed.</figcaption></figure>
+      <figure class="tall"><img src="../../02-mill-guesthouse/img/tun.jpg" alt="The tun and hoist chain.">
+        <figcaption><b>The tun.</b> Stone floor.</figcaption></figure>
+      <figure><img src="../../02-mill-guesthouse/img/wheel.jpg" alt="The wheel.">
+        <figcaption><b>The wheel.</b> Overshot, 3.4 m.</figcaption></figure>
+      <figure><img src="../../02-mill-guesthouse/img/leat.jpg" alt="The lade above the mill.">
+        <figcaption><b>The lade</b>, above the mill.</figcaption></figure>
+      <figure><img src="../../02-mill-guesthouse/img/stones.jpg" alt="Hopper and shoe.">
+        <figcaption><b>Hopper and shoe</b>, feeding the eye.</figcaption></figure>
+      <figure class="w3"><img src="../../02-mill-guesthouse/img/tools.jpg" alt="Millwright tools.">
+        <figcaption><b>The millwright's wall.</b> Still in use.</figcaption></figure>
+      <figure class="w3"><img src="../../02-mill-guesthouse/img/pond.jpg" alt="The mill pond.">
+        <figcaption><b>The pond</b>, four hundred metres up the lade.</figcaption></figure>
+    </div>
+    <div class="say">
+      <h2>Four rooms in a working meal mill</h2>
+      <p>New Abbey, Dumfries and Galloway. The wheel is overshot and eleven feet across; when the
+      sluice is up it drives two pairs of stones and the whole building moves slightly. We mill on
+      Thursdays from November, when there is water.</p>
+      <p>Everything above is the building you would be staying in, photographed as it is.</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

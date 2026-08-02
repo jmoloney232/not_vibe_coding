@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>02 Bellman's Mill — ground study</title>
+<link rel="stylesheet" href="../../02-mill-guesthouse/fonts/fonts.css">
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Schibsted Grotesk', sans-serif; background: #fff; }
+img { display: block; width: 100%; aspect-ratio: 3/2; object-fit: cover; }
+.lab { font: 700 12px/1 'Schibsted Grotesk', sans-serif; letter-spacing: .12em;
+       text-transform: uppercase; padding: 26px 30px 0; }
+.sub { font: 400 13px/1.5 'Schibsted Grotesk', sans-serif; padding: 6px 30px 0; max-width: 70ch; }
+.panel { padding: 0 0 40px; }
+.grid { display: grid; grid-template-columns: repeat(6,1fr); gap: 13px; padding: 22px 30px 0; }
+figure { margin: 0; grid-column: span 2; }
+figure.w4 { grid-column: span 4; }
+figcaption { font: 400 12px/1.35 'Schibsted Grotesk', sans-serif; padding-top: 6px; }
+h2 { font: 700 30px/1.05 'Schibsted Grotesk', sans-serif; letter-spacing: -.03em;
+     margin: 30px 30px 10px; }
+p.say { font: 400 15px/1.6 'Schibsted Grotesk', sans-serif; margin: 0 30px; max-width: 58ch; }
+
+/* G1 — limewash over granite: pale, low-chroma, faintly olive */
+.g1 { background: #e6e8e0; color: #1d1811; }
+.g1 figcaption, .g1 .sub { color: #6f6a5e; }
+.g1 figcaption b, .g1 .lab { color: #47592f; }
+
+/* G2 — wet slate: dark, blue-shifted */
+.g2 { background: #1b2023; color: #e4e6e3; }
+.g2 figcaption, .g2 .sub { color: #98a09f; }
+.g2 figcaption b { color: #e4e6e3; } .g2 .lab { color: #9fb27f; }
+
+/* G3 — dark timber: near-black, warm */
+.g3 { background: #1a1612; color: #e8e4d9; }
+.g3 figcaption, .g3 .sub { color: #9b9384; }
+.g3 figcaption b { color: #e8e4d9; } .g3 .lab { color: #a8b47f; }
+</style>
+</head>
+<body>
+
+<section class="panel g1">
+  <p class="lab">G1 — limewash #e6e8e0</p>
+  <p class="sub">Sampled from the harled walls, pulled off yellow so it is chalk rather than cream.
+  Continuous with the daylight in every frame.</p>
+  <div class="grid">
+    <figure class="w4"><img src="../../02-mill-guesthouse/img/mill.jpg" alt=""><figcaption><b>The mill from the road.</b> Three floors and the kiln.</figcaption></figure>
+    <figure><img src="../../02-mill-guesthouse/img/wheel.jpg" alt=""><figcaption><b>The wheel.</b> Overshot, 3.4 m.</figcaption></figure>
+    <figure><img src="../../02-mill-guesthouse/img/tools.jpg" alt=""><figcaption><b>The millwright's wall.</b></figcaption></figure>
+    <figure><img src="../../02-mill-guesthouse/img/pond.jpg" alt=""><figcaption><b>The pond.</b></figcaption></figure>
+    <figure><img src="../../02-mill-guesthouse/img/leat.jpg" alt=""><figcaption><b>The lade.</b></figcaption></figure>
+  </div>
+  <h2>Four rooms in a working meal mill</h2>
+  <p class="say">The wheel is overshot and eleven feet across; when the sluice is up it drives two
+  pairs of stones and the whole building moves slightly.</p>
+</section>
+
+<section class="panel g2">
+  <p class="lab">G2 — wet slate #1b2023</p>
+  <p class="sub">The roof and the lade in shade. Makes each frame glow, at the cost of arguing that
+  this is an evening place.</p>
+  <div class="grid">
+    <figure class="w4"><img src="../../02-mill-guesthouse/img/mill.jpg" alt=""><figcaption><b>The mill from the road.</b> Three floors and the kiln.</figcaption></figure>
+    <figure><img src="../../02-mill-guesthouse/img/wheel.jpg" alt=""><figcaption><b>The wheel.</b> Overshot, 3.4 m.</figcaption></figure>
+    <figure><img src="../../02-mill-guesthouse/img/tools.jpg" alt=""><figcaption><b>The millwright's wall.</b></figcaption></figure>
+    <figure><img src="../../02-mill-guesthouse/img/pond.jpg" alt=""><figcaption><b>The pond.</b></figcaption></figure>
+    <figure><img src="../../02-mill-guesthouse/img/leat.jpg" alt=""><figcaption><b>The lade.</b></figcaption></figure>
+  </div>
+  <h2>Four rooms in a working meal mill</h2>
+  <p class="say">The wheel is overshot and eleven feet across; when the sluice is up it drives two
+  pairs of stones and the whole building moves slightly.</p>
+</section>
+
+<section class="panel g3">
+  <p class="lab">G3 — dark timber #1a1612</p>
+  <p class="sub">The tarred wood of the wheel and the launder. Warmer than G2 and closer to the
+  interiors, but it fights the exteriors, which are all white wall and sky.</p>
+  <div class="grid">
+    <figure class="w4"><img src="../../02-mill-guesthouse/img/mill.jpg" alt=""><figcaption><b>The mill from the road.</b> Three floors and the kiln.</figcaption></figure>
+    <figure><img src="../../02-mill-guesthouse/img/wheel.jpg" alt=""><figcaption><b>The wheel.</b> Overshot, 3.4 m.</figcaption></figure>
+    <figure><img src="../../02-mill-guesthouse/img/tools.jpg" alt=""><figcaption><b>The millwright's wall.</b></figcaption></figure>
+    <figure><img src="../../02-mill-guesthouse/img/pond.jpg" alt=""><figcaption><b>The pond.</b></figcaption></figure>
+    <figure><img src="../../02-mill-guesthouse/img/leat.jpg" alt=""><figcaption><b>The lade.</b></figcaption></figure>
+  </div>
+  <h2>Four rooms in a working meal mill</h2>
+  <p class="say">The wheel is overshot and eleven feet across; when the sluice is up it drives two
+  pairs of stones and the whole building moves slightly.</p>
+</section>
+
+</body>
+</html>

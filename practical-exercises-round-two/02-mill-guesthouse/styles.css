@@ -1,0 +1,336 @@
+/* Bellman's Mill
+   Ground sampled from the limewashed harling; ink from the tarred timber of the
+   launder; the single accent from moss on the lade wall. Ground study:
+   ../evaluation/02-studies/ground.html */
+
+:root {
+  --ground:  #e6e8e0;
+  --ink:     #1d1811;
+  --soft:    #6b665b;
+  --water:   #44562d;
+  --line:    #ccccc0;
+  --line-2:  #dcdcd2;
+  --field:   #fbfbf7;
+
+  --s1: 6px; --s2: 12px; --s3: 20px; --s4: 32px; --s5: 52px; --s6: 84px; --s7: 136px;
+  --pad: 32px;
+  --wrap: 1180px;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font: 400 17px/1.62 'Schibsted Grotesk', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+
+.wrap { max-width: var(--wrap); margin: 0 auto; padding-left: var(--pad); padding-right: var(--pad); }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.skip {
+  position: absolute; left: 0; top: -60px; z-index: 20;
+  background: var(--ink); color: var(--ground); padding: 10px 16px; font-size: 14px;
+}
+.skip:focus { top: 0; }
+
+:focus-visible { outline: 2px solid var(--water); outline-offset: 3px; }
+
+/* ------------------------------------------------------------------ header */
+
+.top { border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10;
+       background: var(--ground); }
+.top-in { display: flex; align-items: baseline; gap: var(--s4);
+          padding-top: 14px; padding-bottom: 13px; }
+.mark { font-weight: 700; font-size: 17px; letter-spacing: -.022em; text-decoration: none; }
+.top nav { display: flex; gap: var(--s3); flex: 1; }
+.top nav a { font-size: 14px; text-decoration: none; color: var(--soft);
+             padding-bottom: 2px; border-bottom: 2px solid transparent; }
+.top nav a:hover { color: var(--ink); }
+.top nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--water); }
+.top-rate { margin: 0; font-size: 14px; color: var(--soft); white-space: nowrap; }
+.top-rate b { color: var(--ink); font-weight: 500; }
+
+@media (max-width: 620px) {
+  .top-in { flex-wrap: wrap; gap: var(--s2) var(--s3); }
+  .top nav { order: 3; flex-basis: 100%; }
+  .top-rate { margin-left: auto; }
+}
+
+/* ---------------------------------------------------------------- masthead */
+
+.mast { padding-top: var(--s6); padding-bottom: var(--s5); }
+.mast h1 {
+  font-size: clamp(38px, 7.4vw, 88px); font-weight: 700; line-height: .97;
+  letter-spacing: -.042em; margin: 0 0 var(--s5); max-width: 15ch;
+}
+.mast-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s4); }
+.mast-facts p { margin: 0; font-size: 15px; line-height: 1.52; max-width: 42ch; }
+.mast-facts b {
+  display: block; font-size: 11.5px; font-weight: 700; letter-spacing: .13em;
+  text-transform: uppercase; color: var(--water); margin-bottom: var(--s1);
+}
+@media (max-width: 820px) { .mast-facts { grid-template-columns: 1fr; gap: var(--s3); } }
+
+/* ------------------------------------------------------------ survey field */
+/* Masonry columns rather than a grid: every frame keeps the aspect ratio it was
+   photographed at, so nothing is cropped to make a row line up. */
+
+.field {
+  columns: 3; column-gap: var(--s3);
+  max-width: var(--wrap); margin: 0 auto var(--s6);
+  padding-left: var(--pad); padding-right: var(--pad);
+}
+.field figure { break-inside: avoid; margin: 0 0 var(--s4); }
+.field figure.plate, .field .pair { column-span: all; }
+.field figure.plate { margin-bottom: var(--s5); }
+.field .pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s3); margin-top: var(--s4); }
+.field .pair figure { margin: 0; }
+/* A pair is a comparison of the same subject, so both halves are held to one
+   shape; otherwise the taller frame reads as the more important one. */
+.field .pair img { aspect-ratio: 4 / 3; object-fit: cover; }
+
+.field img { width: 100%; background: var(--field); }
+.field figcaption {
+  font-size: 13px; line-height: 1.46; color: var(--soft); padding-top: var(--s1);
+  max-width: 52ch;
+}
+.field figcaption b { color: var(--ink); font-weight: 500; }
+/* Attribution is a licence obligation, so it is held to the same contrast
+   as anything else; it is separated by size, not by being faded out. */
+.field .cr { display: block; font-size: 11.5px; color: var(--soft); padding-top: 3px; }
+.field .cr a { color: inherit; }
+.field figure.plate figcaption { font-size: 14px; max-width: 64ch; }
+
+@media (max-width: 1000px) { .field { columns: 2; } }
+@media (max-width: 640px) {
+  .field { columns: 1; }
+  .field .pair { grid-template-columns: 1fr; }
+}
+
+/* ------------------------------------------------------------------- prose */
+
+.say { padding-bottom: var(--s6); }
+.say h2, .know h2, .where h2, .rooms h2, .year h2, .book h2 {
+  font-size: clamp(25px, 3.1vw, 36px); font-weight: 700; line-height: 1.06;
+  letter-spacing: -.032em; margin: 0 0 var(--s3);
+}
+.say p { max-width: 58ch; margin: 0 0 var(--s3); }
+.say p:last-child { margin-bottom: 0; }
+
+.lede { font-size: 19px; line-height: 1.5; color: var(--soft); max-width: 52ch;
+        margin: 0 0 var(--s4); }
+
+/* --------------------------------------------------------- before you book */
+
+.know { padding-bottom: var(--s6); }
+.know dl { margin: 0; border-top: 1px solid var(--ink); }
+.know dl > div {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+  gap: var(--s4); padding: var(--s3) 0; border-bottom: 1px solid var(--line);
+}
+.know dt { font-size: 18px; font-weight: 500; letter-spacing: -.014em; line-height: 1.3; }
+.know dd { margin: 0; font-size: 15.5px; line-height: 1.56; color: #35302a; }
+@media (max-width: 760px) {
+  .know dl > div { grid-template-columns: 1fr; gap: var(--s1); }
+}
+
+/* ---------------------------------------------------------------- location */
+
+.where { padding-bottom: var(--s6); }
+.where-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--s5); }
+.pairs { margin: 0; border-top: 1px solid var(--ink); }
+.pairs > div {
+  display: flex; justify-content: space-between; gap: var(--s3);
+  padding: 11px 0; border-bottom: 1px solid var(--line-2);
+}
+.pairs dt { font-size: 15px; font-weight: 500; }
+.pairs dd { margin: 0; font-size: 15px; color: var(--soft); text-align: right; }
+.where-say p { margin: 0 0 var(--s3); max-width: 46ch; font-size: 16px; }
+@media (max-width: 820px) { .where-grid { grid-template-columns: 1fr; gap: var(--s4); } }
+
+.cta {
+  display: inline-block; background: var(--ink); color: var(--ground);
+  text-decoration: none; padding: 13px 22px; font-size: 15px; font-weight: 500;
+}
+.cta:hover { background: var(--water); }
+
+/* ------------------------------------------------------------------ footer */
+
+.foot { border-top: 1px solid var(--line); padding-top: var(--s4); padding-bottom: var(--s6); }
+.foot p { font-size: 13.5px; line-height: 1.55; color: var(--soft); max-width: 74ch;
+          margin: 0 0 var(--s2); }
+.foot b { color: var(--ink); font-weight: 500; }
+
+/* =========================================================== stay.html only */
+
+.rooms, .year, .book { padding-bottom: var(--s6); }
+.rooms { padding-top: var(--s5); }
+
+/* ---- the section drawing ---- */
+
+.section-fig { margin: 0 0 var(--s5); }
+.section-fig .holder {
+  background: var(--field); border: 1px solid var(--line);
+  padding: var(--s3); display: flex; justify-content: center;
+}
+.section-fig svg { width: 100%; max-width: 660px; height: auto; }
+@media (max-width: 620px) { .section-fig .holder { padding: var(--s2); } .section-fig svg { max-width: 340px; } }
+.section-fig figcaption { font-size: 13px; line-height: 1.5; color: var(--soft);
+                          padding-top: var(--s2); max-width: 62ch; }
+.sec-room  { fill: #cfd6bd; stroke: var(--water); stroke-width: 1.2; }
+.sec-shell { fill: none; stroke: var(--ink); stroke-width: 1.6; }
+.sec-inner { fill: none; stroke: var(--ink); stroke-width: 1; opacity: .45; }
+.sec-water { fill: none; stroke: #4d6f86; stroke-width: 2.2; }
+.sec-fill  { fill: #d3dee5; }
+.sec-num   { font: 700 12px/1 'Schibsted Grotesk', sans-serif; fill: var(--ground); }
+.sec-lab   { font: 500 11.5px/1 'Schibsted Grotesk', sans-serif; fill: var(--ink); }
+.sec-min   { font: 400 10.5px/1 'Schibsted Grotesk', sans-serif; fill: var(--soft); }
+.sec-hat   { fill: #b9b6a6; }
+
+/* ---- room cards ---- */
+
+.room { border-top: 2px solid var(--ink); padding-top: var(--s3); margin-bottom: var(--s6); }
+.room-head { display: flex; align-items: baseline; gap: var(--s2); flex-wrap: wrap;
+             margin-bottom: var(--s3); }
+.room-no {
+  font-size: 12px; font-weight: 700; letter-spacing: .08em; color: var(--ground);
+  background: var(--water); padding: 3px 7px; line-height: 1.35;
+}
+.room h3 { font-size: clamp(24px, 3vw, 34px); font-weight: 700; letter-spacing: -.032em;
+           line-height: 1.04; margin: 0; }
+.room-where { font-size: 14px; color: var(--soft); margin: 0; }
+.room-line { font-size: 19px; line-height: 1.42; max-width: 46ch; margin: 0 0 var(--s4);
+             letter-spacing: -.008em; }
+
+.room-body { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: var(--s5); }
+.room-body p { margin: 0 0 var(--s3); max-width: 54ch; font-size: 16px; }
+
+.room-facts { margin: var(--s3) 0 0; border-top: 1px solid var(--ink); }
+.room-facts > div {
+  display: grid; grid-template-columns: 15ch minmax(0, 1fr); gap: var(--s3);
+  padding: 9px 0; border-bottom: 1px solid var(--line-2); font-size: 14.5px;
+}
+.room-facts dt { color: var(--soft); }
+.room-facts dd { margin: 0; }
+
+.room-aside figure { margin: 0; }
+/* The four rooms are a set, so their photographs are held to one shape.
+   Otherwise the room with the tallest frame reads as the important one. */
+.room-aside img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; object-position: center 42%; }
+.room-aside figcaption { font-size: 13px; line-height: 1.45; color: var(--soft);
+                         padding-top: var(--s1); }
+.room-rate { margin: var(--s4) 0 0; display: flex; align-items: baseline; gap: var(--s2);
+             flex-wrap: wrap; }
+.room-rate .n { font-size: 30px; font-weight: 700; letter-spacing: -.03em; line-height: 1; }
+.room-rate .u { font-size: 13.5px; color: var(--soft); max-width: 36ch; line-height: 1.45; }
+
+@media (max-width: 860px) { .room-body { grid-template-columns: 1fr; gap: var(--s4); } }
+
+/* ---- the mill's year ---- */
+
+.year table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.year caption { text-align: left; font-size: 15px; color: var(--soft); padding-bottom: var(--s2);
+                max-width: 60ch; line-height: 1.5; }
+.year th, .year td { text-align: left; padding: 9px 14px 9px 0; border-bottom: 1px solid var(--line-2);
+                     vertical-align: baseline; }
+.year thead th {
+  font-size: 11.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--soft); border-bottom: 1px solid var(--ink); padding-bottom: 7px;
+}
+.year tbody th { font-weight: 500; white-space: nowrap; }
+/* The months with no milling are grouped by a ground tint rather than by
+   lightening the text, which took them under 4.5:1. */
+.year tr.is-dry { background: #dcdecf; }
+.year .num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.year .note-cell { color: #5d584d; font-size: 13.5px; line-height: 1.45; }
+.year .bar { display: block; height: 6px; background: #c9c9bb; margin-top: 5px; }
+.year .bar i { display: block; height: 100%; background: var(--water); }
+.year .mill-yes { color: var(--water); font-weight: 500; }
+.year-figs { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s3); margin: 0 0 var(--s4); }
+.year-figs figure { margin: 0; }
+.year-figs img { aspect-ratio: 4 / 3; object-fit: cover; }
+.year-figs figcaption { font-size: 13px; color: var(--soft); padding-top: var(--s1); line-height: 1.45; }
+/* Below 720px the table stops being a table: six columns cannot be read at 390px,
+   and a sideways-scrolling month list is worse than a stacked one. */
+@media (max-width: 720px) {
+  .year-figs { grid-template-columns: 1fr; }
+  .year thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .year table, .year tbody, .year tr, .year th, .year td { display: block; }
+  .year tbody tr { border-top: 1px solid var(--ink); padding: var(--s2) 0 var(--s3); }
+  .year tbody th { font-size: 20px; font-weight: 700; letter-spacing: -.02em;
+                   border: 0; padding: 0 0 var(--s2); }
+  .year tbody td { border: 0; padding: 3px 0; }
+  .year tbody td::before {
+    content: attr(data-label) " ";
+    display: inline-block; min-width: 9.5em;
+    font-size: 11.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--soft);
+  }
+  .year tbody td.note-cell { padding-top: var(--s2); }
+  .year tbody td.note-cell::before { display: block; min-width: 0; }
+  .year .bar { max-width: 200px; margin-left: 9.5em; }
+}
+
+/* ---- availability + enquiry ---- */
+
+.book-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--s5);
+             align-items: start; }
+@media (max-width: 900px) { .book-grid { grid-template-columns: 1fr; gap: var(--s5); } }
+
+.field-row { margin-bottom: var(--s3); }
+.field-row label, .avail label {
+  display: block; font-size: 12px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--soft); margin-bottom: var(--s1);
+}
+input, select, textarea {
+  font: inherit; font-size: 16px; width: 100%; padding: 10px 12px;
+  background: var(--field); color: var(--ink);
+  border: 1px solid #b3b3a5; border-radius: 0;
+}
+textarea { min-height: 90px; resize: vertical; }
+/* A date input puts focus on a segment inside its shadow tree, so the host
+   matches :focus-within but not :focus or :focus-visible. Without the first
+   selector here, tabbing into a date field shows no ring at all. */
+input:focus-within, input:focus, select:focus, textarea:focus {
+  outline: 2px solid var(--water); outline-offset: 2px; border-color: var(--ink);
+}
+.two-up { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s3); }
+
+button {
+  font: inherit; font-size: 15px; font-weight: 500; cursor: pointer;
+  background: var(--ink); color: var(--ground); border: 0; padding: 13px 22px;
+}
+button:hover { background: var(--water); }
+
+.err { color: #8a2f18; font-size: 13.5px; margin: var(--s1) 0 0; }
+.form-note { font-size: 13px; color: var(--soft); line-height: 1.5; margin: var(--s3) 0 0;
+             max-width: 46ch; }
+.outcome { margin: var(--s3) 0 0; padding: var(--s3); background: var(--field);
+           border-left: 3px solid var(--water); font-size: 15px; line-height: 1.55; }
+.outcome[hidden] { display: none; }
+.outcome b { font-weight: 500; }
+
+.avail select { max-width: 240px; }
+.avail table { width: 100%; border-collapse: collapse; margin-top: var(--s3); font-size: 14px; }
+.avail th, .avail td { text-align: left; padding: 8px 12px 8px 0; border-bottom: 1px solid var(--line-2); }
+.avail tbody th { white-space: nowrap; font-weight: 500; }
+.avail td:last-child { width: 55%; padding-right: 0; }
+.avail thead th { font-size: 11.5px; font-weight: 700; letter-spacing: .1em;
+                  text-transform: uppercase; color: var(--soft); border-bottom: 1px solid var(--ink); }
+/* One row per month, always: a wrapped strip stops meaning "the 1st to the 31st,
+   left to right", which is the only thing it is for. */
+.strip { display: flex; gap: 2px; }
+.strip i { flex: 1 1 0; min-width: 0; height: 16px; background: var(--water); display: block; }
+.strip i.taken { background: #cfcfc2; }
+.avail .free { font-variant-numeric: tabular-nums; white-space: nowrap; }

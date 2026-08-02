@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rooms and dates — Bellman's Mill</title>
+<meta name="description" content="Four rooms, where each one sits in the building, what the mill's year does to the water and the light, and how to ask for dates.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#rooms">Skip to the rooms</a>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="mark" href="index.html">Bellman's Mill</a>
+    <nav aria-label="Main">
+      <a href="index.html">The mill</a>
+      <a href="stay.html" aria-current="page">Rooms &amp; dates</a>
+    </nav>
+    <p class="top-rate"><b>from £96</b> a night</p>
+  </div>
+</header>
+
+<main>
+
+  <section class="wrap rooms" id="rooms" aria-labelledby="rooms-h">
+    <h2 id="rooms-h">Four rooms, and where they are in the building</h2>
+    <p class="lede">A mill is a stack of working floors, so the rooms are stacked too. Which floor a
+      room is on decides its stairs, its noise, its warmth and its view — more than anything else
+      about it does.</p>
+
+    <figure class="section-fig">
+      <div class="holder" id="section-holder"></div>
+      <figcaption>Section through the mill looking north, drawn to scale from the floor levels. The
+        four rooms are shaded and numbered as they are below; step counts are from the front door.
+        The taller shaft on the right is the drying kiln, which is why room three has walls a metre
+        thick and only one small window.</figcaption>
+    </figure>
+
+    <div id="room-list"></div>
+  </section>
+
+  <section class="wrap year" id="year" aria-labelledby="year-h">
+    <h2 id="year-h">The mill's year</h2>
+    <p class="lede">Choosing a month here is not the same as choosing a month at a hotel. The lade
+      decides whether the wheel turns, and the latitude decides how much of the day you get.</p>
+
+    <div class="year-figs">
+      <figure>
+        <img src="img/pond.jpg" srcset="img/pond@700.jpg 700w, img/pond.jpg 1400w"
+             sizes="(max-width: 720px) 100vw, 46vw" width="1400" height="1050"
+             alt="The mill pond full in summer, still water with reeds along the near bank.">
+        <figcaption><b>June.</b> Full pond, and no milling — the lade above it is down to a trickle.
+          Neil Theasby · <a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a></figcaption>
+      </figure>
+      <figure>
+        <img src="img/pond-autumn.jpg" srcset="img/pond-autumn@660.jpg 660w, img/pond-autumn.jpg 1300w"
+             sizes="(max-width: 720px) 100vw, 46vw" width="1300" height="975"
+             alt="The pond drawn down in late autumn, rough grass over the bed and bare trees behind.">
+        <figcaption><b>November, drawn down.</b> Emptied every second year to clear weed. The mill is
+          milling again a fortnight after this.
+          Christine Johnstone · <a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a></figcaption>
+      </figure>
+    </div>
+
+    <table id="year-table">
+      <caption>Daylight is sunrise to sunset on the 15th, computed for 54.978&#160;°N. Rates are the
+        lowest room; each room carries its own on top of the same seasonal band.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Month</th>
+          <th scope="col">Daylight</th>
+          <th scope="col">The lade</th>
+          <th scope="col">The wheel</th>
+          <th scope="col">Milling</th>
+          <th scope="col">From</th>
+          <th scope="col">What it is like</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <section class="wrap book" id="book" aria-labelledby="book-h">
+    <h2 id="book-h">Nights and enquiries</h2>
+    <div class="book-grid">
+
+      <div class="avail">
+        <h3 class="sr-only">Nights still free</h3>
+        <label for="avail-month">Month</label>
+        <select id="avail-month"></select>
+        <table>
+          <thead>
+            <tr><th scope="col">Room</th><th scope="col">Nights free</th><th scope="col">Which</th></tr>
+          </thead>
+          <tbody id="avail-body"></tbody>
+        </table>
+        <p class="form-note">Each mark is one night: filled is free, pale is taken. The month runs
+          left to right from the 1st.</p>
+      </div>
+
+      <form id="enq" novalidate>
+        <h3 class="sr-only">Ask about dates</h3>
+        <div class="two-up">
+          <div class="field-row">
+            <label for="f-in">Arriving</label>
+            <input type="date" id="f-in" name="in" min="2026-01-01" max="2026-12-31" value="2026-03-12">
+          </div>
+          <div class="field-row">
+            <label for="f-out">Leaving</label>
+            <input type="date" id="f-out" name="out" min="2026-01-02" max="2027-01-01" value="2026-03-15">
+          </div>
+        </div>
+        <div class="field-row">
+          <label for="f-room">Room</label>
+          <select id="f-room" name="room"></select>
+        </div>
+        <div class="field-row">
+          <label for="f-name">Your name</label>
+          <input type="text" id="f-name" name="name" autocomplete="name">
+        </div>
+        <div class="field-row">
+          <label for="f-msg">Anything we should know</label>
+          <textarea id="f-msg" name="msg" placeholder="Stairs, dogs, a quiet week, an early start."></textarea>
+        </div>
+        <p id="enq-err" class="err" role="alert"></p>
+        <button type="submit">Ask about these dates</button>
+        <p class="form-note">Two-night minimum. Nothing is charged here and nothing is confirmed
+          here — we reply by email, usually the same evening.</p>
+        <div class="outcome" id="enq-out" role="status" hidden></div>
+      </form>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap foot">
+  <p class="disclose"><b>Bellman's Mill is invented for a design exercise.</b> The proprietors, the
+    rooms, the rates and the availability do not exist, and the enquiry form sends nothing anywhere.
+    The village, the hill and the abbey are real, and the daylight figures are computed for the real
+    latitude rather than made up.</p>
+  <p>The photographs are real and are of <b>New Abbey Corn Mill</b>, a working meal mill open to the
+    public, which is not a guesthouse and has no connection to this exercise. Photographers are
+    credited beside each image; all are used under Creative Commons Attribution-ShareAlike.
+    Set in Schibsted Grotesk, SIL Open Font License 1.1.</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>02 Bellman's Mill — typography directions</title>
+<link rel="stylesheet" href="../../02-mill-guesthouse/fonts/study.css">
+<style>
+:root {
+  --ground: #e9e9e1;
+  --ink: #1d1811;
+  --soft: #6f6a5e;
+  --water: #4a5c33;
+  --line: #cbc9bd;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ground); color: var(--ink);
+       font: 15px/1.5 ui-sans-serif, system-ui, sans-serif; }
+.page { max-width: 1080px; margin: 0 auto; padding: 40px 32px 120px; }
+.note { max-width: 62ch; color: var(--soft); font-size: 14px; }
+h1.study { font: 600 20px/1.3 ui-sans-serif, system-ui, sans-serif; letter-spacing: .01em; margin: 0 0 8px; }
+.dir { border-top: 2px solid var(--ink); margin-top: 64px; padding-top: 14px; }
+.dir > .tag { font: 700 12px/1 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em;
+              text-transform: uppercase; color: var(--water); }
+.dir > .what { font: 400 14px/1.45 ui-sans-serif, system-ui, sans-serif; color: var(--soft);
+               max-width: 62ch; margin: 6px 0 34px; }
+.spec { display: grid; grid-template-columns: minmax(0,1fr) 260px; gap: 44px; align-items: start; }
+@media (max-width: 860px) { .spec { grid-template-columns: minmax(0,1fr); gap: 28px; } }
+
+/* ---- content shapes, identical in all three; only the type changes ---- */
+.eyebrow { margin: 0 0 10px; }
+.title   { margin: 0 0 14px; }
+.stand   { margin: 0 0 26px; max-width: 34ch; }
+.body p  { margin: 0 0 1em; max-width: 62ch; }
+.facts   { margin: 30px 0 0; border-top: 1px solid var(--line); }
+.facts div { display: flex; justify-content: space-between; gap: 20px;
+             padding: 9px 0; border-bottom: 1px solid var(--line); }
+.facts b  { font-weight: inherit; color: var(--soft); }
+.rate    { margin: 26px 0 0; }
+.rate .n { display: block; }
+.cred    { margin: 18px 0 0; color: var(--soft); max-width: 42ch; }
+.side    { border-top: 1px solid var(--line); padding-top: 12px; }
+.side h4 { margin: 0 0 10px; }
+.side ul { margin: 0; padding: 0; list-style: none; }
+.side li { padding: 5px 0; border-bottom: 1px dotted var(--line); display: flex;
+           justify-content: space-between; gap: 12px; }
+
+/* ================================================== A — serif-led */
+.A .eyebrow { font: 500 12px/1 'Schibsted Grotesk', sans-serif; letter-spacing: .13em;
+              text-transform: uppercase; color: var(--water); }
+.A .title   { font: 400 46px/1.06 'Literata', serif; letter-spacing: -.012em; }
+.A .stand   { font: 400 21px/1.42 'Literata', serif; font-style: italic; color: #3a332a; }
+.A .body    { font: 400 17px/1.62 'Literata', serif; }
+.A .facts   { font: 400 14px/1.4 'Schibsted Grotesk', sans-serif; }
+.A .facts b { font-weight: 400; }
+.A .rate .n { font: 700 30px/1 'Schibsted Grotesk', sans-serif; letter-spacing: -.02em; }
+.A .rate .u { font: 400 13px/1.4 'Schibsted Grotesk', sans-serif; color: var(--soft); }
+.A .cred    { font: 400 12px/1.45 'Schibsted Grotesk', sans-serif; }
+.A .side    { font: 400 14px/1.4 'Schibsted Grotesk', sans-serif; }
+.A .side h4 { font: 700 11px/1 'Schibsted Grotesk', sans-serif; letter-spacing: .12em;
+              text-transform: uppercase; color: var(--soft); }
+
+/* ================================================== B — sans-led */
+.B .eyebrow { font: 700 12px/1 'Schibsted Grotesk', sans-serif; letter-spacing: .13em;
+              text-transform: uppercase; color: var(--water); }
+.B .title   { font: 700 52px/1.0 'Schibsted Grotesk', sans-serif; letter-spacing: -.035em; }
+.B .stand   { font: 400 21px/1.38 'Schibsted Grotesk', sans-serif; color: #3a332a;
+              letter-spacing: -.008em; }
+.B .body    { font: 400 17px/1.6 'Schibsted Grotesk', sans-serif; }
+.B .facts   { font: 400 14px/1.4 'Schibsted Grotesk', sans-serif; }
+.B .facts b { font-weight: 400; }
+.B .rate .n { font: 700 30px/1 'Schibsted Grotesk', sans-serif; letter-spacing: -.03em; }
+.B .rate .u { font: 400 13px/1.4 'Schibsted Grotesk', sans-serif; color: var(--soft); }
+.B .cred    { font: 400 12px/1.45 'Schibsted Grotesk', sans-serif; }
+.B .side    { font: 400 14px/1.4 'Schibsted Grotesk', sans-serif; }
+.B .side h4 { font: 700 11px/1 'Schibsted Grotesk', sans-serif; letter-spacing: .12em;
+              text-transform: uppercase; color: var(--soft); }
+
+/* ================================================== C — slab-led */
+.C .eyebrow { font: 500 12px/1 'Schibsted Grotesk', sans-serif; letter-spacing: .13em;
+              text-transform: uppercase; color: var(--water); }
+.C .title   { font: 700 46px/1.05 'Zilla Slab', serif; letter-spacing: -.018em; }
+.C .stand   { font: 400 21px/1.42 'Zilla Slab', serif; color: #3a332a; }
+.C .body    { font: 400 17px/1.62 'Literata', serif; }
+.C .facts   { font: 400 14px/1.42 'Zilla Slab', serif; }
+.C .facts b { font-weight: 400; }
+.C .rate .n { font: 700 30px/1 'Zilla Slab', serif; letter-spacing: -.01em; }
+.C .rate .u { font: 400 13px/1.4 'Schibsted Grotesk', sans-serif; color: var(--soft); }
+.C .cred    { font: 400 12px/1.45 'Schibsted Grotesk', sans-serif; }
+.C .side    { font: 400 14px/1.42 'Zilla Slab', serif; }
+.C .side h4 { font: 700 11px/1 'Schibsted Grotesk', sans-serif; letter-spacing: .12em;
+              text-transform: uppercase; color: var(--soft); }
+</style>
+</head>
+<body>
+<div class="page">
+
+<h1 class="study">Bellman's Mill — three typography directions</h1>
+<p class="note">Identical content in all three: the room page for the Bin Floor. The test is whether
+the pair can carry (a) a name, (b) 180 words of a proprietor's voice, (c) a fact list where the
+numbers are the point, and (d) a photograph credit at 12px. Ground, colour and layout are held
+constant.</p>
+
+<!-- =============================================================== A -->
+<section class="dir A">
+  <p class="tag">Direction A — Literata + Schibsted Grotesk</p>
+  <p class="what">Reading serif for the voice, grotesque for every measured thing. The conventional
+  hospitality arrangement, executed on a screen serif rather than a display serif.</p>
+  <div class="spec">
+    <div>
+      <p class="eyebrow">Room four · top floor</p>
+      <h2 class="title">The Bin Floor</h2>
+      <p class="stand">Thirty-one steps up, and the only room in the mill you can see Criffel from.</p>
+      <div class="body">
+        <p>This was where the grain waited. It is the top of the building, under the collar beams, and
+        the sack hoist trap is still in the floor — boarded over, but you will notice it. The window
+        faces south-west across the pond.</p>
+        <p>We will be honest about the stairs. They are mill stairs: steep, open-tread, turning twice,
+        with a rope rather than a handrail on the last flight. There is nowhere to put a lift and we
+        are not going to pretend otherwise. If that is a problem, take the Wheel Room, which is on the
+        level with the front door.</p>
+      </div>
+      <div class="facts">
+        <div><b>Access</b><span>31 steps, two turns, rope handrail</span></div>
+        <div><b>Headroom</b><span>1.90 m at the trap, 2.35 m at the window</span></div>
+        <div><b>Bed</b><span>One double, 150 cm</span></div>
+        <div><b>Window</b><span>South-west, over the pond to Criffel</span></div>
+        <div><b>When the wheel runs</b><span>Audible, not loud — two floors down</span></div>
+        <div><b>Warmth</b><span>Warmest room in the mill. No cooling in July.</span></div>
+      </div>
+      <p class="rate"><span class="n">£124</span><span class="u">per night, two people, breakfast
+      included · two-night minimum</span></p>
+      <p class="cred">Photograph: the mill pond looking south. Neil Theasby, CC BY-SA 2.0.</p>
+    </div>
+    <div class="side">
+      <h4>The mill's year</h4>
+      <ul>
+        <li><span>January</span><span>7 h 22 m</span></li>
+        <li><span>April</span><span>13 h 47 m</span></li>
+        <li><span>June</span><span>17 h 12 m</span></li>
+        <li><span>September</span><span>12 h 40 m</span></li>
+        <li><span>December</span><span>7 h 04 m</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================================== B -->
+<section class="dir B">
+  <p class="tag">Direction B — Schibsted Grotesk throughout</p>
+  <p class="what">One grotesque, hierarchy from size, weight and case. Argues that the mill is a
+  working building rather than a romantic one, and refuses the category's serif reflex.</p>
+  <div class="spec">
+    <div>
+      <p class="eyebrow">Room four · top floor</p>
+      <h2 class="title">The Bin Floor</h2>
+      <p class="stand">Thirty-one steps up, and the only room in the mill you can see Criffel from.</p>
+      <div class="body">
+        <p>This was where the grain waited. It is the top of the building, under the collar beams, and
+        the sack hoist trap is still in the floor — boarded over, but you will notice it. The window
+        faces south-west across the pond.</p>
+        <p>We will be honest about the stairs. They are mill stairs: steep, open-tread, turning twice,
+        with a rope rather than a handrail on the last flight. There is nowhere to put a lift and we
+        are not going to pretend otherwise. If that is a problem, take the Wheel Room, which is on the
+        level with the front door.</p>
+      </div>
+      <div class="facts">
+        <div><b>Access</b><span>31 steps, two turns, rope handrail</span></div>
+        <div><b>Headroom</b><span>1.90 m at the trap, 2.35 m at the window</span></div>
+        <div><b>Bed</b><span>One double, 150 cm</span></div>
+        <div><b>Window</b><span>South-west, over the pond to Criffel</span></div>
+        <div><b>When the wheel runs</b><span>Audible, not loud — two floors down</span></div>
+        <div><b>Warmth</b><span>Warmest room in the mill. No cooling in July.</span></div>
+      </div>
+      <p class="rate"><span class="n">£124</span><span class="u">per night, two people, breakfast
+      included · two-night minimum</span></p>
+      <p class="cred">Photograph: the mill pond looking south. Neil Theasby, CC BY-SA 2.0.</p>
+    </div>
+    <div class="side">
+      <h4>The mill's year</h4>
+      <ul>
+        <li><span>January</span><span>7 h 22 m</span></li>
+        <li><span>April</span><span>13 h 47 m</span></li>
+        <li><span>June</span><span>17 h 12 m</span></li>
+        <li><span>September</span><span>12 h 40 m</span></li>
+        <li><span>December</span><span>7 h 04 m</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================================== C -->
+<section class="dir C">
+  <p class="tag">Direction C — Zilla Slab display + Literata reading</p>
+  <p class="what">Slab for the name and the apparatus, screen serif for the prose. Aims at a
+  machine-age register — cast-iron gearing, stencilled sacks — rather than a hospitality one.</p>
+  <div class="spec">
+    <div>
+      <p class="eyebrow">Room four · top floor</p>
+      <h2 class="title">The Bin Floor</h2>
+      <p class="stand">Thirty-one steps up, and the only room in the mill you can see Criffel from.</p>
+      <div class="body">
+        <p>This was where the grain waited. It is the top of the building, under the collar beams, and
+        the sack hoist trap is still in the floor — boarded over, but you will notice it. The window
+        faces south-west across the pond.</p>
+        <p>We will be honest about the stairs. They are mill stairs: steep, open-tread, turning twice,
+        with a rope rather than a handrail on the last flight. There is nowhere to put a lift and we
+        are not going to pretend otherwise. If that is a problem, take the Wheel Room, which is on the
+        level with the front door.</p>
+      </div>
+      <div class="facts">
+        <div><b>Access</b><span>31 steps, two turns, rope handrail</span></div>
+        <div><b>Headroom</b><span>1.90 m at the trap, 2.35 m at the window</span></div>
+        <div><b>Bed</b><span>One double, 150 cm</span></div>
+        <div><b>Window</b><span>South-west, over the pond to Criffel</span></div>
+        <div><b>When the wheel runs</b><span>Audible, not loud — two floors down</span></div>
+        <div><b>Warmth</b><span>Warmest room in the mill. No cooling in July.</span></div>
+      </div>
+      <p class="rate"><span class="n">£124</span><span class="u">per night, two people, breakfast
+      included · two-night minimum</span></p>
+      <p class="cred">Photograph: the mill pond looking south. Neil Theasby, CC BY-SA 2.0.</p>
+    </div>
+    <div class="side">
+      <h4>The mill's year</h4>
+      <ul>
+        <li><span>January</span><span>7 h 22 m</span></li>
+        <li><span>April</span><span>13 h 47 m</span></li>
+        <li><span>June</span><span>17 h 12 m</span></li>
+        <li><span>September</span><span>12 h 40 m</span></li>
+        <li><span>December</span><span>7 h 04 m</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,191 @@
+[
+ {
+  "tag": "old-barber",
+  "path": "exercises/fourth-street-barber/index.html",
+  "h": 900,
+  "elements": 60,
+  "minText": 12,
+  "maxText": 22,
+  "sizeSteps": 5,
+  "families": [
+   "Figtree"
+  ],
+  "radius": 4,
+  "shadow": 0,
+  "cardish": 2,
+  "uppercase": 3,
+  "bg": "rgb(253, 252, 250)",
+  "scaleRatio": "1.8"
+ },
+ {
+  "tag": "old-coffee",
+  "path": "exercises/north-bench-coffee/index.html",
+  "h": 1229,
+  "elements": 66,
+  "minText": 12,
+  "maxText": 32,
+  "sizeSteps": 6,
+  "families": [
+   "Inter",
+   "Fraunces"
+  ],
+  "radius": 16,
+  "shadow": 0,
+  "cardish": 1,
+  "uppercase": 1,
+  "bg": "rgb(251, 247, 240)",
+  "scaleRatio": "2.7"
+ },
+ {
+  "tag": "old-fenwick",
+  "path": "exercises/fenwick-museum/index.html",
+  "h": 1249,
+  "elements": 37,
+  "minText": 11,
+  "maxText": 40,
+  "sizeSteps": 9,
+  "families": [
+   "Work Sans",
+   "Lora"
+  ],
+  "radius": 0,
+  "shadow": 0,
+  "cardish": 0,
+  "uppercase": 3,
+  "bg": "rgb(250, 248, 244)",
+  "scaleRatio": "3.6"
+ },
+ {
+  "tag": "old-ridgeline",
+  "path": "exercises/ridgeline-flags/index.html",
+  "h": 970,
+  "elements": 115,
+  "minText": 11,
+  "maxText": 26,
+  "sizeSteps": 7,
+  "families": [
+   "Inter",
+   "JetBrains Mono"
+  ],
+  "radius": 8,
+  "shadow": 0,
+  "cardish": 0,
+  "uppercase": 8,
+  "bg": "rgb(255, 255, 255)",
+  "scaleRatio": "2.4"
+ },
+ {
+  "tag": "old-northfield",
+  "path": "exercises/northfield-sessions/index.html",
+  "h": 1539,
+  "elements": 60,
+  "minText": 11,
+  "maxText": 56,
+  "sizeSteps": 8,
+  "families": [
+   "Archivo",
+   "Archivo Black"
+  ],
+  "radius": 0,
+  "shadow": 0,
+  "cardish": 0,
+  "uppercase": 0,
+  "bg": "rgb(18, 17, 19)",
+  "scaleRatio": "5.1"
+ },
+ {
+  "tag": "old-dispatch-b",
+  "path": "exercises/dispatch-console/direction-b-full-board/index.html",
+  "h": 900,
+  "elements": 238,
+  "minText": 10,
+  "maxText": 14,
+  "sizeSteps": 5,
+  "families": [
+   "IBM Plex Sans",
+   "IBM Plex Mono"
+  ],
+  "radius": 16,
+  "shadow": 0,
+  "cardish": 0,
+  "uppercase": 17,
+  "bg": "rgb(238, 241, 244)",
+  "scaleRatio": "1.4"
+ },
+ {
+  "tag": "old-perigee",
+  "path": "examples/perigee-mission-control/fleet.html",
+  "h": 900,
+  "elements": 117,
+  "minText": 10,
+  "maxText": 25,
+  "sizeSteps": 7,
+  "families": [
+   "ui-monospace"
+  ],
+  "radius": 3,
+  "shadow": 0,
+  "cardish": 3,
+  "uppercase": 10,
+  "bg": "rgb(10, 12, 16)",
+  "scaleRatio": "2.5"
+ },
+ {
+  "tag": "new-register",
+  "path": "examples/lead-service-register/index.html",
+  "h": 4007,
+  "elements": 2726,
+  "minText": 11,
+  "maxText": 132,
+  "sizeSteps": 10,
+  "families": [
+   "Libre Franklin",
+   "Source Serif 4",
+   "Arial"
+  ],
+  "radius": 0,
+  "shadow": 710,
+  "cardish": 0,
+  "uppercase": 19,
+  "bg": "rgb(233, 230, 221)",
+  "scaleRatio": "12.0"
+ },
+ {
+  "tag": "new-almanac",
+  "path": "examples/harbour-almanac/index.html",
+  "h": 3028,
+  "elements": 416,
+  "minText": 11,
+  "maxText": 92,
+  "sizeSteps": 13,
+  "families": [
+   "EB Garamond",
+   "Fira Sans Condensed"
+  ],
+  "radius": 0,
+  "shadow": 0,
+  "cardish": 0,
+  "uppercase": 18,
+  "bg": "rgb(245, 241, 228)",
+  "scaleRatio": "8.4"
+ },
+ {
+  "tag": "new-drawdown",
+  "path": "examples/drawdown-studio/index.html",
+  "h": 2093,
+  "elements": 2102,
+  "minText": 9,
+  "maxText": 116,
+  "sizeSteps": 11,
+  "families": [
+   "Jost",
+   "Arial"
+  ],
+  "radius": 0,
+  "shadow": 4,
+  "cardish": 0,
+  "uppercase": 15,
+  "bg": "rgb(234, 228, 216)",
+  "scaleRatio": "12.9"
+ }
+]

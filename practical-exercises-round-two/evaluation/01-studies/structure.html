@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Firn — three structural directions</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../../01-science-publication/fonts/fonts.css">
+<style>
+  :root { --ink:#14181a; --quiet:#6b7477; --hair:#c9d0d1; --fill:#dfe5e6; --img:#9aa6a9; --data:#2b5f8f; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#f4f6f6; color:var(--ink); font-family:'Barlow Semi Condensed',sans-serif; }
+  .lab { max-width:1560px; margin:0 auto; padding:26px 22px 70px; }
+  h1 { font-size:13px; letter-spacing:.18em; text-transform:uppercase; margin:0 0 4px; }
+  .note { font-size:13px; color:var(--quiet); max-width:86ch; margin:0 0 26px; line-height:1.5; }
+  .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:26px; align-items:start; }
+  .card { background:#fff; border-top:2px solid var(--ink); padding:10px 0 0; }
+  .card h2 { font-size:12px; letter-spacing:.13em; text-transform:uppercase; margin:0 0 2px; padding:0 14px; }
+  .card .why { font-size:12.5px; color:var(--quiet); line-height:1.45; padding:0 14px 12px; min-height:74px; }
+  .sk { padding:0 14px 16px; }
+  /* schematic parts */
+  .t { background:var(--fill); border-radius:0; }
+  .t.l { height:9px; } .t.s { height:6px; }
+  .im { background:var(--img); }
+  .lbl { font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--quiet); margin:0 0 4px; }
+  .stack > * + * { margin-top:6px; }
+  .rule { height:2px; background:var(--ink); margin:12px 0 8px; }
+
+  /* S1 — column plus live margin rail */
+  .s1 .row { display:grid; grid-template-columns:1fr 92px; gap:14px; }
+  .s1 .rail .tick { display:flex; justify-content:space-between; font-size:9px; color:var(--quiet);
+                    border-top:1px solid var(--hair); padding-top:2px; margin-bottom:12px; }
+  .s1 .rail .tick b { color:var(--data); font-weight:600; }
+  /* S2 — two printed columns, figures span */
+  .s2 .cols { column-count:2; column-gap:14px; }
+  .s2 .cols > * { break-inside:avoid; }
+  /* S3 — figure spine */
+  .s3 .fig { margin:0 0 8px; }
+  .s3 .txt { padding-left:26px; border-left:2px solid var(--hair); }
+</style>
+</head>
+<body>
+<div class="lab">
+  <h1>Firn — three structural directions</h1>
+  <p class="note">Schematic only. They differ in reading order, where the apparatus lives, the
+    relationship between figures and text, page depth, and how each collapses on a phone.</p>
+
+  <div class="grid">
+
+    <section class="card s1">
+      <h2>S1 · Column with a live core rail</h2>
+      <p class="why">One reading column. Apparatus — depth, year, figure index — lives in a right rail
+        that tracks scroll position, the way a core log is annotated down its length. Figures break
+        the measure at full width.</p>
+      <div class="sk">
+        <div class="rule"></div>
+        <div class="row">
+          <div class="stack">
+            <div class="t l" style="width:76%"></div>
+            <div class="t l" style="width:52%;height:16px"></div>
+            <div class="t s" style="width:100%"></div><div class="t s" style="width:98%"></div>
+            <div class="t s" style="width:94%"></div>
+            <div class="im" style="height:74px;margin:10px 0"></div>
+            <p class="lbl" style="margin:0">Fig. 1 — caption + credit</p>
+            <div class="t s" style="width:100%"></div><div class="t s" style="width:96%"></div>
+            <div class="t s" style="width:99%"></div><div class="t s" style="width:60%"></div>
+            <div class="im" style="height:54px;margin:10px 0;background:var(--fill);border:1px solid var(--hair)"></div>
+            <p class="lbl" style="margin:0">Fig. 2 — drawn from data</p>
+            <div class="t s" style="width:100%"></div><div class="t s" style="width:88%"></div>
+          </div>
+          <div class="rail">
+            <div class="tick"><span>0 m</span><b>2024</b></div>
+            <div class="tick"><span>120 m</span><b>1610</b></div>
+            <div class="tick"><span>577 m</span><b>−4.2 ka</b></div>
+            <div class="tick"><span>1800 m</span><b>−31 ka</b></div>
+            <div class="tick"><span>3405 m</span><b>bed</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card s2">
+      <h2>S2 · Two printed columns</h2>
+      <p class="why">Journal setting: two narrow columns, figures spanning both, apparatus collected in
+        a footer block. Dense and familiar to the audience, but the columns force short measures and
+        the apparatus loses its link to the passage it belongs to.</p>
+      <div class="sk">
+        <div class="rule"></div>
+        <div class="t l" style="width:82%;margin-bottom:6px"></div>
+        <div class="t l" style="width:46%;height:16px;margin-bottom:12px"></div>
+        <div class="im" style="height:70px;margin-bottom:4px"></div>
+        <p class="lbl">Fig. 1 — spans both columns</p>
+        <div class="cols">
+          <div class="stack">
+            <div class="t s" style="width:100%"></div><div class="t s" style="width:97%"></div>
+            <div class="t s" style="width:99%"></div><div class="t s" style="width:93%"></div>
+            <div class="t s" style="width:100%"></div><div class="t s" style="width:70%"></div>
+            <div class="t s" style="width:100%"></div><div class="t s" style="width:95%"></div>
+          </div>
+          <div class="stack">
+            <div class="t s" style="width:98%"></div><div class="t s" style="width:100%"></div>
+            <div class="t s" style="width:91%"></div><div class="t s" style="width:100%"></div>
+            <div class="t s" style="width:99%"></div><div class="t s" style="width:64%"></div>
+          </div>
+        </div>
+        <div style="border-top:1px solid var(--hair);margin-top:12px;padding-top:6px">
+          <p class="lbl" style="margin:0">Notes · sources · figure credits, all at the foot</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card s3">
+      <h2>S3 · Figure spine</h2>
+      <p class="why">Figures are the spine and the prose is commentary hung off them. Reading order is
+        figure first, explanation second. Strong for a photo essay; wrong here, because the argument is
+        continuous prose that the figures support rather than the other way round.</p>
+      <div class="sk">
+        <div class="rule"></div>
+        <div class="t l" style="width:70%;margin-bottom:12px"></div>
+        <div class="fig"><div class="im" style="height:88px"></div><p class="lbl" style="margin:4px 0 0">Fig. 1</p></div>
+        <div class="txt stack" style="margin:10px 0 16px">
+          <div class="t s" style="width:100%"></div><div class="t s" style="width:92%"></div>
+          <div class="t s" style="width:58%"></div>
+        </div>
+        <div class="fig"><div class="im" style="height:72px;background:var(--fill);border:1px solid var(--hair)"></div><p class="lbl" style="margin:4px 0 0">Fig. 2</p></div>
+        <div class="txt stack" style="margin:10px 0 16px">
+          <div class="t s" style="width:100%"></div><div class="t s" style="width:88%"></div>
+        </div>
+        <div class="fig"><div class="im" style="height:64px"></div><p class="lbl" style="margin:4px 0 0">Fig. 3</p></div>
+        <div class="txt stack" style="margin:10px 0 0">
+          <div class="t s" style="width:96%"></div><div class="t s" style="width:70%"></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+</body>
+</html>

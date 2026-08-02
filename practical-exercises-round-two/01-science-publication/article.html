@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Counting summers by eye — Firn, Issue 14</title>
+<meta name="description" content="Layer counting gives the cleanest chronology anyone has, right up to the depth where it quietly stops working.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="wordmark" href="index.html">Fir<span>n</span></a>
+    <div class="masthead-meta">
+      <span><b>Issue 14</b> — Timescales</span>
+      <span>Feature</span>
+      <span><a href="index.html">Contents</a></span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="article-head">
+    <p class="kicker">Feature · Chronology</p>
+    <h1>Counting summers by eye</h1>
+    <p class="standfirst">At the top of a deep core the years are thick enough to see. For 577 metres
+      the count is the clock — and then it stops being one.</p>
+    <div class="article-meta">
+      <div><b>Rannveig Ostmo</b>Glaciologist, Bergen</div>
+      <div><b>Published</b>14 January 2026</div>
+      <div><b>Core</b>Renland South, drilled 2011</div>
+      <div><b>Length</b>3,100 words · about 14 minutes</div>
+    </div>
+  </div>
+
+  <div class="article-body">
+
+    <article class="prose">
+
+      <p class="lead">The Renland South core reached bedrock at 3,405 metres in December 2011, at the
+        end of a season that had already lost nine days to weather. What came up the borehole was
+        cut into sixteen-metre runs, logged, and flown out in insulated crates. What it contains is
+        a little over sixty-eight thousand years of snowfall, compressed by its own weight into a
+        column about as wide as a dinner plate.</p>
+
+      <figure class="fig">
+        <img src="img/core.jpg" srcset="img/core@700.jpg 700w, img/core.jpg 1400w"
+             sizes="(max-width: 1080px) 100vw, 62vw" width="1400" height="933"
+             alt="A cylindrical ice core lying in a metal receiving tray on a workbench, its surface frosted and translucent.">
+        <figcaption><b>Fig. 1</b> — A core run in the receiving tray, before logging. The surface
+          frost is from handling; the ice beneath it is clear enough to read layers through under
+          transmitted light. Photograph by Eli Duke ·
+          <a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a></figcaption>
+      </figure>
+
+      <p>Reading a core means assigning an age to a depth, and there are several ways to do it. The
+        one everybody prefers, where it is available, is simply to count. Snow that falls in summer
+        differs from snow that falls in winter — in crystal size, in dust content, in the chemistry
+        it scavenges out of the air — and those differences survive burial. Under polarised light,
+        against a dark background, a technician can see them.</p>
+
+      <p class="sidenote"><b>Counting is done twice.</b> Two people count the same run independently
+        and reconcile afterwards. Disagreements cluster where melt has blurred a summer, and are
+        recorded rather than averaged away.</p>
+
+      <p>Through the upper part of this core a single year occupies roughly twenty-two centimetres of
+        ice. That is generous. It means the annual signal is not something inferred from a smoothed
+        curve but something visible, at a scale a hand can span, and it means the resulting
+        chronology is a count rather than a model.</p>
+
+      <h2>Where the count stops</h2>
+
+      <p>Ice does not stay put. Under the weight of everything above it, a layer thins and spreads,
+        and the deeper it goes the thinner it gets. The relationship is close to exponential, which
+        is a polite way of saying that the countable part of a core is a small fraction of its
+        length.</p>
+
+      <figure class="fig">
+        <div class="fig-plot"><svg id="plot-layers" role="img"
+             aria-label="Annual layer thickness against depth, falling from about 22 centimetres at the surface to under 1 centimetre by 2,400 metres."></svg></div>
+        <figcaption><b>Fig. 2</b> — Annual layer thickness against depth. The shaded band is the
+          interval in which summers remain separable by eye; below it the layers are thinner than the
+          instrument that would have to resolve them. Drawn from the values in this article&#8217;s
+          own dataset.</figcaption>
+      </figure>
+
+      <p>In this core the practical limit falls at about 577 metres, which the layer count puts at
+        roughly 4,200 years before present. Below that the layers are still there. They are simply
+        no longer resolvable by the method, and the chronology has to be handed to something else.</p>
+
+      <p class="pull">The count does not fail with a bang. It degrades, and somebody has to decide
+        where it stopped being trustworthy.</p>
+
+      <p>What takes over is a combination: electrical conductivity, which picks out acid horizons
+        from volcanic fallout; the gas record, which can be matched against other cores; and flow
+        modelling, which is the least direct of the three and the one that carries the most
+        assumption. Each is good. None of them is a count.</p>
+
+      <h2>The shape of the record below</h2>
+
+      <p>The isotope curve is where most readers meet a core, and it is worth being clear about what
+        it does and does not say. The ratio of oxygen-18 to oxygen-16 in the ice tracks the
+        temperature at which the snow originally condensed. Colder air holds less of the heavy
+        isotope, so glacial ice is isotopically lighter than interglacial ice, and the deglaciation
+        shows up as a ramp.</p>
+
+      <figure class="fig">
+        <div class="fig-plot"><svg id="plot-isotopes" role="img"
+             aria-label="Oxygen-18 ratio against depth through the full core, showing a Holocene plateau near minus 34 per mil, a ramp through the deglaciation, and a glacial section near minus 43 per mil."></svg></div>
+        <figcaption><b>Fig. 3</b> — δ¹⁸O against depth, full core, sampled every 15 metres. The
+          horizontal marks are the fixed horizons listed in the rail. Note that the depth axis is
+          linear and the age axis is not — the lower half of the plot holds most of the time.</figcaption>
+      </figure>
+
+      <p class="sidenote"><b>Per mil, not per cent.</b> δ¹⁸O is reported in parts per thousand
+        relative to a standard, so a shift of eight units is large.</p>
+
+      <p>The thing the plot does not show, and cannot, is that the same vertical distance means
+        wildly different amounts of time at the top and at the bottom. The upper third of the core is
+        thick, young, and well-dated. The lowest two hundred metres are compressed, disturbed by
+        contact with the bed, and in places folded. A centimetre down there is not a unit of anything
+        useful.</p>
+
+      <h2>What the age model actually claims</h2>
+
+      <p>The published chronology carries an uncertainty that changes character with depth, and this
+        is the part most often flattened in summary. Above the countable limit the uncertainty is
+        essentially a counting error: it accumulates, it is bounded, and it is honestly small. Below
+        it, the uncertainty is a modelling error, and it does not behave the same way.</p>
+
+      <p>Quoting a single figure for the whole core — the way a caption often has to — hides that
+        change. It is not wrong so much as it is two different quantities wearing one label.</p>
+
+      <p>None of which makes the deep record unusable. It makes it a different kind of evidence from
+        the shallow record, and worth labelling as such.</p>
+
+      <section class="notes">
+        <h2>Notes and sources</h2>
+        <ol>
+          <li>Layer thicknesses and isotope values in Figs. 2 and 3 are generated for this exercise
+            and are not measurements. They follow the shape a West Antarctic core takes but should
+            not be cited.</li>
+          <li>The 1610 CE horizon referenced in the rail is treated here as a fixed point; the
+            attribution of that particular acid layer is discussed in Issue 14, piece 04.</li>
+          <li>On the offset between gas age and ice age, see piece 03 in this issue.</li>
+          <li>Photographs are credited in their captions and used under the licences named there.</li>
+        </ol>
+      </section>
+
+      <div class="author-note">
+        <span class="initials" aria-hidden="true">RO</span>
+        <div>
+          <p>Rannveig Ostmo has worked on ice-core chronology since 2009 and spent four seasons on
+            the ice. She writes on measurement and its limits.</p>
+          <p>This piece was reviewed before publication by two readers with field experience. Their
+            disagreements are noted in the text rather than resolved.</p>
+        </div>
+      </div>
+
+      <div class="section-head" style="margin-top:var(--s6)">
+        <h2>Related</h2>
+        <p class="aside">From this issue and the archive</p>
+      </div>
+      <div class="related">
+        <article>
+          <h3><a href="index.html">The gas age is not the ice age</a></h3>
+          <p>Note · 900 words · P. Meienberg</p>
+        </article>
+        <article>
+          <h3><a href="index.html">Renland South, nine years on</a></h3>
+          <p>Long read · 6,200 words · J. Aleksdóttir</p>
+        </article>
+        <article>
+          <h3><a href="index.html">Issue 13 — Meltwater</a></h3>
+          <p>What a melt layer does to a count</p>
+        </article>
+      </div>
+
+    </article>
+
+    <aside class="rail" aria-labelledby="rail-h">
+      <p class="rail-title" id="rail-h">The core, top to bed</p>
+      <div class="rail-scale" id="rail-scale">
+        <div class="rail-read" id="rail-read"></div>
+        <div class="rail-here" id="rail-here" aria-hidden="true"></div>
+      </div>
+      <p class="rail-note" id="rail-note">Marks are fixed horizons. The square follows your position
+        in the article, mapped onto the depth the text is discussing.</p>
+    </aside>
+
+  </div>
+
+</main>
+
+<footer class="wrap colophon">
+  <p><b>Firn is a demonstration document, not a real publication.</b> The author, the core, the
+    institutions and every number in the figures are invented for a design exercise. The photographs
+    are real, credited in their captions, and used under the licences named there.</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

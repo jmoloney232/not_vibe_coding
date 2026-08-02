@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Firn — typography directions</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../../01-science-publication/fonts/fonts.css">
+<style>
+  :root { --ink:#14181a; --quiet:#5a6468; --hair:rgba(20,24,26,.18); --data:#2b5f8f; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#f4f6f6; color:var(--ink); }
+  .lab { max-width:1500px; margin:0 auto; padding:28px 24px 80px; }
+  .lab h1 { font-family:'Barlow Semi Condensed',sans-serif; font-size:13px; letter-spacing:.18em;
+            text-transform:uppercase; font-weight:600; margin:0 0 4px; }
+  .lab .note { font-family:'Barlow Semi Condensed',sans-serif; font-size:13px; color:var(--quiet);
+               max-width:80ch; margin:0 0 28px; line-height:1.5; }
+  .specs { display:grid; grid-template-columns:repeat(auto-fit,minmax(420px,1fr)); gap:28px; align-items:start; }
+  .spec { border-top:2px solid var(--ink); padding-top:10px; background:#fff; }
+  .spec > .cap { font-family:'Barlow Semi Condensed',sans-serif; font-size:11px; letter-spacing:.14em;
+                 text-transform:uppercase; color:var(--quiet); padding:0 20px 12px; }
+  .spec > .cap b { color:var(--ink); }
+  .body { padding:0 20px 26px; }
+
+  /* ---- A: two families, serif reads, condensed sans does the apparatus ---- */
+  .A .kicker { font-family:'Barlow Semi Condensed',sans-serif; font-size:11.5px; font-weight:600;
+               letter-spacing:.15em; text-transform:uppercase; color:var(--data); margin:0 0 10px; }
+  .A h2 { font-family:'Newsreader',serif; font-weight:400; font-size:46px; line-height:1.06;
+          letter-spacing:-.015em; margin:0 0 14px; max-width:20ch; }
+  .A .standfirst { font-family:'Newsreader',serif; font-size:21px; line-height:1.45; font-style:italic;
+                   color:#2c3538; margin:0 0 20px; max-width:44ch; }
+  .A p { font-family:'Newsreader',serif; font-size:19px; line-height:1.62; margin:0 0 15px; max-width:62ch; }
+  .A .meta { font-family:'Barlow Semi Condensed',sans-serif; font-size:12px; letter-spacing:.06em;
+             color:var(--quiet); border-top:1px solid var(--hair); padding-top:8px; }
+
+  /* ---- B: one condensed sans, report register, tight and numeric ---- */
+  .B { font-family:'Barlow Semi Condensed',sans-serif; }
+  .B .kicker { font-size:11px; font-weight:600; letter-spacing:.16em; text-transform:uppercase;
+               color:var(--quiet); margin:0 0 8px; }
+  .B h2 { font-size:34px; font-weight:600; line-height:1.12; letter-spacing:-.005em; margin:0 0 8px;
+          padding-bottom:10px; border-bottom:3px solid var(--ink); max-width:26ch; }
+  .B .standfirst { font-size:17px; font-weight:500; line-height:1.45; margin:14px 0 16px; max-width:60ch; }
+  .B p { font-size:17px; line-height:1.55; margin:0 0 13px; max-width:76ch; }
+  .B .meta { font-size:12px; letter-spacing:.05em; color:var(--quiet); border-top:1px solid var(--hair); padding-top:8px; }
+  .B .num { font-variant-numeric:tabular-nums; font-weight:600; }
+
+  /* ---- C: one serif, journal register, style contrast instead of family contrast ---- */
+  .C { font-family:'Newsreader',serif; }
+  .C .kicker { font-size:14px; font-style:italic; color:var(--quiet); margin:0 0 12px; }
+  .C h2 { font-size:56px; font-style:italic; font-weight:300; line-height:1.02; letter-spacing:-.02em;
+          margin:0 0 16px; max-width:16ch; }
+  .C .standfirst { font-size:19px; line-height:1.5; color:#2c3538; margin:0 0 20px; max-width:48ch;
+                   border-left:2px solid var(--hair); padding-left:16px; }
+  .C p { font-size:18px; line-height:1.7; margin:0 0 15px; max-width:54ch; }
+  .C .meta { font-size:14px; font-style:italic; color:var(--quiet); border-top:1px solid var(--hair); padding-top:8px; }
+</style>
+</head>
+<body>
+<div class="lab">
+  <h1>Firn — three typography directions</h1>
+  <p class="note">Same content in all three. They differ in family count, display face, measure, density,
+    weight/style contrast, and how the apparatus relates to the reading text — not in colour or layout.</p>
+
+  <div class="specs">
+
+    <section class="spec A">
+      <p class="cap"><b>A · Core log</b> — Newsreader 19/1.62, 62ch · apparatus in Barlow Semi Condensed · two families, clear division of labour</p>
+      <div class="body">
+        <p class="kicker">Timescales · Issue 14</p>
+        <h2>Counting summers by eye</h2>
+        <p class="standfirst">At the top of a deep core the years are thick enough to see, and the
+          count becomes the clock rather than a reading taken from one.</p>
+        <p>The WAIS Divide core reached bedrock at 3,405 metres in December 2011. Through its upper
+          577 metres a single year occupies roughly 22 centimetres of ice — thick enough that a
+          technician working under polarised light can mark summer layers by hand, and thick enough
+          that the layer count itself becomes the timescale.</p>
+        <p>Below about 1,800 metres the layers thin past the point where the eye is any use, and the
+          chronology passes to electrical conductivity and to the gas record. The handover is not
+          seamless, and the published age model carries two different kinds of uncertainty on either
+          side of it.</p>
+        <p class="meta">Rannveig Ostmo · Bergen · 3,100 words</p>
+      </div>
+    </section>
+
+    <section class="spec B">
+      <p class="cap"><b>B · Field report</b> — Barlow Semi Condensed throughout, 17/1.55, 76ch · single family, low contrast, numeric</p>
+      <div class="body">
+        <p class="kicker">Timescales · Issue 14</p>
+        <h2>Counting summers by eye</h2>
+        <p class="standfirst">At the top of a deep core the years are thick enough to see, and the
+          count becomes the clock rather than a reading taken from one.</p>
+        <p>The WAIS Divide core reached bedrock at <span class="num">3,405</span> metres in December
+          2011. Through its upper <span class="num">577</span> metres a single year occupies roughly
+          <span class="num">22</span> centimetres of ice — thick enough that a technician working under
+          polarised light can mark summer layers by hand, and thick enough that the layer count itself
+          becomes the timescale.</p>
+        <p>Below about <span class="num">1,800</span> metres the layers thin past the point where the
+          eye is any use, and the chronology passes to electrical conductivity and to the gas record.
+          The handover is not seamless, and the published age model carries two different kinds of
+          uncertainty on either side of it.</p>
+        <p class="meta">Rannveig Ostmo · Bergen · 3,100 words</p>
+      </div>
+    </section>
+
+    <section class="spec C">
+      <p class="cap"><b>C · Journal</b> — Newsreader only, 18/1.7, 54ch · italic display · style contrast instead of family contrast</p>
+      <div class="body">
+        <p class="kicker">Timescales — Issue 14</p>
+        <h2>Counting summers by eye</h2>
+        <p class="standfirst">At the top of a deep core the years are thick enough to see, and the
+          count becomes the clock rather than a reading taken from one.</p>
+        <p>The WAIS Divide core reached bedrock at 3,405 metres in December 2011. Through its upper
+          577 metres a single year occupies roughly 22 centimetres of ice — thick enough that a
+          technician working under polarised light can mark summer layers by hand, and thick enough
+          that the layer count itself becomes the timescale.</p>
+        <p>Below about 1,800 metres the layers thin past the point where the eye is any use, and the
+          chronology passes to electrical conductivity and to the gas record. The handover is not
+          seamless, and the published age model carries two different kinds of uncertainty on either
+          side of it.</p>
+        <p class="meta">Rannveig Ostmo · Bergen · 3,100 words</p>
+      </div>
+    </section>
+
+  </div>
+</div>
+</body>
+</html>

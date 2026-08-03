@@ -67,6 +67,60 @@
 **Round-9 test**: the same 4-direction Meridian dispatch-console exercise produced two light-themed directions (A: light neutral, C: light warm) and one dark direction (D: "Live Board"). Both blind reviewers rated the light directions as fully credible for a "serious," time-pressured operational product — light theming was never treated as a credibility problem. Direction D's dark theme was independently praised by both reviewers, but specifically **for a stated reason tied to its own concept** (a live timeline of color-coded state changes reads more clearly against a dark canvas, similar to real control-room/broadcast displays), not because dark is inherently more "serious." **This is the intended distinction the whole exercise was designed to surface**: dark theming is a legitimate choice when tied to a specific, stated visual reason (as in D), not a default that dense/professional products need to earn credibility (as A and C's reception disproves).
 **Revised status**: downgraded from "unconfirmed hypothesis" to "tested once, evidence against a forced default." Two dense/professional-application builds now exist (Mission Control, dark-justified; the Meridian exercise, split across light/light/dark with all three well-received) — a real, if still small, cross-project sample. Recommend keeping this entry as a caution to check the reasoning (not the color itself) rather than continuing to treat it as an open, unconfirmed hypothesis.
 
+## Round-11 re-measurement across five builds
+
+All five builds from `examples/` and `practical-exercises-round-two/` were measured directly against
+the entries above, and an independent authorship reviewer was given two of them and asked only whether
+the same person made both. Full detail: `ANTI_VIBE_CODING_UI.md` Appendix L and
+`practical-exercises-round-two/ROUND_TWO_BLIND_REVIEW.md`.
+
+**Default 2 — closed.** Zero occurrences of `§`, "Governing Principle", "Intentional accent", "Not
+decorative" or the other banned phrasings across every round-two source file. The comments that
+remain explain non-obvious constraints. This habit is fixed.
+
+**Default 5 — closed.** `border-radius` declarations per stylesheet: Mission Control 11, then 3, 3, 3,
+0, 1 across the five later builds. Cardification is no longer the reflex.
+
+**Default 6 — not closed, and the evidence is far stronger than the single Mission Control data point
+recorded above.** `text-transform: uppercase` appears in **5 of 5** builds — 7, 5, 8, 6 and 4
+instances — including two exercises briefed specifically to look unlike each other. An independent
+reviewer named the treatment unprompted as one of the strongest authorship signals across two
+otherwise unrelated sites. Upgrade this entry from "worth a second look" to an active, confirmed
+default.
+
+**Default 1 — recurred in its purest recorded form.** Firn's README described a responsive behaviour
+("the rail becomes a horizontal key above the article") that had never been implemented: the
+stylesheet targeted elements the page has never rendered, and the author repeated the claim in
+conversation. The rationale was fluent, internally consistent, and describing dead code. This is the
+fourth documented instance, and the first where the false claim was about the builder's *own shipped
+behaviour* rather than about how a design reads.
+
+## Default 9: a private spacing generator — new, and it explains Default 3
+
+**Evidence**: two round-two builds, derived weeks apart, each believed at the time to come from its
+own product's requirements:
+
+- Firn: `6 / 12 / 18 / 30 / 48 / 78 / 126`
+- Bellman's Mill: `6 / 12 / 20 / 32 / 52 / 84 / 136`
+
+Different numbers. Both start at 6px, and both are Fibonacci-additive (18+30=48, 30+48=78;
+32+52=84, 52+84=136). The same construction, twice, unprompted.
+
+**Why this matters more than Default 3**: Default 3 was recorded as "I copy the guide's illustrative
+scale verbatim." The deeper habit is that **changing the output does not change the generator** — I
+stopped copying the numbers and kept the method, and then presented the difference in numbers as
+evidence of product-specific reasoning. A per-product scale that arrives by the same procedure every
+time is not a per-product scale.
+
+**How to detect before shipping**: write down the actual control heights, reading measure and image
+gutters the product needs, derive the scale from those, and then check whether it happens to be
+6-based and additive. If it is, that is a coincidence worth one more look, not a confirmation.
+
+**Replacement process**: for at least one exercise in a series, choose the progression deliberately
+against the previous one — a linear scale, a 4px-based one, a scale derived from a grid module or from
+a photograph's aspect ratio — and record which was used, so the series has a checkable spread rather
+than one method wearing different numbers.
+
 ## What this document does not yet contain
 
 - Direct code-level re-inspection of the bike-shop and original Perigee-landing-page source files (this session did not have them loaded in working context; the evidence above for those two examples is drawn from this project's own prior written record of them, not fresh re-reading of their actual source). A follow-up pass that actually re-opens those files and checks them the same way Mission Control was checked in this document is a concrete, valuable next step.

@@ -2065,3 +2065,149 @@ Round 9 is a substantially larger undertaking than any prior round: a user-speci
 **What this round has produced outside this document, feeding the edits above and still growing:** `PROFESSIONAL_WEB_DESIGN_RESEARCH.md` (41 of the required 75+ organizations logged, 20 with full live-tier atlas entries, 5 of 15 required matched comparisons, 7 of 10 required counterexamples), `design-reference-atlas.json` and its generated `DESIGN_REFERENCE_ATLAS.md` (20 entries), `TYPOGRAPHY_RESEARCH.md` (~12 of the required 30+ systems, the 15-question framework written but not yet exercised through required specimen prototyping), `MINIMALISM_RESEARCH.md` (10 traditions sourced, including the Cracker Barrel case study cited in Governing Principle 4), and `CLAUDE_DESIGN_DEFAULTS.md` (8 defaults evidenced from this project's own prior builds, 2 explicitly flagged as unconfirmed hypotheses rather than asserted fact).
 
 **What has explicitly not happened yet, stated the same way every prior appendix in this document has stated its own gaps:** the organization count, matched-comparison count, and typography-system count are all still short of the brief's required minimums. No specimen-prototyping exercise (§8's new requirement) has actually been executed yet — the requirement exists in this document before the process that would validate it has been run once, which is a real ordering risk worth naming rather than hiding: a requirement that has never been exercised by its own authors may still contain an impractical or missing step that only surfaces on first real use. None of the required six practical exercises (a minimal small-business site, a dense professional application, an editorial/cultural site, an expressive marketing site, an e-commerce/product-detail experience, and a developer/technical product, one of them in four structurally distinct variants) has been built under this revised process yet, so the Personal-Defaults Check and the No Recipe Without Reason gate above are both still unexercised against real new work — they have only been written, not yet tested against a build the way `CLAUDE_DESIGN_DEFAULTS.md`'s existing entries were tested against Mission Control. No independent blind critique or typography blind test has been run this round. `DESIGN_EVALUATION_PROTOCOL.md` and `FINAL_CALIBRATION_REPORT.md`, both required deliverables, do not exist yet. This document's rewrite itself is not finished: §16 (Component-Library De-Defaulting), the Distinctiveness Rubric's relationship to the new Personal-Defaults Check, and further narrowing of guidance the calibration brief specifically flagged has been partially checked: §16 (Component-Library De-Defaulting) and §21 (Scoring Rubric) were re-read against the brief's stated concerns this round — §21 already gates dimension 3 to Low whenever no blind review occurred and already requires qualitative evidence before any score is assigned (lines under "Score caps," above), which substantially covers the brief's "rewards plausible rationale" and "numerical scoring without perceptual evidence" concerns without further edits being needed; §16 was found to be correctly scoped to component-library defaults specifically rather than brand assets, so the asset-strategy gap identified by the brief belonged in §3 (already added) rather than §16. This is a real check, not a placeholder — but it means confidence in §16/§21 rests on one reviewer's read against the brief's text, not on independent or blind confirmation, which is the same caveat this document applies to every other unverified self-assessment. Per this document's own Governing Principle 10, none of the above should be read as more complete than it actually is merely because this appendix describes it in finished-sounding prose — the honest state is: real, checkable progress, on a project whose own completion gates are still mostly open.
+
+## Appendix L — Rounds 10 and 11: what five builds actually taught
+
+Appendix K described a round in which the guide had been rewritten but not yet exercised. It closed
+by naming the risk in that ordering: *"a requirement that has never been exercised by its own authors
+may still contain an impractical or missing step that only surfaces on first real use."* Five builds
+have since been made under the revised process — three in `examples/`, two in
+`practical-exercises-round-two/` — and all of them have now been through independent blind review.
+This appendix records what that produced.
+
+### Correcting Appendix K
+
+Four of its closing claims are false as of this appendix, and are corrected here rather than edited
+out of it:
+
+| Appendix K said | Actually |
+|---|---|
+| "No specimen-prototyping exercise has actually been executed yet" | Executed twice, on Firn and on Bellman's Mill. Both times it changed the answer. |
+| "None of the required six practical exercises has been built under this revised process" | Five builds exist. |
+| "`DESIGN_EVALUATION_PROTOCOL.md` and `FINAL_CALIBRATION_REPORT.md` … do not exist yet" | Both exist and are committed. |
+| "No independent blind critique … has been run this round" | Run twice: `BLIND_REVIEW_ROUND_10.md` and `practical-exercises-round-two/ROUND_TWO_BLIND_REVIEW.md`. |
+
+### L1. The specification layer and the habit layer — the round's most useful finding
+
+Two builds were made under a diversity matrix constraining category, user, task, density, energy,
+design tradition, typeface, layout model, assets, colour behaviour, motion, device and ground. They
+share no typeface, no ground value, no page architecture and no register. A reviewer given both, and
+asked only whether the same person made them, answered **"certainly the same. Not 'probably.'"**
+
+Their explanation is the transferable part:
+
+> Every difference lives at the **specification layer** — typeface, ground value, display weight,
+> whether there is a form. Those are "exactly the knobs anyone would turn first if they were *trying*
+> to make two sites look unrelated. They are cheap to vary and they prove nothing." Every similarity
+> lives at the **habit layer**.
+
+The habit layer, as found and then confirmed by measurement: caption grammar down to which clause is
+bolded; the middot as universal separator; the spaced em dash; exactly two rule weights with fixed
+semantics; one accent plus one error colour; a filled hard-edged square used as both identity chip
+and data mark; a categorical refusal of radius and shadow; negative tracking on display paired with
+positive tracking on labels; surfaces always lighter than the ground, never elevated; an accent-
+coloured square focus ring; and two footers that were **one paragraph retyped with two nouns
+changed**.
+
+**The rule this produces.** A variation plan that lists typeface, colour and layout is a
+specification-layer plan and will not produce different-looking work. Before starting a second
+project in a series, write down the ten smallest things the first one did without being asked —
+punctuation, caption structure, rule weights, label case, focus treatment, footer boilerplate — and
+treat that list as the thing to vary. Everything on it was invisible to its own author.
+
+### L2. Rendering finds a defect class that reading cannot
+
+Every build in these two rounds shipped defects that were invisible in source and obvious on screen.
+They fall into repeatable classes, and the classes are the useful output:
+
+1. **CSS written for markup that was never produced.** Firn's stylesheet implemented a mobile
+   fallback against `.rail-mark` elements the page has never rendered; Bellman's implemented a lead
+   plate and a paired comparison the HTML never marked up. Both were described in prose as working.
+   **Check that every selector in a responsive block matches something the page actually emits.**
+2. **A figure generated one unit off.** Every room in a building section was positioned from its
+   floor level *downwards* instead of upwards, so two rooms overdrew a third out of existence.
+3. **Label collisions in generated graphics** — found on a rail, fixed, and then not checked on the
+   two figures beside it on the same page. **A collision test belongs in the harness, not in
+   attention.**
+4. **A comparison set with mismatched shapes.** Two photographs of the same pond in different seasons,
+   one portrait and one landscape, presented side by side: the taller frame reads as the more
+   important one and the comparison collapses. **Anything presented as a set gets one shape.**
+5. **Narrow but not overflowing.** A table caption rendered 72px wide and 440px tall — one word per
+   line — and produced no console error and no horizontal overflow, so the harness passed it.
+6. **CSS beating a JS presentation attribute**, rendering numerals dark-on-dark.
+7. **A figure legible at 1440 and illegible at 390.** Scaling a 620px-wide drawing into a phone
+   renders its labels at about 6px. Two compositions, not one that scales.
+8. **Prose composed from data fragments.** Table cells are noun phrases; dropped into a sentence they
+   produce "in July the wheel usually stopped." Generated prose needs its own wording, tested across
+   every value.
+9. **`:focus-within` on date inputs.** Chromium focuses a segment inside the shadow tree, so the host
+   matches neither `:focus` nor `:focus-visible` and a keyboard user sees no ring at all.
+10. **Attribution as the least-readable text on the page.** Photograph credits sat at 2.91:1. A
+    licence obligation is not decoration and does not get faded out.
+
+### L3. The specimen test survives first use, with one addition
+
+§8's requirement worked both times it was run, and both times it changed the outcome — which is the
+only evidence that matters for a process step. What §8 does not say, and should:
+
+**The best-looking direction is frequently the wrong one, and the reason to reject it is usually
+register or role rather than legibility.** Firn rejected a single-family italic display that was the
+most beautiful of its three because it assigned a literary voice to a subject that is measurement.
+Bellman's rejected a reading-serif-plus-grotesque pairing that was the most comfortable of its three
+because it made the page sound like a magazine writing *about* the mill rather than the people who
+run it — and because it repeated the previous exercise's recipe.
+
+**A colour equivalent of the specimen test is missing from §9 and should exist.** Bellman's ground was
+pre-committed in writing as "dark, sampled from the photographs." Rendering three grounds under the
+real images killed it in one look: bright daylight photographs of a white building become isolated
+rectangles on a dark ground and the interiors lose their shadow detail. A written colour decision that
+has not been rendered against the real assets is a guess.
+
+### L4. Blind review, twice more, and what it costs to run badly
+
+Governing Principle 9 is upheld again: across two rounds, **the most serious defect in every single
+build was one the builder did not predict.** Round 10: a headline excluding unknowns, a caption its
+own chart contradicted, a grid misaligned with its own cloth. Round 11: a mobile fallback that never
+existed, a caption describing a different chart, and an enquiry form pre-filled across a night its own
+availability strip showed as taken.
+
+Two capture rules, both learned by breaking them:
+
+- **Round 10:** drive the real controls. A script calling `loadDraft()` directly produced a tab/content
+  desync that did not exist, and a reviewer reported it in good faith with evidence.
+- **Round 11:** *and scroll the whole page before capturing.* A script that obeyed the round-10 rule
+  perfectly still manufactured two "missing image" defects, because `loading="lazy"` images below the
+  fold are never requested by a `fullPage` screenshot. Lazy loading is user behaviour too.
+
+**And record refutations.** Of the findings in round 11, two were refuted by measurement (a marker
+reported as frozen does move; a footer reported as misaligned is not) and two were the harness's
+fault. Acting on all of them would have introduced defects to fix imaginary ones.
+
+### L5. Two defaults closed, two open, one new
+
+Measured across the five builds, against `CLAUDE_DESIGN_DEFAULTS.md`:
+
+- **Default 5 (rounded-card tiles) is closed.** `border-radius` declarations per stylesheet:
+  Mission Control 11, then 3, 3, 3, 0, 1.
+- **Default 2 (performative comments citing the guide) is closed.** Zero occurrences of `§`,
+  "Governing Principle" or the banned phrasings across all round-two source files.
+- **Default 6 (uppercase micro-labels) is not closed and the evidence is stronger than recorded.**
+  Present in **5 of 5** builds — 7, 5, 8, 6 and 4 instances — including two briefed to be maximally
+  unlike each other.
+- **Default 1 (rationale-driven self-assessment) recurred in its purest form.** A README described a
+  responsive behaviour that had never been implemented, and the author repeated the claim in
+  conversation. The rationale was fluent, coherent, and describing dead code.
+- **New: a private spacing generator.** Firn's scale is 6/12/18/30/48/78/126; Bellman's is
+  6/12/20/32/52/84/136. Different numbers, both starting at 6px, both Fibonacci-additive. Each was
+  derived separately and each was believed to come from its own product. Default 3 was recorded as
+  "I copy the guide's example scale"; the real habit is that **changing the output does not change
+  the generator.**
+
+### What has still not happened
+
+No human reviewer and no domain practitioner has seen any of the five builds; every blind review so
+far has been an AI agent in a fresh context, which is reliable for structure and arithmetic and weak
+on taste. No screen-reader pass anywhere. Ten of the round's twelve exercises are unbuilt. The
+round-two evaluation set — comparative review, scoring, regression report, fingerprint audit, final
+ranking — does not exist yet. And the specification/habit-layer finding in L1 has been diagnosed but
+not yet acted on: the diversity matrix still constrains only the specification layer.

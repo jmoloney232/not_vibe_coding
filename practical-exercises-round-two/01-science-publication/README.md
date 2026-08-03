@@ -76,6 +76,9 @@ qualifying.
   measurement, so being seen to correct is part of the product.
 - Side notes are apparatus attached to their own passage, floating into the margin above 1180px and
   falling inline below it.
+- Below 1080px the rail is redrawn as a flat horizontal strip, 66px tall rather than 1,763px, with
+  the reader marker riding the horizontal axis. Earlier versions of this file claimed that behaviour
+  while the stylesheet implemented it against elements the page never rendered.
 - Figures carry credit and licence inline, not in a colophon.
 - The rail's reader-position marker is an honest approximation and the rail says so in its own note.
 
@@ -102,7 +105,12 @@ read that a round-one reviewer flagged on a different page. The list is now capp
 
 ## Not verified
 
-- No independent blind review yet; that runs across the whole set.
+- **Blind review has been run** — `../ROUND_TWO_BLIND_REVIEW.md`, reviewer D, plus the authorship
+  reviewer X. It returned visual craft 2 and information design 2, against a considerably kinder
+  self-assessment, and found eight real defects including two figure label collisions, a caption
+  describing a different chart, a silently truncated axis, an index whose entries did not look like
+  links, and a mobile rail that rendered 1,763px tall between the headline and the first sentence.
+  All are fixed and re-verified. The reviewers were AI agents in fresh contexts, not people.
 - No screen-reader pass. The rail is a labelled `role="img"` and the horizons it names are also given
   in the figure captions and the prose, so nothing exists only in the rail — but this is untested with
   real assistive technology.

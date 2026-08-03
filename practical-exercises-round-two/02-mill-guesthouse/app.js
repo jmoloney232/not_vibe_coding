@@ -283,6 +283,12 @@ function buildAvailability() {
   };
 
   sel.addEventListener('change', render);
+  // Following the arrival date keeps the two halves of this panel describing the
+  // same month; they previously drifted apart without saying so.
+  el('f-in')?.addEventListener('change', e => {
+    const m = Number(e.target.value.slice(5, 7));
+    if (m >= 1 && m <= 12 && sel.value !== String(m)) { sel.value = String(m); render(); }
+  });
   render();
 }
 
@@ -304,13 +310,23 @@ function wireEnquiry() {
   if (!form) return;
   const roomSel = el('f-room'), out = el('enq-out'), err = el('enq-err');
 
-  roomSel.replaceChildren(...ROOMS.map(r => {
-    const o = document.createElement('option');
-    o.value = r.id;
-    o.textContent = `${r.name} — from £${r.rate}, ${r.steps === 0 ? 'no steps' : `${r.steps} steps`}`;
-    return o;
-  }));
+  const fillRooms = () => {
+    const keep = roomSel.value;
+    const iso = el('f-in').value;
+    const band = iso ? YEAR[Number(iso.slice(5, 7)) - 1] : null;
+    roomSel.replaceChildren(...ROOMS.map(r => {
+      const o = document.createElement('option');
+      o.value = r.id;
+      const rate = band ? r.rate + BANDS[band.band] : r.rate;
+      o.textContent = `${r.name} — £${rate}${band ? ` in ${band.name}` : ''}, `
+        + `${r.steps === 0 ? 'no steps' : `${r.steps} steps`}`;
+      return o;
+    }));
+    roomSel.value = keep || 'stone';
+  };
+  fillRooms();
   roomSel.value = 'stone';
+  el('f-in').addEventListener('change', fillRooms);
 
   const DAY = 86400000;
 
@@ -331,6 +347,15 @@ function wireEnquiry() {
     }
     if (problems.length) {
       err.textContent = `We need ${problems.join(', and ')}.`;
+      out.hidden = true;
+      return;
+    }
+
+    const clash = nightsTaken(room.id, inV, nights);
+    if (clash.length) {
+      err.textContent = `${room.name} is already taken on `
+        + `${clash.length > 1 ? clash.slice(0, -1).join(', ') + ' and ' + clash.slice(-1) : clash[0]}. `
+        + `Change the dates or the room and we will check again.`;
       out.hidden = true;
       return;
     }

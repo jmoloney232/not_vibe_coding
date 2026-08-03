@@ -33,7 +33,12 @@ async function shot(page, dir, name, opts = {}) {
       page.on('pageerror', e => errors.push(`${tag}/${wname}: ${e.message}`));
 
       for (const [i, r] of routes.entries()) {
-        await page.goto(`${BASE}/${sub}/${r}.html`, { waitUntil: 'networkidle' });
+        await page.goto(`${BASE}/${sub}/${r}.html`, { waitUntil: "networkidle" });
+        // Scroll the whole page first: lazy-loaded images below the fold are never
+        // requested by a fullPage screenshot, and a reviewer reads the gap as a
+        // missing asset. Driving the controls is not enough on its own.
+        await page.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 400) { window.scrollTo(0, y); await new Promise(r => setTimeout(r, 50)); } window.scrollTo(0, 0); });
+        await page.waitForTimeout(700);
         await shot(page, tag, `${tag}${i + 1}-route${i + 1}-${wname}-full.png`, { fullPage: true });
         await shot(page, tag, `${tag}${i + 1}-route${i + 1}-${wname}-firstscreen.png`);
       }

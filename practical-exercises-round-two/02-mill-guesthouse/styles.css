@@ -165,6 +165,12 @@ a { color: inherit; }
 }
 .cta:hover { background: var(--water); }
 
+/* ----------------------------------------------------------------- contact */
+
+.contact { padding-bottom: var(--s5); }
+.contact-pairs { max-width: 620px; }
+.contact-pairs .q { color: var(--soft); }
+
 /* ------------------------------------------------------------------ footer */
 
 .foot { border-top: 1px solid var(--line); padding-top: var(--s4); padding-bottom: var(--s6); }

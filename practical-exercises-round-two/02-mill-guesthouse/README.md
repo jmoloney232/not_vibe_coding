@@ -213,7 +213,13 @@ the least readable text on the page. It is now separated by size rather than by 
 
 ## Not verified
 
-- No independent blind review yet; that runs across the whole set.
+- **Blind review has been run** — `../ROUND_TWO_BLIND_REVIEW.md`, reviewer E, plus the authorship
+  reviewer X. Distinctiveness scored 4 of 4. It also found the defect that mattered most: the enquiry
+  form arrived pre-filled across a night its own availability strip showed as taken. Fixed, along
+  with the missing telephone number behind "we would rather you rang", a caption claiming Criffel was
+  visible where it is not, and a room list quoting one rate all year. Still open, and listed in that
+  document: no room photography, no map, no bathroom or cancellation detail, and a 4px availability
+  strip at 390px.
 - No screen-reader pass. The section drawing is a labelled `role="img"` and everything it shows is
   also stated in the room cards below, so nothing exists only in the drawing — but this is reasoned,
   not tested.

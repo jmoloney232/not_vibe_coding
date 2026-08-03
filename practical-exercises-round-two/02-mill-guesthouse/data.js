@@ -144,7 +144,8 @@ const ROOMS = [
       ['Warmth', 'Warmest room in the mill. No cooling in July.'],
     ],
     view: { img: 'pond', alt: 'The mill pond in summer, reeds in the foreground and a stone building beyond.',
-            cap: 'What the south-west window looks at: the pond, and Criffel behind it.' },
+            cap: 'The pond the south-west window overlooks, photographed from the bank. Criffel is '
+               + 'behind the trees on the left and is not in this frame.' },
   },
 ];
 
@@ -205,6 +206,21 @@ const AVAILABILITY = (() => {
   }
   return out;
 })();
+
+/* Whether every night of a stay is free. The availability strip and the
+   enquiry form were reading the same data and never compared it, so the form
+   arrived pre-filled across a night the strip showed as taken. */
+function nightsTaken(roomId, fromISO, nights) {
+  const start = new Date(fromISO), out = [];
+  for (let i = 0; i < nights; i++) {
+    const d = new Date(start.getTime() + i * 86400000);
+    const m = d.getMonth() + 1, day = d.getDate();
+    if (AVAILABILITY[m] && AVAILABILITY[m].taken.has(`${roomId}:${day}`)) {
+      out.push(d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long' }));
+    }
+  }
+  return out;
+}
 
 function freeNights(monthNo, roomId) {
   const a = AVAILABILITY[monthNo];

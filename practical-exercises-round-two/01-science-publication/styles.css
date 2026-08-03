@@ -165,6 +165,8 @@ a { color: inherit; }
 
 /* ----------------------------------------------------------------- contents */
 
+/* The heavy rule and the rows beneath it belong to one block, so they end
+   at the same place. */
 .section-head {
   display: flex;
   align-items: baseline;
@@ -173,6 +175,7 @@ a { color: inherit; }
   border-bottom: 2px solid var(--ink);
   padding-bottom: var(--s1);
   margin: var(--s6) 0 var(--s4);
+  max-width: 940px;
 }
 
 .section-head h2 {
@@ -221,8 +224,21 @@ a { color: inherit; }
   max-width: 30ch;
 }
 
-.entry h3 a { text-decoration: none; }
-.entry h3 a:hover { color: var(--data); }
+/* An index whose entries do not read as links has failed at its only job, and
+   .related sat inside .prose on the article route, so the same component came
+   out blue there and plain ink here. Both are set here, once. */
+.entry h3 a,
+.related h3 a,
+.prose .related h3 a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: #9aa6ab;
+}
+.entry h3 a:hover,
+.related h3 a:hover,
+.prose .related h3 a:hover { color: var(--data); text-decoration-color: var(--data); }
 
 .entry.is-short h3 { font-size: 21px; }
 .entry.is-long h3 { font-size: 32px; max-width: 26ch; }
@@ -407,28 +423,8 @@ a { color: inherit; }
 .rail-scale .rl-a { font-size: 10.5px; fill: var(--quiet); }
 .rail-scale .rl-n { font-size: 9.5px; fill: var(--quiet); opacity: .85; }
 
-.rail-mark {
-  position: absolute;
-  left: 0;
-  transform: translateY(-50%);
-  padding-left: 8px;
-  font-size: 11px;
-  line-height: 1.25;
-  color: var(--quiet);
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-}
 
-.rail-mark::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 50%;
-  width: 6px; height: 1px;
-  background: var(--rule);
-}
 
-.rail-mark b { display: block; color: var(--ink); font-weight: 600; }
-.rail-mark i { display: block; font-style: normal; font-size: 10px; opacity: .8; }
 
 /* Where the reader currently is, mapped onto the core. */
 .rail-here {
@@ -495,8 +491,7 @@ a { color: inherit; }
 
 .related article { border-top: 1px solid var(--rule); padding-top: var(--s2); }
 .related h3 { font-weight: 400; font-size: 20px; line-height: 1.2; margin: 0 0 var(--s1); }
-.related h3 a { text-decoration: none; }
-.related h3 a:hover { color: var(--data); }
+
 .related p { font-family: var(--app); font-size: 12.5px; color: var(--quiet); margin: 0; }
 
 .author-note {
@@ -541,24 +536,15 @@ a { color: inherit; }
 
 @media (max-width: 1080px) {
   .cover { grid-template-columns: minmax(0, 1fr); gap: var(--s3); }
-  .rail-scale svg { max-width: 420px; }
   .article-body { grid-template-columns: minmax(0, 1fr); gap: var(--s4); }
-  /* The rail becomes a horizontal key above the article rather than vanishing. */
+  /* Below 1080px buildRail() draws the flat composition — the same horizons laid
+     out left to right in about 100px instead of a full-height column. These rules
+     only have to give it room; the previous version styled .rail-mark elements
+     that this page has never rendered, so the fallback described here was never
+     actually running. */
   .rail { position: static; order: -1; }
-  .rail-scale {
-    height: auto;
-    border-left: 0;
-    border-top: 1px solid var(--rule);
-    margin: 0;
-    padding-top: var(--s2);
-    display: flex;
-    justify-content: space-between;
-    gap: var(--s2);
-    overflow-x: auto;
-  }
-  .rail-mark { position: static; transform: none; padding-left: 0; }
-  .rail-mark::before { display: none; }
-  .rail-here, .rail-read { display: none; }
+  .rail-scale { height: auto; border-left: 0; margin: 0; }
+  .rail-scale svg { max-width: 100%; }
 }
 
 @media (max-width: 720px) {

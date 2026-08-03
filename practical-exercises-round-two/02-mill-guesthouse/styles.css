@@ -266,7 +266,7 @@ a { color: inherit; }
 @media (max-width: 720px) {
   .year-figs { grid-template-columns: 1fr; }
   .year thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-  .year table, .year tbody, .year tr, .year th, .year td { display: block; }
+  .year table, .year tbody, .year tr, .year th, .year td, .year caption { display: block; }
   .year tbody tr { border-top: 1px solid var(--ink); padding: var(--s2) 0 var(--s3); }
   .year tbody th { font-size: 20px; font-weight: 700; letter-spacing: -.02em;
                    border: 0; padding: 0 0 var(--s2); }

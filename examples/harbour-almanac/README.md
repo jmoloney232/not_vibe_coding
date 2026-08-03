@@ -82,8 +82,14 @@ a full moon. Also a render-only catch.
 
 ## Not verified
 
-- **No independent blind review.** Same-author assessment only. Every claim above about what the page
-  *reads as* is unconfirmed, which Governing Principle 9 flags as the likeliest place for a miss.
+- **Blind review has been run** — see `../../BLIND_REVIEW_ROUND_10.md`, reviewer B. It caught a defect
+  in which the page contradicted its own caption: the caption promised each light bar was "one full
+  period of the light, drawn to scale in seconds", while every bar was normalised to its own period,
+  so a one-second quick flash and a twelve-second composite group drew identical width. Fixed by
+  giving all five bars one shared twelve-second axis, which keeps the claim rather than softening it.
+  But the reviewer was **an AI agent in a fresh context, not a person**: reliable for structural and
+  arithmetic defects, materially weaker on taste. Three of six perceptual predictions went unmentioned
+  rather than confirmed.
 - **No real navigator has seen it**, and that is the review that would matter. The page is explicitly
   labelled not for navigation, but whether its conventions read correctly to someone who uses the real
   instrument is untested.

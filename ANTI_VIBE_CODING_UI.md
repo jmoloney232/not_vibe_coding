@@ -2044,6 +2044,13 @@ Round 7 was triggered by round 6's own disclosed limitation: its research was re
 
 ## Appendix K — Round 9: Major Design-Calibration Project (in progress)
 
+> **Superseded in part. Read Appendix L first.** This appendix was accurate when written and four of
+> its closing claims are now false: specimen prototyping *has* been executed, practical exercises
+> *have* been built under the revised process, `DESIGN_EVALUATION_PROTOCOL.md` and
+> `FINAL_CALIBRATION_REPORT.md` *do* exist, and blind critique *has* been run. It is kept unedited
+> below as the record of that round's state rather than rewritten to look prescient. Appendix L
+> corrects it point by point and carries what the builds since then actually taught.
+
 Round 9 is a substantially larger undertaking than any prior round: a user-specified, multi-week-scale program requiring 75+ researched organizations, 15+ matched professional-vs-AI comparisons, dedicated typography and minimalism research tracks, a machine-readable reference atlas, an audit of this project's own recurring design defaults, a materially rewritten guide (this document), and at least six practical exercises with independent blind critique before any completion claim. This appendix records what has actually landed in this document so far as a direct result of that project, and states plainly what has not yet happened, rather than implying the rewrite is finished because this appendix exists.
 
 **Mandatory starting point, completed:** the round began by fetching and critically reading `github.com/ConardLi/garden-skills`'s `skills/web-design-engineer/SKILL.md` and its referenced files (failure-patterns, design-directions, design-calibration, critique-guide, redesign-protocol, browser-acceptance, style-recipes) under an MIT license, per the explicit instruction not to "install its recipes and conclude design judgment has improved." The critical review is recorded in `PROFESSIONAL_WEB_DESIGN_RESEARCH.md` Part 0; its most load-bearing output for this document specifically is the **No Recipe Without Reason** rule added to §6 below, which generalizes the Garden skill's own recipe-application step into a mandatory justification gate rather than a menu to select from.

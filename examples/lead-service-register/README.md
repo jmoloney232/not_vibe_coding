@@ -78,10 +78,14 @@ invisible from the code and only appeared by running a real query.
 
 ## Not verified
 
-- **No independent blind review.** The Design Evaluation Protocol's Step 5 is the load-bearing one
-  and it has not been run: this page was built and assessed by the same agent, so every claim above
-  about what it *reads as* is a hypothesis, not a finding. Governing Principle 9 and
-  `CLAUDE_DESIGN_DEFAULTS.md` Default 1 both predict that this is precisely where a miss will be.
+- **Blind review has been run** — see `../../BLIND_REVIEW_ROUND_10.md`, reviewer A. It found the one
+  defect this page most needed found: the headline count and "share affected" were computed over lead
+  and galvanized only, while the guidance section told unknown-line households to behave as if they
+  had lead. "The headline number says you're fine; the guidance says behave as if you have lead."
+  Fixed. But the reviewer was **an AI agent in a fresh context, not a person** — reliable for
+  structural and arithmetic defects, materially weaker on taste, because a second similarly-trained
+  model shares correlated priors with the first. Three of six perceptual predictions were neither
+  confirmed nor contradicted; they were simply never mentioned, which is not the same as being right.
 - No screen-reader pass. The roving-tabindex plate and the `aria-live` record panel are built to the
   documented patterns but have not been driven with NVDA, JAWS, or VoiceOver.
 - No real reader. Whether a resident could find their own address and understand what to do next is

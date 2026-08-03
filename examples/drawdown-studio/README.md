@@ -77,8 +77,14 @@ neither half was wrong on its own.
 
 ## Not verified
 
-- **No independent blind review**, and none of the perception-level claims above ("reads as a loom",
-  "reads as a workshop instrument") should be treated as confirmed.
+- **Blind review has been run** — see `../../BLIND_REVIEW_ROUND_10.md`, reviewer C, and the
+  re-verification pass in commit `c2b927f`. It confirmed the quadrant reading ("the tie-up shares the
+  threading's horizontal gridlines *and* the treadling's vertical gridlines") and found two real
+  defects: inputs and outputs were styled identically with no affordance separating them, and the
+  treadling was misaligned with its own cloth by about 1.5 rows, so "the one reading gesture the
+  layout exists to support doesn't work." Both fixed. But the reviewer was **an AI agent in a fresh
+  context, not a person**, and one reported defect turned out to be manufactured by the screenshot
+  harness rather than present in the page — see the methodological finding in that document.
 - **No weaver has seen it.** The structures are checkable against published drafts and the
   interlacement is proven internally consistent, but whether the page is *useful* to someone who
   actually warps a loom — and whether the quadrant labels use the vocabulary they expect — is exactly

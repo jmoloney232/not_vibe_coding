@@ -340,3 +340,20 @@ button:hover { background: var(--water); }
 .strip i { flex: 1 1 0; min-width: 0; height: 16px; background: var(--water); display: block; }
 .strip i.taken { background: #cfcfc2; }
 .avail .free { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* ------------------------------------------------------------------- print */
+/* Each room is one unit of the argument, so it does not split across a sheet.
+   The enquiry form has nothing to do on paper; the contact block replaces it. */
+
+@media print {
+  .top { position: static; }
+  .field { columns: 2; }
+  .field figure, .field .pair, .room, .section-fig, .year-figs figure,
+  .know dl > div, .contact { break-inside: avoid; }
+  /* Rooms pack two to a sheet where they fit; break-inside keeps one whole. */
+  .year tbody tr { break-inside: avoid; }
+  #enq, .avail .strip { display: none; }
+  .book-grid { display: block; }
+  h2, h3 { break-after: avoid; }
+  a { text-decoration: none; }
+}

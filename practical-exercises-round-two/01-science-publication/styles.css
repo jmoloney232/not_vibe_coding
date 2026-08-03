@@ -561,3 +561,26 @@ a { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .rail-here { transition: none; }
 }
+
+/* ------------------------------------------------------------------- print */
+/* The rail is a margin column on screen. On paper there is no scrolling and no
+   reader position, so it prints once at the end as a key, and the article runs
+   the full measure instead of leaving a tall empty gutter beside it. */
+
+@media print {
+  .masthead { position: static; }
+  .article-body { display: block; }
+  /* The measure stays. A printed line of 110 characters is not a reading line
+     just because the paper is wide. */
+  .rail {
+    position: static; width: auto; margin-top: var(--s5);
+    border-top: 2px solid var(--ink); padding-top: var(--s2);
+    break-inside: avoid;
+  }
+  .rail-scale svg { max-width: 380px; }
+  .rail-read, .rail-here, #rail-read-bar, #rail-here-sq { display: none; }
+  .fig, .sidenote, .author-note, .notes li, .entry { break-inside: avoid; }
+  h2, h3 { break-after: avoid; }
+  .related { break-inside: avoid; }
+  a { text-decoration: none; }
+}

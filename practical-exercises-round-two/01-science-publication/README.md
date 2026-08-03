@@ -116,4 +116,6 @@ read that a round-one reviewer flagged on a different page. The list is now capp
   real assistive technology.
 - The reader-position mapping assumes the article discusses the core top-down, which this one does. It
   would need rethinking for a piece that jumps around, and it is not generalised.
-- No print stylesheet.
+- A print stylesheet now exists and was checked by generating and reading the PDF. It was written
+  because printing exposed two things a screen never does: a figure that cannot split leaves half a
+  sheet blank, and a layout with no measure set for paper runs 110 characters to the line.

@@ -228,4 +228,6 @@ the least readable text on the page. It is now separated by size rather than by 
 - The availability strip is a `role="img"` with a summary label; the individual nights are not
   separately reachable, which would matter if this were a real booking calendar rather than an
   indication.
-- No print stylesheet.
+- A print stylesheet now exists and was checked by generating and reading the PDF. It was written
+  because printing exposed two things a screen never does: a figure that cannot split leaves half a
+  sheet blank, and a layout with no measure set for paper runs 110 characters to the line.

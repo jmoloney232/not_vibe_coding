@@ -2,7 +2,15 @@
 
 **A durable standard, checklist, and self-review framework for AI agents building websites and web applications.**
 
-This file is written for AI coding agents. Read it before designing or styling any UI, and re-consult specific sections during implementation. It assumes no prior context: if you are an agent who has never seen this project before, this file is sufficient to act on.
+> **Do not read this file end to end.** It is roughly 70,000 tokens — §0–§26 is ~49k and the
+> appendices are ~23k of project history. Start at [`README.md`](./README.md), which is the routing
+> layer: it carries the eleven highest-value rules inline and tells you which sections your particular
+> task needs. Most tasks need §0 and §24 and nothing else. If you have already read the README, jump
+> straight to the sections it named.
+
+This file is written for AI coding agents. Re-consult specific sections during implementation. It
+assumes no prior context: if you are an agent who has never seen this project before, this file plus
+the README is sufficient to act on.
 
 Normative language used throughout:
 
